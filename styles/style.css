@@ -1,0 +1,149 @@
+:root{
+    /* ---- COLORS ---- */
+    --bytebusters-color: #1fb300;
+    --color-1: #181818;
+    --color-2: #5a5a5a3b;
+    --color-3: #cecece;
+    --color-4: #000000;
+    --color-5: #b8b8b878;
+
+    /* ---- BACKGROUNDS ---- */
+    --primary-background-color: var(--color-1);
+    --secondary-background-color:  var(--color-2);
+    --input-background-color: var(--color-3);
+    --footer-background-color: var(--color-4);
+
+    /* ---- BORDERS ---- */
+    --primary-border: 2px solid var(--bytebusters-color);
+    --secondary-border: 2px solid var(--color-3);
+
+    /* ---- TEXT ---- */
+    --primary-text-color: var(--color-1);
+    --secondary-text-color: var(--color-5);
+    --text-button-color: var(--color-1);
+
+
+}
+
+.body-login{
+    background: var(--primary-background-color);
+}
+
+.form-login{
+    width: 40vw;
+    min-width: 25rem;
+    height: fit-content;
+    margin: 5rem auto 0;
+    background-color: var(--secondary-background-color);
+    padding: 1rem;
+    border: var(--primary-border);
+    border-radius: 2rem;
+}
+
+.img-login{
+    display: flex;
+    width: 10rem;
+    margin: 2rem auto 2rem;
+    background-color: var(--color-3);
+    border-radius: 2rem;
+    animation: rotate 2s 1;
+    filter: drop-shadow(.5rem .4rem .5rem black)
+}
+
+.form-login label{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-login input{
+    display: block;
+    margin: .5rem 0;
+    width: 20rem;
+    height: 2.5rem;
+    border: 1px solid;
+    border-radius: 5px;
+    background-color: var(--input-background-color);
+    color: var(--primary-text-color);
+    font-size: 1.2rem;
+    text-indent: .5rem;
+}
+
+.form-login input:focus{
+    outline: none;
+}
+
+.form-login i{
+    transform: scale(150%);
+    padding: 0 1rem 0 0;
+    color: var(--bytebusters-color);
+}
+
+.form-login a{
+    display: flex;
+    margin-top: .5rem;
+    text-decoration: none;
+    justify-content: center;
+    color: var(--secondary-text-color);
+}
+
+.form-login .btnsubmit{
+    width: 10rem;
+    text-indent: 0;
+    margin: 3rem auto 2rem;
+    background-color: var(--bytebusters-color);
+    cursor: pointer;
+    color: var(--text-button-color);
+    text-align: center !important;
+}
+
+.form-login .btnsubmit:hover{
+border: 2px solid var(--primary-text-color);
+}
+
+
+/* ---------  FOOTER --------- */
+footer{
+    position: absolute ;
+    display: flex;
+    background-color: var(--footer-background-color);
+    width: 100vw;
+    height: 12vh;
+    bottom: 0;
+    left: 0;
+    align-items: center;
+    border-top: var(--primary-border);
+}
+
+.copyright{
+    position: absolute ;
+    color: var(--secondary-text-color);
+    font-size: .8rem;
+    padding-right: 1rem;
+    bottom: 0;
+    right: 0;
+}
+
+img{
+    display: flex;
+    position: relative;
+    max-height: 90%;
+    margin: 1rem;
+}
+
+
+/* --------- ANIMATIONS ---------  */
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    50% {
+        transform: rotate(35deg);
+    }
+
+    100% {
+        transform: rotate(-360deg);
+    }
+}
