@@ -25,9 +25,9 @@
         <a href="">Olvidaste tu contraseña?</a>
         <input class="btnsubmit" type="submit" value="Iniciar sesión">
     </form>
-</body>
-<footer>
+    <footer>
         <img src="./assets/logo_bytebusters.png" alt="Logotipo de ByteBusters">
         <p class="copyright">&copy; Copyright 2023. All Rights Reserved.</p>
     </footer>
+</body>
 </html>

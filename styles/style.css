@@ -1,4 +1,4 @@
-:root{
+:root {
     /* ---- COLORS ---- */
     --bytebusters-color: #1fb300;
     --color-1: #181818;
@@ -9,7 +9,7 @@
 
     /* ---- BACKGROUNDS ---- */
     --primary-background-color: var(--color-1);
-    --secondary-background-color:  var(--color-2);
+    --secondary-background-color: var(--color-2);
     --input-background-color: var(--color-3);
     --footer-background-color: var(--color-4);
 
@@ -21,42 +21,45 @@
     --primary-text-color: var(--color-1);
     --secondary-text-color: var(--color-5);
     --text-button-color: var(--color-1);
-
-
 }
 
-.body-login{
+html{
+    position: relative;
+    min-height: 100vh;
+}
+
+.body-login {
     background: var(--primary-background-color);
 }
 
-.form-login{
+.form-login {
     width: 40vw;
-    min-width: 25rem;
+    min-width: 20rem;
     height: fit-content;
-    margin: 5rem auto 0;
+    margin: 2rem auto 0;
     background-color: var(--secondary-background-color);
     padding: 1rem;
     border: var(--primary-border);
     border-radius: 2rem;
 }
 
-.img-login{
+.img-login {
     display: flex;
     width: 10rem;
-    margin: 2rem auto 2rem;
+    margin: 1rem auto 2rem;
     background-color: var(--color-3);
     border-radius: 2rem;
     animation: rotate 2s 1;
     filter: drop-shadow(.5rem .4rem .5rem black)
 }
 
-.form-login label{
+.form-login label {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.form-login input{
+.form-login input {
     display: block;
     margin: .5rem 0;
     width: 20rem;
@@ -69,17 +72,17 @@
     text-indent: .5rem;
 }
 
-.form-login input:focus{
+.form-login input:focus {
     outline: none;
 }
 
-.form-login i{
-    transform: scale(150%);
-    padding: 0 1rem 0 0;
+.form-login i {
+    transform: scale(130%);
+    padding: 0 .5rem 0 0;
     color: var(--bytebusters-color);
 }
 
-.form-login a{
+.form-login a {
     display: flex;
     margin-top: .5rem;
     text-decoration: none;
@@ -87,7 +90,7 @@
     color: var(--secondary-text-color);
 }
 
-.form-login .btnsubmit{
+.form-login .btnsubmit {
     width: 10rem;
     text-indent: 0;
     margin: 3rem auto 2rem;
@@ -97,15 +100,14 @@
     text-align: center !important;
 }
 
-.form-login .btnsubmit:hover{
-border: 2px solid var(--primary-text-color);
+.form-login .btnsubmit:hover {
+    border: 2px solid var(--primary-text-color);
 }
 
 
 /* ---------  FOOTER --------- */
-footer{
-    position: absolute ;
-    display: flex;
+footer {
+    position: fixed;
     background-color: var(--footer-background-color);
     width: 100vw;
     height: 12vh;
@@ -115,20 +117,38 @@ footer{
     border-top: var(--primary-border);
 }
 
-.copyright{
-    position: absolute ;
+footer .copyright {
+    position: absolute;
     color: var(--secondary-text-color);
-    font-size: .8rem;
+    font-size: .5rem;
     padding-right: 1rem;
     bottom: 0;
     right: 0;
 }
 
-img{
+footer img {
     display: flex;
     position: relative;
-    max-height: 90%;
-    margin: 1rem;
+    height: 80%;
+    margin: .5rem -1rem;
+}
+
+@media only screen and (min-width: 968px) {
+
+    .form-login {
+        min-width: 25rem;
+        margin: 5rem auto 0;
+    }
+    
+
+    footer img {
+        margin: .5rem ;
+        scale: 120%;
+    }
+
+    footer .copyright {
+        font-size: .8rem;
+    }
 }
 
 
