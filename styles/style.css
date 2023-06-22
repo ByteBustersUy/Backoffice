@@ -6,6 +6,7 @@
     --color-3: #cecece;
     --color-4: #000000;
     --color-5: #b8b8b878;
+    --transparent-color: #00000000;
 
     /* ---- BACKGROUNDS ---- */
     --primary-background-color: var(--color-1);
@@ -16,19 +17,35 @@
     /* ---- BORDERS ---- */
     --primary-border: 2px solid var(--bytebusters-color);
     --secondary-border: 2px solid var(--color-3);
+    --frames-border: 1px solid var(--color-5);
 
     /* ---- TEXT ---- */
     --primary-text-color: var(--color-1);
     --secondary-text-color: var(--color-5);
     --text-button-color: var(--color-1);
+    --error-message-color: var(--color-3);
+
+    /* ---- FONTS ---- */
+    --font-family-h1: Verdana, Geneva, Tahoma, sans-serif;
+    --primary-font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+    
+}
+
+
+h1{
+    color: var(--color-3);
+    font-size: 2rem;
+    font-family: var(--font-family-h1);
+    padding-top: 6rem;
+    margin: 1rem;
+    text-align: center;
 }
 
 html{
     position: relative;
-    min-height: 100vh;
 }
 
-.body-login {
+body {
     background: var(--primary-background-color);
 }
 
@@ -52,6 +69,9 @@ html{
     animation: rotate 2s 1;
     filter: drop-shadow(.5rem .4rem .5rem black)
 }
+
+
+/* --------- FORM --------- */
 
 .form-login label {
     display: flex;
@@ -90,7 +110,7 @@ html{
     color: var(--secondary-text-color);
 }
 
-.form-login .btnsubmit {
+.form-login .btn-submit {
     width: 10rem;
     text-indent: 0;
     margin: 3rem auto 2rem;
@@ -100,10 +120,130 @@ html{
     text-align: center !important;
 }
 
-.form-login .btnsubmit:hover {
-    border: 2px solid var(--primary-text-color);
+.form-login .btn-submit:hover {
+    border: 1px solid var(--primary-text-color);
+    filter: brightness(85%);
 }
 
+.profile {
+    position: absolute;
+    display: flex;
+    width: 8rem;
+    height: 3rem;
+    border: 1px solid #1fb300;
+    border-radius: 5rem;
+    right: 1rem;
+    top: 1rem;
+    color: var(--color-3);
+    text-align: center;
+    background-color: var(--transparent-color);
+}
+
+.profile:focus-visible{
+    outline: none;
+}
+
+
+/* --------- MENU --------- */
+
+
+.menu-cards{
+    background-color: var(--color-3);
+    height: 15rem;
+    max-width: 15rem;
+    margin: 2rem auto;
+    text-align: center;
+    border: 3px solid var(--color-4);
+    border-radius: 1rem;
+    filter: drop-shadow(.5rem .4rem .5rem var(--bytebusters-color));
+    text-align: center;
+}
+
+.menu-cards a{
+    text-decoration: none;
+    color: var(--primary-text-color);
+}
+
+.menu-cards:hover{
+    scale: 105%;
+    filter: drop-shadow(1rem 1rem .8rem var(--bytebusters-color));
+}
+
+.menu-cards i{
+    margin: 3rem auto;
+    scale: 400%;
+    color: var(--color-1);
+}
+
+.menu-cards h4{
+    font-family: var(--primary-font-family);
+    font-size: 1.3rem;
+    padding: 0 1.5rem;
+    text-align: center;
+}
+
+.menu-cards p{
+    font-family: var(--primary-font-family);
+    font-size: .9rem;
+    padding: 0 2rem;
+    margin-top: 1rem;
+}
+
+/* ABM USUARIOS*/
+.btn-abm {
+    display: inline-flex;
+    width: 10rem;
+    height: 5rem;
+    margin: 2rem .5rem;
+    align-items: center;
+    justify-content: center;
+    background-color: #1fb300;
+}
+
+.form-abmUsuarios{
+    margin-top: 5rem;
+}
+
+.form-abmUsuarios input{
+    display: flex;
+    margin: auto;
+    width: 80%;
+    height: 2.5rem;
+    margin-top: .5rem;
+}
+
+.form-abmUsuarios .buttons{
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+
+/* --------- ERROR MESSAGES --------- */
+.login-msg-error{
+    color: var(--error-message-color);
+    display: flex;
+    width: 15rem;
+    height: 2rem;
+    margin: auto;
+}
+
+/* --------- GENERICS --------- */
+
+.justify-center{
+    display: flex;
+    justify-content: center;
+}
+
+.border-test{
+    border: 1px solid red;
+}
+
+.separator{
+    margin-bottom: 8rem;
+    opacity: 0;
+}
 
 /* ---------  FOOTER --------- */
 footer {
@@ -111,9 +251,8 @@ footer {
     background-color: var(--footer-background-color);
     width: 100vw;
     height: 12vh;
-    bottom: 0;
+    bottom: -1px;
     left: 0;
-    align-items: center;
     border-top: var(--primary-border);
 }
 
@@ -121,9 +260,9 @@ footer .copyright {
     position: absolute;
     color: var(--secondary-text-color);
     font-size: .5rem;
-    padding-right: 1rem;
-    bottom: 0;
+    bottom: .5rem;
     right: 0;
+    padding-right: 1rem;
 }
 
 footer img {
@@ -133,25 +272,96 @@ footer img {
     margin: .5rem -1rem;
 }
 
-@media only screen and (min-width: 968px) {
+
+
+/* --------- DESKTOP ---------*/
+@media only screen and (min-width: 1200px) {
+
+    body{
+        min-height: 80vh;
+    }
+
+    h1{
+        font-size: 3rem;
+        text-align: start;
+        padding: 1rem;
+    }
+
+    .frame {
+        min-width: 95vw;
+        margin: 5rem auto 0 auto;
+        border: var(--frames-border);
+    }
+    
+    .btn-back{
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        background-color: var(--transparent-color);
+        color: var(--color-3);
+        width: 5rem;
+        padding: .2rem;
+        border-radius: 2rem;
+    }
 
     .form-login {
         min-width: 25rem;
         margin: 5rem auto 0;
     }
-    
 
-    footer img {
-        margin: .5rem ;
-        scale: 120%;
+    .profile {
+        width: 8rem;
     }
 
-    footer .copyright {
-        font-size: .8rem;
-    }
+/* --------- MENU --------- */
+
+.menu-cards{
+    margin: 6rem 4rem;
+    height: 20rem;
+}
+
+.menu-cards i{
+    margin: 5rem auto;
+    margin-bottom: 4rem;
+    color: var(--color-1);
+    scale: 500%;
+}
+
+.menu-cards h4{
+    font-size: 1.5rem;
+    padding: 0 1rem;
+}
+
+.menu-cards p{
+    font-size: .9rem;
+    padding: 0 2rem;
+    margin-top: 1rem;
+}
+
+.separator{
+    display: none;
 }
 
 
+footer img {
+    margin: .5rem ;
+    scale: 120%;
+}
+
+footer .copyright {
+    font-size: .8rem;
+}
+
+.btn-abm{
+    display: flex;
+    width: 8rem;
+    height: 8rem;
+    margin: 3rem auto;
+    justify-content: center;
+    background-color: #1fb300;
+}
+
+}
 /* --------- ANIMATIONS ---------  */
 
 @keyframes rotate {

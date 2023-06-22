@@ -9,7 +9,19 @@ $email = trim($email);
 $pass = $_POST['pass'];
 $pass = htmlspecialchars($pass);
 
-$result = login($email, $pass);
+$reg = login($email, $pass);
+
+if(!$reg){
+    header("Location:../../pages/login.php");
+}
+
+session_start();
+
+$_SESSION['user'] = "pepe";
+$_SESSION['roles'] = ["admin"];
+
+echo $_SESSION['user'];
+
 
 function login($email, $pass)
 {
@@ -19,30 +31,18 @@ function login($email, $pass)
     include '../../utils/messages/msg.php';
 
     if (!hasData($email) || !hasData($pass)) {
-        throw new Error($error_messages['!hasData']); //TODO: mostrar solo mensaje
+        header("Location:../../../index.php");
     }
 
     if (!isValidPass($pass)) {
-        throw new Error($error_messages['!valid_pass']);
+        header("Location:../../../index.php");
     }
 
     $reg = findOneUser($email, $pass);
+
     if (!$reg) {
-        throw new Error($error_messages['!exist_user']);
+        header("Location:../../../index.php");
     }
 
     return $reg;
-}
-
-
-if ($result) {
-    if($result['user'] == "superAdmin" && $result['pass'] == "12345678"){
-        echo "hola";
-    }
-    session_start();
-    $_SESSION['user'] = $result['user'];
-    $_SESSION['roles'] = $result['roles'];
-    echo $_SESSION['user'];
-}else{
-    header("Location:../../../index.php");
 }
