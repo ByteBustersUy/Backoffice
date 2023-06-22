@@ -14,7 +14,7 @@
     --input-background-color: var(--color-3);
     --footer-background-color: var(--color-4);
 
-    /* ---- BORDERS ---- */
+    /* ---- BORDERS --- */
     --primary-border: 2px solid var(--bytebusters-color);
     --secondary-border: 2px solid var(--color-3);
     --frames-border: 1px solid var(--color-5);
