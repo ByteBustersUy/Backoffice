@@ -25,7 +25,7 @@
         <a href="">Olvidaste tu contraseña?</a>
         <input class="btn-submit" type="submit" value="Iniciar sesión">
         <?php
-        if (isset($_GET['err'])) { 
+        if (isset($_GET['err'])) {
         ?>
             <label class='login-msg-error'>Contraseña incorrecta</label>
         <?php
