@@ -15,14 +15,16 @@ if (hasData($userName) && hasData($pass)) {
 }
 
 if (!$reg) {
-    echo "<h1>Login failed</h1>";
+    header("Location:../../../pages/login.php");
 } else {
     session_start();
 
-    if (hasData($reg['user']))
+    if (hasData($reg['user'])){
         $_SESSION['user'] = $reg['user'];
-        
+    }
+    
     header("Location:../../../index.php");
+        
 }
 
 function login($userName, $pass)
