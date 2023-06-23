@@ -153,9 +153,8 @@ body {
     max-width: 15rem;
     margin: 2rem auto;
     text-align: center;
-    border: 3px solid var(--color-4);
+    border: 2px solid var(--color-4);
     border-radius: 1rem;
-    filter: drop-shadow(.5rem .4rem .5rem var(--bytebusters-color));
     text-align: center;
 }
 
@@ -165,8 +164,9 @@ body {
 }
 
 .menu-cards:hover{
-    scale: 105%;
-    filter: drop-shadow(1rem 1rem .8rem var(--bytebusters-color));
+    scale: 103%;
+    border: 2px solid var(--color-4);
+    filter: drop-shadow(.2rem .2rem .6rem var(--bytebusters-color));
 }
 
 .menu-cards i{
@@ -197,7 +197,8 @@ body {
     margin: 2rem .5rem;
     align-items: center;
     justify-content: center;
-    background-color: #1fb300;
+    background-color: var(--color-3);
+    border: 1px solid var(--color-4);
 }
 
 .form-abmUsuarios{
@@ -358,7 +359,6 @@ footer .copyright {
     height: 8rem;
     margin: 3rem auto;
     justify-content: center;
-    background-color: #1fb300;
 }
 
 }
