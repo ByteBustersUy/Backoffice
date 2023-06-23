@@ -15,8 +15,8 @@
     --footer-background-color: var(--color-4);
 
     /* ---- BORDERS ---- */
-    --primary-border: 2px solid var(--bytebusters-color);
-    --secondary-border: 2px solid var(--color-3);
+    --primary-border: 1px solid var(--bytebusters-color);
+    --secondary-border: 1px solid var(--color-3);
     --frames-border: 1px solid var(--color-5);
 
     /* ---- TEXT ---- */
