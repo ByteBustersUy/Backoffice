@@ -202,14 +202,15 @@ body {
     border-radius: .3rem;
 }
 
-.btn-abm .items {
-    text-align: center;
-    justify-content: center;
+.btn-abm i{
+    scale: 400%;
+    padding-top: 1px;
+    color:var(--color-4)
 }
 
-.btn-abm .items i{
-    scale: 400%;
-    color:var(--color-4)
+.items{
+    margin: auto;
+    text-align: center;
 }
 
 .form-abmUsuarios{
@@ -219,7 +220,7 @@ body {
 .form-abmUsuarios input{
     display: flex;
     margin: auto;
-    width: 80%;
+    width: 15rem;
     height: 2.5rem;
     margin-top: .5rem;
 }
@@ -365,16 +366,15 @@ footer .copyright {
 }
 
 .btn-abm{
-    display: flex;
     width: 8rem;
     height: 8rem;
-    margin-top: 1rem;
-    justify-content: center;
 }
 
-.probando{
-    margin: auto;
+.btn-abm i{
+    scale: 600%;
+    color:var(--color-4)
 }
+
 
 }
 /* --------- ANIMATIONS ---------  */
