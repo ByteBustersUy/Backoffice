@@ -1,8 +1,7 @@
 <?php
 
 try {
-    //TODO: poner nombre de la base de datos en la cadena de conexión
-    $con = new PDO("mysql:host=localhost;dbname=dbFede", "root",);
+    $con = new PDO("mysql:host=".getenv("DB_HOST").";dbname=".getenv("DB_NAME"), getenv("DB_USER"), getenv("DB_PASS"));
 } catch (Error $e) {
     echo "Error al conectar con la base de datos.<br><br>";
     die();
