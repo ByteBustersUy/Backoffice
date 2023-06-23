@@ -38,7 +38,7 @@
                 <input type="text" name="nombre" placeholder="Nombre" required autocomplete="off">
                 <input type="text" name="apellido" placeholder="Apellido" required autocomplete="off">
                 <input type="text" name="cedula" placeholder="Cédula de identidad" required autocomplete="off">
-                <input type="text" name="email" placeholder="email" required autocomplete="off">
+                <input type="text" name="email" placeholder="Email" required autocomplete="off">
                 <input type="text" name="contrasenia" placeholder="Contraseña" required autocomplete="off">
                 <input type="text" name="rol" placeholder="Rol" required autocomplete="off">
                 <div class="buttons">

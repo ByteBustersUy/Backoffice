@@ -1,48 +1,47 @@
 <?php
-
+require '../../utils/validators/hasData.php';
 if (!$_POST) header("Location:../../../index.php");
 
-$email = $_POST['user'];
-$email = htmlspecialchars($email);
-$email = trim($email);
-
+$userName = $_POST['ci'];
 $pass = $_POST['pass'];
-$pass = htmlspecialchars($pass);
 
-$reg = login($email, $pass);
-
-if(!$reg){
-    header("Location:../../pages/login.php");
+if (hasData($userName) && hasData($pass)) {
+    $userName = htmlspecialchars($userName);
+    $pass = htmlspecialchars($pass);
+    $userName = trim($userName);
+    $reg = login($userName, $pass);
+} else {
+    header("Location:../../../index.php");
 }
 
-session_start();
+if (!$reg) {
+    echo "<h1>Login failed</h1>";
+} else {
+    session_start();
 
-$_SESSION['user'] = "pepe";
-$_SESSION['roles'] = ["admin"];
+    if (hasData($reg['user']))
+        $_SESSION['user'] = $reg['user'];
+        
+    header("Location:../../../index.php");
+}
 
-echo $_SESSION['user'];
-
-
-function login($email, $pass)
+function login($userName, $pass)
 {
-    require '../../utils/validators/hasData.php';
     require '../../utils/validators/isValidPass.php';
+    require '../../utils/validators/isValidUserName.php';
     require '../../repository/auth/loguear.repository.php';
     include '../../utils/messages/msg.php';
 
-    if (!hasData($email) || !hasData($pass)) {
+    if (!isValidUserName($userName))
         header("Location:../../../index.php");
-    }
 
-    if (!isValidPass($pass)) {
+    if (!isValidPass($pass))
         header("Location:../../../index.php");
-    }
 
-    $reg = findOneUser($email, $pass);
+    $reg = findOneUser($userName, $pass);
 
-    if (!$reg) {
+    if (!$reg)
         header("Location:../../../index.php");
-    }
 
     return $reg;
 }

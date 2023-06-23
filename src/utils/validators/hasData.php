@@ -1,6 +1,8 @@
 <?php
 
-function hasData($var): bool
+function hasData(string $var): bool
 {
-    return (!isset($var) || empty($var)) ? false : true;
+    return
+        isset($var) &&
+        !empty($var) ? true : false;
 }
