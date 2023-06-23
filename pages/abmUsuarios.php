@@ -23,34 +23,39 @@
     <div class="container frame">
         <div class="row">
             <div class="col-lg-2 justify-center d-sm-flex d-lg-block border-test">
-                <div class="btn-abm">
-                    <div class="justify-center">
-                        <i class="fa-solid fa-plus"></i>
-                        <h4>AGREGAR</h4>
+                <div class="probando">
+                    <div class="btn-abm">
+                        <div class="items">
+                            <i class="fa-solid fa-square-plus"></i>
+                        </div>
                     </div>
-                </div>
-                <div class="btn-abm">
-                    EDITAR
-                </div>
-                <div class="btn-abm">
-                    ELIMINAR
+                    <div class="btn-abm">
+                        <div class="items">
+                            <i class="fa-solid fa-pen"></i>
+                        </div>
+                    </div>
+                    <div class="btn-abm">
+                        <div class="items">
+                            <i class="fa-solid fa-trash"></i>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-6 border-test">
                 listado
             </div>
             <div class="col-lg-4 border-test">
-            <form class="form-abmUsuarios" action="" method="post">
-                <input type="text" name="nombre" placeholder="Nombre" required autocomplete="off">
-                <input type="text" name="apellido" placeholder="Apellido" required autocomplete="off">
-                <input type="text" name="cedula" placeholder="Cédula de identidad" required autocomplete="off">
-                <input type="text" name="email" placeholder="Email" required autocomplete="off">
-                <input type="text" name="contrasenia" placeholder="Contraseña" required autocomplete="off">
-                <input type="text" name="rol" placeholder="Rol" required autocomplete="off">
-                <div class="buttons">
-                    <button type="reset">CANCELAR</button>
-                    <button type="submit">ACEPTAR</button>
-                </div>
+                <form class="form-abmUsuarios" action="" method="post">
+                    <input type="text" name="nombre" placeholder="Nombre" required autocomplete="off">
+                    <input type="text" name="apellido" placeholder="Apellido" required autocomplete="off">
+                    <input type="text" name="cedula" placeholder="Cédula de identidad" required autocomplete="off">
+                    <input type="text" name="email" placeholder="Email" required autocomplete="off">
+                    <input type="text" name="contrasenia" placeholder="Contraseña" required autocomplete="off">
+                    <input type="text" name="rol" placeholder="Rol" required autocomplete="off">
+                    <div class="buttons">
+                        <button type="reset">CANCELAR</button>
+                        <button type="submit">ACEPTAR</button>
+                    </div>
                 </form>
             </div>
         </div>

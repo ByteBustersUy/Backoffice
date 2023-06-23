@@ -192,13 +192,24 @@ body {
 /* ABM USUARIOS*/
 .btn-abm {
     display: inline-flex;
-    width: 10rem;
-    height: 5rem;
-    margin: 2rem .5rem;
+    width: 6rem;
+    height: 6rem;
+    margin: 1rem .5rem;
     align-items: center;
     justify-content: center;
     background-color: var(--color-3);
     border: 1px solid var(--color-4);
+    border-radius: .3rem;
+}
+
+.btn-abm .items {
+    text-align: center;
+    justify-content: center;
+}
+
+.btn-abm .items i{
+    scale: 400%;
+    color:var(--color-4)
 }
 
 .form-abmUsuarios{
@@ -357,8 +368,12 @@ footer .copyright {
     display: flex;
     width: 8rem;
     height: 8rem;
-    margin: 3rem auto;
+    margin-top: 1rem;
     justify-content: center;
+}
+
+.probando{
+    margin: auto;
 }
 
 }
