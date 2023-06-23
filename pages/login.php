@@ -16,7 +16,7 @@
         <img class="img-login" src="../assets/login-image.png" alt="Logo de persona para login">
         <label>
             <i class="fa-solid fa-user"></i>
-            <input type="text" name="user" placeholder="Usuario" required autocomplete="off">
+            <input type="text" name="ci" placeholder="Cédula de Identidad" required >
         </label>
         <label>
             <i class="fa-solid fa-key"></i>
