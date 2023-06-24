@@ -1,7 +1,7 @@
 <?php
 
 try {
-    $con = new PDO("mysql:host=localhost;dbname=dbFede","root","");
+    $con = new PDO("mysql:host=localhost;dbname=dbByteBusters","root","");
 } catch (Error $e) {
     die();
 }

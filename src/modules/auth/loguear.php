@@ -19,8 +19,8 @@ if (!$reg) {
 } else {
     session_start();
 
-    if (hasData($reg['user'])){
-        $_SESSION['user'] = $reg['user'];
+    if (hasData($reg['ci'])){
+        $_SESSION['user'] = $reg['ci'];
     }
     
     header("Location:../../../index.php");
