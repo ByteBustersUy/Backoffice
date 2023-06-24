@@ -190,7 +190,30 @@ body {
     margin-top: 1rem;
 }
 
+
 /* ABM USUARIOS*/
+
+.table-frame{
+    height: 28rem;
+    margin: auto;
+    background-color: var(--color-1);
+    border-left: 1px solid var(--color-5);
+    border-right: 1px solid var(--color-5);
+    overflow-y: scroll;
+}
+
+th{
+    background-color: var(--color-1) !important;
+}
+
+td{
+    background-color: var(--color-1) !important;
+}
+
+thead tr{
+    height: 3rem;
+}
+
 .btn-abm {
     display: inline-flex;
     width: 6rem;
@@ -231,11 +254,27 @@ input{
     border: 1px solid var(--color-4);
 }
 
+select{
+    outline: none;
+    border-radius: .3rem;
+    text-indent: .5rem;
+    background-color: var(--color-3);
+    border: 1px solid var(--color-4);
+}
+
 input:focus::placeholder{
     font-weight: bold;
 }
 
 .form-abmUsuarios input{
+    display: flex;
+    margin: auto;
+    width: 15rem;
+    height: 2.5rem;
+    margin-top: .5rem;  
+}
+
+.form-abmUsuarios select{
     display: flex;
     margin: auto;
     width: 15rem;
@@ -337,7 +376,7 @@ footer img {
     .frame {
         min-width: 95vw;
         margin: 5rem auto 0 auto;
-        border: .5rem double var(--color-5);
+        border: 1px solid var(--color-5);
         
     }
     
