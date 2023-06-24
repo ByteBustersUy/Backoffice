@@ -22,23 +22,30 @@
     </div>
     <div class="container frame">
         <div class="row">
-            <div class="col-xl-2 d-lg-block border-test">
+            <div class="col-xl-2 d-lg-block">
                 <div class="items">
-                    <div class="btn-abm">
-                        <i class="fa-solid fa-square-plus"></i>
-                    </div>
-                    <div class="btn-abm">
-                        <i class="fa-solid fa-pen"></i>
-                    </div>
-                    <div class="btn-abm">
-                        <i class="fa-solid fa-trash"></i>
-                    </div>
+                    <a href="#">
+                        <div class="btn-abm">
+                            <i class="fa-solid fa-square-plus"></i>
+                        </div>
+                    </a>
+                    <a href="#">
+                        <div class="btn-abm">
+                            <i class="fa-solid fa-pen"></i>
+                        </div>
+                    </a>
+                    <a href="#">
+                        <div class="btn-abm">
+                            <i class="fa-solid fa-trash"></i>
+                        </div>
+                    </a>
                 </div>
             </div>
-            <div class="col-xl-7 border-test">
-                listado
+            <div class="col-xl-7">
+                <div class="">
+                </div>
             </div>
-            <div class="col-xl-3 border-test">
+            <div class="col-xl-3">
                 <form class="form-abmUsuarios" action="" method="post">
                     <input type="text" name="nombre" placeholder="Nombre" required autocomplete="off">
                     <input type="text" name="apellido" placeholder="Apellido" required autocomplete="off">
