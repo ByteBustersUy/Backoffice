@@ -4,7 +4,7 @@ function findOneUser($userName, $pass) {
     require '../../db/conexion.php';
 
     try {
-        $res = $con->query("SELECT * FROM usuarios WHERE user = '$userName' AND pass = '$pass'");
+        $res = $con->query("SELECT * FROM USUARIOS WHERE ci = '$userName' AND pass = '$pass'");
         $reg = $res->fetch();
         return $reg;
     } catch (Throwable $th) {
