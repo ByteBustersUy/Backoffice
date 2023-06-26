@@ -14,9 +14,9 @@
     --input-background-color: var(--color-3);
     --footer-background-color: var(--color-4);
 
-    /* ---- BORDERS --- */
-    --primary-border: 2px solid var(--bytebusters-color);
-    --secondary-border: 2px solid var(--color-3);
+    /* ---- BORDERS ---- */
+    --primary-border: 1px solid var(--bytebusters-color);
+    --secondary-border: 1px solid var(--color-3);
     --frames-border: 1px solid var(--color-5);
 
     /* ---- TEXT ---- */
@@ -47,6 +47,38 @@ html{
 
 body {
     background: var(--primary-background-color);
+}
+
+input{
+    outline: none;
+    border-radius: .3rem;
+    text-indent: .5rem;
+    background-color: var(--color-3);
+    border: 1px solid var(--color-4);
+}
+
+input:focus::placeholder{
+    font-weight: bold;
+}
+
+select{
+    outline: none;
+    border-radius: .3rem;
+    text-indent: .5rem;
+    background-color: var(--color-3);
+    border: 1px solid var(--color-4);
+}
+
+th{
+    background-color: var(--color-1) !important;
+}
+
+td{
+    background-color: var(--color-1) !important;
+}
+
+thead tr{
+    height: 3rem;
 }
 
 .form-login {
@@ -144,8 +176,9 @@ body {
 }
 
 
-/* --------- MENU --------- */
 
+
+/* --------- MENU --------- */
 
 .menu-cards{
     background-color: var(--color-3);
@@ -153,10 +186,10 @@ body {
     max-width: 15rem;
     margin: 2rem auto;
     text-align: center;
-    border: 3px solid var(--color-4);
+    border: 2px solid var(--color-4);
     border-radius: 1rem;
-    filter: drop-shadow(.5rem .4rem .5rem var(--bytebusters-color));
     text-align: center;
+    filter: drop-shadow(.4rem .4rem .6rem var(--color-4));
 }
 
 .menu-cards a{
@@ -165,8 +198,9 @@ body {
 }
 
 .menu-cards:hover{
-    scale: 105%;
-    filter: drop-shadow(1rem 1rem .8rem var(--bytebusters-color));
+    scale: 103%;
+    border: 2px solid var(--color-4);
+    filter: drop-shadow(.4rem .4rem .6rem var(--bytebusters-color));
 }
 
 .menu-cards i{
@@ -189,15 +223,45 @@ body {
     margin-top: 1rem;
 }
 
-/* ABM USUARIOS*/
+
+/* --------- ABM USUARIOS --------- */
+
+.table-frame{
+    height: 28rem;
+    margin: auto;
+    background-color: var(--color-1);
+    border-left: 1px solid var(--color-5);
+    border-right: 1px solid var(--color-5);
+    overflow-y: scroll;
+    overflow-x: none;
+}
+
 .btn-abm {
     display: inline-flex;
-    width: 10rem;
-    height: 5rem;
-    margin: 2rem .5rem;
+    width: 6rem;
+    height: 6rem;
+    margin: 1rem .5rem;
     align-items: center;
     justify-content: center;
-    background-color: #1fb300;
+    background-color: var(--color-3);
+    border: 3px solid var(--color-4);
+    border-radius: .3rem;
+}
+
+.items a:focus .btn-abm{
+    border: 3px solid var(--bytebusters-color);
+    scale: 110%;
+}
+
+.btn-abm i{
+    scale: 300%;
+    padding-top: 1px;
+    color:var(--color-4)
+}
+
+.items{
+    margin: auto;
+    text-align: center;
 }
 
 .form-abmUsuarios{
@@ -207,17 +271,43 @@ body {
 .form-abmUsuarios input{
     display: flex;
     margin: auto;
-    width: 80%;
+    width: 15rem;
     height: 2.5rem;
-    margin-top: .5rem;
+    margin-top: .5rem;  
+}
+
+.form-abmUsuarios select{
+    display: flex;
+    margin: auto;
+    width: 15rem;
+    height: 2.5rem;
+    margin-top: .5rem;  
 }
 
 .form-abmUsuarios .buttons{
     display: flex;
-    margin: auto;
+    margin: 2rem 1rem;
     justify-content: center;
     margin-top: 2rem;
 }
+
+.form-abmUsuarios .buttons button {
+    width: 7rem;
+    height: 2rem;
+    text-indent: 0;
+    margin: 3rem auto 2rem;
+    cursor: pointer;
+    color: var(--text-button-color);
+    background-color: var(--color-3);
+    border: 1px solid var(--color-4);
+    text-align: center;
+    border-radius: .3rem;
+}
+
+.form-abmUsuarios .buttons button:hover {
+    filter: brightness(85%);
+}
+
 
 
 /* --------- ERROR MESSAGES --------- */
@@ -228,6 +318,7 @@ body {
     height: 2rem;
     margin: auto;
 }
+
 
 /* --------- GENERICS --------- */
 
@@ -244,6 +335,8 @@ body {
     margin-bottom: 8rem;
     opacity: 0;
 }
+
+
 
 /* ---------  FOOTER --------- */
 footer {
@@ -290,7 +383,8 @@ footer img {
     .frame {
         min-width: 95vw;
         margin: 5rem auto 0 auto;
-        border: var(--frames-border);
+        border: 1px solid var(--color-5);
+        
     }
     
     .btn-back{
@@ -312,6 +406,7 @@ footer img {
     .profile {
         width: 8rem;
     }
+
 
 /* --------- MENU --------- */
 
@@ -342,6 +437,9 @@ footer img {
     display: none;
 }
 
+footer{
+    position: fixed;
+}
 
 footer img {
     margin: .5rem ;
@@ -352,14 +450,24 @@ footer .copyright {
     font-size: .8rem;
 }
 
+
+
+/* --------- ABM USUARIOS --------- */
+
 .btn-abm{
-    display: flex;
-    width: 8rem;
-    height: 8rem;
-    margin: 3rem auto;
-    justify-content: center;
-    background-color: #1fb300;
+    margin: 2rem;
 }
+
+.items{
+    margin: 2rem auto;
+    text-align: center;
+}
+
+.btn-abm i{
+    scale: 300%;
+    color:var(--color-4)
+}
+
 
 }
 /* --------- ANIMATIONS ---------  */

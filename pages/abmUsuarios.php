@@ -1,3 +1,10 @@
+<?php
+session_start();
+if($_SESSION['userRol'] !== 'admin')
+    header("location:../index.php");
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -22,33 +29,108 @@
     </div>
     <div class="container frame">
         <div class="row">
-            <div class="col-lg-2 justify-center d-sm-flex d-lg-block border-test">
-                <div class="btn-abm">
-                    AGREGAR
-                </div>
-                <div class="btn-abm">
-                    EDITAR
-                </div>
-                <div class="btn-abm">
-                    ELIMINAR
+            <div class="col-xl-2 d-lg-block">
+                <div class="items">
+                    <a href="#">
+                        <div class="btn-abm">
+                            <i class="fa-solid fa-square-plus"></i>
+                        </div>
+                    </a>
+                    <a href="#">
+                        <div class="btn-abm">
+                            <i class="fa-solid fa-pen"></i>
+                        </div>
+                    </a>
+                    <a href="#">
+                        <div class="btn-abm">
+                            <i class="fa-solid fa-trash"></i>
+                        </div>
+                    </a>
                 </div>
             </div>
-            <div class="col-lg-4 border-test">
+            <div class="col-xl-7 table-frame">
+                <table class="table table-dark table-hover ">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Apellido</th>
+                            <th scope="col">Cédula</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Rol</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-group-divider">
+                        <div onclick="location.href='#'">
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                                <td>@mdo</td>
+                            </tr>
+                        </div>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                            <td>@fat</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                            <td>@fat</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                            <td>@fat</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                            <td>@fat</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                            <td>@fat</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                            <td>@fat</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-xl-3">
                 <form class="form-abmUsuarios" action="" method="post">
-                <input type="text" name="nombre" placeholder="Nombre" required autocomplete="off">
-                <input type="text" name="apellido" placeholder="Apellido" required autocomplete="off">
-                <input type="text" name="cedula" placeholder="Cédula de identidad" required autocomplete="off">
-                <input type="text" name="email" placeholder="email" required autocomplete="off">
-                <input type="text" name="contrasenia" placeholder="Contraseña" required autocomplete="off">
-                <input type="text" name="rol" placeholder="Rol" required autocomplete="off">
-                <div class="buttons">
-                    <button type="reset">CANCELAR</button>
-                    <button type="submit">ACEPTAR</button>
-                </div>
+                    <input type="text" name="nombre" placeholder="Nombre" required autocomplete="off">
+                    <input type="text" name="apellido" placeholder="Apellido" required autocomplete="off">
+                    <input type="text" name="cedula" placeholder="Cédula de identidad" required autocomplete="off">
+                    <input type="text" name="email" placeholder="Email" required autocomplete="off">
+                    <input type="text" name="contrasenia" placeholder="Contraseña" required autocomplete="off">
+                    <select name="Rol" id="rol">
+                        <option value="">Seleccione un rol</option>
+                        <option value="1">#</option>
+                        <option value="2">#</option>
+                    </select>
+                    <div class="buttons">
+                        <button type="reset">CANCELAR</button>
+                        <button type="submit">ACEPTAR</button>
+                    </div>
                 </form>
-            </div>
-            <div class="col-lg-6 border-test">
-                LISTADO
             </div>
         </div>
     </div>
@@ -58,6 +140,8 @@
         <p class="copyright">&copy; Copyright 2023. All Rights Reserved.</p>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <script>
+    </script>
 </body>
 
 </html>
