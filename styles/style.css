@@ -49,6 +49,38 @@ body {
     background: var(--primary-background-color);
 }
 
+input{
+    outline: none;
+    border-radius: .3rem;
+    text-indent: .5rem;
+    background-color: var(--color-3);
+    border: 1px solid var(--color-4);
+}
+
+input:focus::placeholder{
+    font-weight: bold;
+}
+
+select{
+    outline: none;
+    border-radius: .3rem;
+    text-indent: .5rem;
+    background-color: var(--color-3);
+    border: 1px solid var(--color-4);
+}
+
+th{
+    background-color: var(--color-1) !important;
+}
+
+td{
+    background-color: var(--color-1) !important;
+}
+
+thead tr{
+    height: 3rem;
+}
+
 .form-login {
     width: 40vw;
     min-width: 20rem;
@@ -144,8 +176,9 @@ body {
 }
 
 
-/* --------- MENU --------- */
 
+
+/* --------- MENU --------- */
 
 .menu-cards{
     background-color: var(--color-3);
@@ -191,7 +224,7 @@ body {
 }
 
 
-/* ABM USUARIOS*/
+/* --------- ABM USUARIOS --------- */
 
 .table-frame{
     height: 28rem;
@@ -200,18 +233,7 @@ body {
     border-left: 1px solid var(--color-5);
     border-right: 1px solid var(--color-5);
     overflow-y: scroll;
-}
-
-th{
-    background-color: var(--color-1) !important;
-}
-
-td{
-    background-color: var(--color-1) !important;
-}
-
-thead tr{
-    height: 3rem;
+    overflow-x: none;
 }
 
 .btn-abm {
@@ -244,26 +266,6 @@ thead tr{
 
 .form-abmUsuarios{
     margin-top: 5rem;
-}
-
-input{
-    outline: none;
-    border-radius: .3rem;
-    text-indent: .5rem;
-    background-color: var(--color-3);
-    border: 1px solid var(--color-4);
-}
-
-select{
-    outline: none;
-    border-radius: .3rem;
-    text-indent: .5rem;
-    background-color: var(--color-3);
-    border: 1px solid var(--color-4);
-}
-
-input:focus::placeholder{
-    font-weight: bold;
 }
 
 .form-abmUsuarios input{
@@ -306,6 +308,8 @@ input:focus::placeholder{
     filter: brightness(85%);
 }
 
+
+
 /* --------- ERROR MESSAGES --------- */
 .login-msg-error{
     color: var(--error-message-color);
@@ -314,6 +318,7 @@ input:focus::placeholder{
     height: 2rem;
     margin: auto;
 }
+
 
 /* --------- GENERICS --------- */
 
@@ -331,9 +336,11 @@ input:focus::placeholder{
     opacity: 0;
 }
 
+
+
 /* ---------  FOOTER --------- */
 footer {
-    position: absolute;
+    position: fixed;
     background-color: var(--footer-background-color);
     width: 100vw;
     height: 12vh;
@@ -400,6 +407,7 @@ footer img {
         width: 8rem;
     }
 
+
 /* --------- MENU --------- */
 
 .menu-cards{
@@ -442,12 +450,16 @@ footer .copyright {
     font-size: .8rem;
 }
 
+
+
+/* --------- ABM USUARIOS --------- */
+
 .btn-abm{
-    margin: 2rem auto;
+    margin: 2rem;
 }
 
 .items{
-    margin: 2rem;
+    margin: 2rem auto;
     text-align: center;
 }
 

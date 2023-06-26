@@ -2,32 +2,38 @@
 require '../../utils/validators/hasData.php';
 if (!$_POST) header("Location:../../../index.php");
 
+session_start();
+
 $userName = $_POST['ci'];
 $pass = $_POST['pass'];
 
-if (hasData($userName) && hasData($pass)) {
-    $userName = htmlspecialchars($userName);
-    $pass = htmlspecialchars($pass);
-    $userName = trim($userName);
-    $reg = login($userName, $pass);
-} else {
-    header("Location:../../../index.php");
+if (!hasData($userName) || !hasData($pass)) {
+    header("Location:../../../pages/login.php");
 }
+
+$userName = htmlspecialchars($userName);
+$userName = trim($userName);
+$pass = htmlspecialchars($pass);
+
+$reg = login($userName, $pass);
 
 if (!$reg) {
     header("Location:../../../pages/login.php");
-} else {
-    session_start();
-
-    if (hasData($reg['ci'])){
-        $_SESSION['user'] = $reg['ci'];
-    }
-    
-    header("Location:../../../index.php");
-        
 }
 
-function login($userName, $pass)
+if (!hasData($reg['ci'])) {
+    header("Location:../../../pages/login.php");
+}
+$_SESSION['userCi'] = $reg['ci'];
+
+$roles = getUserRoles($reg['ci']);
+$_SESSION['userRol'] = 'admin'; //$reg['rol'];
+
+header("Location:../../../index.php");
+
+
+
+function login(string $userName, string $pass): array
 {
     require '../../utils/validators/isValidPass.php';
     require '../../utils/validators/isValidUserName.php';
@@ -46,4 +52,10 @@ function login($userName, $pass)
         header("Location:../../../index.php");
 
     return $reg;
+}
+
+function getUserRoles(string $ci): array
+{
+    $reg = findRolesByUserCi($ci);
+    return [];
 }
