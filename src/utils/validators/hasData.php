@@ -1,6 +1,6 @@
 <?php
 
-function hasData(string $var): bool
+function hasData($var): bool
 {
     return
         isset($var) &&

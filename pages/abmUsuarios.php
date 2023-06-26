@@ -1,3 +1,10 @@
+<?php
+session_start();
+if($_SESSION['userRol'] !== 'admin')
+    header("location:../index.php");
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
