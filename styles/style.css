@@ -319,6 +319,11 @@ thead tr{
     margin: auto;
 }
 
+.img-error{
+    display: flex;
+    margin: auto;
+}
+
 
 /* --------- GENERICS --------- */
 
@@ -472,7 +477,10 @@ footer .copyright {
 }
 /* --------- ERRORS --------- */
 .body-error{
-    /*background-color: var(--color-1);*/
+    background-color: var(--color-1);
+}
+.body-error img{
+    margin: auto;
 }
 /* --------- ANIMATIONS ---------  */
 
