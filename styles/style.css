@@ -310,12 +310,17 @@ thead tr{
 
 
 
-/* --------- ERROR MESSAGES --------- */
+/* --------- ERRORS --------- */
 .login-msg-error{
     color: var(--error-message-color);
     display: flex;
     width: 15rem;
     height: 2rem;
+    margin: auto;
+}
+
+.img-error{
+    display: flex;
     margin: auto;
 }
 
@@ -469,6 +474,13 @@ footer .copyright {
 }
 
 
+}
+/* --------- ERRORS --------- */
+.body-error{
+    background-color: var(--color-1);
+}
+.body-error img{
+    margin: auto;
 }
 /* --------- ANIMATIONS ---------  */
 

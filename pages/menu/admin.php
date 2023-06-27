@@ -65,7 +65,7 @@ if($_SESSION['userRol'] !== 'admin')
     </div>
     <hr class="separator">
     <footer>
-        <img src="../../assets/logo_bytebusters.png" alt="Logotipo de ByteBusters">
+        <img src="../../assets/logo-bytebusters.png" alt="Logotipo de ByteBusters">
         <p class="copyright">&copy; Copyright 2023. All Rights Reserved.</p>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
