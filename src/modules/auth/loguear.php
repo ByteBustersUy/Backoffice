@@ -29,10 +29,15 @@ $_SESSION['userCi'] = $reg['ci'];
 //$roles = getUserRoles($reg['ci']);
 $_SESSION['userRol'] = 'admin'; //$reg['rol'];
 
-$var1 = $reg['pass'];
+if (!hasData($reg['pass'])) {
+    header("HtTP/1.0 404 NOT FOUND");
+}
 
-if (passVerify($pass,$var1)){
+$hashedPass = $reg['pass'];
+
+if (passVerify($pass,$hashedPass)){
     header("Location:../../../pages/menu/admin.php");
+    
 }else{
     header("Location:../../../pages/login.php");
 }
@@ -74,7 +79,7 @@ function getUserRoles(string $ci): array
 }
 */
 
- function passVerify(string $pass, $var1)
+ function passVerify(string $pass, $hashedPass)
  {
-    return password_verify($pass, $var1);
+    return password_verify($pass, $hashedPass);
  }
