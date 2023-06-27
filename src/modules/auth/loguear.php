@@ -26,7 +26,7 @@ if (!hasData($reg['ci'])) {
 }
 $_SESSION['userCi'] = $reg['ci'];
 
-$roles = getUserRoles($reg['ci']);
+//$roles = getUserRoles($reg['ci']);
 $_SESSION['userRol'] = 'admin'; //$reg['rol'];
 
 header("Location:../../../index.php");

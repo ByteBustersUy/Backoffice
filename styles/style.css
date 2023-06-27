@@ -470,6 +470,10 @@ footer .copyright {
 
 
 }
+/* --------- ERRORS --------- */
+.body-error{
+    /*background-color: var(--color-1);*/
+}
 /* --------- ANIMATIONS ---------  */
 
 @keyframes rotate {
