@@ -26,10 +26,16 @@ if (!hasData($reg['ci'])) {
 }
 $_SESSION['userCi'] = $reg['ci'];
 
-$roles = getUserRoles($reg['ci']);
+//$roles = getUserRoles($reg['ci']);
 $_SESSION['userRol'] = 'admin'; //$reg['rol'];
 
-header("Location:../../../index.php");
+$var1 = $reg['pass'];
+
+if (passVerify($pass,$var1)){
+    header("Location:../../../pages/menu/admin.php");
+}else{
+    header("Location:../../../pages/login.php");
+}
 
 
 
@@ -59,3 +65,16 @@ function getUserRoles(string $ci): array
     $reg = findRolesByUserCi($ci);
     return [];
 }
+
+/*function hashpass(string $pass): string
+{
+
+   return sha1($pass);
+    
+}
+*/
+
+ function passVerify(string $pass, $var1)
+ {
+    return password_verify($pass, $var1);
+ }

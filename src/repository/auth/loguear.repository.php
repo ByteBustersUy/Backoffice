@@ -1,10 +1,10 @@
 <?php
 
-function findOneUser(string $userName, string $pass): array
+function findOneUser(string $userName): array
 {
     require '../../db/conexion.php';
     try {
-        $res = $con->query("SELECT * FROM USUARIOS WHERE ci = '$userName' AND pass = '$pass'");
+        $res = $con->query("SELECT * FROM USUARIOS WHERE ci = '$userName'");
         $reg = $res->fetch();
         return $reg;
     } catch (Throwable $th) {
