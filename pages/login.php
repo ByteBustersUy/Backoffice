@@ -1,3 +1,7 @@
+<?php
+require "../src/modules/auth/desloguear.php";
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -16,7 +20,7 @@
         <img class="img-login" src="../assets/login-image.png" alt="Logo de persona para login">
         <label>
             <i class="fa-solid fa-user"></i>
-            <input type="text" name="user" placeholder="Usuario" required autocomplete="off">
+            <input type="text" name="ci" placeholder="Cédula de Identidad" required autocomplete="off">
         </label>
         <label>
             <i class="fa-solid fa-key"></i>
@@ -25,7 +29,7 @@
         <a href="">Olvidaste tu contraseña?</a>
         <input class="btn-submit" type="submit" value="Iniciar sesión">
         <?php
-        if (isset($_GET['err'])) { 
+        if (isset($_GET['err'])) {  //TODO: modificar logica
         ?>
             <label class='login-msg-error'>Contraseña incorrecta</label>
         <?php

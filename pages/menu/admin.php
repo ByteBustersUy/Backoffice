@@ -1,3 +1,9 @@
+<?php
+session_start();
+if($_SESSION['userRol'] !== 'admin')
+    header("location:../../index.php");
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -46,7 +52,7 @@
             </div>
             <div class="col-lg-4 justify-center">
                 <div class="menu-cards">
-                    <a href="">
+                    <a href="../../src/modules/settings/config.php">
                         <div>
                             <i class="fa-solid fa-gears"></i>
                             <h4>CONFIGURACIÓN DE EMPRESA</h4>

@@ -2,5 +2,7 @@
 
 function hasData($var): bool
 {
-    return (!isset($var) || empty($var)) ? false : true;
+    return
+        isset($var) &&
+        !empty($var) ? true : false;
 }
