@@ -13,5 +13,9 @@ $errorMensaje = "Lo sentimos la pagina que desea ingresar no existe o la ruta es
 </head>
 <body>
     <img class="img-error" src="/proyectoBackofice/Backoffice/assets/httpError/error-404.png" alt="ERROR404" title="ERROR404">
+    <footer>
+        <img src="../assets/logo-bytebusters.png" alt="Logotipo de ByteBusters">
+        <p class="copyright">&copy; Copyright 2023. All Rights Reserved.</p>
+    </footer>
 </body>
 </html>
