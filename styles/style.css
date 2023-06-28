@@ -183,6 +183,7 @@ thead tr{
 .menu-cards{
     background-color: var(--color-3);
     height: 15rem;
+    min-width: 13rem;
     max-width: 15rem;
     margin: 2rem auto;
     text-align: center;
@@ -373,7 +374,7 @@ footer img {
 
 
 /* --------- DESKTOP ---------*/
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 768px) {
 
     body{
         min-height: 80vh;
@@ -429,7 +430,7 @@ footer img {
 
 .menu-cards h4{
     font-size: 1.5rem;
-    padding: 0 1rem;
+    padding: 0;
 }
 
 .menu-cards p{
