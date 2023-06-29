@@ -1,5 +1,4 @@
 <?php
-//header("HTTP/1.0 404 NOT FOUND");
 require '../../utils/validators/hasData.php';
 if (!$_POST) {
     header("Location:../../../index.php");
@@ -48,8 +47,13 @@ if (!hasData($_SESSION['userRoles'][0])) {
 $hashedPass = $reg['pass'];
 
 if (passVerify($pass, $hashedPass)) {
-    header("Location:../../../pages/menu-admin.php");
-    die();
+    try{
+        header("Location:../../../pages/menu-admin.php");
+    }catch(Exception $e){
+        header("HTTP/1.0 404 NOT FOUND");
+    }
+}else{
+    session_destroy();
 }
 
 

@@ -1,6 +1,6 @@
 <?php
 require "../src/utils/validators/roles/isAdmin.php";
-if (!$isAdmin) {
+if (false) {
     header("Location:../login.php");
 }
 
