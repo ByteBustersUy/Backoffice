@@ -1,6 +1,6 @@
 <?php
 require "../src/utils/validators/roles/isAdmin.php";
-if(!$isAdmin){
+if (!$isAdmin) {
     header("Location:./login.php");
 }
 ?>
@@ -60,13 +60,13 @@ if(!$isAdmin){
                         </tr>
                     </thead>
                     <tbody class="table-group-divider">
-                            <tr>
-                                <th scope="row">Mark</th>
-                                <td>Thornton</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td>@mdo</td>
-                            </tr>
+                        <tr>
+                            <th scope="row">Mark</th>
+                            <td>Thornton</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                            <td>@mdo</td>
+                        </tr>
                         <tr>
                             <th scope="row">Mark</th>
                             <td>Thornton</td>
@@ -133,10 +133,10 @@ if(!$isAdmin){
         </div>
     </div>
     <hr class="separator">
-    <footer>
-        <img src="../assets/logo-bytebusters.png" alt="Logotipo de ByteBusters">
-        <p class="copyright">&copy; Copyright 2023. All Rights Reserved.</p>
-    </footer>
+    <?php
+    require "./components/footer.php";
+    echo $footer;
+    ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     <script>
     </script>

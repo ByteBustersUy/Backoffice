@@ -7,9 +7,9 @@ session_start();
 if(hasData($_SESSION['userRoles']) && hasData($_SESSION['userCi'])){
 
     if($isAdmin)
-        header("Location:./pages/menu/admin.php");
+        header("Location:./pages/menu-admin.php");
     else if($isVendedor)
-        header("Location:./pages/menu/vendedor.php");
+        header("Location:./pages/menu-vendedor.php");
     else
         header("Location:./pages/login.php");
 
