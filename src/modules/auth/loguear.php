@@ -50,9 +50,10 @@ if (passVerify($pass, $hashedPass)) {
     try{
         header("Location:../../../pages/menu-admin.php");
     }catch(Exception $e){
-        session_destroy();
         header("HTTP/1.0 404 NOT FOUND");
     }
+}else{
+    session_destroy();
 }
 
 
