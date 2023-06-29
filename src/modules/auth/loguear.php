@@ -48,7 +48,7 @@ if (!hasData($_SESSION['userRoles'][0])) {
 $hashedPass = $reg['pass'];
 
 if (passVerify($pass, $hashedPass)) {
-    header("Location:../../../pages/menu/admin.php");
+    header("Location:../../../pages/menu-admin.php");
     die();
 }
 
