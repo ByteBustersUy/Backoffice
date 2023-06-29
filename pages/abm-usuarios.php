@@ -1,8 +1,8 @@
 <?php
-session_start();
-if($_SESSION['userRol'] !== 'admin')
-    header("location:../index.php");
-
+require "../src/utils/validators/roles/isAdmin.php";
+if (!$isAdmin) {
+    header("Location:./login.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -21,10 +21,10 @@ if($_SESSION['userRol'] !== 'admin')
 
 <body>
     <div>
-        <select class="profile" name="profile" id="select-profile">
-            <option value="administrador">Administrador</option>
-            <option value="vendedor">Vendedor</option>
-        </select>
+        <?php
+        require "./components/profiles.php";
+        echo $profiles;
+        ?>
         <h1>GESTIÓN DE USUARIOS</h1>
     </div>
     <div class="container frame">
@@ -56,58 +56,56 @@ if($_SESSION['userRol'] !== 'admin')
                             <th scope="col">Apellido</th>
                             <th scope="col">Cédula</th>
                             <th scope="col">Email</th>
-                            <th scope="col">Rol</th>
+                            <th scope="col">Roles</th>
                         </tr>
                     </thead>
                     <tbody class="table-group-divider">
-                        <div onclick="location.href='#'">
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td>@mdo</td>
-                            </tr>
-                        </div>
                         <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
+                            <th scope="row">Mark</th>
                             <td>Thornton</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                            <td>@mdo</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Mark</th>
+                            <td>Thornton</td>
+                            <td>Otto</td>
                             <td>@fat</td>
                             <td>@fat</td>
                         </tr>
                         <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
+                            <th scope="row">Mark</th>
                             <td>Thornton</td>
+                            <td>Otto</td>
                             <td>@fat</td>
                             <td>@fat</td>
                         </tr>
                         <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
+                            <th scope="row">Mark</th>
                             <td>Thornton</td>
+                            <td>Otto</td>
                             <td>@fat</td>
                             <td>@fat</td>
                         </tr>
                         <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
+                            <th scope="row">Mark</th>
                             <td>Thornton</td>
+                            <td>Otto</td>
                             <td>@fat</td>
                             <td>@fat</td>
                         </tr>
                         <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
+                            <th scope="row">Mark</th>
                             <td>Thornton</td>
+                            <td>Otto</td>
                             <td>@fat</td>
                             <td>@fat</td>
                         </tr>
                         <tr>
-                            <th scope="row">2</th>
+                            <th scope="row">Mark</th>
                             <td>Jacob</td>
-                            <td>Thornton</td>
+                            <td>Otto</td>
                             <td>@fat</td>
                             <td>@fat</td>
                         </tr>
@@ -135,10 +133,10 @@ if($_SESSION['userRol'] !== 'admin')
         </div>
     </div>
     <hr class="separator">
-    <footer>
-        <img src="../assets/logo_bytebusters.png" alt="Logotipo de ByteBusters">
-        <p class="copyright">&copy; Copyright 2023. All Rights Reserved.</p>
-    </footer>
+    <?php
+    require "./components/footer.php";
+    echo $footer;
+    ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     <script>
     </script>
