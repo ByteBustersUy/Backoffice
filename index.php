@@ -1,22 +1,20 @@
 <?php
 require "./src/utils/validators/hasData.php";
+require "./src/utils/validators/roles/isAdmin.php";
 session_start();
 
-//TODO: modificar base de datos para implementar roles
 
-if(/*hasData($_SESSION['userRol']) && */hasData($_SESSION['userCi'])){
+if(hasData($_SESSION['userRoles']) && hasData($_SESSION['userCi'])){
 
-    echo "<h1>ya tas logueado pa!</h1>";
-    echo "<h2>User: ". $_SESSION['userCi']. "</h2>";
-    echo "<h2>Rol: ". $_SESSION['userRol']. "</h2>";
-
-    //si es rol admin
-    if($_SESSION['userRol'] == 'admin')
+    if($isAdmin)
         header("Location:./pages/menu/admin.php");
-
-    if($_SESSION['userRol'] == 'vendedor')
+    else if($isVendedor)
         header("Location:./pages/menu/vendedor.php");
+    else
+        header("Location:./pages/login.php");
 
 }else{
     header("Location:./pages/login.php");
 }
+
+die();
