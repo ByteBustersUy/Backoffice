@@ -1,7 +1,12 @@
 <?php
 require "../src/utils/validators/roles/isAdmin.php";
 if (!$isAdmin) {
-    header("Location:./login.php");
+    try {
+        header("Location:./login.php");
+    } catch (Exception $e) {
+        header("HTTP/1.0 404 NOT FOUND");
+    }
+    exit;
 }
 ?>
 
@@ -172,7 +177,7 @@ if (!$isAdmin) {
                             <td>@fat</td>
                             <td>@fat</td>
                         </tr>
-                        
+
                     </tbody>
                 </table>
             </div>

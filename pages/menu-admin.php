@@ -1,7 +1,12 @@
 <?php
 require "../src/utils/validators/roles/isAdmin.php";
-if (false) {
-    header("Location:../login.php");
+if (!$isAdmin) {
+    try {
+        header("Location:./login.php");
+    } catch (Exception $e) {
+        header("HTTP/1.0 404 NOT FOUND");
+    }
+    exit;
 }
 
 ?>
