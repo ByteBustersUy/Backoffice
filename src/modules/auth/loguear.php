@@ -1,40 +1,33 @@
 <?php
 require '../../utils/validators/hasData.php';
 if (!$_POST) {
-    header("Location:../../../index.php");
-    die();
+    try {
+        header("Location:../../../index.php");
+    } catch (Exception $e) {
+        header("HTTP/1.0 404 NOT FOUND");
+    }
+    exit;
 }
 
-session_start();
-
-$userName = $_POST['ci'];
+$userCi = $_POST['ci'];
 $pass = $_POST['pass'];
 
-if (!hasData($userName) || !hasData($pass)) {
-    header("Location:../../../pages/login.php");
-    die();
+if (!hasData($userCi) || !hasData($pass)) {
+    try {
+        header("Location:../../../index.php");
+    } catch (Exception $e) {
+        header("HTTP/1.0 404 NOT FOUND");
+    }
+    exit;
 }
 
-$userName = htmlspecialchars($userName);
-$userName = trim($userName);
+$userCi = htmlspecialchars($userCi);
+$userCi = trim($userCi);
 $pass = htmlspecialchars($pass);
 
-$reg = login($userName, $pass);
-
-if (!$reg) {
-    header("Location:../../../pages/login.php");
-    die();
-}
-
-if (!hasData($reg['ci'])) {
-    header("Location:../../../pages/login.php");
-    die();
-}
-
+$reg = login($userCi, $pass);
 $roles = getUserRoles($reg['ci']);
 
-$_SESSION['userCi'] = $reg['ci'];
-$_SESSION['userRoles'] = $roles;
 
 if (!hasData($reg['pass'])) {
     //error. no existe contraseña en base de datos
@@ -47,39 +40,67 @@ if (!hasData($_SESSION['userRoles'][0])) {
 $hashedPass = $reg['pass'];
 
 if (passVerify($pass, $hashedPass)) {
-    try{
+    session_start();
+    try {
+        $_SESSION['userName'] = $reg['nombre'];
+        $_SESSION['userCi'] = $reg['ci'];
+        $_SESSION['userRoles'] = $roles;
+    } catch (Exception $e) {
+        
+    }
+
+    try {
         header("Location:../../../pages/menu-admin.php");
-    }catch(Exception $e){
+    } catch (Exception $e) {
         header("HTTP/1.0 404 NOT FOUND");
     }
-}else{
+    exit;
+} else {
     session_destroy();
+    try {
+        header("Location:../../../index.php");
+    } catch (Exception $e) {
+        header("HTTP/1.0 404 NOT FOUND");
+    }
+    exit;
 }
 
 
 
-function login(string $userName, string $pass): array
+function login(string $userCi, string $pass): array
 {
     require '../../utils/validators/isValidPass.php';
     require '../../utils/validators/isValidUserName.php';
     require '../../repository/auth/loguear.repository.php';
     include '../../utils/messages/msg.php';
 
-    if (!isValidUserName($userName)) {
-        header("Location:../../../index.php");
-        die();
+    if (!isValidUserName($userCi)) {
+        try {
+            header("Location:../../../index.php");
+        } catch (Exception $e) {
+            header("HTTP/1.0 404 NOT FOUND");
+        }
+        exit;
     }
 
     if (!isValidPass($pass)) {
-        header("Location:../../../index.php");
-        die();
+        try {
+            header("Location:../../../index.php");
+        } catch (Exception $e) {
+            header("HTTP/1.0 404 NOT FOUND");
+        }
+        exit;
     }
 
-    $reg = findOneUser($userName, $pass);
+    $reg = findOneUser($userCi, $pass);
 
     if (!$reg) {
-        header("Location:../../../index.php");
-        die();
+        try {
+            header("Location:../../../index.php");
+        } catch (Exception $e) {
+            header("HTTP/1.0 404 NOT FOUND");
+        }
+        exit;
     }
 
     return $reg;

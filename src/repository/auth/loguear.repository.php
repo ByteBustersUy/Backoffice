@@ -1,15 +1,15 @@
 <?php
 
-function findOneUser(string $userName): array
+function findOneUser(string $userCi): array
 {
     require '../../db/conexion.php';
+    
     try {
-        $res = $con->query("SELECT * FROM USUARIOS WHERE ci = '$userName'");
+        $res = $con->query("SELECT * FROM USUARIOS WHERE ci = '$userCi'");
         $reg = $res->fetch();
         return $reg;
     } catch (Throwable $th) {
-        echo "Error al buscar en base de datos <br>";
-        die();
+        die($th->getMessage());
     }
 }
 
@@ -27,6 +27,7 @@ function findRolesByUserCi(string $ci): array
         }
         return $rolNamesList;
     } catch (Throwable $th) {
-        echo "Error al buscar en base de datos <br>";
+        die($th->getMessage());
+        
     }
 }
