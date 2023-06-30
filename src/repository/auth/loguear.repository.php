@@ -3,11 +3,11 @@
 function findOneUser(string $userCi): array
 {
     require '../../db/conexion.php';
-    
+
     try {
         $res = $con->query("SELECT * FROM USUARIOS WHERE ci = '$userCi'");
         $reg = $res->fetch();
-        return $reg;
+        return $reg ? $reg : [];
     } catch (Throwable $th) {
         die($th->getMessage());
     }
@@ -23,11 +23,12 @@ function findRolesByUserCi(string $ci): array
                             WHERE ur.USUARIOS_ci = $ci");
         $rolNamesList = [];
         while ($reg = $res->fetch()) {
-            array_push($rolNamesList, $reg['nombreRol']);
+            if ($reg) {
+                array_push($rolNamesList, $reg['nombreRol']);
+            }
         }
         return $rolNamesList;
     } catch (Throwable $th) {
         die($th->getMessage());
-        
     }
 }
