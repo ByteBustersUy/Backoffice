@@ -1,11 +1,7 @@
 <?php
 require "../src/utils/validators/roles/isAdmin.php";
 if (!$isAdmin) {
-    try {
-        header("Location:./login.php");
-    } catch (Exception $e) {
-        header("HTTP/1.0 404 NOT FOUND");
-    }
+    header("Location:./login.php");
     exit;
 }
 ?>
@@ -34,26 +30,26 @@ if (!$isAdmin) {
     </div>
     <div class="container frame">
         <div class="row">
-            <div class="col-xl-2 d-lg-block">
+            <div class="col-lg-2 d-lg-block">
                 <div class="items">
-                    <a href="#">
+                    <a href="">
                         <div class="btn-abm">
                             <i class="fa-solid fa-square-plus"></i>
                         </div>
                     </a>
-                    <a href="#">
+                    <a href="">
                         <div class="btn-abm">
                             <i class="fa-solid fa-pen"></i>
                         </div>
                     </a>
-                    <a href="#">
+                    <a href="">
                         <div class="btn-abm">
                             <i class="fa-solid fa-trash"></i>
                         </div>
                     </a>
                 </div>
             </div>
-            <div class="col-xl-7 table-frame">
+            <div class="col-lg-7 table-frame">
                 <table class="table table-dark table-hover ">
                     <thead>
                         <tr>
@@ -177,11 +173,10 @@ if (!$isAdmin) {
                             <td>@fat</td>
                             <td>@fat</td>
                         </tr>
-
                     </tbody>
                 </table>
             </div>
-            <div class="col-xl-3">
+            <div class="col-lg-3">
                 <form class="form-abmUsuarios" action="" method="post">
                     <input type="text" name="nombre" placeholder="Nombre" required autocomplete="off">
                     <input type="text" name="apellido" placeholder="Apellido" required autocomplete="off">

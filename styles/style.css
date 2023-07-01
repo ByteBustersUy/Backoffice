@@ -188,7 +188,7 @@ thead tr{
     margin: 2rem auto;
     text-align: center;
     border: 2px solid var(--color-4);
-    border-radius: 1rem;
+    border-radius: .7rem;
     text-align: center;
     filter: drop-shadow(.4rem .4rem .6rem var(--color-4));
 }
@@ -246,7 +246,7 @@ thead tr{
     justify-content: center;
     background-color: var(--color-3);
     border: 3px solid var(--color-4);
-    border-radius: .3rem;
+    border-radius: .7rem;
 }
 
 .items a:focus .btn-abm{
@@ -273,6 +273,7 @@ thead tr{
     display: flex;
     margin: auto;
     width: 15rem;
+    min-width: 10rem;
     height: 2.5rem;
     margin-top: .5rem;  
 }
@@ -371,10 +372,16 @@ footer img {
     margin: .5rem -1rem;
 }
 
+/* --------- BOOSTRAP --------- */
+
+.container {
+    max-width: 95vw;
+}
+
 
 
 /* --------- DESKTOP ---------*/
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 992px) {
 
     body{
         min-height: 80vh;
@@ -472,6 +479,14 @@ footer .copyright {
 .btn-abm i{
     scale: 300%;
     color:var(--color-4)
+}
+
+.form-abmUsuarios input{
+    width: 13rem;
+}
+
+.form-abmUsuarios select{
+    width: 13rem;  
 }
 
 

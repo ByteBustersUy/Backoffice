@@ -1,14 +1,9 @@
 <?php
 require "../src/utils/validators/roles/isAdmin.php";
 if (!$isAdmin) {
-    try {
-        header("Location:./login.php");
-    } catch (Exception $e) {
-        header("HTTP/1.0 404 NOT FOUND");
-    }
+    header("Location:./login.php");
     exit;
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -34,7 +29,7 @@ if (!$isAdmin) {
     </div>
     <div class="container frame">
         <div class="row">
-            <div class="col-md-4 justify-center">
+            <div class="col-lg-4 justify-center">
                 <div class="menu-cards">
                     <a href="./abm-usuarios.php">
                         <div>
@@ -45,7 +40,7 @@ if (!$isAdmin) {
                     </a>
                 </div>
             </div>
-            <div class="col-md-4 justify-center">
+            <div class="col-lg-4 justify-center">
                 <div class="menu-cards">
                     <a href="../src/modules/auth/abm-permissions.php">
                         <div>
@@ -56,7 +51,7 @@ if (!$isAdmin) {
                     </a>
                 </div>
             </div>
-            <div class="col-md-4 justify-center">
+            <div class="col-lg-4 justify-center">
                 <div class="menu-cards">
                     <a href="../src/modules/settings/config.php">
                         <div>
