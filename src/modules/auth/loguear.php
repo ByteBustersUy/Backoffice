@@ -4,6 +4,7 @@ if (!$_POST) {
     header("Location:../../../index.php");
     exit;
 }
+session_start();
 
 $userCi = $_POST['ci'];
 $pass = $_POST['pass'];
@@ -27,23 +28,20 @@ if (!hasData($reg['pass'])) {
 $hashedPass = $reg['pass'];
 
 if (passVerify($pass, $hashedPass)) {
-
-    session_start();
     $_SESSION['userName'] = $reg['nombre'];
     $_SESSION['userCi'] = $reg['ci'];
-    $_SESSION['userRoles'] = $roles;
+    $_SESSION['userRolesId'] = $roles[0];
+    $_SESSION['userRolesName'] = $roles[1];
 
-    if (!hasData($_SESSION['userRoles'][0])) {
+    if (!hasData($_SESSION['userRolesName'])) {
         //error. usuario no tiene rol asignado
     }
-    
-    header("Location:../../../pages/menu-admin.php");
-    exit;
-} else {
-    header("Location:../../../index.php");
-    exit;
+}else{
+    session_destroy();
 }
 
+header("Location:../../../index.php");
+exit;
 
 
 function login(string $userCi, string $pass): array
@@ -69,23 +67,22 @@ function login(string $userCi, string $pass): array
         header("Location:../../../index.php");
         exit;
     }
-    
+
     return $reg;
 }
 
 function getUserRoles(string $ci): array
 {
-    $roles = findRolesByUserCi($ci);
-    return $roles;
+    return findRolesByUserCi($ci);
 }
 
-function hashpass(string $pass): string
-{
-    //return sha1($pass);
-    return password_hash($pass, PASSWORD_DEFAULT);
-}
+// function hashPass(string $pass): string
+// {
+//     return password_hash($pass, PASSWORD_DEFAULT);
+// }
 
 function passVerify(string $pass, string $hashedPass): bool
 {
     return password_verify($pass, $hashedPass);
 }
+

@@ -2,9 +2,13 @@
 session_start();
 $isVendedor = false;
 
-foreach ($_SESSION['userRoles'] as $rol) {
-    if ($rol == 'vendedor') {
-        $isVendedor = true;
+if(isset($_SESSION['userRolesName'])){
+    foreach ($_SESSION['userRolesName'] as $rol) {
+        if ($rol == 'vendedor') {
+            $isVendedor = true;
+        }
     }
+}else{
+    echo "INTERNAL SERVER ERROR. isVendedor.php";
 }
 ?>

@@ -17,18 +17,26 @@ function findRolesByUserCi(string $ci): array
 {
     require '../../db/conexion.php';
     try {
-        $res = $con->query("SELECT nombreRol
+        $res = $con->query("SELECT id, nombreRol
                             FROM USUARIOS_has_ROLES ur
                             JOIN ROLES r ON r.id = ur.ROLES_id
                             WHERE ur.USUARIOS_ci = $ci");
         $rolNamesList = [];
+        $rolIdList = [];
         while ($reg = $res->fetch()) {
             if ($reg) {
                 array_push($rolNamesList, $reg['nombreRol']);
+                array_push($rolIdList, $reg['id']);
             }
         }
-        return $rolNamesList;
+        return [$rolIdList, $rolNamesList];
     } catch (Throwable $th) {
         die($th->getMessage());
     }
+}
+
+function findPathByAction(string $action): string
+{
+
+    return "pages/menu-admin.php";
 }

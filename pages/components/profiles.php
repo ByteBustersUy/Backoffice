@@ -1,8 +1,7 @@
 <?php
-
 $profiles = '<select class="profile" name="profile" id="select-profile">';
 
-foreach ($_SESSION['userRoles'] as $rol){
+foreach ($_SESSION['userRolesName'] as $rol){
     $profiles.= '<option value="'. $rol .'">'. $rol. '</option>';
 }
 
