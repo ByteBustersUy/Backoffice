@@ -40,8 +40,7 @@ if (passVerify($pass, $hashedPass)) {
     header("Location:../../../pages/menu-admin.php");
     exit;
 } else {
-    echo "<h1>holaaa</h1>";
-    //header("Location:../../../index.php");
+    header("Location:../../../index.php");
     exit;
 }
 
