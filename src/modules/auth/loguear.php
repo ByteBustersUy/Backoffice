@@ -76,11 +76,6 @@ function getUserRoles(string $ci): array
     return findRolesByUserCi($ci);
 }
 
-// function hashPass(string $pass): string
-// {
-//     return password_hash($pass, PASSWORD_DEFAULT);
-// }
-
 function passVerify(string $pass, string $hashedPass): bool
 {
     return password_verify($pass, $hashedPass);
