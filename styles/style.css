@@ -311,6 +311,12 @@ thead tr{
 
 
 
+/*---------CONFIG EMPRESA------*/
+
+
+
+
+
 /* --------- ERRORS --------- */
 .login-msg-error{
     color: var(--error-message-color);
@@ -373,6 +379,7 @@ footer img {
 
 
 
+
 /* --------- DESKTOP ---------*/
 @media only screen and (min-width: 768px) {
 
@@ -412,7 +419,7 @@ footer img {
     .profile {
         width: 8rem;
     }
-
+}
 
 /* --------- MENU --------- */
 
@@ -475,7 +482,54 @@ footer .copyright {
 }
 
 
+/*---------CONFIG EMPRESA---FALTA EN MOBILE---*/
+
+
+.forms{
+     display: flex;  
+     justify-content: left;
+     margin-top: 3rem;
+     margin-left: 2.5rem;
+     
 }
+.forms .data-emp{
+    margin-left: 2.5rem;
+}
+
+.form-emp input{
+    display: flex;
+    justify-content: center; 
+    margin: auto;
+    width: 15rem;
+    height: 2.5rem;
+    margin-top: .5rem;
+    
+}
+
+
+.img-empresa{ 
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 0;
+    margin-bottom: 0;
+    width: 200px;
+    height: auto;
+}
+.data-emp .buttons{
+   display: flex;
+   justify-content: center;
+   margin-top: 2rem;
+   
+   
+   
+}
+.forms .buttons{
+    margin-top: 2rem;
+}
+
+
+
+
 /* --------- ERRORS --------- */
 .body-error{
     background-color: var(--color-1);
