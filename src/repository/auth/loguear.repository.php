@@ -1,32 +1,48 @@
 <?php
 
-function findOneUser(string $userName): array
+function findOneUser(string $userCi): array
 {
-    require '../../db/conexion.php';
+    require_once '../../db/conexion.php';
     try {
-        $res = $con->query("SELECT * FROM USUARIOS WHERE ci = '$userName'");
+        $res = $con->query("SELECT * FROM USUARIOS WHERE ci = '$userCi'");
         $reg = $res->fetch();
-        return $reg;
+        return $reg ? $reg : [];
     } catch (Throwable $th) {
-        echo "Error al buscar en base de datos <br>";
-        die();
+        die("ERROR SQL in findOneUser(): ".$th->getMessage());
     }
 }
 
 function findRolesByUserCi(string $ci): array
 {
-    require '../../db/conexion.php';
+    require_once '../../db/conexion.php';
     try {
-        $res = $con->query("SELECT nombreRol
+        $res = $con->query("SELECT id, nombreRol
                             FROM USUARIOS_has_ROLES ur
                             JOIN ROLES r ON r.id = ur.ROLES_id
                             WHERE ur.USUARIOS_ci = $ci");
         $rolNamesList = [];
+        $rolIdList = [];
         while ($reg = $res->fetch()) {
-            array_push($rolNamesList, $reg['nombreRol']);
+            if ($reg) {
+                array_push($rolNamesList, $reg['nombreRol']);
+                array_push($rolIdList, $reg['id']);
+            }
         }
-        return $rolNamesList;
+        return [$rolIdList, $rolNamesList];
     } catch (Throwable $th) {
-        echo "Error al buscar en base de datos <br>";
+        die("ERROR SQL in findRolesByUserCi(): ".$th->getMessage());
+    }
+}
+
+function findPathByAction(string $action): string
+{
+    require '/Applications/XAMPP/xamppfiles/htdocs/Backoffice/src/db/conexion.php';
+    try {
+        $res = $con->query("SELECT * FROM RUTAS WHERE accion = '$action'");
+        $reg = $res->fetch();
+        $path = $reg['ruta'];
+        return $path;
+    } catch (Throwable $th) {
+        die("ERROR SQL in findPathByAction(): ".$th->getMessage());
     }
 }

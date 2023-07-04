@@ -1,7 +1,8 @@
 <?php
-require "../src/utils/validators/roles/isAdmin.php";
+require_once "../src/utils/validators/roles/isAdmin.php";
 if (!$isAdmin) {
     header("Location:./login.php");
+    exit;
 }
 ?>
 
@@ -22,33 +23,33 @@ if (!$isAdmin) {
 <body>
     <div>
         <?php
-        require "./components/profiles.php";
+        require_once "./components/profiles.php";
         echo $profiles;
         ?>
         <h1>GESTIÓN DE USUARIOS</h1>
     </div>
     <div class="container frame">
         <div class="row">
-            <div class="col-xl-2 d-lg-block">
+            <div class="col-lg-2 d-lg-block">
                 <div class="items">
-                    <a href="#">
+                    <a href="">
                         <div class="btn-abm">
                             <i class="fa-solid fa-square-plus"></i>
                         </div>
                     </a>
-                    <a href="#">
+                    <a href="">
                         <div class="btn-abm">
                             <i class="fa-solid fa-pen"></i>
                         </div>
                     </a>
-                    <a href="#">
+                    <a href="">
                         <div class="btn-abm">
                             <i class="fa-solid fa-trash"></i>
                         </div>
                     </a>
                 </div>
             </div>
-            <div class="col-xl-7 table-frame">
+            <div class="col-lg-7 table-frame">
                 <table class="table table-dark table-hover ">
                     <thead>
                         <tr>
@@ -172,11 +173,10 @@ if (!$isAdmin) {
                             <td>@fat</td>
                             <td>@fat</td>
                         </tr>
-                        
                     </tbody>
                 </table>
             </div>
-            <div class="col-xl-3">
+            <div class="col-lg-3">
                 <form class="form-abmUsuarios" action="" method="post">
                     <input type="text" name="nombre" placeholder="Nombre" required autocomplete="off">
                     <input type="text" name="apellido" placeholder="Apellido" required autocomplete="off">
@@ -198,7 +198,7 @@ if (!$isAdmin) {
     </div>
     <hr class="separator">
     <?php
-    require "./components/footer.php";
+    require_once "./components/footer.php";
     echo $footer;
     ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>

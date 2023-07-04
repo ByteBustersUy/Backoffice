@@ -1,1 +1,2 @@
-ErrorDocument 404 /proyectoBackofice/Backoffice/pages/httpError/error404.php
+ErrorDocument 404 /Backoffice/pages/httpErrors/error404.php
+ErrorDocument 500 /Backoffice/pages/httpErrors/error404.php

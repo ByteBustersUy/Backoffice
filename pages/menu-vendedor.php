@@ -1,6 +1,6 @@
 <?php
-require_once "../src/utils/validators/roles/isAdmin.php";
-if (!$isAdmin) {
+require_once "../src/utils/validators/roles/isVendedor.php";
+if (!$isVendedor) {
     header("Location:./login.php");
     exit;
 }
@@ -16,13 +16,13 @@ if (!$isAdmin) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="../styles/style.css">
-    <title>Menú Admin</title>
+    <title>Menú Vendedor</title>
 </head>
 
 <body>
     <div>
         <?php
-        require_once "./components/profiles.php";
+        require "./components/profiles.php";
         echo $profiles;
         ?>
         <h1>MENÚ PRINCIPAL</h1>
@@ -31,33 +31,33 @@ if (!$isAdmin) {
         <div class="row">
             <div class="col-lg-4 justify-center">
                 <div class="menu-cards">
-                    <a href="./abm-usuarios.php">
+                    <a href="">
                         <div>
                             <i class="fa-solid fa-users"></i>
-                            <h4>GESTIÓN DE USUARIOS</h4>
-                            <p>Agregar, editar o eliminar usuarios</p>
+                            <h4>GESTIÓN DE PRODUCTOS</h4>
+                            <p>Agregar, editar o eliminar productos</p>
                         </div>
                     </a>
                 </div>
             </div>
             <div class="col-lg-4 justify-center">
                 <div class="menu-cards">
-                    <a href="../src/modules/auth/abm-permissions.php">
+                    <a href="">
                         <div>
                             <i class="fa-solid fa-shield"></i>
-                            <h4>GESTIÓN DE PERMISOS</h4>
-                            <p>Agregar, editar o eliminar permisos</p>
+                            <h4>GESTIÓN DE PROMOCIONES</h4>
+                            <p>Agregar, editar o eliminar promociónes</p>
                         </div>
                     </a>
                 </div>
             </div>
             <div class="col-lg-4 justify-center">
                 <div class="menu-cards">
-                    <a href="../src/modules/settings/config.php">
+                    <a href="">
                         <div>
                             <i class="fa-solid fa-gears"></i>
-                            <h4>AJUSTES DE EMPRESA</h4>
-                            <p>Agregar o editar datos de la empresa </p>
+                            <h4>OTRA COSA</h4>
+                            <p>Agregar o editar otra cosa </p>
                         </div>
                     </a>
                 </div>

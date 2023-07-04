@@ -1,85 +1,71 @@
 <?php
-require '../../utils/validators/hasData.php';
+require_once '../../utils/validators/hasData.php';
 if (!$_POST) {
     header("Location:../../../index.php");
-    die();
+    exit;
 }
-
 session_start();
 
-$userName = $_POST['ci'];
+$userCi = $_POST['ci'];
 $pass = $_POST['pass'];
 
-if (!hasData($userName) || !hasData($pass)) {
-    header("Location:../../../pages/login.php");
-    die();
+if (!hasData($userCi) || !hasData($pass)) {
+    header("Location:../../../index.php");
+    exit;
 }
 
-$userName = htmlspecialchars($userName);
-$userName = trim($userName);
+$userCi = htmlspecialchars($userCi);
+$userCi = trim($userCi);
 $pass = htmlspecialchars($pass);
 
-$reg = login($userName, $pass);
-
-if (!$reg) {
-    header("Location:../../../pages/login.php");
-    die();
-}
-
-if (!hasData($reg['ci'])) {
-    header("Location:../../../pages/login.php");
-    die();
-}
-
+$reg = login($userCi, $pass);
 $roles = getUserRoles($reg['ci']);
-
-$_SESSION['userCi'] = $reg['ci'];
-$_SESSION['userRoles'] = $roles;
 
 if (!hasData($reg['pass'])) {
     //error. no existe contraseña en base de datos
 }
 
-if (!hasData($_SESSION['userRoles'][0])) {
-    //error. usuario no tiene rol asignado
-}
-
 $hashedPass = $reg['pass'];
 
 if (passVerify($pass, $hashedPass)) {
-    try{
-        header("Location:../../../pages/menu-admin.php");
-    }catch(Exception $e){
-        header("HTTP/1.0 404 NOT FOUND");
+    $_SESSION['userName'] = $reg['nombre'];
+    $_SESSION['userCi'] = $reg['ci'];
+    $_SESSION['userRolesId'] = $roles[0];
+    $_SESSION['userRolesName'] = $roles[1];
+
+    if (!hasData($_SESSION['userRolesName'])) {
+        //error. usuario no tiene rol asignado
     }
 }else{
     session_destroy();
 }
 
+header("Location:../../../index.php");
+exit;
 
 
-function login(string $userName, string $pass): array
+function login(string $userCi, string $pass): array
 {
-    require '../../utils/validators/isValidPass.php';
-    require '../../utils/validators/isValidUserName.php';
-    require '../../repository/auth/loguear.repository.php';
+    require_once '../../utils/validators/isValidPass.php';
+    require_once '../../utils/validators/isValidUserName.php';
+    require_once '../../repository/auth/loguear.repository.php';
     include '../../utils/messages/msg.php';
 
-    if (!isValidUserName($userName)) {
+    if (!isValidUserName($userCi)) {
         header("Location:../../../index.php");
-        die();
+        exit;
     }
 
     if (!isValidPass($pass)) {
         header("Location:../../../index.php");
-        die();
+        exit;
     }
 
-    $reg = findOneUser($userName, $pass);
+    $reg = findOneUser($userCi);
 
     if (!$reg) {
         header("Location:../../../index.php");
-        die();
+        exit;
     }
 
     return $reg;
@@ -87,17 +73,11 @@ function login(string $userName, string $pass): array
 
 function getUserRoles(string $ci): array
 {
-    $roles = findRolesByUserCi($ci);
-    return $roles;
-}
-
-function hashpass(string $pass): string
-{
-    //return sha1($pass);
-    return password_hash($pass, PASSWORD_DEFAULT);
+    return findRolesByUserCi($ci);
 }
 
 function passVerify(string $pass, string $hashedPass): bool
 {
     return password_verify($pass, $hashedPass);
 }
+
