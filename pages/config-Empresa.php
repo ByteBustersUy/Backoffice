@@ -1,11 +1,7 @@
 <?php
 require "../src/utils/validators/roles/isAdmin.php";
 if (!$isAdmin) {
-    try {
-        header("Location:./login.php");
-    } catch (Exception $e) {
-        header("HTTP/1.0 404 NOT FOUND");
-    }
+    header("Location:./login.php");
     exit;
 }
 ?>
@@ -18,26 +14,25 @@ if (!$isAdmin) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/normalize.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="../styles/style.css">
     <title>Config empresa</title>
 </head>
 
 <body>
     <div>
-        <?php
-        require "./components/profiles.php";
-        echo $profiles;
-        ?>
+        <div class="link-profiles-div">
+            <?php
+            require "./components/profiles.php";
+            echo $profiles;
+            ?>
+        </div>
         <h1>GESTIÓN DE EMPRESA</h1>
     </div>
     <div class="container frame">
         <div class="row">
-            
+
 
             <div class="col-8">
                 <div class="forms">
@@ -58,21 +53,21 @@ if (!$isAdmin) {
                         <form class="form-emp" action="" method="post">
                             <input type="text" name="telefono" placeholder="Telefono" required>
                             <input type="text" name="whatsapp" placeholder="Whatsapp" required>
-                            <input type="text" name="instagram" placeholder="Instagram">
+                            <input type="text" name="instagram" placeholder="Instagram" required>
                             <input type="text" name="Comentarios" placeholder="Comentarios" required>
                             <input type="text" name="logo" placeholder="URL-" required>
 
 
                         </form>
-                       
+
                     </div>
-                   
+
                 </div>
-                
+
                 <div class="btn-emp">
-                            <button type="submit">APLICAR</button>
-                        </div>
-                        
+                    <button type="submit">APLICAR</button>
+                </div>
+
             </div>
 
 
@@ -96,19 +91,12 @@ if (!$isAdmin) {
                 </div>
             </div>
 
-
-
-
-
-
             <hr class="separator">
             <?php
             require "./components/footer.php";
             echo $footer;
             ?>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
-                crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
             <script>
             </script>
 </body>

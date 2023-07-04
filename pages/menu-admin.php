@@ -21,10 +21,12 @@ if (!$isAdmin) {
 
 <body>
     <div>
-        <?php
-        require "./components/profiles.php";
-        echo $profiles;
-        ?>
+        <div class="link-profiles-div">
+            <?php
+            require "./components/profiles.php";
+            echo $profiles;
+            ?>
+        </div>
         <h1>MENÚ PRINCIPAL</h1>
     </div>
     <div class="container frame">
@@ -42,7 +44,7 @@ if (!$isAdmin) {
             </div>
             <div class="col-lg-4 justify-center">
                 <div class="menu-cards">
-                    <a href="../src/modules/auth/abm-permissions.php">
+                    <a href="./abm-permisos.php">
                         <div>
                             <i class="fa-solid fa-shield"></i>
                             <h4>GESTIÓN DE PERMISOS</h4>
@@ -53,7 +55,7 @@ if (!$isAdmin) {
             </div>
             <div class="col-lg-4 justify-center">
                 <div class="menu-cards">
-                    <a href="../src/modules/settings/config.php">
+                    <a href="./config-empresa.php">
                         <div>
                             <i class="fa-solid fa-gears"></i>
                             <h4>AJUSTES DE EMPRESA</h4>

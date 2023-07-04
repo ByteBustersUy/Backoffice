@@ -21,10 +21,12 @@ if (!$isVendedor) {
 
 <body>
     <div>
-        <?php
-        require "./components/profiles.php";
-        echo $profiles;
-        ?>
+        <div class="link-profiles-div">
+            <?php
+            require "./components/profiles.php";
+            echo $profiles;
+            ?>
+        </div>
         <h1>MENÚ PRINCIPAL</h1>
     </div>
     <div class="container frame">
@@ -33,7 +35,7 @@ if (!$isVendedor) {
                 <div class="menu-cards">
                     <a href="">
                         <div>
-                            <i class="fa-solid fa-users"></i>
+                            <i class="fa-solid fa-basket-shopping"></i>
                             <h4>GESTIÓN DE PRODUCTOS</h4>
                             <p>Agregar, editar o eliminar productos</p>
                         </div>
@@ -44,7 +46,7 @@ if (!$isVendedor) {
                 <div class="menu-cards">
                     <a href="">
                         <div>
-                            <i class="fa-solid fa-shield"></i>
+                            <i class="fa-solid fa-rectangle-ad"></i>
                             <h4>GESTIÓN DE PROMOCIONES</h4>
                             <p>Agregar, editar o eliminar promociónes</p>
                         </div>

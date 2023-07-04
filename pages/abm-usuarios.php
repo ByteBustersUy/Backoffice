@@ -22,15 +22,17 @@ if (!$isAdmin) {
 
 <body>
     <div>
-        <?php
-        require "./components/profiles.php";
-        echo $profiles;
-        ?>
+        <div class="link-profiles-div">
+            <?php
+            require "./components/profiles.php";
+            echo $profiles;
+            ?>
+        </div>
         <h1>GESTIÓN DE USUARIOS</h1>
     </div>
     <div class="container frame">
         <div class="row">
-            <div class="col-lg-2 d-lg-block">
+            <div class="col-lg-2 ">
                 <div class="items">
                     <a href="">
                         <div class="btn-abm">
