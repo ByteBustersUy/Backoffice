@@ -52,7 +52,21 @@ if (!$isAdmin) {
                 </div>
             </div>
             <div class="col-lg-7 table-frame">
-                <table class="table table-dark table-hover ">
+                <div class="table-options">
+                    <input type="search" name="search" placeholder="Nombre" autocomplete="off">
+                    <button clas="" type="submit">Buscar</button>
+                    <select name="order" id="order">
+                    <option value="">Ordenar</option>
+                        <option value="az">A-Z</option>
+                        <option value="za">Z-A</option>
+                    </select>
+                    <select name="filter" id="filter">
+                        <option value="">Filtrar</option>
+                        <option value="admin">Administradores</option>
+                        <option value="vendedor">Vendedores</option>
+                    </select>
+                </div>
+                <table class="table table-dark table-hover">
                     <thead>
                         <tr>
                             <th scope="col">Nombre</th>

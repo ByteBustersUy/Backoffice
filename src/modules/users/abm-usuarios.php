@@ -7,7 +7,6 @@ if (!$isAdmin) {
 
 $usersData = getUsersData();
 
-
 function hashPass(string $pass): string
 {
     return password_hash($pass, PASSWORD_DEFAULT);
