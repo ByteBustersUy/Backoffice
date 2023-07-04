@@ -1,5 +1,4 @@
 <?php
-session_start();
 $isVendedor = false;
 
 if(isset($_SESSION['userRolesName'])){

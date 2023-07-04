@@ -1,5 +1,4 @@
 <?php
-session_start();
 $isAdmin = false;
 
 if(isset($_SESSION['userRolesName'])){

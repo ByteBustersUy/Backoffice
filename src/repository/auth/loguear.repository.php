@@ -37,6 +37,12 @@ function findRolesByUserCi(string $ci): array
 
 function findPathByAction(string $action): string
 {
-
-    return "pages/menu-admin.php";
+    require '/Applications/XAMPP/xamppfiles/htdocs/Backoffice/src/db/conexion.php';
+    try {
+        $res = $con->query("SELECT ruta FROM RUTAS WHERE `action` = $action");
+        $reg = $res->fetch();
+        return $reg['ruta'];
+    } catch (Throwable $th) {
+        die($th->getMessage());
+    }
 }

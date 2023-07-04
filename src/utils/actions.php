@@ -2,8 +2,8 @@
 
 $actions = 
 [
-    "menuAdmin" => "ir_menu_admin",
-    "menuVendedor" => "ir_menu_vendedor",
+    "menu-admin" => "ir_menu_admin",
+    "menu-vendedor" => "ir_menu_vendedor",
 ]
 
 ?>

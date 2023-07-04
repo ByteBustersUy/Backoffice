@@ -4,9 +4,7 @@ require "./src/utils/validators/roles/isAdmin.php";
 require "./src/utils/validators/roles/isVendedor.php";
 require "./src/repository/auth/loguear.repository.php";
 require "./src/utils/actions.php";
-if(!session_start()){
-    session_start();
-}
+session_start();
 
 if (!hasData($_SESSION['userRolesName'])){
     header("Location:./pages/login.php");
@@ -14,9 +12,9 @@ if (!hasData($_SESSION['userRolesName'])){
 }
 
 if ($isAdmin)
-    header("Location:./".findPathByAction($actions['menuAdmin']));
+    header("Location:./".findPathByAction($actions['menu-admin']));
 else if ($isVendedor)
-    header("Location:./".findPathByAction($actions['menuVendedor']));
+    header("Location:./".findPathByAction($actions['menu-vendedor']));
 else
     header("Location:./pages/login.php");
 
