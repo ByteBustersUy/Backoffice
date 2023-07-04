@@ -402,6 +402,7 @@ footer img {
 
     .frame {
         min-width: 95vw;
+        min-height: 60vh;
         margin: 5rem auto 0 auto;
         border: 1px solid var(--color-5);
         
@@ -431,7 +432,7 @@ footer img {
 /* --------- MENU --------- */
 
 .menu-cards{
-    margin: 6rem 4rem;
+    margin: 7rem auto;
     height: 20rem;
 }
 

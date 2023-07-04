@@ -1,5 +1,5 @@
 <?php
-require_once "../src/utils/validators/roles/isAdmin.php";
+require "../src/utils/validators/roles/isAdmin.php";
 if (!$isAdmin) {
     try {
         header("Location:./login.php");
@@ -30,7 +30,7 @@ if (!$isAdmin) {
 <body>
     <div>
         <?php
-        require_once "./components/profiles.php";
+        require "./components/profiles.php";
         echo $profiles;
         ?>
         <h1>GESTIÓN DE EMPRESA</h1>
@@ -103,7 +103,7 @@ if (!$isAdmin) {
 
             <hr class="separator">
             <?php
-            require_once "./components/footer.php";
+            require "./components/footer.php";
             echo $footer;
             ?>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"

@@ -1,6 +1,6 @@
 <?php
-require_once "../src/utils/actions.php";
-require_once '../src/repository/auth/loguear.repository.php';
+require "../src/utils/actions.php";
+require '../src/repository/auth/loguear.repository.php';
 
 //TODO: Falta js para hacer funcionar el dropdown.
 

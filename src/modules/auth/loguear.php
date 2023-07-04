@@ -1,10 +1,9 @@
 <?php
-require_once '../../utils/validators/hasData.php';
+require '../../utils/validators/hasData.php';
 if (!$_POST) {
     header("Location:../../../index.php");
     exit;
 }
-session_start();
 
 $userCi = $_POST['ci'];
 $pass = $_POST['pass'];
@@ -28,6 +27,7 @@ if (!hasData($reg['pass'])) {
 $hashedPass = $reg['pass'];
 
 if (passVerify($pass, $hashedPass)) {
+    session_status() === PHP_SESSION_ACTIVE ?: session_start();
     $_SESSION['userName'] = $reg['nombre'];
     $_SESSION['userCi'] = $reg['ci'];
     $_SESSION['userRolesId'] = $roles[0];
@@ -46,9 +46,9 @@ exit;
 
 function login(string $userCi, string $pass): array
 {
-    require_once '../../utils/validators/isValidPass.php';
-    require_once '../../utils/validators/isValidUserName.php';
-    require_once '../../repository/auth/loguear.repository.php';
+    require '../../utils/validators/isValidPass.php';
+    require '../../utils/validators/isValidUserName.php';
+    require '../../repository/auth/loguear.repository.php';
     include '../../utils/messages/msg.php';
 
     if (!isValidUserName($userCi)) {

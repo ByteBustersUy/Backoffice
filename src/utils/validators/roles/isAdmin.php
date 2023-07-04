@@ -1,5 +1,5 @@
 <?php
-session_start();
+session_status() === PHP_SESSION_ACTIVE ?: session_start();
 $isAdmin = false;
 if(isset($_SESSION['userRolesName'])){
     foreach ($_SESSION['userRolesName'] as $rol) {
@@ -10,4 +10,3 @@ if(isset($_SESSION['userRolesName'])){
 }else{
     echo "INTERNAL SERVER ERROR. isAdmin.php";
 }
-?>

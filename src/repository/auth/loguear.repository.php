@@ -2,7 +2,7 @@
 
 function findOneUser(string $userCi): array
 {
-    require_once '../../db/conexion.php';
+    require realpath(dirname(__FILE__))."/../../db/conexion.php";
     try {
         $res = $con->query("SELECT * FROM USUARIOS WHERE ci = '$userCi'");
         $reg = $res->fetch();
@@ -14,7 +14,7 @@ function findOneUser(string $userCi): array
 
 function findRolesByUserCi(string $ci): array
 {
-    require_once '../../db/conexion.php';
+    require realpath(dirname(__FILE__))."/../../db/conexion.php";
     try {
         $res = $con->query("SELECT id, nombreRol
                             FROM USUARIOS_has_ROLES ur
@@ -36,7 +36,7 @@ function findRolesByUserCi(string $ci): array
 
 function findPathByAction(string $action): string
 {
-    require '/Applications/XAMPP/xamppfiles/htdocs/Backoffice/src/db/conexion.php';
+    require realpath(dirname(__FILE__))."/../../db/conexion.php";
     try {
         $res = $con->query("SELECT * FROM RUTAS WHERE accion = '$action'");
         $reg = $res->fetch();
