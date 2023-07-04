@@ -28,11 +28,10 @@
     /* ---- FONTS ---- */
     --font-family-h1: Verdana, Geneva, Tahoma, sans-serif;
     --primary-font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
-    
 }
 
 
-h1{
+h1 {
     color: var(--color-3);
     font-size: 2rem;
     font-family: var(--font-family-h1);
@@ -41,7 +40,7 @@ h1{
     text-align: center;
 }
 
-html{
+html {
     position: relative;
 }
 
@@ -49,7 +48,7 @@ body {
     background: var(--primary-background-color);
 }
 
-input{
+input {
     outline: none;
     border-radius: .3rem;
     text-indent: .5rem;
@@ -57,11 +56,11 @@ input{
     border: 1px solid var(--color-4);
 }
 
-input:focus::placeholder{
+input:focus::placeholder {
     font-weight: bold;
 }
 
-select{
+select {
     outline: none;
     border-radius: .3rem;
     text-indent: .5rem;
@@ -69,16 +68,33 @@ select{
     border: 1px solid var(--color-4);
 }
 
-th{
+th {
     background-color: var(--color-1) !important;
 }
 
-td{
+td {
     background-color: var(--color-1) !important;
 }
 
-thead tr{
+thead tr {
     height: 3rem;
+}
+
+.link-profile{
+    width: 5rem;
+    text-decoration: none;
+    background-color: var(--color-2);
+    font-size: 1rem;
+    margin: .5rem 1rem;
+    color: var(--color-3);
+    position: relative;
+    justify-content: right;
+    
+}
+
+.link-profiles-div{
+    position: absolute;
+    right: 0;
 }
 
 .form-login {
@@ -171,7 +187,7 @@ thead tr{
     background-color: var(--transparent-color);
 }
 
-.profile:focus-visible{
+.profile:focus-visible {
     outline: none;
 }
 
@@ -180,7 +196,7 @@ thead tr{
 
 /* --------- MENU --------- */
 
-.menu-cards{
+.menu-cards {
     background-color: var(--color-3);
     height: 15rem;
     min-width: 13rem;
@@ -193,31 +209,31 @@ thead tr{
     filter: drop-shadow(.4rem .4rem .6rem var(--color-4));
 }
 
-.menu-cards a{
+.menu-cards a {
     text-decoration: none;
     color: var(--primary-text-color);
 }
 
-.menu-cards:hover{
+.menu-cards:hover {
     scale: 103%;
     border: 2px solid var(--color-4);
     filter: drop-shadow(.4rem .4rem .6rem var(--bytebusters-color));
 }
 
-.menu-cards i{
+.menu-cards i {
     margin: 3rem auto;
     scale: 400%;
     color: var(--color-1);
 }
 
-.menu-cards h4{
+.menu-cards h4 {
     font-family: var(--primary-font-family);
     font-size: 1.3rem;
     padding: 0 1.5rem;
     text-align: center;
 }
 
-.menu-cards p{
+.menu-cards p {
     font-family: var(--primary-font-family);
     font-size: .9rem;
     padding: 0 2rem;
@@ -227,7 +243,7 @@ thead tr{
 
 /* --------- ABM USUARIOS --------- */
 
-.table-frame{
+.table-frame {
     height: 28rem;
     margin: auto;
     background-color: var(--color-1);
@@ -249,44 +265,44 @@ thead tr{
     border-radius: .7rem;
 }
 
-.items a:focus .btn-abm{
+.items a:focus .btn-abm {
     border: 3px solid var(--bytebusters-color);
     scale: 110%;
 }
 
-.btn-abm i{
+.btn-abm i {
     scale: 300%;
     padding-top: 1px;
-    color:var(--color-4)
+    color: var(--color-4)
 }
 
-.items{
+.items {
     margin: auto;
     text-align: center;
 }
 
-.form-abmUsuarios{
+.form-abmUsuarios {
     margin-top: 5rem;
 }
 
-.form-abmUsuarios input{
+.form-abmUsuarios input {
     display: flex;
     margin: auto;
     width: 15rem;
     min-width: 10rem;
     height: 2.5rem;
-    margin-top: .5rem;  
+    margin-top: .5rem;
 }
 
-.form-abmUsuarios select{
+.form-abmUsuarios select {
     display: flex;
     margin: auto;
     width: 15rem;
     height: 2.5rem;
-    margin-top: .5rem;  
+    margin-top: .5rem;
 }
 
-.form-abmUsuarios .buttons{
+.form-abmUsuarios .buttons {
     display: flex;
     margin: 2rem 1rem;
     justify-content: center;
@@ -319,7 +335,7 @@ thead tr{
 
 
 /* --------- ERRORS --------- */
-.login-msg-error{
+.login-msg-error {
     color: var(--error-message-color);
     display: flex;
     width: 15rem;
@@ -327,7 +343,7 @@ thead tr{
     margin: auto;
 }
 
-.img-error{
+.img-error {
     display: flex;
     margin: auto;
 }
@@ -335,16 +351,16 @@ thead tr{
 
 /* --------- GENERICS --------- */
 
-.justify-center{
+.justify-center {
     display: flex;
     justify-content: center;
 }
 
-.border-test{
+.border-test {
     border: 1px solid red;
 }
 
-.separator{
+.separator {
     margin-bottom: 8rem;
     opacity: 0;
 }
@@ -390,11 +406,11 @@ footer img {
 /* --------- DESKTOP ---------*/
 @media only screen and (min-width: 992px) {
 
-    body{
+    body {
         min-height: 80vh;
     }
 
-    h1{
+    h1 {
         font-size: 3rem;
         text-align: start;
         padding: 1rem;
@@ -402,12 +418,13 @@ footer img {
 
     .frame {
         min-width: 95vw;
+        min-height: 60vh;
         margin: 5rem auto 0 auto;
         border: 1px solid var(--color-5);
-        
+
     }
-    
-    .btn-back{
+
+    .btn-back {
         position: absolute;
         top: 1rem;
         left: 1rem;
@@ -430,39 +447,39 @@ footer img {
 
 /* --------- MENU --------- */
 
-.menu-cards{
-    margin: 6rem 4rem;
+.menu-cards {
+    margin: 7rem auto;
     height: 20rem;
 }
 
-.menu-cards i{
+.menu-cards i {
     margin: 5rem auto;
     margin-bottom: 4rem;
     color: var(--color-1);
     scale: 500%;
 }
 
-.menu-cards h4{
+.menu-cards h4 {
     font-size: 1.5rem;
     padding: 0;
 }
 
-.menu-cards p{
+.menu-cards p {
     font-size: .9rem;
     padding: 0 2rem;
     margin-top: 1rem;
 }
 
-.separator{
+.separator {
     display: none;
 }
 
-footer{
+footer {
     position: fixed;
 }
 
 footer img {
-    margin: .5rem ;
+    margin: .5rem;
     scale: 120%;
 }
 
@@ -474,64 +491,62 @@ footer .copyright {
 
 /* --------- ABM USUARIOS --------- */
 
-.btn-abm{
+.btn-abm {
     margin: 2rem;
 }
 
-.items{
+.items {
     margin: 2rem auto;
     text-align: center;
 }
 
-.btn-abm i{
+.btn-abm i {
     scale: 300%;
-    color:var(--color-4)
+    color: var(--color-4)
 }
 
-.form-abmUsuarios input{
+.form-abmUsuarios input {
     width: 13rem;
 }
 
-.form-abmUsuarios select{
-    width: 13rem;  
+.form-abmUsuarios select {
+    width: 13rem;
 }
 
 
 /*---------CONFIG EMPRESA---FALTA EN MOBILE---*/
 
 
-.forms{
-    
-     display: flex;  
-     justify-content: center;
-     margin-top: 3rem;
-    
+.forms {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
 }
-.forms div{
+
+.forms div {
     margin: 1rem;
 }
 
-.forms .data-emp{
-   display: flex;
-   justify-content: center;
-   margin: auto;
-   width: 15rem;
-    height: 2.5rem;
-    margin-top: .5rem;
-}
-
-.form-emp input{
+.forms .data-emp {
     display: flex;
-    justify-content: center; 
+    justify-content: center;
     margin: auto;
     width: 15rem;
     height: 2.5rem;
     margin-top: .5rem;
-    
+}
+
+.form-emp input {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    width: 15rem;
+    height: 2.5rem;
+    margin-top: .5rem;
 }
 
 
-.img-empresa{ 
+.img-empresa {
     margin-left: 20%;
     margin-right: 20%;
     margin-top: 0;
@@ -539,15 +554,15 @@ footer .copyright {
     width: 200px;
     height: auto;
 }
-.data-emp .buttons{
-   display: flex;
-   justify-content: center;
-   margin: auto;
-   margin-top: 20rem;
-   
-   
+
+.data-emp .buttons {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    margin-top: 20rem;
 }
-.btn-emp button{
+
+.btn-emp button {
     display: flex;
     justify-content: center;
     margin: auto;
@@ -559,20 +574,21 @@ footer .copyright {
     border: 1px solid var(--color-4);
     text-align: center;
     border-radius: .3rem;
-    
-    
+
 }
 
 
 
 
 /* --------- ERRORS --------- */
-.body-error{
+.body-error {
     background-color: var(--color-1);
 }
-.body-error img{
+
+.body-error img {
     margin: auto;
 }
+
 /* --------- ANIMATIONS ---------  */
 
 @keyframes rotate {

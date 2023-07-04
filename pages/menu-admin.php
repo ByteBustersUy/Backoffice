@@ -1,5 +1,5 @@
 <?php
-require_once "../src/utils/validators/roles/isAdmin.php";
+require "../src/utils/validators/roles/isAdmin.php";
 if (!$isAdmin) {
     header("Location:./login.php");
     exit;
@@ -21,10 +21,12 @@ if (!$isAdmin) {
 
 <body>
     <div>
-        <?php
-        require_once "./components/profiles.php";
-        echo $profiles;
-        ?>
+        <div class="link-profiles-div">
+            <?php
+            require "./components/profiles.php";
+            echo $profiles;
+            ?>
+        </div>
         <h1>MENÚ PRINCIPAL</h1>
     </div>
     <div class="container frame">
@@ -42,7 +44,7 @@ if (!$isAdmin) {
             </div>
             <div class="col-lg-4 justify-center">
                 <div class="menu-cards">
-                    <a href="../src/modules/auth/abm-permissions.php">
+                    <a href="./abm-permisos.php">
                         <div>
                             <i class="fa-solid fa-shield"></i>
                             <h4>GESTIÓN DE PERMISOS</h4>
@@ -53,7 +55,7 @@ if (!$isAdmin) {
             </div>
             <div class="col-lg-4 justify-center">
                 <div class="menu-cards">
-                    <a href="../src/modules/settings/config.php">
+                    <a href="./config-empresa.php">
                         <div>
                             <i class="fa-solid fa-gears"></i>
                             <h4>AJUSTES DE EMPRESA</h4>
@@ -66,7 +68,7 @@ if (!$isAdmin) {
     </div>
     <hr class="separator">
     <?php
-    require_once "./components/footer.php";
+    require "./components/footer.php";
     echo $footer;
     ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>

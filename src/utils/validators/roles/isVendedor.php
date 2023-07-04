@@ -1,5 +1,5 @@
 <?php
-session_start();
+session_status() === PHP_SESSION_ACTIVE ?: session_start();
 $isVendedor = false;
 
 if(isset($_SESSION['userRolesName'])){

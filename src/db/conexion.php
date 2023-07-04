@@ -5,3 +5,5 @@ try {
 } catch (Error $e) {
     die("Connection failed: ". $e->getMessage());
 }
+
+?>

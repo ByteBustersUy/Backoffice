@@ -1,5 +1,5 @@
 <?php
-require_once "../src/modules/auth/desloguear.php";
+require "../src/modules/auth/desloguear.php";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -25,7 +25,7 @@ require_once "../src/modules/auth/desloguear.php";
             <input type="password" name="pass" placeholder="Contraseña" required autocomplete="off">
         </label>
         <a href="">Olvidaste tu contraseña?</a>
-        <input class="btn-submit" type="submit" value="Iniciar sesión">
+        <input class="btn-submit" type="submit" value="Iniciar sesión" >
         <?php
         if (isset($_GET['err'])) {  //TODO: modificar logica
         ?>
@@ -35,7 +35,7 @@ require_once "../src/modules/auth/desloguear.php";
         ?>
     </form>
     <?php
-    require_once "./components/footer.php";
+    require "./components/footer.php";
     echo $footer;
     ?>
 </body>
