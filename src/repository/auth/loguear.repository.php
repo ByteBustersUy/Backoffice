@@ -2,7 +2,7 @@
 
 function findOneUser(string $userCi): array
 {
-    require '../../db/conexion.php';
+    require_once '../../db/conexion.php';
     try {
         $res = $con->query("SELECT * FROM USUARIOS WHERE ci = '$userCi'");
         $reg = $res->fetch();
@@ -14,7 +14,7 @@ function findOneUser(string $userCi): array
 
 function findRolesByUserCi(string $ci): array
 {
-    require '../../db/conexion.php';
+    require_once '../../db/conexion.php';
     try {
         $res = $con->query("SELECT id, nombreRol
                             FROM USUARIOS_has_ROLES ur

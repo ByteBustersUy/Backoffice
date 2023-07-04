@@ -1,5 +1,5 @@
 <?php
-require "../src/utils/validators/roles/isAdmin.php";
+require_once "../src/utils/validators/roles/isAdmin.php";
 if (!$isAdmin) {
     header("Location:./login.php");
     exit;
@@ -23,7 +23,7 @@ if (!$isAdmin) {
 <body>
     <div>
         <?php
-        require "./components/profiles.php";
+        require_once "./components/profiles.php";
         echo $profiles;
         ?>
         <h1>GESTIÓN DE USUARIOS</h1>
@@ -198,7 +198,7 @@ if (!$isAdmin) {
     </div>
     <hr class="separator">
     <?php
-    require "./components/footer.php";
+    require_once "./components/footer.php";
     echo $footer;
     ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>

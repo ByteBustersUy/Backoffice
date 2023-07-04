@@ -1,5 +1,5 @@
 <?php
-require "../src/utils/validators/roles/isVendedor.php";
+require_once "../src/utils/validators/roles/isVendedor.php";
 if (!$isVendedor) {
     header("Location:./login.php");
     exit;
@@ -66,7 +66,7 @@ if (!$isVendedor) {
     </div>
     <hr class="separator">
     <?php
-    require "./components/footer.php";
+    require_once "./components/footer.php";
     echo $footer;
     ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>

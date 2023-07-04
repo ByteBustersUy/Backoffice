@@ -1,5 +1,5 @@
 <?php
-require '../../utils/validators/hasData.php';
+require_once '../../utils/validators/hasData.php';
 if (!$_POST) {
     header("Location:../../../index.php");
     exit;
@@ -46,9 +46,9 @@ exit;
 
 function login(string $userCi, string $pass): array
 {
-    require '../../utils/validators/isValidPass.php';
-    require '../../utils/validators/isValidUserName.php';
-    require '../../repository/auth/loguear.repository.php';
+    require_once '../../utils/validators/isValidPass.php';
+    require_once '../../utils/validators/isValidUserName.php';
+    require_once '../../repository/auth/loguear.repository.php';
     include '../../utils/messages/msg.php';
 
     if (!isValidUserName($userCi)) {

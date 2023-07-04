@@ -1,5 +1,5 @@
 <?php
-require "../src/modules/auth/desloguear.php";
+require_once "../src/modules/auth/desloguear.php";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -35,7 +35,7 @@ require "../src/modules/auth/desloguear.php";
         ?>
     </form>
     <?php
-    require "./components/footer.php";
+    require_once "./components/footer.php";
     echo $footer;
     ?>
 </body>
