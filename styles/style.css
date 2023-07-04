@@ -206,7 +206,7 @@ thead tr {
     border: 2px solid var(--color-4);
     border-radius: .7rem;
     text-align: center;
-    filter: drop-shadow(.4rem .4rem .6rem var(--color-4));
+    filter: drop-shadow(4px 4px 4px var(--color-5));
 }
 
 .menu-cards a {
@@ -215,9 +215,9 @@ thead tr {
 }
 
 .menu-cards:hover {
-    scale: 103%;
-    border: 2px solid var(--color-4);
-    filter: drop-shadow(.4rem .4rem .6rem var(--bytebusters-color));
+    scale: 106%;
+    border: 5px solid var(--bytebusters-color);
+    filter: drop-shadow(4px 4px 4px var(--color-4));
 }
 
 .menu-cards i {
@@ -266,8 +266,8 @@ thead tr {
 }
 
 .items a:focus .btn-abm {
-    border: 3px solid var(--bytebusters-color);
-    scale: 110%;
+    border: 5px solid var(--bytebusters-color);
+    scale: 106%;
 }
 
 .btn-abm i {

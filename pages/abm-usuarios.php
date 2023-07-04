@@ -56,125 +56,32 @@ if (!$isAdmin) {
                     <thead>
                         <tr>
                             <th scope="col">Nombre</th>
-                            <th scope="col">Apellido</th>
                             <th scope="col">Cédula</th>
                             <th scope="col">Email</th>
                             <th scope="col">Roles</th>
                         </tr>
                     </thead>
                     <tbody class="table-group-divider">
-                        <tr>
-                            <th scope="row">Mark</th>
-                            <td>Thornton</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Mark</th>
-                            <td>Thornton</td>
-                            <td>Otto</td>
-                            <td>@fat</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Mark</th>
-                            <td>Thornton</td>
-                            <td>Otto</td>
-                            <td>@fat</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Mark</th>
-                            <td>Thornton</td>
-                            <td>Otto</td>
-                            <td>@fat</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Mark</th>
-                            <td>Thornton</td>
-                            <td>Otto</td>
-                            <td>@fat</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Mark</th>
-                            <td>Thornton</td>
-                            <td>Otto</td>
-                            <td>@fat</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Mark</th>
-                            <td>Jacob</td>
-                            <td>Otto</td>
-                            <td>@fat</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Mark</th>
-                            <td>Jacob</td>
-                            <td>Otto</td>
-                            <td>@fat</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Mark</th>
-                            <td>Jacob</td>
-                            <td>Otto</td>
-                            <td>@fat</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Mark</th>
-                            <td>Jacob</td>
-                            <td>Otto</td>
-                            <td>@fat</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Mark</th>
-                            <td>Jacob</td>
-                            <td>Otto</td>
-                            <td>@fat</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Mark</th>
-                            <td>Jacob</td>
-                            <td>Otto</td>
-                            <td>@fat</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Mark</th>
-                            <td>Jacob</td>
-                            <td>Otto</td>
-                            <td>@fat</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Mark</th>
-                            <td>Jacob</td>
-                            <td>Otto</td>
-                            <td>@fat</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Mark</th>
-                            <td>Jacob</td>
-                            <td>Otto</td>
-                            <td>@fat</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Mark</th>
-                            <td>Jacob</td>
-                            <td>Otto</td>
-                            <td>@fat</td>
-                            <td>@fat</td>
-                        </tr>
+                        <?php
+                        require "../src/modules/users/abm-usuarios.php";
+                        $usersList = '';
+                        foreach($usersData as $user){
+                            $rolesList = findRolesByUserCi($user['ci']);
+                            $roles = '| ';
+                            foreach($rolesList as $rol){
+                                $roles .= ' '.$rol.' |';
+                            }
+                            $usersList .= '
+                            <tr>
+                                <td>'.$user['nombre'].' '.$user['apellido'].'</td>
+                                <td>'.$user['ci'].'</td>
+                                <td>'.$user['email'].'</td>
+                                <td>'.$roles.'</td>
+                            </tr>';
+                        }
+                        echo $usersList;
+                        
+                        ?>
                     </tbody>
                 </table>
             </div>
