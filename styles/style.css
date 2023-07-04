@@ -312,6 +312,12 @@ thead tr{
 
 
 
+/*---------CONFIG EMPRESA------*/
+
+
+
+
+
 /* --------- ERRORS --------- */
 .login-msg-error{
     color: var(--error-message-color);
@@ -380,6 +386,7 @@ footer img {
 
 
 
+
 /* --------- DESKTOP ---------*/
 @media only screen and (min-width: 992px) {
 
@@ -419,7 +426,7 @@ footer img {
     .profile {
         width: 8rem;
     }
-
+}
 
 /* --------- MENU --------- */
 
@@ -490,7 +497,75 @@ footer .copyright {
 }
 
 
+/*---------CONFIG EMPRESA---FALTA EN MOBILE---*/
+
+
+.forms{
+    
+     display: flex;  
+     justify-content: center;
+     margin-top: 3rem;
+    
 }
+.forms div{
+    margin: 1rem;
+}
+
+.forms .data-emp{
+   display: flex;
+   justify-content: center;
+   margin: auto;
+   width: 15rem;
+    height: 2.5rem;
+    margin-top: .5rem;
+}
+
+.form-emp input{
+    display: flex;
+    justify-content: center; 
+    margin: auto;
+    width: 15rem;
+    height: 2.5rem;
+    margin-top: .5rem;
+    
+}
+
+
+.img-empresa{ 
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 0;
+    margin-bottom: 0;
+    width: 200px;
+    height: auto;
+}
+.data-emp .buttons{
+   display: flex;
+   justify-content: center;
+   margin: auto;
+   margin-top: 20rem;
+   
+   
+}
+.btn-emp button{
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    margin-top: 1.5rem;
+    width: 10rem;
+    cursor: pointer;
+    color: var(--text-button-color);
+    background-color: var(--color-3);
+    border: 1px solid var(--color-4);
+    text-align: center;
+    border-radius: .3rem;
+    
+    
+}
+
+
+
+
 /* --------- ERRORS --------- */
 .body-error{
     background-color: var(--color-1);
