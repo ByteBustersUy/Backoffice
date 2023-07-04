@@ -486,14 +486,23 @@ footer .copyright {
 
 
 .forms{
+    
      display: flex;  
-     justify-content: left;
+     justify-content: center;
      margin-top: 3rem;
-     margin-left: 2.5rem;
-     
+    
 }
+.forms div{
+    margin: 1rem;
+}
+
 .forms .data-emp{
-    margin-left: 2.5rem;
+   display: flex;
+   justify-content: center;
+   margin: auto;
+   width: 15rem;
+    height: 2.5rem;
+    margin-top: .5rem;
 }
 
 .form-emp input{
@@ -518,13 +527,25 @@ footer .copyright {
 .data-emp .buttons{
    display: flex;
    justify-content: center;
-   margin-top: 2rem;
-   
+   margin: auto;
+   margin-top: 20rem;
    
    
 }
-.forms .buttons{
-    margin-top: 2rem;
+.btn-emp button{
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    margin-top: 1.5rem;
+    width: 10rem;
+    cursor: pointer;
+    color: var(--text-button-color);
+    background-color: var(--color-3);
+    border: 1px solid var(--color-4);
+    text-align: center;
+    border-radius: .3rem;
+    
+    
 }
 
 

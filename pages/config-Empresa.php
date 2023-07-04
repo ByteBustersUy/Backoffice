@@ -37,7 +37,7 @@ if (!$isAdmin) {
     </div>
     <div class="container frame">
         <div class="row">
-            <h2>DATOS DE LA EMPRESA</h2>
+            
 
             <div class="col-8">
                 <div class="forms">
@@ -64,11 +64,15 @@ if (!$isAdmin) {
 
 
                         </form>
-                        <div class="buttons">
+                       
+                    </div>
+                   
+                </div>
+                
+                <div class="btn-emp">
                             <button type="submit">APLICAR</button>
                         </div>
-                    </div>
-                </div>
+                        
             </div>
 
 
