@@ -54,14 +54,14 @@ if (!$isAdmin) {
             <div class="col-lg-7 table-frame">
                 <div class="table-options">
                     <input type="search" name="search" placeholder="Nombre" autocomplete="off">
-                    <button clas="" type="submit">Buscar</button>
+                    <button type="button">Buscar</button>
                     <select name="order" id="order">
-                    <option value="">Ordenar</option>
+                        <option selected hidden value="">Ordenar</option>
                         <option value="az">A-Z</option>
                         <option value="za">Z-A</option>
                     </select>
                     <select name="filter" id="filter">
-                        <option value="">Filtrar</option>
+                        <option selected hidden value="">Filtrar</option>
                         <option value="admin">Administradores</option>
                         <option value="vendedor">Vendedores</option>
                     </select>
@@ -78,38 +78,38 @@ if (!$isAdmin) {
                     <tbody class="table-group-divider">
                         <?php
                         require "../src/modules/users/abm-usuarios.php";
+                        $usersData = getUsersData();
                         $usersList = '';
-                        foreach($usersData as $user){
+                        foreach ($usersData as $user) {
                             $rolesList = findRolesByUserCi($user['ci']);
                             $roles = '| ';
-                            foreach($rolesList as $rol){
-                                $roles .= ' '.$rol.' |';
+                            foreach ($rolesList as $rol) {
+                                $roles .= ' ' . $rol . ' |';
                             }
                             $usersList .= '
                             <tr>
-                                <td>'.$user['nombre'].' '.$user['apellido'].'</td>
-                                <td>'.$user['ci'].'</td>
-                                <td>'.$user['email'].'</td>
-                                <td>'.$roles.'</td>
+                                <td>' . $user['nombre'] . ' ' . $user['apellido'] . '</td>
+                                <td>' . $user['ci'] . '</td>
+                                <td>' . $user['email'] . '</td>
+                                <td>' . $roles . '</td>
                             </tr>';
                         }
                         echo $usersList;
-                        
                         ?>
                     </tbody>
                 </table>
             </div>
             <div class="col-lg-3">
-                <form class="form-abmUsuarios" action="" method="post">
+                <form class="form-abmUsuarios" action="../src/modules/users/abm-usuarios.php" method="post">
                     <input type="text" name="nombre" placeholder="Nombre" required autocomplete="off">
                     <input type="text" name="apellido" placeholder="Apellido" required autocomplete="off">
                     <input type="text" name="cedula" placeholder="Cédula de identidad" required autocomplete="off">
                     <input type="text" name="email" placeholder="Email" required autocomplete="off">
                     <input type="text" name="contrasenia" placeholder="Contraseña" required autocomplete="off">
-                    <select name="Rol" id="rol">
-                        <option value="">Seleccione un rol</option>
-                        <option value="1">#</option>
-                        <option value="2">#</option>
+                    <select name="roles" id="rol">
+                        <option selected hidden value="">Seleccione un rol</option>
+                        <option value="admin">admin</option>
+                        <option value="vendedor">vendedor</option>
                     </select>
                     <div class="buttons">
                         <button type="reset">CANCELAR</button>
