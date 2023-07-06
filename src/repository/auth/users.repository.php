@@ -29,7 +29,7 @@ function findRolesByUserCi(string $ci): array
 {
     require realpath(dirname(__FILE__))."/../../db/conexion.php";
     try {
-        $statement = $con->prepare("SELECT id, nombreRol
+        $statement = $con->prepare("SELECT nombreRol
                             FROM USUARIOS_has_ROLES ur
                             JOIN ROLES r ON r.id = ur.ROLES_id
                             WHERE ur.USUARIOS_ci = :ci");
@@ -57,5 +57,28 @@ function findPathByAction(string $action): string
         return $reg['ruta'];
     } catch (Throwable $th) {
         die("ERROR SQL in findPathByAction(): ".$th->getMessage());
+    }
+}
+
+function saveOneUser (object $newUser)
+{
+    require realpath(dirname(__FILE__))."/../../db/conexion.php";
+    try {
+        $data = [
+            'nombre' => $newUser->getNombre(),
+            'apellido' => $newUser->getApellido(),
+            'ci' => $newUser->getCedula(),
+            'email' => $newUser->getEmail(),
+            'pass' => $newUser->getPass(),
+        ];
+        $statement = $con->prepare("INSERT INTO USUARIOS (nombre,apellido,ci,email,pass) VALUES (:nombre, :apellido, :ci, :email, :pass)");
+        $statement->execute($data);
+
+        $statement = $con->prepare("INSERT INTO USUARIOS_has_ROLES (USUARIOS_ci,ROLES_id) VALUES (:ci, :rolId)");
+        foreach ($newUser->getRolesIds() as $rolId){
+            $statement->execute(array(':ci' => $newUser->getCedula(), ':rolId' => $rolId)); 
+        }
+    } catch (Throwable $th) {
+        die("ERROR SQL in saveOneUser(): ".$th->getMessage());
     }
 }

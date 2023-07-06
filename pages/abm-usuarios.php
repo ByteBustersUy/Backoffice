@@ -51,53 +51,55 @@ if (!$isAdmin) {
                     </a>
                 </div>
             </div>
-            <div class="col-lg-7 table-frame">
+            <div class="col-lg-7">
                 <div class="table-options">
                     <input type="search" name="search" placeholder="Nombre" autocomplete="off">
                     <button type="button">Buscar</button>
-                    <select name="order" id="order">
+                    <select class="order-list" name="order" id="order">
                         <option selected hidden value="">Ordenar</option>
                         <option value="az">A-Z</option>
                         <option value="za">Z-A</option>
                     </select>
-                    <select name="filter" id="filter">
+                    <select class="filter-list" name="filter" id="filter">
                         <option selected hidden value="">Filtrar</option>
                         <option value="admin">Administradores</option>
                         <option value="vendedor">Vendedores</option>
                     </select>
                 </div>
-                <table class="table table-dark table-hover">
-                    <thead>
-                        <tr>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Cédula</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Roles</th>
-                        </tr>
-                    </thead>
-                    <tbody class="table-group-divider">
-                        <?php
-                        require "../src/modules/users/abm-usuarios.php";
-                        $usersData = getUsersData();
-                        $usersList = '';
-                        foreach ($usersData as $user) {
-                            $rolesList = findRolesByUserCi($user['ci']);
-                            $roles = '| ';
-                            foreach ($rolesList as $rol) {
-                                $roles .= ' ' . $rol . ' |';
-                            }
-                            $usersList .= '
+                <div class="table-frame">
+                    <table class="table table-dark table-hover">
+                        <thead>
                             <tr>
-                                <td>' . $user['nombre'] . ' ' . $user['apellido'] . '</td>
-                                <td>' . $user['ci'] . '</td>
-                                <td>' . $user['email'] . '</td>
-                                <td>' . $roles . '</td>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Cédula</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Roles</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-group-divider">
+                            <?php
+                            require "../src/modules/users/abm-usuarios.php";
+                            $usersData = getUsersData();
+                            $usersList = '';
+                            foreach ($usersData as $user) {
+                                $rolesList = findRolesByUserCi($user['ci']);
+                                $roles = '| ';
+                                foreach ($rolesList as $rol) {
+                                    $roles .= ' ' . $rol . ' |';
+                                }
+                                $usersList .= '
+                            <tr>
+                                <td><a href="?ci='.$user['ci'].'">' . $user['nombre'] . ' ' . $user['apellido'] . '</a></td>
+                                <td><a href="?ci='.$user['ci'].'">' . $user['ci'] . '</a></td>
+                                <td><a href="?ci='.$user['ci'].'">' . $user['email'] . '</a></td>
+                                <td><a href="?ci='.$user['ci'].'">' . $roles . '</a></td>
                             </tr>';
-                        }
-                        echo $usersList;
-                        ?>
-                    </tbody>
-                </table>
+                            }
+                            echo $usersList;
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <div class="col-lg-3">
                 <form class="form-abmUsuarios" action="../src/modules/users/abm-usuarios.php" method="post">
@@ -106,10 +108,10 @@ if (!$isAdmin) {
                     <input type="text" name="cedula" placeholder="Cédula de identidad" required autocomplete="off">
                     <input type="text" name="email" placeholder="Email" required autocomplete="off">
                     <input type="text" name="contrasenia" placeholder="Contraseña" required autocomplete="off">
-                    <select name="roles" id="rol">
+                    <select name="roles" id="roles">
                         <option selected hidden value="">Seleccione un rol</option>
-                        <option value="admin">admin</option>
-                        <option value="vendedor">vendedor</option>
+                        <option value="1">admin</option>
+                        <option value="2">vendedor</option>
                     </select>
                     <div class="buttons">
                         <button type="reset">CANCELAR</button>

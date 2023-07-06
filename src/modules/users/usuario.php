@@ -1,12 +1,12 @@
 <?php
 
 class Usuario extends Persona {
-    private $email, $pass, $roles;
-    public function __construct(string $nombre, string $apellido, string $cedula, string $email, string $pass, array $roles) {
+    private $email, $pass, $rolesIds;
+    public function __construct(string $nombre, string $apellido, string $cedula, string $email, string $pass, array $rolesIds) {
         parent::__construct($nombre, $apellido, $cedula);
         $this->email = $email;
         $this->pass = $pass;
-        $this->roles = $roles;
+        $this->rolesIds = $rolesIds;
     }
 
     public function getEmail() {
@@ -17,8 +17,8 @@ class Usuario extends Persona {
         return $this->pass;
     }
 
-    public function getRoles() {
-        return $this->roles;
+    public function getRolesIds() {
+        return $this->rolesIds;
     }
 
     
@@ -31,8 +31,8 @@ class Usuario extends Persona {
         $this->pass = $pass;
     }
 
-    public function setRoles($roles) {
-        $this->roles = $roles;
+    public function setRolesIds($rolesIds) {
+        $this->rolesIds = $rolesIds;
     }
 }
 

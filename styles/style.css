@@ -69,11 +69,26 @@ select {
 }
 
 th {
-    background-color: var(--color-1) !important;
+    background-color: var(--color-2) !important;
+    padding-left: 2rem;
 }
 
 td {
     background-color: var(--color-1) !important;
+    padding: 0;
+}
+
+td a {
+    display:block;
+    width:100%;
+    height: 100%;
+    color: var(--color-3);
+    text-decoration: none;
+    padding: 0.5rem;
+}
+
+.table>:not(caption)>*>*{
+    padding: 0;
 }
 
 thead tr {
@@ -255,18 +270,28 @@ thead tr {
 
 .table-options{
     display: flex;
-    margin-bottom: 1rem;
+    margin: 2rem 0 1rem 0;
 }
 
 .table-options select {
-    width: 7rem;
     height: 2rem;
     margin-left: 1rem;
+    margin-right: 1rem;
+    text-align: center;
+}
+
+.filter-list{
+    width: 10rem;
+}
+
+.order-list{
+    width: 6rem;
 }
 
 .table-options input {
     width: 14rem;
     height: 2rem;
+    margin-left: 1rem;
 }
 
 .table-options button {
