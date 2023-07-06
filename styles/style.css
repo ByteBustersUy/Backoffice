@@ -70,7 +70,7 @@ select {
 
 th {
     background-color: var(--color-2) !important;
-    padding-left: 2rem;
+    text-indent: .5rem ;
 }
 
 td {
