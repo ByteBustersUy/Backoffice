@@ -1,2 +1,6 @@
+<<<<<<< HEAD
 ErrorDocument 404 /Backoffice/pages/httpErrors/error404.php
 ErrorDocument 500 /Backoffice/pages/httpErrors/error404.php
+=======
+ErrorDocument 404  /proyectoBackofice/Backoffice/pages/httpErrors/error404.php
+>>>>>>> b0f27619bf9a54ce03ebc9f85b66fd020ed7e9d1
