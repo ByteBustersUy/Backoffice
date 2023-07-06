@@ -30,8 +30,7 @@ if (passVerify($pass, $hashedPass)) {
     session_status() === PHP_SESSION_ACTIVE ?: session_start();
     $_SESSION['userName'] = $reg['nombre'];
     $_SESSION['userCi'] = $reg['ci'];
-    $_SESSION['userRolesId'] = $roles[0];
-    $_SESSION['userRolesName'] = $roles[1];
+    $_SESSION['userRolesName'] = $roles;
 
     if (!hasData($_SESSION['userRolesName'])) {
         //error. usuario no tiene rol asignado
@@ -48,7 +47,7 @@ function login(string $userCi, string $pass): array
 {
     require '../../utils/validators/isValidPass.php';
     require '../../utils/validators/isValidUserName.php';
-    require '../../repository/auth/loguear.repository.php';
+    require '../../repository/auth/users.repository.php';
     include '../../utils/messages/msg.php';
 
     if (!isValidUserName($userCi)) {
