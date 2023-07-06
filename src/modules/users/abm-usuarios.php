@@ -1,5 +1,5 @@
 <?php
-require "/Applications/XAMPP/xamppfiles/htdocs/Backoffice/src/utils/validators/roles/isAdmin.php";
+require realpath(dirname(__FILE__))."/../../utils/validators/roles/isAdmin.php";
 
 if (!$isAdmin) {
     header("Location:../../../pages/login.php");
@@ -29,8 +29,9 @@ if ($_POST) {
         !hasData($pass) ||
         !hasData($rolesId)
     ) {
-        die("no tiene data > ".$roles);
+        die("alguna propiedad del formulario no tiene data. ");
     }
+    
     $newUser = new Usuario($nombre, $apellido, $cedula, $email, $pass, [$rolesId]);
     saveNewUser($newUser);
     header("Location:../../../pages/abm-usuarios.php");
