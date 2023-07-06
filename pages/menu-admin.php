@@ -55,7 +55,7 @@ if (!$isAdmin) {
             </div>
             <div class="col-lg-4 justify-center">
                 <div class="menu-cards">
-                    <a href="./config-empresa.php">
+                    <a href="../pages/config-Empresa.php">
                         <div>
                             <i class="fa-solid fa-gears"></i>
                             <h4>AJUSTES DE EMPRESA</h4>
