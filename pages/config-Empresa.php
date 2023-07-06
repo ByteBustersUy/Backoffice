@@ -54,7 +54,7 @@ if (!$isAdmin) {
                             <input type="text" name="telefono" placeholder="Telefono" required>
                             <input type="text" name="whatsapp" placeholder="Whatsapp" required>
                             <input type="text" name="instagram" placeholder="Instagram" required>
-                            <input type="text" name="comentarios" placeholder="Comentarios" required>
+                            <input type="text" name="comentario" placeholder="Comentario" required>
                             <input type="text" name="logo" placeholder="URL-" required>
                             
 

@@ -5,33 +5,33 @@ if (!$isAdmin) {
     exit;
 }
 
+require '../../repository/settings/config.repository.php';
 
-require '../../repository/settings/config-empr.php';
+$dataEmpresa = getDataEmpresa();
 
-if(empreEstatus()=="vacio"){
-    echo "no hay nada";
-}elseif (empreEstatus()) {
-    $arg = empreEstatus();
-    return $arg;
+if (!empty($dataEmpresa)) {
+    $currentName = $dataEmpresa['nombre'];
 }
 
-$nom = $arg['nombre']; 
 
-$nombre=$_POST['nombre']; 
-$rubro=$_POST['rubro'];
+$nombre = $_POST['nombre'];
+$rubro = $_POST['rubro'];
 $ciudad = $_POST['ciudad'];
 $numero = $_POST['numero'];
 $calle = $_POST['calle'];
 $telefono = $_POST['telefono'];
 $whatsapp = $_POST['whatsapp'];
 $instagram = $_POST['instagram'];
-$comentarios = $_POST['comentarios'];
+$comentario = $_POST['comentario'];
 $logo = $_POST['logo'];
 
-$arg1 = array('nombre'=>$nombre,'rubro'=>$rubro,'ciudad'=>$ciudad,'numero'=>$numero,'calle'=>$calle,'telefono'=>$telefono
-               ,'whatsapp'=>$whatsapp,'instagram'=>$instagram,'comentarios'=>$comentarios,'logo'=>$logo );
 
-echo updateEmpre($nom,$arg1);
+
+$dataToUpdate = array(
+    'nombre' => $nombre, 'rubro' => $rubro, 'ciudad' => $ciudad, 'numero' => $numero, 'calle' => $calle, 'telefono' => $telefono, 'whatsapp' => $whatsapp, 'instagram' => $instagram, 'comentarios' => $comentarios, 'logo' => $logo
+);
+
+echo setDataEmpresa($currentName, $dataToUpdate);
 
 
 
@@ -39,4 +39,3 @@ echo updateEmpre($nom,$arg1);
 $passEmail = $_POST[''];
 ,'email'=>$email,'pwd_email'=>$passEmail
 */
-?>
