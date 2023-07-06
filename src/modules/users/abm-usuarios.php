@@ -1,5 +1,5 @@
 <?php
-require "/Applications/XAMPP/xamppfiles/htdocs/Backoffice/src/utils/validators/roles/isAdmin.php";
+require realpath(dirname(__FILE__))."/../../utils/validators/roles/isAdmin.php";
 
 if (!$isAdmin) {
     header("Location:../../../pages/login.php");
