@@ -89,10 +89,10 @@ if (!$isAdmin) {
                                 }
                                 $usersList .= '
                             <tr>
-                                <td><a href="?ci='.$user['ci'].'">' . $user['nombre'] . ' ' . $user['apellido'] . '</a></td>
-                                <td><a href="?ci='.$user['ci'].'">' . $user['ci'] . '</a></td>
-                                <td><a href="?ci='.$user['ci'].'">' . $user['email'] . '</a></td>
-                                <td><a href="?ci='.$user['ci'].'">' . $roles . '</a></td>
+                                <td><a href="?ci=' . $user['ci'] . '">' . $user['nombre'] . ' ' . $user['apellido'] . '</a></td>
+                                <td><a href="?ci=' . $user['ci'] . '">' . $user['ci'] . '</a></td>
+                                <td><a href="?ci=' . $user['ci'] . '">' . $user['email'] . '</a></td>
+                                <td><a href="?ci=' . $user['ci'] . '">' . $roles . '</a></td>
                             </tr>';
                             }
                             echo $usersList;
@@ -108,7 +108,7 @@ if (!$isAdmin) {
                     <input type="text" name="cedula" placeholder="Cédula de identidad" required autocomplete="off">
                     <input type="text" name="email" placeholder="Email" required autocomplete="off">
                     <input type="text" name="contrasenia" placeholder="Contraseña" required autocomplete="off">
-                    <select name="roles" id="roles">
+                    <select name="roles" id="roles" required>
                         <option selected hidden value="">Seleccione un rol</option>
                         <option value="1">admin</option>
                         <option value="2">vendedor</option>

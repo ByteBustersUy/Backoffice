@@ -29,8 +29,9 @@ if ($_POST) {
         !hasData($pass) ||
         !hasData($rolesId)
     ) {
-        die("no tiene data > ".$roles);
+        die("alguna propiedad del formulario no tiene data. ");
     }
+    
     $newUser = new Usuario($nombre, $apellido, $cedula, $email, $pass, [$rolesId]);
     saveNewUser($newUser);
     header("Location:../../../pages/abm-usuarios.php");
