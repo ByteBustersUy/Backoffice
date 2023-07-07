@@ -7,4 +7,8 @@ $error_messages = [
    "!valid_pass" => 'La contraseña no es válida',
 ];
 
-$success_messages = [];
+$success_messages = [
+   //TODO:
+];
+
+?>

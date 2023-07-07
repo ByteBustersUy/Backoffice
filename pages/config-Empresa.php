@@ -28,69 +28,45 @@ if (!$isAdmin) {
             echo $profiles;
             ?>
         </div>
-        <h1>GESTIÓN DE EMPRESA</h1>
+        <h1>CONFIGURACION DE EMPRESA</h1>
     </div>
     <div class="container frame">
         <div class="row">
-
-
-            <div class="col-8">
-                <div class="forms">
-
-                    <div>
-                        <form class="form-emp" action="" method="post">
-                            <input type="text" name="nombre" placeholder="Nombre" required>
-                            <input type="text" name="rubro" placeholder="Rubro" required>
-                            <input type="text" name="ciudad" placeholder="Ciudad" required>
-                            <input type="text" name="numero" placeholder="numero" required>
-                            <input type="text" name="calle" placeholder="Calle" required>
-
-
-                        </form>
+            <div class="col-lg-8">
+                <form class="form-emp" action="../src/modules/settings/config.php" method="post">
+                    <div class="div-form-emp">
+                        <input type="text" name="nombre" placeholder="Nombre" required>
+                        <input type="text" name="rubro" placeholder="Rubro" required>
+                        <input type="text" name="ciudad" placeholder="Ciudad" required>
+                        <input type="text" name="numero" placeholder="Numero" required>
+                        <input type="text" name="calle" placeholder="Calle" required>
+                        <input type="text" name="logo" placeholder="Url de logo" required>
                     </div>
-                    <div>
-
-                        <form class="form-emp" action="" method="post">
-                            <input type="text" name="telefono" placeholder="Telefono" required>
-                            <input type="text" name="whatsapp" placeholder="Whatsapp" required>
-                            <input type="text" name="instagram" placeholder="Instagram" required>
-                            <input type="text" name="Comentarios" placeholder="Comentarios" required>
-                            <input type="text" name="logo" placeholder="URL-" required>
-
-
-                        </form>
-
+                    <div class="div-form-emp">
+                        <input type="text" name="telefono" placeholder="Telefono" required>
+                        <input type="text" name="instagram" placeholder="Instagram" required>
+                        <input type="text" name="whatsapp" placeholder="Whatsapp" required>
+                        <input type="text" name="email" placeholder="Email" required>
+                        <input type="text" name="pwd_email" placeholder="contraseña de email" required>
+                        <input type="text" name="comentario" placeholder="Comentario" required>
                     </div>
-
-                </div>
-
-                <div class="btn-emp">
-                    <button type="submit">APLICAR</button>
-                </div>
-
+                    <div class="buttons btn-emp">
+                        <button type="button">APLICAR</button>
+                        <button type="submit">ACEPTAR</button>
+                        <button type="reset">CANCELAR</button>
+                    </div>
+                </form>
             </div>
-
-
-            <div class="col-4">
+            <div class="col-lg-4">
                 <div class="data-emp">
                     <img src="../assets/logo-bytebusters.png" alt="Logo de empresa" class="img-empresa">
-
-                    <form class="form-emp" action="" method="">
-                        <label type="text" name=""></label>
-                        <label type="text" name=""></label>
-                        <label type="text" name=""></label>
-                        <label type="text" name=""></label>
-                        <label type="text" name="">gfdfg</label>
-
-                        <div class="buttons">
-                            <button type="submit">ACEPTAR</button>
-                            <button type="reset">CANCELAR</button>
-                        </div>
-                        </datos>
-                    </form>
+                    <label type="text" name="">asdasd</label>
+                    <label type="text" name="">asdasd</label>
+                    <label type="text" name="">asdasd</label>
+                    <label type="text" name="">adasd</label>
+                    <label type="text" name="">gfdfg</label>
                 </div>
             </div>
-
             <hr class="separator">
             <?php
             require "./components/footer.php";

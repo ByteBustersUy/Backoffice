@@ -8,8 +8,8 @@ function findOneUser(string $ci): array
         $statement->execute(array(':ci' => $ci));
         $reg = $statement->fetch();
         return $reg ? $reg : [];
-    } catch (Throwable $th) {
-        die("ERROR SQL in findOneUser(): ".$th->getMessage());
+    } catch (Exception $e) {
+        die("ERROR SQL in findOneUser(): ".$e->getMessage());
     }
 }
 
@@ -20,8 +20,8 @@ function findAllUsers(): array
         $res = $con->query("SELECT * FROM USUARIOS ORDER BY nombre ASC");
         $reg = $res->fetchAll();
         return $reg;
-    } catch (Throwable $th) {
-        die("ERROR SQL in findAllUsers(): ".$th->getMessage());
+    } catch (Exception $e) {
+        die("ERROR SQL in findAllUsers(): ".$e->getMessage());
     }
 }
 
@@ -42,8 +42,8 @@ function findRolesByUserCi(string $ci): array
             }
         }
         return $rolNamesList;
-    } catch (Throwable $th) {
-        die("ERROR SQL in findRolesByUserCi(): ".$th->getMessage());
+    } catch (Exception $e) {
+        die("ERROR SQL in findRolesByUserCi(): ".$e->getMessage());
     }
 }
 
@@ -55,8 +55,8 @@ function findPathByAction(string $action): string
         $statement->execute(array(':accion' => $action));
         $reg = $statement->fetch();
         return $reg['ruta'];
-    } catch (Throwable $th) {
-        die("ERROR SQL in findPathByAction(): ".$th->getMessage());
+    } catch (Exception $e) {
+        die("ERROR SQL in findPathByAction(): ".$e->getMessage());
     }
 }
 
@@ -78,7 +78,7 @@ function saveOneUser (object $newUser)
         foreach ($newUser->getRolesIds() as $rolId){
             $statement->execute(array(':ci' => $newUser->getCedula(), ':rolId' => $rolId)); 
         }
-    } catch (Throwable $th) {
-        die("ERROR SQL in saveOneUser(): ".$th->getMessage());
+    } catch (Exception $e) {
+        die("ERROR SQL in saveOneUser(): ".$e->getMessage());
     }
 }
