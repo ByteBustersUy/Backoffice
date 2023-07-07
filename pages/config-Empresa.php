@@ -40,13 +40,15 @@ if (!$isAdmin) {
                         <input type="text" name="ciudad" placeholder="Ciudad" required>
                         <input type="text" name="numero" placeholder="Numero" required>
                         <input type="text" name="calle" placeholder="Calle" required>
+                        <input type="text" name="logo" placeholder="Url de logo" required>
                     </div>
                     <div class="div-form-emp">
                         <input type="text" name="telefono" placeholder="Telefono" required>
-                        <input type="text" name="whatsapp" placeholder="Whatsapp" required>
                         <input type="text" name="instagram" placeholder="Instagram" required>
+                        <input type="text" name="whatsapp" placeholder="Whatsapp" required>
+                        <input type="text" name="email" placeholder="Email" required>
+                        <input type="text" name="pwd_email" placeholder="contraseña de email" required>
                         <input type="text" name="comentario" placeholder="Comentario" required>
-                        <input type="text" name="logo" placeholder="URL-" required>
                     </div>
                     <div class="buttons btn-emp">
                         <button type="button">APLICAR</button>

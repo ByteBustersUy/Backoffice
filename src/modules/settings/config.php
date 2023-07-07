@@ -1,13 +1,11 @@
 <?php
-require  realpath(dirname(__FILE__))."../../utils/validators/roles/isAdmin.php";
-if (!$isAdmin) {
+require  realpath(dirname(__FILE__))."/../../utils/validators/roles/isAdmin.php";
+if (!$isAdmin || !$_POST) {
     header("Location:../../../pages/login.php");
     exit;
 }
 
-require realpath(dirname(__FILE__)).'../../repository/settings/config.repository.php';
-
-getDataEmpresa();
+require realpath(dirname(__FILE__)).'/../../repository/settings/config.repository.php';
 
 $nombre = $_POST['nombre'];
 $rubro = $_POST['rubro'];
@@ -20,7 +18,7 @@ $instagram = $_POST['instagram'];
 $comentario = $_POST['comentario'];
 $logo = $_POST['logo'];
 $email = $_POST['email'];
-$passEmail = $_POST['passEmail'];
+$passEmail = $_POST['pwd_email'];
 
 
 $dataToUpdate = array(
@@ -32,17 +30,24 @@ $dataToUpdate = array(
     'telefono' => $telefono, 
     'whatsapp' => $whatsapp, 
     'instagram' => $instagram, 
-    'comentarios' => $comentarios, 
+    'comentario' => $comentario, 
     'logo' => $logo,
     'email' => $email,
     'pwd_email' => $passEmail
 );
 
-function setDataEmpresa(array $dataToUpdate): bool
-{
-    return saveDataEmpresa($dataToUpdate);
+$result = setDataEmpresa($dataToUpdate);
+
+foreach (getDataEmpresa() as $data){
+    echo $data.'<br>';
 }
+
 
 function getDataEmpresa(): array{
     return findAllDataEmpresa();
+}
+
+function setDataEmpresa(array $dataToUpdate): bool
+{
+    return saveDataEmpresa($dataToUpdate);
 }
