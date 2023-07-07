@@ -19,7 +19,7 @@ function setDataEmpresa($currentName,$dataToUpdate): bool
                          `nombre` = '$dataToUpdate[nombre]', `calle` = '$dataToUpdate[calle]', `numero` = '$dataToUpdate[numero]', 
                          `ciudad` =' $dataToUpdate[ciudad]', `telefono` =' $dataToUpdate[telefono]', `instagram` = '$dataToUpdate[instagram]', 
                          `whatsapp` = '$dataToUpdate[whatsapp]',`comentarios` = '$dataToUpdate[comentario]'");
-    $res->execute([$currentName]); 
+    $res->execute([]); 
     return true;
     }catch(Throwable $th){
         die("ERROR SQL in updateEmpre():".$th->getMessage());

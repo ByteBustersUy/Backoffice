@@ -383,8 +383,6 @@ thead tr {
 
 
 
-
-
 /* --------- ERRORS --------- */
 .login-msg-error {
     color: var(--error-message-color);
@@ -591,11 +589,30 @@ footer .copyright {
     display: flex;
     justify-content: center;
     margin: auto;
-    width: 15rem;
-    height: 2.5rem;
+    width: 18rem;
+    height: 3.5rem;
     margin-top: .5rem;
 }
 
+.form-emp input[type="submit"]{
+    width: 10rem;
+    text-indent: 0rem;
+}
+.form-emp div{
+   display:inline-flex;
+   align-items:baseline
+}
+
+.divFormEmpre1{
+    display: flex;
+    flex-direction: column;
+
+}
+.divFormEmpre2{
+    display: flex;
+    flex-direction: column;
+
+}
 
 .img-empresa {
     margin-left: 20%;
@@ -612,6 +629,8 @@ footer .copyright {
     margin: auto;
     margin-top: 20rem;
 }
+
+
 
 .btn-emp button {
     display: flex;

@@ -28,7 +28,7 @@ $logo = $_POST['logo'];
 
 
 $dataToUpdate = array(
-    'nombre' => $nombre, 'rubro' => $rubro, 'ciudad' => $ciudad, 'numero' => $numero, 'calle' => $calle, 'telefono' => $telefono, 'whatsapp' => $whatsapp, 'instagram' => $instagram, 'comentarios' => $comentarios, 'logo' => $logo
+    'nombre' => $nombre, 'rubro' => $rubro, 'ciudad' => $ciudad, 'numero' => $numero, 'calle' => $calle, 'telefono' => $telefono, 'whatsapp' => $whatsapp, 'instagram' => $instagram, 'comentario' => $comentario, 'logo' => $logo
 );
 
 echo setDataEmpresa($currentName, $dataToUpdate);

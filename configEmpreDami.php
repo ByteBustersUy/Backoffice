@@ -28,32 +28,46 @@ if (!$isAdmin) {
             echo $profiles;
             ?>
         </div>
-        <h1>CONFIGURACION DE EMPRESA</h1>
+        <h1>GESTIÓN DE EMPRESA</h1>
     </div>
     <div class="container frame">
         <div class="row">
-             <div class="col-8">
+
+
+            <div class="col-8">
                 <div class="forms">
+
                     <div>
                         <form class="form-emp" action="../src/modules/settings/config.php" method="post">
-                            <div class="divFormEmpre1">
                             <input type="text" name="nombre" placeholder="Nombre" required>
                             <input type="text" name="rubro" placeholder="Rubro" required>
                             <input type="text" name="ciudad" placeholder="Ciudad" required>
                             <input type="text" name="numero" placeholder="Numero" required>
                             <input type="text" name="calle" placeholder="Calle" required>
-                            </div>
-                            <div class="divFormEmpre2">
+
+
+                        </form>
+                    </div>
+                    <div>
+
+                        <form class="form-emp" action="../src/modules/settings/config.php" method="post">
                             <input type="text" name="telefono" placeholder="Telefono" required>
                             <input type="text" name="whatsapp" placeholder="Whatsapp" required>
                             <input type="text" name="instagram" placeholder="Instagram" required>
-                            <input type="text" name="comentario" placeholder="Comentario" required>
+                            <input type="text" name="comentarios" placeholder="Comentarios" required>
                             <input type="text" name="logo" placeholder="URL-" required>
-                            </div>      
-                            <input class="empresa" type="submit" value="ENVIAR">
+                            
+
                         </form>
+
                     </div>
+
                 </div>
+
+                <div class="btn-emp">
+                    <button type="submit">APLICAR</button>
+                </div>
+
             </div>
 
 
@@ -61,7 +75,7 @@ if (!$isAdmin) {
                 <div class="data-emp">
                     <img src="../assets/logo-bytebusters.png" alt="Logo de empresa" class="img-empresa">
 
-                    <form class="folrm-emp" action="" method="">
+                    <form class="form-emp" action="" method="">
                         <label type="text" name=""></label>
                         <label type="text" name=""></label>
                         <label type="text" name=""></label>
