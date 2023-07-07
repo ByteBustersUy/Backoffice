@@ -1,18 +1,13 @@
 <?php
-require "../../utils/validators/roles/isAdmin.php";
+require  realpath(dirname(__FILE__))."../../utils/validators/roles/isAdmin.php";
 if (!$isAdmin) {
     header("Location:../../../pages/login.php");
     exit;
 }
 
-require '../../repository/settings/config.repository.php';
+require realpath(dirname(__FILE__)).'../../repository/settings/config.repository.php';
 
-$dataEmpresa = getDataEmpresa();
-
-if (!empty($dataEmpresa)) {
-    $currentName = $dataEmpresa['nombre'];
-}
-
+getDataEmpresa();
 
 $nombre = $_POST['nombre'];
 $rubro = $_POST['rubro'];
@@ -24,18 +19,36 @@ $whatsapp = $_POST['whatsapp'];
 $instagram = $_POST['instagram'];
 $comentario = $_POST['comentario'];
 $logo = $_POST['logo'];
-
+$email = $_POST['email'];
+$passEmail = $_POST['passEmail'];
 
 
 $dataToUpdate = array(
-    'nombre' => $nombre, 'rubro' => $rubro, 'ciudad' => $ciudad, 'numero' => $numero, 'calle' => $calle, 'telefono' => $telefono, 'whatsapp' => $whatsapp, 'instagram' => $instagram, 'comentarios' => $comentarios, 'logo' => $logo
+    'nombre' => $nombre,
+    'rubro' => $rubro,
+    'ciudad' => $ciudad, 
+    'numero' => $numero, 
+    'calle' => $calle, 
+    'telefono' => $telefono, 
+    'whatsapp' => $whatsapp, 
+    'instagram' => $instagram, 
+    'comentarios' => $comentarios, 
+    'logo' => $logo,
+    'email' => $email,
+    'pwd_email' => $passEmail
 );
 
-echo setDataEmpresa($currentName, $dataToUpdate);
+function setDataEmpresa(array $dataToUpdate): bool
+{
+    return saveDataEmpresa($dataToUpdate);
+}
+
+function getDataEmpresa(): array{
+    return findAllDataEmpresa();
+}
 
 
-
-/*$email= $_POST[''];
+/*;
 $passEmail = $_POST[''];
 ,'email'=>$email,'pwd_email'=>$passEmail
 */
