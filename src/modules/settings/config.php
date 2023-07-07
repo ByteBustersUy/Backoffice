@@ -46,9 +46,3 @@ function setDataEmpresa(array $dataToUpdate): bool
 function getDataEmpresa(): array{
     return findAllDataEmpresa();
 }
-
-
-/*;
-$passEmail = $_POST[''];
-,'email'=>$email,'pwd_email'=>$passEmail
-*/

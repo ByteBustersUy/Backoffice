@@ -34,8 +34,3 @@ function saveDataEmpresa(array $dataToUpdate): bool
         die("ERROR SQL in setDataEmpresa(): ".$e->getMessage());
     }
 }
-
-
-/*
-,`email`= '$dataToUpdate[email]',`pwd_email`= '$dataToUpdate[pwd_email]'
-*/
