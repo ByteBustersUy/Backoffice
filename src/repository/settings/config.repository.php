@@ -16,20 +16,20 @@ function saveDataEmpresa(array $dataToUpdate): bool
     try{
     $statement = $con->prepare(
         "UPDATE empresa 
-        SET logo = $dataToUpdate[logo],
-        rubro = $dataToUpdate[rubro],
-        nombre = $dataToUpdate[nombre],
-        calle = $dataToUpdate[calle], 
-        numero = $dataToUpdate[numero], 
-        ciudad = $dataToUpdate[ciudad], 
-        telefono = $dataToUpdate[telefono], 
-        instagram = $dataToUpdate[instagram], 
-        whatsapp = $dataToUpdate[whatsapp],
-        comentarios = $dataToUpdate[comentario],
-        email = $dataToUpdate[email],
-        pwd_email = $dataToUpdate[pwd_email]");
+        SET logo = '$dataToUpdate[logo]',
+        rubro = '$dataToUpdate[rubro]',
+        nombre = '$dataToUpdate[nombre]',
+        calle = '$dataToUpdate[calle]', 
+        numero = '$dataToUpdate[numero]', 
+        ciudad = '$dataToUpdate[ciudad]', 
+        telefono = '$dataToUpdate[telefono]', 
+        instagram = '$dataToUpdate[instagram]', 
+        whatsapp = '$dataToUpdate[whatsapp]',
+        comentarios = '$dataToUpdate[comentario]',
+        email = '$dataToUpdate[email]',
+        pwd_email = '$dataToUpdate[pwd_email]'");
     $res = $statement->execute();
-    return $res;
+    return $res == 1 ? true : false;
     }catch(Exception $e){
         die("ERROR SQL in setDataEmpresa(): ".$e->getMessage());
     }

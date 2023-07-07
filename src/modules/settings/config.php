@@ -20,7 +20,6 @@ $logo = $_POST['logo'];
 $email = $_POST['email'];
 $passEmail = $_POST['pwd_email'];
 
-
 $dataToUpdate = array(
     'nombre' => $nombre,
     'rubro' => $rubro,
@@ -38,12 +37,12 @@ $dataToUpdate = array(
 
 $result = setDataEmpresa($dataToUpdate);
 
-foreach (getDataEmpresa() as $data){
-    echo $data.'<br>';
+if($result == 1){
+    header("Location:../../../pages/config-empresa.php");
 }
 
-
-function getDataEmpresa(): array{
+function getDataEmpresa(): array
+{
     return findAllDataEmpresa();
 }
 

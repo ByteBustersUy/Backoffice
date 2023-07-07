@@ -38,7 +38,7 @@ if (!$isAdmin) {
                         <input type="text" name="nombre" placeholder="Nombre" required>
                         <input type="text" name="rubro" placeholder="Rubro" required>
                         <input type="text" name="ciudad" placeholder="Ciudad" required>
-                        <input type="text" name="numero" placeholder="Numero" required>
+                        <input type="number" name="numero" placeholder="Numero" required>
                         <input type="text" name="calle" placeholder="Calle" required>
                         <input type="text" name="logo" placeholder="Url de logo" required>
                     </div>
@@ -46,7 +46,7 @@ if (!$isAdmin) {
                         <input type="text" name="telefono" placeholder="Telefono" required>
                         <input type="text" name="instagram" placeholder="Instagram" required>
                         <input type="text" name="whatsapp" placeholder="Whatsapp" required>
-                        <input type="text" name="email" placeholder="Email" required>
+                        <input type="emial" name="email" placeholder="Email" required>
                         <input type="text" name="pwd_email" placeholder="contraseña de email" required>
                         <input type="text" name="comentario" placeholder="Comentario" required>
                     </div>
