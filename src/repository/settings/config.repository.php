@@ -29,7 +29,7 @@ function saveDataEmpresa(array $dataToUpdate): bool
         email = '$dataToUpdate[email]',
         pwd_email = '$dataToUpdate[pwd_email]'");
     $res = $statement->execute();
-    return $res == 1 ? true : false;
+    return $res;
     }catch(Exception $e){
         die("ERROR SQL in setDataEmpresa(): ".$e->getMessage());
     }

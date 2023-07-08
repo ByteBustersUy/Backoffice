@@ -79,10 +79,10 @@ if (!$isAdmin) {
                         <tbody class="table-group-divider">
                             <?php
                             require "../src/modules/users/abm-usuarios.php";
-                            $usersData = getUsersData();
+                            $usersData = getAllUsers();
                             $usersList = '';
                             foreach ($usersData as $user) {
-                                $rolesList = findRolesByUserCi($user['ci']);
+                                $rolesList = getUserRoles($user['ci']);
                                 $roles = '| ';
                                 foreach ($rolesList as $rol) {
                                     $roles .= ' ' . $rol . ' |';

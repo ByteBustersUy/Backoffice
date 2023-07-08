@@ -20,7 +20,9 @@ $logo = $_POST['logo'];
 $email = $_POST['email'];
 $passEmail = $_POST['pwd_email'];
 
-$dataToUpdate = array(
+//TODO: hacer validaciones del formulario
+
+$dataToUpdate = [
     'nombre' => $nombre,
     'rubro' => $rubro,
     'ciudad' => $ciudad, 
@@ -33,20 +35,17 @@ $dataToUpdate = array(
     'logo' => $logo,
     'email' => $email,
     'pwd_email' => $passEmail
-);
+];
 
-$result = setDataEmpresa($dataToUpdate);
+$result = saveDataEmpresa($dataToUpdate);
 
 if($result == 1){
     header("Location:../../../pages/config-empresa.php");
+}else{
+    die('Error al guardar en db');
 }
 
-function getDataEmpresa(): array
+function getActionDataEmpresa()
 {
-    return findAllDataEmpresa();
-}
-
-function setDataEmpresa(array $dataToUpdate): bool
-{
-    return saveDataEmpresa($dataToUpdate);
+    return  findAllDataEmpresa();
 }

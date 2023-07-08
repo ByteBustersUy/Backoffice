@@ -60,11 +60,10 @@ if (!$isAdmin) {
             <div class="col-lg-4">
                 <div class="data-emp">
                     <img src="../assets/logo-bytebusters.png" alt="Logo de empresa" class="img-empresa">
-                    <label type="text" name="">asdasd</label>
-                    <label type="text" name="">asdasd</label>
-                    <label type="text" name="">asdasd</label>
-                    <label type="text" name="">adasd</label>
-                    <label type="text" name="">gfdfg</label>
+                    <?php
+                        require "../src/modules/settings/config.php";
+                        
+                    ?>
                 </div>
             </div>
             <hr class="separator">

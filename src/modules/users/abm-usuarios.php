@@ -33,8 +33,15 @@ if ($_POST) {
         die("alguna propiedad del formulario no tiene data. ");
     }
     
-    $newUser = new Usuario($nombre, $apellido, $cedula, $email, $pass, [$rolesId]);
-    saveNewUser($newUser);
+    $newUser = [
+        "nombre" => $nombre,
+        "apellido" => $apellido, 
+        "cedula" => $cedula, 
+        "email" =>$email, 
+        "pass" => $pass, 
+        "rolesId" => [$rolesId]
+    ];
+    saveOneUser($newUser);
     header("Location:../../../pages/abm-usuarios.php");
 }
 
@@ -43,13 +50,12 @@ function hashPass(string $pass): string
     return password_hash($pass, PASSWORD_DEFAULT);
 }
 
-function getUsersData(): array
+function getUserRoles(string $ci): array 
 {
-    return findAllUsers();
+    return findRoles($ci);
 }
 
-function saveNewUser(object $newUser)
+function getAllUsers(): array 
 {
-    require '../../repository/auth/users.repository.php';
-    return saveOneUser($newUser);
+    return findAllUsers();
 }

@@ -25,7 +25,7 @@ function findAllUsers(): array
     }
 }
 
-function findRolesByUserCi(string $ci): array
+function findRoles(string $ci): array
 {
     require realpath(dirname(__FILE__))."/../../db/conexion.php";
     try {
@@ -43,7 +43,7 @@ function findRolesByUserCi(string $ci): array
         }
         return $rolNamesList;
     } catch (Exception $e) {
-        die("ERROR SQL in findRolesByUserCi(): ".$e->getMessage());
+        die("ERROR SQL in findRoles(): ".$e->getMessage());
     }
 }
 
@@ -60,23 +60,16 @@ function findPathByAction(string $action): string
     }
 }
 
-function saveOneUser (object $newUser)
+function saveOneUser (array $newUser)
 {
     require realpath(dirname(__FILE__))."/../../db/conexion.php";
     try {
-        $data = [
-            'nombre' => $newUser->getNombre(),
-            'apellido' => $newUser->getApellido(),
-            'ci' => $newUser->getCedula(),
-            'email' => $newUser->getEmail(),
-            'pass' => $newUser->getPass(),
-        ];
         $statement = $con->prepare("INSERT INTO USUARIOS (nombre,apellido,ci,email,pass) VALUES (:nombre, :apellido, :ci, :email, :pass)");
         $statement->execute($data);
 
         $statement = $con->prepare("INSERT INTO USUARIOS_has_ROLES (USUARIOS_ci,ROLES_id) VALUES (:ci, :rolId)");
-        foreach ($newUser->getRolesIds() as $rolId){
-            $statement->execute(array(':ci' => $newUser->getCedula(), ':rolId' => $rolId)); 
+        foreach ($newUser['rolesId'] as $rolId){
+            $statement->execute(array(':ci' => $newUser['cedula'], ':rolId' => $rolId)); 
         }
     } catch (Exception $e) {
         die("ERROR SQL in saveOneUser(): ".$e->getMessage());
