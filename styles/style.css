@@ -332,11 +332,11 @@ thead tr {
     text-align: center;
 }
 
-.form-abmUsuarios {
+.form-abm {
     margin-top: 5rem;
 }
 
-.form-abmUsuarios input {
+.form-abm input {
     display: flex;
     margin: auto;
     width: 15rem;
@@ -345,7 +345,7 @@ thead tr {
     margin-top: .5rem;
 }
 
-.form-abmUsuarios select {
+.form-abm select {
     display: flex;
     margin: auto;
     width: 15rem;
@@ -353,7 +353,7 @@ thead tr {
     margin-top: .5rem;
 }
 
-.form-abmUsuarios .buttons {
+.form-abm .buttons {
     display: flex;
     margin: 2rem 1rem;
     justify-content: center;
@@ -373,7 +373,7 @@ thead tr {
     border-radius: .3rem;
 }
 
-.form-abmUsuarios .buttons button:hover {
+.form-abm .buttons button:hover {
     filter: brightness(85%);
 }
 
@@ -564,11 +564,11 @@ footer .copyright {
     color: var(--color-4)
 }
 
-.form-abmUsuarios input {
+.form-abm input {
     width: 13rem;
 }
 
-.form-abmUsuarios select {
+.form-abm select {
     width: 13rem;
 }
 

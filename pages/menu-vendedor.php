@@ -33,7 +33,7 @@ if (!$isVendedor) {
         <div class="row">
             <div class="col-lg-4 justify-center">
                 <div class="menu-cards">
-                    <a href="">
+                    <a href="./abm-productos.php">
                         <div>
                             <i class="fa-solid fa-basket-shopping"></i>
                             <h4>GESTIÓN DE PRODUCTOS</h4>

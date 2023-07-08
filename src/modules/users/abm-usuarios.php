@@ -6,8 +6,6 @@ if (!$isAdmin) {
     exit;
 }
 
-require realpath(dirname(__FILE__)) . "/persona.php";
-require realpath(dirname(__FILE__)) . "/usuario.php";
 require realpath(dirname(__FILE__)) . "/../../utils/validators/hasData.php";
 
 if ($_POST) {

@@ -1,14 +1,12 @@
 <?php
-require "../src/utils/validators/roles/isAdmin.php";
-if (!$isAdmin) {
+require "../src/utils/validators/roles/isVendedor.php";
+if (!$isVendedor) {
     header("Location:./login.php");
     exit;
 }
 ?>
-
 <!DOCTYPE html>
-<html lang="es">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,18 +15,17 @@ if (!$isAdmin) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="../styles/style.css">
-    <title>Gestor de usuarios</title>
+    <title>GESTIÓN DE PRODUCTOS</title>
 </head>
-
 <body>
-    <div>
+<div>
         <div class="link-profiles-div">
             <?php
             require "./components/profiles.php";
             echo $profiles;
             ?>
         </div>
-        <h1>GESTIÓN DE USUARIOS</h1>
+        <h1>GESTIÓN DE PRODUCTOS</h1>
     </div>
     <div class="container frame">
         <div class="row">
@@ -59,11 +56,15 @@ if (!$isAdmin) {
                         <option selected hidden value="">Ordenar</option>
                         <option value="az">A-Z</option>
                         <option value="za">Z-A</option>
+                        <option value="mayorPrecio">mayor $</option>
+                        <option value="menorPrecio">menor $</option>
                     </select>
                     <select class="filter-list" name="filter" id="filter">
                         <option selected hidden value="">Filtrar</option>
-                        <option value="admin">Administradores</option>
-                        <option value="vendedor">Vendedores</option>
+                        <option value="muebles">Muebles</option>
+                        <option value="electrodomesticos">Electrodomésticos</option>
+                        <option value="limpieza">Limpieza</option>
+                        <!-- filtrar por categorias  -->
                     </select>
                 </div>
                 <div class="table-frame">
@@ -71,48 +72,21 @@ if (!$isAdmin) {
                         <thead>
                             <tr>
                                 <th scope="col">Nombre</th>
-                                <th scope="col">Cédula</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Roles</th>
+                                <th scope="col">Categoria</th>
                             </tr>
                         </thead>
                         <tbody class="table-group-divider">
-                            <?php
-                            require "../src/modules/users/abm-usuarios.php";
-                            $usersData = getAllUsers();
-                            $usersList = '';
-                            foreach ($usersData as $user) {
-                                $rolesList = getUserRoles($user['ci']);
-                                $roles = '| ';
-                                foreach ($rolesList as $rol) {
-                                    $roles .= ' ' . $rol . ' |';
-                                }
-                                $usersList .= '
-                            <tr>
-                                <td><a href="?ci=' . $user['ci'] . '">' . $user['nombre'] . ' ' . $user['apellido'] . '</a></td>
-                                <td><a href="?ci=' . $user['ci'] . '">' . $user['ci'] . '</a></td>
-                                <td><a href="?ci=' . $user['ci'] . '">' . $user['email'] . '</a></td>
-                                <td><a href="?ci=' . $user['ci'] . '">' . $roles . '</a></td>
-                            </tr>';
-                            }
-                            echo $usersList;
-                            ?>
+                            
                         </tbody>
                     </table>
                 </div>
             </div>
             <div class="col-lg-3">
-                <form class="form-abm" action="../src/modules/users/abm-usuarios.php" method="post">
-                    <input type="text" name="nombre" placeholder="Nombre" required autocomplete="off">
-                    <input type="text" name="apellido" placeholder="Apellido" required autocomplete="off">
-                    <input type="text" name="cedula" placeholder="Cédula de identidad" required autocomplete="off">
-                    <input type="text" name="email" placeholder="Email" required autocomplete="off">
-                    <input type="text" name="contrasenia" placeholder="Contraseña" required autocomplete="off">
-                    <select name="roles" id="roles" required>
-                        <option selected hidden value="">Seleccione un rol</option>
-                        <option value="1">admin</option>
-                        <option value="2">vendedor</option>
-                    </select>
+                <form class="form-abm" action="../src/modules/products/abm-productos.php" method="post">
+                    <input type="text" name="nombre" placeholder="Nombre" rpequired autocomplete="off">
+                    <input type="text" name="descripcion" placeholder="Descripcion de Producto" required autocomplete="off">
+                    <input type="text" name="categoria" placeholder="Categoria" required autocomplete="off">
+                    <input type="text" name="imagen" placeholder="URL Imagen" required autocomplete="off">
                     <div class="buttons">
                         <button type="reset">CANCELAR</button>
                         <button type="submit">ACEPTAR</button>
@@ -127,6 +101,8 @@ if (!$isAdmin) {
     echo $footer;
     ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-</body>
 
+
+    
+</body>
 </html>
