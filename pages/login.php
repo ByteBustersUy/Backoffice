@@ -26,13 +26,6 @@ require "../src/modules/auth/desloguear.php";
         </label>
         <a href="">Olvidaste tu contraseña?</a>
         <input class="btn-submit" type="submit" value="Iniciar sesión" >
-        <?php
-        if (isset($_GET['err'])) {  //TODO: modificar logica
-        ?>
-            <label class='login-msg-error'>Contraseña incorrecta</label>
-        <?php
-        }
-        ?>
     </form>
     <?php
     require "./components/footer.php";

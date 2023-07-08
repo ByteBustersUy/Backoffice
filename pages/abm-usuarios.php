@@ -79,23 +79,7 @@ if (!$isAdmin) {
                         <tbody class="table-group-divider">
                             <?php
                             require "../src/modules/users/abm-usuarios.php";
-                            $usersData = getAllUsers();
-                            $usersList = '';
-                            foreach ($usersData as $user) {
-                                $rolesList = getUserRoles($user['ci']);
-                                $roles = '| ';
-                                foreach ($rolesList as $rol) {
-                                    $roles .= ' ' . $rol . ' |';
-                                }
-                                $usersList .= '
-                            <tr>
-                                <td><a href="?ci=' . $user['ci'] . '">' . $user['nombre'] . ' ' . $user['apellido'] . '</a></td>
-                                <td><a href="?ci=' . $user['ci'] . '">' . $user['ci'] . '</a></td>
-                                <td><a href="?ci=' . $user['ci'] . '">' . $user['email'] . '</a></td>
-                                <td><a href="?ci=' . $user['ci'] . '">' . $roles . '</a></td>
-                            </tr>';
-                            }
-                            echo $usersList;
+                            echo getUsersTableData();
                             ?>
                         </tbody>
                     </table>

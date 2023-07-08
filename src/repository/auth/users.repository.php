@@ -65,11 +65,21 @@ function saveOneUser (array $newUser)
     require realpath(dirname(__FILE__))."/../../db/conexion.php";
     try {
         $statement = $con->prepare("INSERT INTO USUARIOS (nombre,apellido,ci,email,pass) VALUES (:nombre, :apellido, :ci, :email, :pass)");
-        $statement->execute($data);
-
-        $statement = $con->prepare("INSERT INTO USUARIOS_has_ROLES (USUARIOS_ci,ROLES_id) VALUES (:ci, :rolId)");
-        foreach ($newUser['rolesId'] as $rolId){
-            $statement->execute(array(':ci' => $newUser['cedula'], ':rolId' => $rolId)); 
+        $res = $statement->execute([
+            ':nombre' => $newUser['nombre'], 
+            ':apellido' => $newUser['apellido'], 
+            ':ci' => $newUser['cedula'], 
+            ':email' => $newUser['email'], 
+            ':pass' => $newUser['pass']
+        ]);
+        
+        if($res == 1){
+            $statement = $con->prepare("INSERT INTO USUARIOS_has_ROLES (USUARIOS_ci,ROLES_id) VALUES (:ci, :rolId)");
+            foreach ($newUser['rolesId'] as $rolId){
+                $statement->execute(array(':ci' => $newUser['cedula'], ':rolId' => $rolId)); 
+            }
+        }else{
+            die("ERROR: Usuario no agregado");
         }
     } catch (Exception $e) {
         die("ERROR SQL in saveOneUser(): ".$e->getMessage());
