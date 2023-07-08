@@ -1,13 +1,11 @@
 <?php
-require realpath(dirname(__FILE__))."/../../utils/validators/roles/isAdmin.php";
+require realpath(dirname(__FILE__)) . "/../../utils/validators/roles/isAdmin.php";
 
 if (!$isAdmin) {
     header("Location:../../../pages/login.php");
     exit;
 }
 
-require realpath(dirname(__FILE__)) . "/persona.php";
-require realpath(dirname(__FILE__)) . "/usuario.php";
 require realpath(dirname(__FILE__)) . "/../../utils/validators/hasData.php";
 
 if ($_POST) {
@@ -32,9 +30,22 @@ if ($_POST) {
     ) {
         die("alguna propiedad del formulario no tiene data. ");
     }
-    
-    $newUser = new Usuario($nombre, $apellido, $cedula, $email, $pass, [$rolesId]);
-    saveNewUser($newUser);
+
+    $newUser = [
+        "nombre" => $nombre,
+        "apellido" => $apellido,
+        "cedula" => $cedula,
+        "email" => $email,
+        "pass" => $pass,
+        "rolesId" => [$rolesId]
+    ];
+
+    require "../../repository/auth/users.repository.php";
+    $userExist = findOneUser($newUser['cedula']);
+    if ($userExist) {
+        die("ERROR: El usuario que intentas agregar ya existe");
+    }
+    saveOneUser($newUser);
     header("Location:../../../pages/abm-usuarios.php");
 }
 
@@ -43,13 +54,33 @@ function hashPass(string $pass): string
     return password_hash($pass, PASSWORD_DEFAULT);
 }
 
-function getUsersData(): array
+function getUserRoles(string $ci): array
+{
+    return findRoles($ci);
+}
+
+function getAllUsers(): array
 {
     return findAllUsers();
 }
 
-function saveNewUser(object $newUser)
+function getUsersTableData(): string
 {
-    require '../../repository/auth/users.repository.php';
-    return saveOneUser($newUser);
+    $usersData = getAllUsers();
+    $usersList = '';
+    foreach ($usersData as $user) {
+        $rolesList = getUserRoles($user['ci']);
+        $roles = '| ';
+        foreach ($rolesList as $rol) {
+            $roles .= ' ' . $rol . ' |';
+        }
+        $usersList .= '
+                            <tr>
+                                <td><a href="?ci=' . $user['ci'] . '">' . $user['nombre'] . ' ' . $user['apellido'] . '</a></td>
+                                <td><a href="?ci=' . $user['ci'] . '">' . $user['ci'] . '</a></td>
+                                <td><a href="?ci=' . $user['ci'] . '">' . $user['email'] . '</a></td>
+                                <td><a href="?ci=' . $user['ci'] . '">' . $roles . '</a></td>
+                            </tr>';
+    }
+    return $usersList;
 }

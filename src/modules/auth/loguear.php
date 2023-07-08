@@ -18,7 +18,7 @@ $userCi = trim($userCi);
 $pass = htmlspecialchars($pass);
 
 $reg = login($userCi, $pass);
-$roles = getUserRoles($reg['ci']);
+$roles = findRoles($reg['ci']);
 
 if (!hasData($reg['pass'])) {
     //error. no existe contraseña en base de datos
@@ -59,20 +59,13 @@ function login(string $userCi, string $pass): array
         header("Location:../../../index.php");
         exit;
     }
-
     $reg = findOneUser($userCi);
 
     if (!$reg) {
         header("Location:../../../index.php");
         exit;
     }
-
     return $reg;
-}
-
-function getUserRoles(string $ci): array
-{
-    return findRolesByUserCi($ci);
 }
 
 function passVerify(string $pass, string $hashedPass): bool

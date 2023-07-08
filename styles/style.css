@@ -56,8 +56,8 @@ input {
     border: 1px solid var(--color-4);
 }
 
-input:focus::placeholder {
-    font-weight: bold;
+input:focus {
+    border: 2px solid var(--color-3);
 }
 
 select {
@@ -78,12 +78,15 @@ td {
     padding: 0;
 }
 
+a{
+    text-decoration: none;
+}
+
 td a {
     display:block;
     width:100%;
     height: 100%;
     color: var(--color-3);
-    text-decoration: none;
     padding: 0.5rem;
 }
 
@@ -97,7 +100,6 @@ thead tr {
 
 .link-profile{
     width: 5rem;
-    text-decoration: none;
     background-color: var(--color-2);
     font-size: 1rem;
     margin: .5rem 1rem;
@@ -168,7 +170,6 @@ thead tr {
 .form-login a {
     display: flex;
     margin-top: .5rem;
-    text-decoration: none;
     justify-content: center;
     color: var(--secondary-text-color);
 }
@@ -225,7 +226,6 @@ thead tr {
 }
 
 .menu-cards a {
-    text-decoration: none;
     color: var(--primary-text-color);
 }
 
@@ -332,11 +332,11 @@ thead tr {
     text-align: center;
 }
 
-.form-abmUsuarios {
+.form-abm {
     margin-top: 5rem;
 }
 
-.form-abmUsuarios input {
+.form-abm input {
     display: flex;
     margin: auto;
     width: 15rem;
@@ -345,7 +345,7 @@ thead tr {
     margin-top: .5rem;
 }
 
-.form-abmUsuarios select {
+.form-abm select {
     display: flex;
     margin: auto;
     width: 15rem;
@@ -353,7 +353,7 @@ thead tr {
     margin-top: .5rem;
 }
 
-.form-abmUsuarios .buttons {
+.form-abm .buttons {
     display: flex;
     margin: 2rem 1rem;
     justify-content: center;
@@ -373,7 +373,7 @@ thead tr {
     border-radius: .3rem;
 }
 
-.form-abmUsuarios .buttons button:hover {
+.form-abm .buttons button:hover {
     filter: brightness(85%);
 }
 
@@ -564,11 +564,11 @@ footer .copyright {
     color: var(--color-4)
 }
 
-.form-abmUsuarios input {
+.form-abm input {
     width: 13rem;
 }
 
-.form-abmUsuarios select {
+.form-abm select {
     width: 13rem;
 }
 
