@@ -55,7 +55,7 @@ function getDataEmpresa(): string
 
     $labels = '';
     foreach ($dataEmpresa as $data) {
-        $labels .= '<label>'. $data .'</label>';
+        $labels .= '<label>'. $data .'</label><br>';
     }
     return $labels;
 }
