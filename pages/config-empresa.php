@@ -51,7 +51,6 @@ if (!$isAdmin) {
                         <input type="text" name="comentario" placeholder="Comentario" required autocomplete="off">
                     </div>
                     <div class="buttons btn-emp">
-                        <button type="button">APLICAR</button>
                         <button type="submit">ACEPTAR</button>
                         <button type="reset">CANCELAR</button>
                     </div>
@@ -59,9 +58,11 @@ if (!$isAdmin) {
             </div>
             <div class="col-lg-4">
                 <div class="data-emp">
-                    <img src="../assets/logo-bytebusters.png" alt="Logo de empresa" class="img-empresa">
                     <?php
-
+                    require "../src/modules/settings/config.php";
+                    $labels = getDataEmpresa();
+                    echo '<img src="../assets/logo-bytebusters.png" alt="Logo de empresa" class="img-empresa">';
+                    echo $labels;
                     ?>
                 </div>
             </div>

@@ -40,7 +40,7 @@ if ($_POST) {
         "rolesId" => [$rolesId]
     ];
 
-    require "../../repository/auth/users.repository.php";
+    require "../../repository/users.repository.php";
     $userExist = findOneUser($newUser['cedula']);
     if ($userExist) {
         die("ERROR: El usuario que intentas agregar ya existe");

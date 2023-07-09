@@ -47,7 +47,7 @@ function login(string $userCi, string $pass): array
 {
     require '../../utils/validators/isValidPass.php';
     require '../../utils/validators/isValidUserName.php';
-    require '../../repository/auth/users.repository.php';
+    require '../../repository/users.repository.php';
     include '../../utils/messages/msg.php';
 
     if (!isValidUserName($userCi)) {

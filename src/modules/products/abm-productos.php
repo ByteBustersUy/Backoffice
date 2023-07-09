@@ -5,12 +5,12 @@ if (!$isVendedor || !$_POST) {
     exit;
 }
 
-
-
 $nombre = $_POST['nombre'];
 $decripcion = $_POST['descripcion'];
 $categoria = $_POST['categoria'];
 $imagen = $_POST['imagen'];
+
+
 
 
 

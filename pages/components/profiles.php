@@ -1,6 +1,6 @@
 <?php
 require "../src/utils/actions.php";
-require '../src/repository/auth/users.repository.php';
+require '../src/repository/users.repository.php';
 session_status() === PHP_SESSION_ACTIVE ?: session_start();
 
 $profiles = "";
