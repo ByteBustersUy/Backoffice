@@ -52,14 +52,9 @@ function getDataEmpresa(): string
     if (empty($dataEmpresa)) {
         die('Error al cargar datos de empresa');
     }
-    /*$indice = 0;
-    foreach ($dataEmpresa[$indice] as $data) {
-        $labels .= '<label>'. $data .'</label><br>';
-        $indice++;
-    }*/
+
     $labels = '';
-    for ($i=0; $i<12 ; $i++) { 
-        $data=$dataEmpresa[$i];
+    foreach ($dataEmpresa as $data) {
         $labels .= '<label>'. $data .'</label><br>';
     }
     return $labels;
