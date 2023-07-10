@@ -3,9 +3,10 @@ function findAllDataEmpresa(): array
 {   
     require realpath(dirname(__FILE__))."/../db/conexion.php";
     try {
-        $statement = $con->query("SELECT * FROM EMPRESA");
-        $reg = $statement->fetch();
-        return $reg;
+        $statement = $con->prepare("SELECT nombre,rubro,calle,numero,ciudad,telefono,whatsapp,instagram,email,pwd_email,comentarios,logo FROM EMPRESA");
+        $statement->execute();
+        $reg = $statement->fetch(PDO::FETCH_ASSOC);
+        return $reg? $reg : [];
     } catch (Exception $e) {
         die("ERROR SQL in findAllDataEmpresa(): ".$e->getMessage());
     }

@@ -35,12 +35,12 @@ if (!$isAdmin) {
             <div class="col-lg-2 ">
                 <div class="items">
                     <a href="">
-                        <div class="btn-abm">
+                        <div class="btn-abm disabled">
                             <i class="fa-solid fa-square-plus"></i>
                         </div>
                     </a>
                     <a href="">
-                        <div class="btn-abm">
+                        <div class="btn-abm disabled">
                             <i class="fa-solid fa-pen"></i>
                         </div>
                     </a>
@@ -98,8 +98,8 @@ if (!$isAdmin) {
                         <option value="2">vendedor</option>
                     </select>
                     <div class="buttons">
-                        <button type="reset">CANCELAR</button>
                         <button type="submit">ACEPTAR</button>
+                        <button type="reset">CANCELAR</button>
                     </div>
                 </form>
             </div>

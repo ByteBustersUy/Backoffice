@@ -42,7 +42,7 @@ if (!$isVendedor) {
                     </a>
                 </div>
             </div>
-            <div class="col-lg-4 justify-center">
+            <div class="col-lg-4 justify-center disabled">
                 <div class="menu-cards">
                     <a href="">
                         <div>
@@ -53,7 +53,7 @@ if (!$isVendedor) {
                     </a>
                 </div>
             </div>
-            <div class="col-lg-4 justify-center">
+            <div class="col-lg-4 justify-center disabled">
                 <div class="menu-cards">
                     <a href="">
                         <div>

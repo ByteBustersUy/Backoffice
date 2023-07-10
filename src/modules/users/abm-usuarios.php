@@ -54,25 +54,15 @@ function hashPass(string $pass): string
     return password_hash($pass, PASSWORD_DEFAULT);
 }
 
-function getUserRoles(string $ci): array
-{
-    return findRoles($ci);
-}
-
-function getAllUsers(): array
-{
-    return findAllUsers();
-}
-
 function getUsersTableData(): string
 {
-    $usersData = getAllUsers();
+    $usersData = findAllUsers();
     $usersList = '';
     foreach ($usersData as $user) {
-        $rolesList = getUserRoles($user['ci']);
+        $rolesList = findRoles($user['ci']);
         $roles = '| ';
-        foreach ($rolesList as $rol) {
-            $roles .= ' ' . $rol . ' |';
+        foreach ($rolesList as $rol) {  
+                $roles .= ' ' . $rol . ' |';
         }
         $usersList .= '
                             <tr>
