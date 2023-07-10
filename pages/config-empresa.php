@@ -34,25 +34,27 @@ if (!$isAdmin) {
         <div class="row">
             <div class="col-lg-8">
                 <form class="form-emp" action="../src/modules/settings/config.php" method="post">
-                    <div class="div-form-emp">
+                    <div>
                         <input type="text" name="nombre" placeholder="Nombre" autocomplete="off">
                         <input type="text" name="rubro" placeholder="Rubro" autocomplete="off">
                         <input type="text" name="ciudad" placeholder="Ciudad" autocomplete="off">
                         <input type="number" name="numero" placeholder="Numero" autocomplete="off">
                         <input type="text" name="calle" placeholder="Calle" autocomplete="off">
                         <input type="text" name="logo" placeholder="Url de logo" autocomplete="off">
+                        <div class="buttons align-end">
+                            <button class="btn-emp" type="submit">ACEPTAR</button>
+                        </div>
                     </div>
-                    <div class="div-form-emp">
+                    <div>
                         <input type="text" name="telefono" placeholder="Telefono" autocomplete="off">
                         <input type="text" name="instagram" placeholder="Instagram" autocomplete="off">
                         <input type="text" name="whatsapp" placeholder="Whatsapp" autocomplete="off">
                         <input type="emial" name="email" placeholder="Email" autocomplete="off">
                         <input type="text" name="pwd_email" placeholder="contraseña de email" autocomplete="off">
                         <input type="text" name="comentario" placeholder="Comentario" autocomplete="off">
-                    </div>
-                    <div class="buttons btn-emp">
-                        <button type="submit">ACEPTAR</button>
-                        <button type="reset">CANCELAR</button>
+                        <div class="buttons">
+                            <button class="btn-emp" type="reset">CANCELAR</button>
+                        </div>
                     </div>
                 </form>
             </div>

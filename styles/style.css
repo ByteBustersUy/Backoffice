@@ -421,6 +421,10 @@ thead tr {
     justify-content: center;
 }
 
+.align-end {
+    align-items: end;
+}
+
 .border-test {
     border: 1px solid red;
 }
@@ -601,7 +605,7 @@ footer .copyright {
     margin: auto;  
 }
 
-.div-form-emp{
+.form-emp div{
     display: flex;
     flex-direction: column;
 }
@@ -617,7 +621,7 @@ footer .copyright {
 
 .btn-emp{
     margin: .2rem;
-    width: 15rem;
+    width: 10rem;
 }
 
 .data-emp {
