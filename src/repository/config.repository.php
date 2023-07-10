@@ -3,8 +3,9 @@ function findAllDataEmpresa(): array
 {   
     require realpath(dirname(__FILE__))."/../db/conexion.php";
     try {
-        $statement = $con->query("SELECT * FROM EMPRESA");
-        $reg = $statement->fetch();
+        $statement = $con->prepare("SELECT * FROM EMPRESA");
+        $statement->execute();
+        $reg = $statement->fetch(PDO::FETCH_ASSOC);
         return $reg;
     } catch (Exception $e) {
         die("ERROR SQL in findAllDataEmpresa(): ".$e->getMessage());

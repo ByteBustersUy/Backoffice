@@ -71,8 +71,8 @@ function getUsersTableData(): string
     foreach ($usersData as $user) {
         $rolesList = getUserRoles($user['ci']);
         $roles = '| ';
-        foreach ($rolesList as $rol) {
-            $roles .= ' ' . $rol . ' |';
+        foreach ($rolesList as $rol) {  
+                $roles .= ' ' . $rol . ' |';
         }
         $usersList .= '
                             <tr>

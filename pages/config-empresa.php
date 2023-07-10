@@ -35,20 +35,20 @@ if (!$isAdmin) {
             <div class="col-lg-8">
                 <form class="form-emp" action="../src/modules/settings/config.php" method="post">
                     <div class="div-form-emp">
-                        <input type="text" name="nombre" placeholder="Nombre" required autocomplete="off">
-                        <input type="text" name="rubro" placeholder="Rubro" required autocomplete="off">
-                        <input type="text" name="ciudad" placeholder="Ciudad" required autocomplete="off">
-                        <input type="number" name="numero" placeholder="Numero" required autocomplete="off">
-                        <input type="text" name="calle" placeholder="Calle" required autocomplete="off">
-                        <input type="text" name="logo" placeholder="Url de logo" required autocomplete="off">
+                        <input type="text" name="nombre" placeholder="Nombre" autocomplete="off">
+                        <input type="text" name="rubro" placeholder="Rubro" autocomplete="off">
+                        <input type="text" name="ciudad" placeholder="Ciudad" autocomplete="off">
+                        <input type="number" name="numero" placeholder="Numero" autocomplete="off">
+                        <input type="text" name="calle" placeholder="Calle" autocomplete="off">
+                        <input type="text" name="logo" placeholder="Url de logo" autocomplete="off">
                     </div>
                     <div class="div-form-emp">
-                        <input type="text" name="telefono" placeholder="Telefono" required autocomplete="off">
-                        <input type="text" name="instagram" placeholder="Instagram" required autocomplete="off">
-                        <input type="text" name="whatsapp" placeholder="Whatsapp" required autocomplete="off">
-                        <input type="emial" name="email" placeholder="Email" required autocomplete="off">
-                        <input type="text" name="pwd_email" placeholder="contraseña de email" required autocomplete="off">
-                        <input type="text" name="comentario" placeholder="Comentario" required autocomplete="off">
+                        <input type="text" name="telefono" placeholder="Telefono" autocomplete="off">
+                        <input type="text" name="instagram" placeholder="Instagram" autocomplete="off">
+                        <input type="text" name="whatsapp" placeholder="Whatsapp" autocomplete="off">
+                        <input type="emial" name="email" placeholder="Email" autocomplete="off">
+                        <input type="text" name="pwd_email" placeholder="contraseña de email" autocomplete="off">
+                        <input type="text" name="comentario" placeholder="Comentario" autocomplete="off">
                     </div>
                     <div class="buttons btn-emp">
                         <button type="submit">ACEPTAR</button>
@@ -60,7 +60,11 @@ if (!$isAdmin) {
                 <div class="data-emp">
                     <?php
                     require "../src/modules/settings/config.php";
-                    $labels = getDataEmpresa();
+                    $dataEmpresa = getDataEmpresa();
+                    $labels = '';
+                    foreach ($dataEmpresa as $data) {
+                        $labels .= '<label>' . $data . '</label><br>';
+                    }
                     echo '<img src="../assets/logo-bytebusters.png" alt="Logo de empresa" class="img-empresa">';
                     echo $labels;
                     ?>
