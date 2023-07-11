@@ -57,9 +57,9 @@ if (!$isVendedor) {
                 <div class="menu-cards">
                     <a href="">
                         <div>
-                            <i class="fa-solid fa-gears"></i>
-                            <h4>OTRA COSA</h4>
-                            <p>Agregar o editar otra cosa </p>
+                            <i class="fa-solid fa-file-arrow-down"></i>
+                            <h4>DESCARGA DE DOCUMENTOS</h4>
+                            <p>Catálogo de productos e informes de ventas</p>
                         </div>
                     </a>
                 </div>

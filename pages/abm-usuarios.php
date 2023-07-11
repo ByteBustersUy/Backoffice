@@ -35,12 +35,12 @@ if (!$isAdmin) {
             <div class="col-lg-2 ">
                 <div class="items">
                     <a href="">
-                        <div class="btn-abm disabled">
+                        <div class="btn-abm">
                             <i class="fa-solid fa-square-plus"></i>
                         </div>
                     </a>
                     <a href="">
-                        <div class="btn-abm disabled">
+                        <div class="btn-abm">
                             <i class="fa-solid fa-pen"></i>
                         </div>
                     </a>
