@@ -49,6 +49,17 @@ if ($_POST) {
         die('Error al guardar en db');
     }
 }
+
+function getLabelsEmpresaHTML(): string
+{
+    $dataEmpresa = getDataEmpresa();
+    $labelsEmpresa = '';
+    foreach ($dataEmpresa as $data) {
+        $labelsEmpresa .= '<label>' . $data . '</label><br>';
+    }
+    return $labelsEmpresa;
+}
+
 function getDataEmpresa(): array
 {
     $dataEmpresa = findAllDataEmpresa();

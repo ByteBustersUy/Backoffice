@@ -1,6 +1,6 @@
 :root {
     /* ---- COLORS ---- */
-    --bytebusters-color: #1fb300;
+    --bytebusters-color: #6eb300;
     --color-1: #181818;
     --color-2: #5a5a5a3b;
     --color-3: #cecece;
@@ -81,6 +81,7 @@ th {
     background-color: var(--color-2) !important;
     text-indent: .5rem ;
     text-align: center;
+    overflow-y:none;
 }
 
 td {
@@ -256,6 +257,7 @@ thead tr {
 .menu-cards h4 {
     font-family: var(--primary-font-family);
     font-size: 1.3rem;
+    font-weight: 900;
     padding: 0 1.5rem;
     text-align: center;
 }
@@ -276,8 +278,8 @@ thead tr {
     background-color: var(--color-1);
     border-left: 1px solid var(--color-5);
     border-right: 1px solid var(--color-5);
-    overflow-y: scroll;
     overflow-x: none;
+    overflow-y:scroll
 }
 
 .table-options{
@@ -415,11 +417,47 @@ thead tr {
     filter: brightness(85%);
 }
 
-
-
 /*---------CONFIG EMPRESA------*/
 
+.form-emp{
+    display: inline-flex; 
+    margin: auto;  
+}
 
+.form-emp div{
+    display: flex;
+    flex-direction: column;
+}
+
+.form-emp input {
+    display: flex;
+    justify-content: center;
+    margin: .1rem .2rem;
+    min-width: 18rem;
+    height: 3rem;
+    margin-top: .5rem;
+}
+
+.btn-emp{
+    margin: .2rem;
+    width: 10rem;
+}
+
+.data-emp {
+    display: block;
+    justify-content: center;
+    margin: 0;
+    width: 15rem;
+    height: 2.5rem;
+    margin-top: .5rem;
+}
+
+.img-empresa {
+    display: flex;
+    margin: 2rem auto;
+    width: 15rem;
+    height: 10rem;
+}
 
 /* --------- ERRORS --------- */
 .login-msg-error {
@@ -445,6 +483,11 @@ thead tr {
 
 .align-end {
     align-items: end;
+}
+
+.center{
+    display: flex;
+    justify-content: center;
 }
 
 .border-test {
@@ -503,13 +546,7 @@ footer img {
 
 
 
-
-
-
-
-
-
-/* --------- DESKTOP ---------*/
+/* --------- DESKTOP -------------------------------------<<<<<<<<<<<<<<<<<<<------------*/
 @media only screen and (min-width: 992px) {
 
     body {
@@ -527,7 +564,6 @@ footer img {
         min-height: 60vh;
         margin: 5rem auto 0 auto;
         border: 1px solid var(--color-5);
-
     }
 
     .btn-back {
@@ -551,6 +587,8 @@ footer img {
     }
 }
 
+
+
 /* --------- MENU --------- */
 
 .menu-cards {
@@ -566,7 +604,7 @@ footer img {
 }
 
 .menu-cards h4 {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     padding: 0;
 }
 
@@ -620,48 +658,6 @@ footer .copyright {
 }
 
 
-/*---------CONFIG EMPRESA-------------------FALTA EN MOBILE---*/
-
-.form-emp{
-    display: inline-flex; 
-    margin: auto;  
-}
-
-.form-emp div{
-    display: flex;
-    flex-direction: column;
-}
-
-.form-emp input {
-    display: flex;
-    justify-content: center;
-    margin: .1rem .2rem;
-    min-width: 18rem;
-    height: 3rem;
-    margin-top: .5rem;
-}
-
-.btn-emp{
-    margin: .2rem;
-    width: 10rem;
-}
-
-.data-emp {
-    display: block;
-    justify-content: center;
-    margin: 0;
-    width: 15rem;
-    height: 2.5rem;
-    margin-top: .5rem;
-}
-
-.img-empresa {
-    display: flex;
-    margin: 2rem auto;
-    width: 15rem;
-    height: 10rem;
-}
-
 
 /* --------- ERRORS --------- */
 .body-error {
@@ -671,6 +667,8 @@ footer .copyright {
 .body-error img {
     margin: auto;
 }
+
+
 
 /* --------- ANIMATIONS ---------  */
 
