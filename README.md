@@ -4,7 +4,9 @@
 ### 1- Instalar y configurar servidor
 
 ```
-Dentro de la ruta /backoffice/server/` se encuentra un documento con la guía para poder instalar el servidor apache, asi como tambíen el script para poder configurarlo de manera sencilla. 
+Dentro de la ruta /backoffice/server/` se encuentra un documento 
+con la guía para poder instalar el servidor apache, asi como tambíen 
+el script para poder configurarlo de manera sencilla. 
 ```
 
 ### 2- Clonar repositorio de GitHub
@@ -19,9 +21,11 @@ Dentro del directorio /htdocs de Xampp
 ### 3- Crear base de datos 
 
 ``` 
-Dentro de la ruta /backoffice/src/db. se encuentra el archivo (`DDL-DML.sql`) necesario para importarlo en phpMyAdmin.
+Dentro de la ruta /backoffice/src/db. se encuentra el archivo (`DDL-DML.sql`) 
+necesario para importarlo en phpMyAdmin.
 
-Este script crea de manera automática la base de datos, las tablas y algunos datos para poder testear.
+Este script crea de manera automática la base de datos, las tablas y algunos datos
+para poder testear.
 ```
 
 ### 4- Ingresar a la aplicación
