@@ -31,6 +31,14 @@
 
 }
 
+button:hover{
+    filter: brightness(85%);
+}
+
+button:active{
+    filter: brightness(60%);
+    box-shadow: inset 1px 1px var(--color-1) !important;
+}
 
 h1 {
     color: var(--color-3);
@@ -202,11 +210,6 @@ td{
     cursor: pointer;
     color: var(--text-button-color);
     text-align: center !important;
-}
-
-.form-login .btn-submit:hover {
-    border: 1px solid var(--primary-text-color);
-    filter: brightness(85%);
 }
 
 .profile {
@@ -417,10 +420,6 @@ td{
     border: 1px solid var(--color-4);
     text-align: center;
     border-radius: .3rem;
-}
-
-.form-abm .buttons button:hover {
-    filter: brightness(85%);
 }
 
 /*---------CONFIG EMPRESA------*/
