@@ -105,6 +105,7 @@ function saveOneProduct(array $newProduct): bool
 {
     require realpath(dirname(__FILE__)) . "/../db/conexion.php";
     try {
+        $lastProductId = findLastProductId();
         $statement = $con->prepare("INSERT INTO PRODUCTOS (nombre,descripcion,imagen) VALUES (:nombre, :descripcion, :imagen)");
         $res = $statement->execute([
             ':nombre' => $newProduct['nombre'],
@@ -113,19 +114,23 @@ function saveOneProduct(array $newProduct): bool
         ]);
 
         if ($res == 1) {
-            $productId = findLastProductId();
+            $newProductId = findLastProductId();
             try {
                 $statement = $con->prepare("INSERT INTO PRODUCTOS_has_CATEGORIAS (PRODUCTOS_id,CATEGORIAS_id) VALUES (:prodId, :catId)");
                 $statement->execute([
-                    ':prodId' => $productId,
+                    ':prodId' => $newProductId,
                     ':catId' => $newProduct['idCategoria']
                 ]);
                 return true;
             } catch (Exception $e) {
-                $statement = $con->prepare("DELETE FROM PRODUCTOS WHERE id = :id");
-                $statement->execute([
-                    ':id' => $productId
-                ]);
+
+                if ($newProductId > $lastProductId) {
+
+                    $statement = $con->prepare("DELETE FROM PRODUCTOS WHERE id = :id");
+                    $statement->execute([
+                        ':id' => $newProductId
+                    ]);
+                }
                 die("ERROR: No se pudo asignar categoría, por lo que se eliminó el producto agregado");
             }
         } else {
