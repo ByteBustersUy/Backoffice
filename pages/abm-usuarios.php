@@ -76,7 +76,7 @@ if (!$isAdmin) {
                                 <th scope="col">Roles</th>
                             </tr>
                         </thead>
-                        <tbody class="table-group-divider">
+                        <tbody>
                             <?php
                             require "../src/modules/users/abm-usuarios.php";
                             echo getUsersTableDataHTML();
