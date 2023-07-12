@@ -68,7 +68,7 @@ if (!$isAdmin) {
                 </div>
                 <div class="table-frame">
                     <table class="table table-dark table-hover">
-                        <thead>
+                        <thead class="sticky-top">
                             <tr>
                                 <th class="first-in-table" scope="col">Nombre completo</th>
                                 <th scope="col">Cédula</th>
@@ -76,7 +76,7 @@ if (!$isAdmin) {
                                 <th scope="col">Roles</th>
                             </tr>
                         </thead>
-                        <tbody class="table-group-divider">
+                        <tbody>
                             <?php
                             require "../src/modules/users/abm-usuarios.php";
                             echo getUsersTableDataHTML();

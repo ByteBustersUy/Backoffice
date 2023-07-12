@@ -59,7 +59,7 @@ if (!$isVendedor) {
                         <div>
                             <i class="fa-solid fa-file-arrow-down"></i>
                             <h4>DESCARGA DE DOCUMENTOS</h4>
-                            <p>Catálogo de productos e informes de ventas</p>
+                            <p>Catálogo de productos e informe de ventas</p>
                         </div>
                     </a>
                 </div>

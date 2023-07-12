@@ -1,6 +1,6 @@
 :root {
     /* ---- COLORS ---- */
-    --bytebusters-color: #6eb300;
+    --bytebusters-color: #1fb300;
     --color-1: #181818;
     --color-2: #5a5a5a3b;
     --color-3: #cecece;
@@ -11,13 +11,8 @@
     /* ---- BACKGROUNDS ---- */
     --primary-background-color: var(--color-1);
     --secondary-background-color: var(--color-2);
-    --input-background-color: var(--color-3);
+    --background-color-light: var(--color-3);
     --footer-background-color: var(--color-4);
-
-    /* ---- BORDERS ---- */
-    --primary-border: 1px solid var(--bytebusters-color);
-    --secondary-border: 1px solid var(--color-3);
-    --frames-border: 1px solid var(--color-5);
 
     /* ---- TEXT ---- */
     --primary-text-color: var(--color-1);
@@ -25,9 +20,15 @@
     --text-button-color: var(--color-1);
     --error-message-color: var(--color-3);
 
+    /* ---- BORDERS ---- */
+    --primary-border-color: var(--bytebusters-color);
+    --secondary-border-color: var(--color-3);
+
     /* ---- FONTS ---- */
     --font-family-h1: Verdana, Geneva, Tahoma, sans-serif;
-    --primary-font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+    --primary-font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+
 }
 
 
@@ -52,77 +53,83 @@ input {
     outline: none;
     border-radius: .3rem;
     text-indent: .5rem;
-    background-color: var(--color-3);
+    background-color: var(--background-color-light);
     border: 1px solid var(--color-4);
 }
 
 textarea {
-        outline: none;
-        resize: none;
-        border-radius: .3rem;
-        text-indent: .5rem;
-        background-color: var(--color-3);
-        border: 1px solid var(--color-4);
+    outline: none;
+    resize: none;
+    border-radius: .3rem;
+    text-indent: .5rem;
+    background-color: var(--background-color-light);
+    border: 1px solid var(--color-4);
 }
 
 input:focus {
-    border: 2px solid var(--color-3);
+    border: 2px solid var(--secondary-border-color);
 }
 
 select {
     outline: none;
     border-radius: .3rem;
     text-indent: .5rem;
-    background-color: var(--color-3);
+    background-color: var(--background-color-light);
     border: 1px solid var(--color-4);
 }
 
 th {
-    background-color: var(--color-2) !important;
-    text-indent: .5rem ;
+    background-color: var(--primary-background-color) !important;
+    text-indent: .5rem;
     text-align: center;
-    overflow-y:none;
+    overflow-y: none;
+    padding: 1rem 0 !important;
+    border: 1px solid var(--secondary-border-color);
 }
 
 td {
-    background-color: var(--color-1) !important;
+    background-color: var(--primary-background-color) !important;
     padding: 0;
     text-align: center;
+    border: 1px solid var(--secondary-border-color);
 }
 
-
-a{
+a {
     text-decoration: none;
 }
 
 td a {
-    display:block;
-    width:100%;
+    display: block;
+    width: 100%;
     height: 100%;
     color: var(--color-3);
     padding: 0.5rem;
 }
 
-.table>:not(caption)>*>*{
+.table>:not(caption)>*>* {
     padding: 0;
 }
 
 thead tr {
-    height: 3rem;
+    font-size: 1.1rem;
 }
 
-.link-profile{
+td{
+    border-bottom: 1px solid var(--secondary-border-color)
+}
+
+.link-profile {
     width: 5rem;
-    background-color: var(--color-2);
+    background-color: var(--secondary-background-color);
     font-size: 1rem;
     margin: .5rem 1rem;
     color: var(--color-3);
     position: relative;
     justify-content: right;
-    
+
 }
 
-.link-profiles-div{
+.link-profiles-div {
     position: absolute;
     right: 0;
 }
@@ -134,15 +141,15 @@ thead tr {
     margin: 2rem auto 0;
     background-color: var(--secondary-background-color);
     padding: 1rem;
-    border: var(--primary-border);
-    border-radius: 2rem;
+    border: 1.2px solid var(--primary-border-color);
+    border-radius: 1.5rem;
 }
 
 .img-login {
     display: flex;
     width: 10rem;
     margin: 1rem auto 2rem;
-    background-color: var(--color-3);
+    background-color: var(--background-color-light);
     border-radius: 2rem;
     animation: rotate 2s 1;
     filter: drop-shadow(.5rem .4rem .5rem black)
@@ -164,7 +171,7 @@ thead tr {
     height: 2.5rem;
     border: 1px solid;
     border-radius: 5px;
-    background-color: var(--input-background-color);
+    background-color: var(--background-color-light);
     color: var(--primary-text-color);
     font-size: 1.2rem;
     text-indent: .5rem;
@@ -226,7 +233,7 @@ thead tr {
 /* --------- MENU --------- */
 
 .menu-cards {
-    background-color: var(--color-3);
+    background-color: var(--background-color-light);
     height: 15rem;
     min-width: 13rem;
     max-width: 15rem;
@@ -245,13 +252,13 @@ thead tr {
 .menu-cards:hover {
     scale: 106%;
     border: 5px solid var(--bytebusters-color);
-    filter: drop-shadow(4px 4px 4px var(--color-4));
+    filter: drop-shadow(.1rem .1rem .5rem var(--bytebusters-color));
 }
 
 .menu-cards i {
     margin: 3rem auto;
     scale: 400%;
-    color: var(--color-1);
+    color: var(--primary-text-color);
 }
 
 .menu-cards h4 {
@@ -275,14 +282,14 @@ thead tr {
 .table-frame {
     height: 28rem;
     margin: auto;
-    background-color: var(--color-1);
+    background-color: var(--primary-background-color);
     border-left: 1px solid var(--color-5);
     border-right: 1px solid var(--color-5);
     overflow-x: none;
-    overflow-y:scroll
+    overflow-y: scroll;
 }
 
-.table-options{
+.table-options {
     display: flex;
     margin: 2rem 0 1rem 0;
 }
@@ -290,15 +297,14 @@ thead tr {
 .table-options select {
     height: 2rem;
     margin-left: 1rem;
-    margin-right: 1rem;
     text-align: center;
 }
 
-.first-in-table{
+.first-in-table {
     text-align: start;
 }
 
-.btn-eye{
+.btn-eye {
     width: 2rem;
     height: 2rem;
     text-align: center;
@@ -306,32 +312,31 @@ thead tr {
     border: 0;
 }
 
-.btn-eye i{
+.btn-eye i {
     display: flex;
     justify-content: center;
     font-size: 1.2rem;
     color: var(--color-3);
 }
 
-.filter-list{
+.filter-list {
     width: 10rem;
 }
 
-.order-list{
-    width: 6rem;
+.order-list {
+    width: 7rem;
 }
 
 .table-options input {
     width: 14rem;
     height: 2rem;
-    margin-left: 1rem;
 }
 
 .table-options button {
     width: 5rem;
     height: 2rem;
     border: 1px solid var(--color-4);
-    background-color: var(--color-3);
+    background-color: var(--background-color-light);
     border-radius: .3rem;
     margin-left: 1rem;
     margin-right: auto;
@@ -344,14 +349,15 @@ thead tr {
     margin: 1rem .5rem;
     align-items: center;
     justify-content: center;
-    background-color: var(--color-3);
+    background-color: var(--background-color-light);
     border: 3px solid var(--color-4);
     border-radius: .7rem;
 }
 
 .items a:focus .btn-abm {
-    border: 5px solid var(--bytebusters-color);
+    border: 3px solid var(--bytebusters-color);
     scale: 106%;
+    filter: drop-shadow(.1rem .1rem .3rem var(--bytebusters-color));
 }
 
 .btn-abm i {
@@ -407,7 +413,7 @@ thead tr {
     margin: 5rem 1rem 1rem;
     cursor: pointer;
     color: var(--text-button-color);
-    background-color: var(--color-3);
+    background-color: var(--background-color-light);
     border: 1px solid var(--color-4);
     text-align: center;
     border-radius: .3rem;
@@ -419,12 +425,12 @@ thead tr {
 
 /*---------CONFIG EMPRESA------*/
 
-.form-emp{
-    display: inline-flex; 
-    margin: auto;  
+.form-emp {
+    display: inline-flex;
+    margin: auto;
 }
 
-.form-emp div{
+.form-emp div {
     display: flex;
     flex-direction: column;
 }
@@ -438,7 +444,7 @@ thead tr {
     margin-top: .5rem;
 }
 
-.btn-emp{
+.btn-emp {
     margin: .2rem;
     width: 10rem;
 }
@@ -495,7 +501,7 @@ thead tr {
     align-items: end;
 }
 
-.center{
+.center {
     display: flex;
     justify-content: center;
 }
@@ -524,7 +530,7 @@ footer {
     height: 12vh;
     bottom: -1px;
     left: 0;
-    border-top: var(--primary-border);
+    border-top: 1.2px solid var(--primary-border-color);
 }
 
 footer .copyright {
@@ -549,14 +555,18 @@ footer img {
     max-width: 95vw;
 }
 
-.row{
+.row {
     min-height: 60vh
+}
+
+.sticky-top{
+    top: -6px;
 }
 
 
 
 
-/* --------- DESKTOP -------------------------------------<<<<<<<<<<<<<<<<<<<------------*/
+/* --------- DESKTOP ------------------------------------  <<<<<<<<<<<<<<<<<<<  ---------*/
 @media only screen and (min-width: 992px) {
 
     body {
@@ -609,7 +619,7 @@ footer img {
 .menu-cards i {
     margin: 5rem auto;
     margin-bottom: 4rem;
-    color: var(--color-1);
+    color: var(--primary-text-color);
     scale: 500%;
 }
 
@@ -671,7 +681,7 @@ footer .copyright {
 
 /* --------- ERRORS --------- */
 .body-error {
-    background-color: var(--color-1);
+    background-color: var(--primary-background-color);
 }
 
 .body-error img {
