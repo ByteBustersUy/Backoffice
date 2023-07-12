@@ -68,7 +68,7 @@ if (!$isAdmin) {
                 </div>
                 <div class="table-frame">
                     <table class="table table-dark table-hover">
-                        <thead>
+                        <thead class="sticky-top">
                             <tr>
                                 <th class="first-in-table" scope="col">Nombre completo</th>
                                 <th scope="col">Cédula</th>

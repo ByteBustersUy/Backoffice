@@ -94,8 +94,10 @@ if (!$isVendedor) {
                     <input type="text" name="imagen" placeholder="URL Imagen" required autocomplete="off">
                     <select name="categoria" id="categoria" required>
                         <option selected hidden value="">Categoría</option>
-                        <option value="Limpieza">Limpieza</option>
-                        <option value="Papeleria">Papeleria</option>
+                        <?php
+                        $options = getOptionsCategoriesHTML();
+                        echo $options;
+                        ?>
                     </select>
                     <textarea name="descripcion" id="descripcion" placeholder="Descripción" required autocomplete="off"></textarea>
                     <div class="buttons">

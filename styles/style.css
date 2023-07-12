@@ -78,10 +78,11 @@ select {
 }
 
 th {
-    background-color: var(--color-2) !important;
+    background-color: var(--color-4) !important;
     text-indent: .5rem ;
     text-align: center;
-    overflow-y:none;
+    overflow-y: none;
+    padding: .5rem 0 !important;
 }
 
 td {
@@ -89,7 +90,6 @@ td {
     padding: 0;
     text-align: center;
 }
-
 
 a{
     text-decoration: none;
@@ -108,7 +108,7 @@ td a {
 }
 
 thead tr {
-    height: 3rem;
+    font-size: 1.1rem;
 }
 
 .link-profile{
@@ -279,7 +279,7 @@ thead tr {
     border-left: 1px solid var(--color-5);
     border-right: 1px solid var(--color-5);
     overflow-x: none;
-    overflow-y:scroll
+    overflow-y: scroll;
 }
 
 .table-options{
@@ -290,7 +290,6 @@ thead tr {
 .table-options select {
     height: 2rem;
     margin-left: 1rem;
-    margin-right: 1rem;
     text-align: center;
 }
 
@@ -318,13 +317,12 @@ thead tr {
 }
 
 .order-list{
-    width: 6rem;
+    width: 7rem;
 }
 
 .table-options input {
     width: 14rem;
     height: 2rem;
-    margin-left: 1rem;
 }
 
 .table-options button {
