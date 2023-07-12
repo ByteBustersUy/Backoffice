@@ -444,13 +444,23 @@ thead tr {
 }
 
 .data-emp {
-    display: block;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     margin: 0;
-    width: 15rem;
-    height: 2.5rem;
-    margin-top: .5rem;
+    width: 14rem;
+    height: 0.5rem;
+    margin-top: 13.5rem;
+    margin-left: 5rem;
 }
+.data-label{
+    display: flex;
+    margin-bottom: 2px;
+    border-bottom: 1px solid white;
+    font-family: h1;
+    color: white;
+}
+
 
 .img-empresa {
     display: flex;
