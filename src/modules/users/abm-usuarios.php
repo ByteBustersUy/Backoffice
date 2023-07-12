@@ -54,7 +54,7 @@ function hashPass(string $pass): string
     return password_hash($pass, PASSWORD_DEFAULT);
 }
 
-function getUsersTableData(): string
+function getUsersTableDataHTML(): string
 {
     $usersData = findAllUsers();
     $usersList = '';
@@ -65,8 +65,8 @@ function getUsersTableData(): string
                 $roles .= ' ' . $rol . ' |';
         }
         $usersList .= '
-                            <tr>
-                                <td><a href="?ci=' . $user['ci'] . '">' . $user['nombre'] . ' ' . $user['apellido'] . '</a></td>
+                            <tr">
+                                <td class="first-in-table"><a href="?ci=' . $user['ci'] . '">' . $user['nombre'] . ' ' . $user['apellido'] . '</a></td>
                                 <td><a href="?ci=' . $user['ci'] . '">' . $user['ci'] . '</a></td>
                                 <td><a href="?ci=' . $user['ci'] . '">' . $user['email'] . '</a></td>
                                 <td><a href="?ci=' . $user['ci'] . '">' . $roles . '</a></td>

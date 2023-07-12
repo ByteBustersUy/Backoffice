@@ -34,12 +34,12 @@ if (!$isVendedor) {
             <div class="col-lg-2 ">
                 <div class="items">
                     <a href="">
-                        <div class="btn-abm disabled">
+                        <div class="btn-abm">
                             <i class="fa-solid fa-square-plus"></i>
                         </div>
                     </a>
                     <a href="">
-                        <div class="btn-abm disabled">
+                        <div class="btn-abm">
                             <i class="fa-solid fa-pen"></i>
                         </div>
                     </a>
@@ -72,10 +72,11 @@ if (!$isVendedor) {
                     <table class="table table-dark table-hover">
                         <thead>
                             <tr>
-                                <th scope="col">Nombre</th>
+                                <th class="first-in-table" scope="col">Nombre del producto</th>
                                 <th scope="col">Categoría</th>
-                                <th scope="col">Nombre Imágen</th>
-                                <th scope="col">Promocionado</th>
+                                <th scope="col">Imágen</th>
+                                <th scope="col">Promo</th>
+                                <th scope="col">Detalle</th>
                             </tr>
                         </thead>
                         <tbody class="table-group-divider">
@@ -93,8 +94,10 @@ if (!$isVendedor) {
                     <input type="text" name="imagen" placeholder="URL Imagen" required autocomplete="off">
                     <select name="categoria" id="categoria" required>
                         <option selected hidden value="">Categoría</option>
-                        <option value="1">muebles</option>
-                        <option value="2">cocina</option>
+                        <?php
+                        $options = getOptionsCategoriesHTML();
+                        echo $options;
+                        ?>
                     </select>
                     <textarea name="descripcion" id="descripcion" placeholder="Descripción" required autocomplete="off"></textarea>
                     <div class="buttons">

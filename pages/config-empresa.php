@@ -32,7 +32,7 @@ if (!$isAdmin) {
     </div>
     <div class="container frame">
         <div class="row">
-            <div class="col-lg-8">
+            <div class="col-lg-8 center">
                 <form class="form-emp" action="../src/modules/settings/config.php" method="post">
                     <div>
                         <input type="text" name="nombre" placeholder="Nombre" autocomplete="off">
@@ -60,15 +60,10 @@ if (!$isAdmin) {
             </div>
             <div class="col-lg-4">
                 <div class="data-emp">
+                    <img src="../assets/logo-bytebusters.png" alt="Logo de empresa" class="img-empresa">
                     <?php
                     require "../src/modules/settings/config.php";
-                    $dataEmpresa = getDataEmpresa();
-                    $labels = '';
-                    foreach ($dataEmpresa as $data) {
-                        $labels .= '<label>' . $data . '</label><br>';
-                    }
-                    echo '<img src="../assets/logo-bytebusters.png" alt="Logo de empresa" class="img-empresa">';
-                    echo $labels;
+                    echo getLabelsEmpresaHTML();
                     ?>
                 </div>
             </div>

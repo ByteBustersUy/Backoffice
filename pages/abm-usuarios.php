@@ -35,12 +35,12 @@ if (!$isAdmin) {
             <div class="col-lg-2 ">
                 <div class="items">
                     <a href="">
-                        <div class="btn-abm disabled">
+                        <div class="btn-abm">
                             <i class="fa-solid fa-square-plus"></i>
                         </div>
                     </a>
                     <a href="">
-                        <div class="btn-abm disabled">
+                        <div class="btn-abm">
                             <i class="fa-solid fa-pen"></i>
                         </div>
                     </a>
@@ -68,9 +68,9 @@ if (!$isAdmin) {
                 </div>
                 <div class="table-frame">
                     <table class="table table-dark table-hover">
-                        <thead>
+                        <thead class="sticky-top">
                             <tr>
-                                <th scope="col">Nombre</th>
+                                <th class="first-in-table" scope="col">Nombre completo</th>
                                 <th scope="col">Cédula</th>
                                 <th scope="col">Email</th>
                                 <th scope="col">Roles</th>
@@ -79,7 +79,7 @@ if (!$isAdmin) {
                         <tbody class="table-group-divider">
                             <?php
                             require "../src/modules/users/abm-usuarios.php";
-                            echo getUsersTableData();
+                            echo getUsersTableDataHTML();
                             ?>
                         </tbody>
                     </table>
@@ -97,6 +97,14 @@ if (!$isAdmin) {
                         <option value="1">admin</option>
                         <option value="2">vendedor</option>
                     </select>
+                    <!-- <div>
+                        <label>Admin
+                        <input type="checkbox" name="check-admin" id="check-admin" value="1" required>
+                        </label>
+                        <label>Vendedor
+                        <input type="checkbox" name="check-vendedor" id="check-vendedor" value="2" required>
+                        </label>
+                    </div> -->
                     <div class="buttons">
                         <button type="submit">ACEPTAR</button>
                         <button type="reset">CANCELAR</button>

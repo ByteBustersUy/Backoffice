@@ -78,13 +78,17 @@ select {
 }
 
 th {
-    background-color: var(--color-2) !important;
+    background-color: var(--color-4) !important;
     text-indent: .5rem ;
+    text-align: center;
+    overflow-y: none;
+    padding: .5rem 0 !important;
 }
 
 td {
     background-color: var(--color-1) !important;
     padding: 0;
+    text-align: center;
 }
 
 a{
@@ -104,7 +108,7 @@ td a {
 }
 
 thead tr {
-    height: 3rem;
+    font-size: 1.1rem;
 }
 
 .link-profile{
@@ -253,6 +257,7 @@ thead tr {
 .menu-cards h4 {
     font-family: var(--primary-font-family);
     font-size: 1.3rem;
+    font-weight: 900;
     padding: 0 1.5rem;
     text-align: center;
 }
@@ -273,8 +278,8 @@ thead tr {
     background-color: var(--color-1);
     border-left: 1px solid var(--color-5);
     border-right: 1px solid var(--color-5);
-    overflow-y: scroll;
     overflow-x: none;
+    overflow-y: scroll;
 }
 
 .table-options{
@@ -285,8 +290,26 @@ thead tr {
 .table-options select {
     height: 2rem;
     margin-left: 1rem;
-    margin-right: 1rem;
     text-align: center;
+}
+
+.first-in-table{
+    text-align: start;
+}
+
+.btn-eye{
+    width: 2rem;
+    height: 2rem;
+    text-align: center;
+    background-color: var(--transparent-color);
+    border: 0;
+}
+
+.btn-eye i{
+    display: flex;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: var(--color-3);
 }
 
 .filter-list{
@@ -294,13 +317,12 @@ thead tr {
 }
 
 .order-list{
-    width: 6rem;
+    width: 7rem;
 }
 
 .table-options input {
     width: 14rem;
     height: 2rem;
-    margin-left: 1rem;
 }
 
 .table-options button {
@@ -393,11 +415,47 @@ thead tr {
     filter: brightness(85%);
 }
 
-
-
 /*---------CONFIG EMPRESA------*/
 
+.form-emp{
+    display: inline-flex; 
+    margin: auto;  
+}
 
+.form-emp div{
+    display: flex;
+    flex-direction: column;
+}
+
+.form-emp input {
+    display: flex;
+    justify-content: center;
+    margin: .1rem .2rem;
+    min-width: 18rem;
+    height: 3rem;
+    margin-top: .5rem;
+}
+
+.btn-emp{
+    margin: .2rem;
+    width: 10rem;
+}
+
+.data-emp {
+    display: block;
+    justify-content: center;
+    margin: 0;
+    width: 15rem;
+    height: 2.5rem;
+    margin-top: .5rem;
+}
+
+.img-empresa {
+    display: flex;
+    margin: 2rem auto;
+    width: 15rem;
+    height: 10rem;
+}
 
 /* --------- ERRORS --------- */
 .login-msg-error {
@@ -425,6 +483,11 @@ thead tr {
     align-items: end;
 }
 
+.center{
+    display: flex;
+    justify-content: center;
+}
+
 .border-test {
     border: 1px solid red;
 }
@@ -436,7 +499,7 @@ thead tr {
 
 .disabled {
     filter: brightness(30%);
-    cursor: not-allowed;
+    z-index: -10;
 }
 
 
@@ -481,13 +544,7 @@ footer img {
 
 
 
-
-
-
-
-
-
-/* --------- DESKTOP ---------*/
+/* --------- DESKTOP -------------------------------------<<<<<<<<<<<<<<<<<<<------------*/
 @media only screen and (min-width: 992px) {
 
     body {
@@ -505,7 +562,6 @@ footer img {
         min-height: 60vh;
         margin: 5rem auto 0 auto;
         border: 1px solid var(--color-5);
-
     }
 
     .btn-back {
@@ -529,6 +585,8 @@ footer img {
     }
 }
 
+
+
 /* --------- MENU --------- */
 
 .menu-cards {
@@ -544,7 +602,7 @@ footer img {
 }
 
 .menu-cards h4 {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     padding: 0;
 }
 
@@ -598,48 +656,6 @@ footer .copyright {
 }
 
 
-/*---------CONFIG EMPRESA-------------------FALTA EN MOBILE---*/
-
-.form-emp{
-    display: inline-flex; 
-    margin: auto;  
-}
-
-.form-emp div{
-    display: flex;
-    flex-direction: column;
-}
-
-.form-emp input {
-    display: flex;
-    justify-content: center;
-    margin: .1rem .2rem;
-    min-width: 18rem;
-    height: 3rem;
-    margin-top: .5rem;
-}
-
-.btn-emp{
-    margin: .2rem;
-    width: 10rem;
-}
-
-.data-emp {
-    display: block;
-    justify-content: center;
-    margin: 0;
-    width: 15rem;
-    height: 2.5rem;
-    margin-top: .5rem;
-}
-
-.img-empresa {
-    display: flex;
-    margin: 2rem auto;
-    width: 15rem;
-    height: 10rem;
-}
-
 
 /* --------- ERRORS --------- */
 .body-error {
@@ -649,6 +665,8 @@ footer .copyright {
 .body-error img {
     margin: auto;
 }
+
+
 
 /* --------- ANIMATIONS ---------  */
 

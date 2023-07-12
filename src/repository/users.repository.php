@@ -19,7 +19,7 @@ function findAllUsers(): array
     try {
         $res = $con->query("SELECT * FROM USUARIOS ORDER BY nombre ASC");
         $reg = $res->fetchAll(PDO::FETCH_ASSOC);
-        return $reg;
+        return $reg? $reg : [];
     } catch (Exception $e) {
         die("ERROR SQL in findAllUsers(): ".$e->getMessage());
     }
@@ -54,7 +54,7 @@ function findPathByAction(string $action): string
         $statement = $con->prepare("SELECT * FROM RUTAS WHERE accion = :accion");
         $statement->execute(array(':accion' => $action));
         $reg = $statement->fetch(PDO::FETCH_ASSOC);
-        return $reg['ruta'];
+        return $reg['ruta'] ? $reg['ruta'] : '';
     } catch (Exception $e) {
         die("ERROR SQL in findPathByAction(): ".$e->getMessage());
     }
