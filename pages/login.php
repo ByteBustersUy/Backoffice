@@ -1,5 +1,10 @@
 <?php
 require "../src/modules/auth/desloguear.php";
+try{
+    require "../src/db/conexion.php";
+}catch (Exception $e){
+    die("Error: " . $e->getMessage());
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">

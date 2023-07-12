@@ -40,7 +40,7 @@ if ($_POST) {
         "rolesId" => [$rolesId]
     ];
 
-    require "../../repository/auth/users.repository.php";
+    require "../../repository/users.repository.php";
     $userExist = findOneUser($newUser['cedula']);
     if ($userExist) {
         die("ERROR: El usuario que intentas agregar ya existe");
@@ -54,29 +54,19 @@ function hashPass(string $pass): string
     return password_hash($pass, PASSWORD_DEFAULT);
 }
 
-function getUserRoles(string $ci): array
+function getUsersTableDataHTML(): string
 {
-    return findRoles($ci);
-}
-
-function getAllUsers(): array
-{
-    return findAllUsers();
-}
-
-function getUsersTableData(): string
-{
-    $usersData = getAllUsers();
+    $usersData = findAllUsers();
     $usersList = '';
     foreach ($usersData as $user) {
-        $rolesList = getUserRoles($user['ci']);
+        $rolesList = findRoles($user['ci']);
         $roles = '| ';
-        foreach ($rolesList as $rol) {
-            $roles .= ' ' . $rol . ' |';
+        foreach ($rolesList as $rol) {  
+                $roles .= ' ' . $rol . ' |';
         }
         $usersList .= '
-                            <tr>
-                                <td><a href="?ci=' . $user['ci'] . '">' . $user['nombre'] . ' ' . $user['apellido'] . '</a></td>
+                            <tr">
+                                <td class="first-in-table"><a href="?ci=' . $user['ci'] . '">' . $user['nombre'] . ' ' . $user['apellido'] . '</a></td>
                                 <td><a href="?ci=' . $user['ci'] . '">' . $user['ci'] . '</a></td>
                                 <td><a href="?ci=' . $user['ci'] . '">' . $user['email'] . '</a></td>
                                 <td><a href="?ci=' . $user['ci'] . '">' . $roles . '</a></td>

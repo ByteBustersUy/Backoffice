@@ -2,11 +2,11 @@
 
 function findOneUser(string $ci): array
 {
-    require realpath(dirname(__FILE__))."/../../db/conexion.php";
+    require realpath(dirname(__FILE__))."/../db/conexion.php";
     try {
         $statement = $con->prepare("SELECT * FROM USUARIOS WHERE ci = :ci");
         $statement->execute(array(':ci' => $ci));
-        $reg = $statement->fetch();
+        $reg = $statement->fetch(PDO::FETCH_ASSOC);
         return $reg ? $reg : [];
     } catch (Exception $e) {
         die("ERROR SQL in findOneUser(): ".$e->getMessage());
@@ -15,11 +15,11 @@ function findOneUser(string $ci): array
 
 function findAllUsers(): array
 {
-    require realpath(dirname(__FILE__))."/../../db/conexion.php";
+    require realpath(dirname(__FILE__))."/../db/conexion.php";
     try {
         $res = $con->query("SELECT * FROM USUARIOS ORDER BY nombre ASC");
-        $reg = $res->fetchAll();
-        return $reg;
+        $reg = $res->fetchAll(PDO::FETCH_ASSOC);
+        return $reg? $reg : [];
     } catch (Exception $e) {
         die("ERROR SQL in findAllUsers(): ".$e->getMessage());
     }
@@ -27,7 +27,7 @@ function findAllUsers(): array
 
 function findRoles(string $ci): array
 {
-    require realpath(dirname(__FILE__))."/../../db/conexion.php";
+    require realpath(dirname(__FILE__))."/../db/conexion.php";
     try {
         $statement = $con->prepare("SELECT nombreRol
                             FROM USUARIOS_has_ROLES ur
@@ -36,7 +36,7 @@ function findRoles(string $ci): array
         $statement->execute(array(':ci' => $ci));
 
         $rolNamesList = [];
-        while ($reg = $statement->fetch()) {
+        while ($reg = $statement->fetch(PDO::FETCH_ASSOC)) {
             if ($reg) {
                 array_push($rolNamesList, $reg['nombreRol']);
             }
@@ -49,12 +49,12 @@ function findRoles(string $ci): array
 
 function findPathByAction(string $action): string
 {
-    require realpath(dirname(__FILE__))."/../../db/conexion.php";
+    require realpath(dirname(__FILE__))."/../db/conexion.php";
     try {
         $statement = $con->prepare("SELECT * FROM RUTAS WHERE accion = :accion");
         $statement->execute(array(':accion' => $action));
-        $reg = $statement->fetch();
-        return $reg['ruta'];
+        $reg = $statement->fetch(PDO::FETCH_ASSOC);
+        return $reg['ruta'] ? $reg['ruta'] : '';
     } catch (Exception $e) {
         die("ERROR SQL in findPathByAction(): ".$e->getMessage());
     }
@@ -62,7 +62,7 @@ function findPathByAction(string $action): string
 
 function saveOneUser (array $newUser)
 {
-    require realpath(dirname(__FILE__))."/../../db/conexion.php";
+    require realpath(dirname(__FILE__))."/../db/conexion.php";
     try {
         $statement = $con->prepare("INSERT INTO USUARIOS (nombre,apellido,ci,email,pass) VALUES (:nombre, :apellido, :ci, :email, :pass)");
         $res = $statement->execute([

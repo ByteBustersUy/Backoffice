@@ -42,7 +42,7 @@ if (!$isVendedor) {
                     </a>
                 </div>
             </div>
-            <div class="col-lg-4 justify-center">
+            <div class="col-lg-4 justify-center disabled">
                 <div class="menu-cards">
                     <a href="">
                         <div>
@@ -53,13 +53,13 @@ if (!$isVendedor) {
                     </a>
                 </div>
             </div>
-            <div class="col-lg-4 justify-center">
+            <div class="col-lg-4 justify-center disabled">
                 <div class="menu-cards">
                     <a href="">
                         <div>
-                            <i class="fa-solid fa-gears"></i>
-                            <h4>OTRA COSA</h4>
-                            <p>Agregar o editar otra cosa </p>
+                            <i class="fa-solid fa-file-arrow-down"></i>
+                            <h4>DESCARGA DE DOCUMENTOS</h4>
+                            <p>Catálogo de productos e informe de ventas</p>
                         </div>
                     </a>
                 </div>

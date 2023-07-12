@@ -7,6 +7,7 @@ if (!$isVendedor) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,8 +18,9 @@ if (!$isVendedor) {
     <link rel="stylesheet" href="../styles/style.css">
     <title>GESTIÓN DE PRODUCTOS</title>
 </head>
+
 <body>
-<div>
+    <div>
         <div class="link-profiles-div">
             <?php
             require "./components/profiles.php";
@@ -61,22 +63,27 @@ if (!$isVendedor) {
                     </select>
                     <select class="filter-list" name="filter" id="filter">
                         <option selected hidden value="">Filtrar</option>
-                        <option value="muebles">Muebles</option>
-                        <option value="electrodomesticos">Electrodomésticos</option>
-                        <option value="limpieza">Limpieza</option>
+                        <option value="promocionado">Promocionado</option>
+                        <option value="noPromocionado">No Promocionado</option>
                         <!-- filtrar por categorias  -->
                     </select>
                 </div>
                 <div class="table-frame">
                     <table class="table table-dark table-hover">
-                        <thead>
+                        <thead class="sticky-top">
                             <tr>
-                                <th scope="col">Nombre</th>
-                                <th scope="col">Categoria</th>
+                                <th class="first-in-table" scope="col">Nombre del producto</th>
+                                <th scope="col">Categoría</th>
+                                <th scope="col">Imágen</th>
+                                <th scope="col">Promo</th>
+                                <th scope="col">Detalle</th>
                             </tr>
                         </thead>
-                        <tbody class="table-group-divider">
-                            
+                        <tbody>
+                            <?php
+                                require "../src/modules/products/abm-productos.php";
+                                echo getProductsTableData();
+                            ?>
                         </tbody>
                     </table>
                 </div>
@@ -84,12 +91,18 @@ if (!$isVendedor) {
             <div class="col-lg-3">
                 <form class="form-abm" action="../src/modules/products/abm-productos.php" method="post">
                     <input type="text" name="nombre" placeholder="Nombre" rpequired autocomplete="off">
-                    <input type="text" name="descripcion" placeholder="Descripcion de Producto" required autocomplete="off">
-                    <input type="text" name="categoria" placeholder="Categoria" required autocomplete="off">
                     <input type="text" name="imagen" placeholder="URL Imagen" required autocomplete="off">
+                    <select name="categoria" id="categoria" required>
+                        <option selected hidden value="">Categoría</option>
+                        <?php
+                        $options = getOptionsCategoriesHTML();
+                        echo $options;
+                        ?>
+                    </select>
+                    <textarea name="descripcion" id="descripcion" placeholder="Descripción" required autocomplete="off"></textarea>
                     <div class="buttons">
-                        <button type="reset">CANCELAR</button>
                         <button type="submit">ACEPTAR</button>
+                        <button type="reset">CANCELAR</button>
                     </div>
                 </form>
             </div>
@@ -103,6 +116,7 @@ if (!$isVendedor) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 
 
-    
+
 </body>
+
 </html>
