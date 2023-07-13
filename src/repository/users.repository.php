@@ -79,7 +79,7 @@ function saveOneUser (array $newUser)
                 $statement->execute(array(':ci' => $newUser['cedula'], ':rolId' => $rolId)); 
             }
         }else{
-            die("ERROR: Usuario no agregado");
+            die("ERROR: Usuario no agregado, intente nuevamente");
         }
     } catch (Exception $e) {
         die("ERROR SQL in saveOneUser(): ".$e->getMessage());

@@ -88,6 +88,10 @@ select {
     border: 1px solid var(--color-4);
 }
 
+select option:hover {
+  background-color: red;
+}
+
 th {
     background-color: var(--primary-background-color) !important;
     text-indent: .5rem;
@@ -381,6 +385,14 @@ td{
     margin-top: 5rem;
 }
 
+.form-abm input {
+    display: flex;
+    margin: auto;
+    min-width: 15rem;
+    height: 2.5rem;
+    margin-top: .5rem !important;
+}
+
 .form-abm textarea {
     display: flex;
     margin: auto;
@@ -389,13 +401,6 @@ td{
     margin-top: .5rem;
 }
 
-.form-abm input {
-    display: flex;
-    margin: auto;
-    min-width: 15rem;
-    height: 2.5rem;
-    margin-top: .5rem;
-}
 
 .form-abm select {
     display: flex;
@@ -405,11 +410,37 @@ td{
     margin-top: .5rem;
 }
 
+.chkbox-labels{
+    display: flex;
+    margin: auto;
+    margin-top: 1rem;
+    width: fit-content;
+    color: var(--light-text-color);
+}
+
+.form-abm .chkbox-roles{
+    margin-top: 0 !important;
+    height: 1.5rem;
+    width: 1.5rem ;
+    min-width: 5rem;
+    appearance: none;
+}
+
+.chkbox-roles:checked {
+    background-color: var(--bytebusters-color);
+    filter: drop-shadow(.1rem .1rem .3rem var(--bytebusters-color));
+    border: none;
+  }
+
 .form-abm .buttons {
     display: flex;
     margin: 2rem 1rem;
     justify-content: center;
     margin-top: 2rem;
+}
+
+.form-abm .chkbox-div{
+    width: 9rem;
 }
 
 .buttons button {
@@ -455,17 +486,9 @@ td{
     display: grid;
     margin: auto;
     max-width: 32rem;
-    /* display: flex; */
-    /* flex-direction: column;
-    justify-content: center; */
-    /* height: 0.5rem;
-    margin-top: 13.5rem;
-    margin-left: 5rem; */
 }
 
 .data-label{
-    /* display: flex; */
-    /* font-family: h1; */
     margin-bottom: 2px;
     border-bottom: 1px solid var(--secondary-border-color);
     color: var(--light-text-color);
@@ -675,9 +698,11 @@ footer .copyright {
     width: 13rem;
 }
 
+
 .form-abm select {
     width: 13rem;
 }
+
 
 
 /* --------- EMPRESA ---------  {*/

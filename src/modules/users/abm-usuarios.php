@@ -15,7 +15,14 @@ if ($_POST) {
         $cedula = $_POST['cedula'];
         $email = $_POST['email'];
         $pass = hashPass($_POST['contrasenia']);
-        $rolesId = $_POST['roles'];
+
+        $rolesId = [];
+        if (isset($_POST['check-admin'])) {
+            array_push($rolesId, $_POST['check-admin']);
+        }
+        if (isset($_POST['check-vendedor'])) {
+            array_push($rolesId, $_POST['check-vendedor']);
+        }
     } catch (Exception $e) {
         throw new ErrorException("Error al procesar datos de formulario. >>" . $e->getMessage());
     }
@@ -37,7 +44,7 @@ if ($_POST) {
         "cedula" => $cedula,
         "email" => $email,
         "pass" => $pass,
-        "rolesId" => [$rolesId]
+        "rolesId" => $rolesId
     ];
 
     require "../../repository/users.repository.php";
@@ -61,8 +68,8 @@ function getUsersTableDataHTML(): string
     foreach ($usersData as $user) {
         $rolesList = findRoles($user['ci']);
         $roles = '| ';
-        foreach ($rolesList as $rol) {  
-                $roles .= ' ' . $rol . ' |';
+        foreach ($rolesList as $rol) {
+            $roles .= ' ' . $rol . ' |';
         }
         $usersList .= '
                             <tr">

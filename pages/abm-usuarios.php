@@ -92,19 +92,16 @@ if (!$isAdmin) {
                     <input type="text" name="cedula" placeholder="Cédula de identidad" required autocomplete="off">
                     <input type="text" name="email" placeholder="Email" required autocomplete="off">
                     <input type="text" name="contrasenia" placeholder="Contraseña" required autocomplete="off">
-                    <select name="roles" id="roles" required>
-                        <option selected hidden value="">Seleccione un rol</option>
-                        <option value="1">admin</option>
-                        <option value="2">vendedor</option>
-                    </select>
-                    <!-- <div>
-                        <label>Admin
-                        <input type="checkbox" name="check-admin" id="check-admin" value="1" required>
-                        </label>
-                        <label>Vendedor
-                        <input type="checkbox" name="check-vendedor" id="check-vendedor" value="2" required>
-                        </label>
-                    </div> -->
+                    <div class="d-flex center">
+                        <div class="chkbox-div">
+                            <label class="chkbox-labels" for="check-admin">Administrador</label>
+                            <input class="chkbox-roles" type="checkbox" name="check-admin" id="check-admin" value="1">
+                        </div>
+                        <div class="chkbox-div">
+                            <label class="chkbox-labels" for="check-vendedor">Vendedor</label>
+                            <input class="chkbox-roles" type="checkbox" name="check-vendedor" id="check-vendedor" value="2">
+                        </div>
+                    </div>
                     <div class="buttons">
                         <button type="submit">ACEPTAR</button>
                         <button type="reset">CANCELAR</button>
