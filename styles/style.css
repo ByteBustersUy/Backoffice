@@ -11,25 +11,36 @@
     /* ---- BACKGROUNDS ---- */
     --primary-background-color: var(--color-1);
     --secondary-background-color: var(--color-2);
-    --input-background-color: var(--color-3);
+    --background-color-light: var(--color-3);
     --footer-background-color: var(--color-4);
-
-    /* ---- BORDERS ---- */
-    --primary-border: 1px solid var(--bytebusters-color);
-    --secondary-border: 1px solid var(--color-3);
-    --frames-border: 1px solid var(--color-5);
+    
+    /* ---- BUTTONS ---- */
+    --pressed-button: var(--color-2);
 
     /* ---- TEXT ---- */
     --primary-text-color: var(--color-1);
     --secondary-text-color: var(--color-5);
     --text-button-color: var(--color-1);
-    --error-message-color: var(--color-3);
+    --light-text-color: var(--color-3);
+
+    /* ---- BORDERS ---- */
+    --primary-border-color: var(--bytebusters-color);
+    --secondary-border-color: var(--color-3);
 
     /* ---- FONTS ---- */
     --font-family-h1: Verdana, Geneva, Tahoma, sans-serif;
-    --primary-font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+    --primary-font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
 }
 
+button:hover{
+    filter: brightness(85%);
+}
+
+button:active{
+    filter: brightness(60%);
+    box-shadow: inset 1px 1px var(--color-1) !important;
+}
 
 h1 {
     color: var(--color-3);
@@ -52,58 +63,64 @@ input {
     outline: none;
     border-radius: .3rem;
     text-indent: .5rem;
-    background-color: var(--color-3);
+    background-color: var(--background-color-light);
     border: 1px solid var(--color-4);
 }
 
 textarea {
-        outline: none;
-        resize: none;
-        border-radius: .3rem;
-        text-indent: .5rem;
-        background-color: var(--color-3);
-        border: 1px solid var(--color-4);
+    outline: none;
+    resize: none;
+    border-radius: .3rem;
+    text-indent: .5rem;
+    background-color: var(--background-color-light);
+    border: 1px solid var(--color-4);
 }
 
 input:focus {
-    border: 2px solid var(--color-3);
+    border: 2px solid var(--secondary-border-color);
 }
 
 select {
     outline: none;
     border-radius: .3rem;
     text-indent: .5rem;
-    background-color: var(--color-3);
+    background-color: var(--background-color-light);
     border: 1px solid var(--color-4);
 }
 
+select option:hover {
+  background-color: red;
+}
+
 th {
-    background-color: var(--color-4) !important;
-    text-indent: .5rem ;
+    background-color: var(--primary-background-color) !important;
+    text-indent: .5rem;
     text-align: center;
     overflow-y: none;
-    padding: .5rem 0 !important;
+    padding: 1rem 0 !important;
+    border: 1px solid var(--secondary-border-color);
 }
 
 td {
-    background-color: var(--color-1) !important;
+    background-color: var(--primary-background-color) !important;
     padding: 0;
     text-align: center;
+    border: 1px solid var(--secondary-border-color);
 }
 
-a{
+a {
     text-decoration: none;
 }
 
 td a {
-    display:block;
-    width:100%;
+    display: block;
+    width: 100%;
     height: 100%;
     color: var(--color-3);
     padding: 0.5rem;
 }
 
-.table>:not(caption)>*>*{
+.table>:not(caption)>*>* {
     padding: 0;
 }
 
@@ -111,18 +128,22 @@ thead tr {
     font-size: 1.1rem;
 }
 
-.link-profile{
+td{
+    border-bottom: 1px solid var(--secondary-border-color)
+}
+
+.link-profile {
     width: 5rem;
-    background-color: var(--color-2);
+    background-color: var(--secondary-background-color);
     font-size: 1rem;
     margin: .5rem 1rem;
     color: var(--color-3);
     position: relative;
     justify-content: right;
-    
+
 }
 
-.link-profiles-div{
+.link-profiles-div {
     position: absolute;
     right: 0;
 }
@@ -134,15 +155,15 @@ thead tr {
     margin: 2rem auto 0;
     background-color: var(--secondary-background-color);
     padding: 1rem;
-    border: var(--primary-border);
-    border-radius: 2rem;
+    border: 1.2px solid var(--primary-border-color);
+    border-radius: 1.5rem;
 }
 
 .img-login {
     display: flex;
     width: 10rem;
     margin: 1rem auto 2rem;
-    background-color: var(--color-3);
+    background-color: var(--background-color-light);
     border-radius: 2rem;
     animation: rotate 2s 1;
     filter: drop-shadow(.5rem .4rem .5rem black)
@@ -164,7 +185,7 @@ thead tr {
     height: 2.5rem;
     border: 1px solid;
     border-radius: 5px;
-    background-color: var(--input-background-color);
+    background-color: var(--background-color-light);
     color: var(--primary-text-color);
     font-size: 1.2rem;
     text-indent: .5rem;
@@ -197,11 +218,6 @@ thead tr {
     text-align: center !important;
 }
 
-.form-login .btn-submit:hover {
-    border: 1px solid var(--primary-text-color);
-    filter: brightness(85%);
-}
-
 .profile {
     position: absolute;
     display: flex;
@@ -226,7 +242,7 @@ thead tr {
 /* --------- MENU --------- */
 
 .menu-cards {
-    background-color: var(--color-3);
+    background-color: var(--background-color-light);
     height: 15rem;
     min-width: 13rem;
     max-width: 15rem;
@@ -245,13 +261,13 @@ thead tr {
 .menu-cards:hover {
     scale: 106%;
     border: 5px solid var(--bytebusters-color);
-    filter: drop-shadow(4px 4px 4px var(--color-4));
+    filter: drop-shadow(.1rem .1rem .5rem var(--bytebusters-color));
 }
 
 .menu-cards i {
     margin: 3rem auto;
     scale: 400%;
-    color: var(--color-1);
+    color: var(--primary-text-color);
 }
 
 .menu-cards h4 {
@@ -275,14 +291,14 @@ thead tr {
 .table-frame {
     height: 28rem;
     margin: auto;
-    background-color: var(--color-1);
+    background-color: var(--primary-background-color);
     border-left: 1px solid var(--color-5);
     border-right: 1px solid var(--color-5);
     overflow-x: none;
     overflow-y: scroll;
 }
 
-.table-options{
+.table-options {
     display: flex;
     margin: 2rem 0 1rem 0;
 }
@@ -293,30 +309,31 @@ thead tr {
     text-align: center;
 }
 
-.first-in-table{
+.first-in-table {
     text-align: start;
 }
 
-.btn-eye{
+.btn-eye {
     width: 2rem;
     height: 2rem;
     text-align: center;
     background-color: var(--transparent-color);
     border: 0;
+    border-radius: 10rem;
 }
 
-.btn-eye i{
+.btn-eye i {
     display: flex;
     justify-content: center;
     font-size: 1.2rem;
     color: var(--color-3);
 }
 
-.filter-list{
+.filter-list {
     width: 10rem;
 }
 
-.order-list{
+.order-list {
     width: 7rem;
 }
 
@@ -329,7 +346,7 @@ thead tr {
     width: 5rem;
     height: 2rem;
     border: 1px solid var(--color-4);
-    background-color: var(--color-3);
+    background-color: var(--background-color-light);
     border-radius: .3rem;
     margin-left: 1rem;
     margin-right: auto;
@@ -342,14 +359,15 @@ thead tr {
     margin: 1rem .5rem;
     align-items: center;
     justify-content: center;
-    background-color: var(--color-3);
+    background-color: var(--background-color-light);
     border: 3px solid var(--color-4);
     border-radius: .7rem;
 }
 
 .items a:focus .btn-abm {
-    border: 5px solid var(--bytebusters-color);
+    border: 3px solid var(--bytebusters-color);
     scale: 106%;
+    filter: drop-shadow(.1rem .1rem .3rem var(--bytebusters-color));
 }
 
 .btn-abm i {
@@ -367,6 +385,14 @@ thead tr {
     margin-top: 5rem;
 }
 
+.form-abm input {
+    display: flex;
+    margin: auto;
+    min-width: 15rem;
+    height: 2.5rem;
+    margin-top: .5rem !important;
+}
+
 .form-abm textarea {
     display: flex;
     margin: auto;
@@ -375,13 +401,6 @@ thead tr {
     margin-top: .5rem;
 }
 
-.form-abm input {
-    display: flex;
-    margin: auto;
-    min-width: 15rem;
-    height: 2.5rem;
-    margin-top: .5rem;
-}
 
 .form-abm select {
     display: flex;
@@ -391,6 +410,28 @@ thead tr {
     margin-top: .5rem;
 }
 
+.chkbox-labels{
+    display: flex;
+    margin: auto;
+    margin-top: 1rem;
+    width: fit-content;
+    color: var(--light-text-color);
+}
+
+.form-abm .chkbox-roles{
+    margin-top: 0 !important;
+    height: 1.5rem;
+    width: 1.5rem ;
+    min-width: 5rem;
+    appearance: none;
+}
+
+.chkbox-roles:checked {
+    background-color: var(--bytebusters-color);
+    filter: drop-shadow(.1rem .1rem .3rem var(--bytebusters-color));
+    border: none;
+  }
+
 .form-abm .buttons {
     display: flex;
     margin: 2rem 1rem;
@@ -398,31 +439,31 @@ thead tr {
     margin-top: 2rem;
 }
 
+.form-abm .chkbox-div{
+    width: 9rem;
+}
+
 .buttons button {
     width: 8rem;
     height: 2rem;
     text-indent: 0;
-    margin: 5rem 1rem 1rem;
+    margin: 2rem 1rem 1rem;
     cursor: pointer;
     color: var(--text-button-color);
-    background-color: var(--color-3);
+    background-color: var(--background-color-light);
     border: 1px solid var(--color-4);
     text-align: center;
     border-radius: .3rem;
 }
 
-.form-abm .buttons button:hover {
-    filter: brightness(85%);
-}
-
 /*---------CONFIG EMPRESA------*/
 
-.form-emp{
-    display: inline-flex; 
-    margin: auto;  
+.form-emp {
+    display: inline-flex;
+    margin: auto;
 }
 
-.form-emp div{
+.form-emp div {
     display: flex;
     flex-direction: column;
 }
@@ -431,35 +472,41 @@ thead tr {
     display: flex;
     justify-content: center;
     margin: .1rem .2rem;
-    min-width: 18rem;
-    height: 3rem;
+    min-width: 15rem;
+    height: 2.6rem;
     margin-top: .5rem;
 }
 
-.btn-emp{
+.btn-emp {
     margin: .2rem;
     width: 10rem;
 }
 
 .data-emp {
-    display: block;
-    justify-content: center;
-    margin: 0;
-    width: 15rem;
-    height: 2.5rem;
-    margin-top: .5rem;
+    display: grid;
+    margin: auto;
+    max-width: 32rem;
 }
+
+.data-label{
+    margin-bottom: 2px;
+    border-bottom: 1px solid var(--secondary-border-color);
+    color: var(--light-text-color);
+}
+
 
 .img-empresa {
     display: flex;
-    margin: 2rem auto;
-    width: 15rem;
-    height: 10rem;
+    margin: auto;
+    margin-top: 5rem;
+    width: 30rem;
+    min-width: 20rem;
+    height: 20rem;
 }
 
 /* --------- ERRORS --------- */
 .login-msg-error {
-    color: var(--error-message-color);
+    color: var(--light-text-color);
     display: flex;
     width: 15rem;
     height: 2rem;
@@ -483,7 +530,7 @@ thead tr {
     align-items: end;
 }
 
-.center{
+.center {
     display: flex;
     justify-content: center;
 }
@@ -493,8 +540,8 @@ thead tr {
 }
 
 .separator {
-    margin-bottom: 8rem;
-    opacity: 0;
+    margin-bottom: 15rem;
+    visibility: hidden ;
 }
 
 .disabled {
@@ -512,7 +559,7 @@ footer {
     height: 12vh;
     bottom: -1px;
     left: 0;
-    border-top: var(--primary-border);
+    border-top: 1.2px solid var(--primary-border-color);
 }
 
 footer .copyright {
@@ -537,14 +584,18 @@ footer img {
     max-width: 95vw;
 }
 
-.row{
+.row {
     min-height: 60vh
+}
+
+.sticky-top{
+    top: -6px;
 }
 
 
 
 
-/* --------- DESKTOP -------------------------------------<<<<<<<<<<<<<<<<<<<------------*/
+/* --------- DESKTOP ------------------------------------  <<<<<<<<<<<<<<<<<<<  ---------*/
 @media only screen and (min-width: 992px) {
 
     body {
@@ -583,8 +634,6 @@ footer img {
     .profile {
         width: 8rem;
     }
-}
-
 
 
 /* --------- MENU --------- */
@@ -597,7 +646,7 @@ footer img {
 .menu-cards i {
     margin: 5rem auto;
     margin-bottom: 4rem;
-    color: var(--color-1);
+    color: var(--primary-text-color);
     scale: 500%;
 }
 
@@ -613,7 +662,7 @@ footer img {
 }
 
 .separator {
-    display: none;
+    margin: 0;
 }
 
 footer {
@@ -628,8 +677,6 @@ footer img {
 footer .copyright {
     font-size: .8rem;
 }
-
-
 
 /* --------- ABM USUARIOS --------- */
 
@@ -651,22 +698,30 @@ footer .copyright {
     width: 13rem;
 }
 
+
 .form-abm select {
     width: 13rem;
 }
 
 
 
+/* --------- EMPRESA ---------  {*/
+.img-empresa{
+    margin-top: 0;
+    width: 14rem;
+    height: 10rem;
+}
+
 /* --------- ERRORS --------- */
 .body-error {
-    background-color: var(--color-1);
+    background-color: var(--primary-background-color);
 }
 
 .body-error img {
     margin: auto;
 }
 
-
+}
 
 /* --------- ANIMATIONS ---------  */
 

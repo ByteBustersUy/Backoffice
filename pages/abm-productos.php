@@ -70,7 +70,7 @@ if (!$isVendedor) {
                 </div>
                 <div class="table-frame">
                     <table class="table table-dark table-hover">
-                        <thead>
+                        <thead class="sticky-top">
                             <tr>
                                 <th class="first-in-table" scope="col">Nombre del producto</th>
                                 <th scope="col">Categoría</th>
@@ -79,7 +79,7 @@ if (!$isVendedor) {
                                 <th scope="col">Detalle</th>
                             </tr>
                         </thead>
-                        <tbody class="table-group-divider">
+                        <tbody>
                             <?php
                                 require "../src/modules/products/abm-productos.php";
                                 echo getProductsTableData();

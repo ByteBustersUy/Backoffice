@@ -32,33 +32,33 @@ if (!$isAdmin) {
     </div>
     <div class="container frame">
         <div class="row">
-            <div class="col-lg-8 center">
+            <div class="col-lg-6 center">
                 <form class="form-emp" action="../src/modules/settings/config.php" method="post">
                     <div>
                         <input type="text" name="nombre" placeholder="Nombre" autocomplete="off">
                         <input type="text" name="rubro" placeholder="Rubro" autocomplete="off">
-                        <input type="text" name="ciudad" placeholder="Ciudad" autocomplete="off">
-                        <input type="number" name="numero" placeholder="Numero" autocomplete="off">
                         <input type="text" name="calle" placeholder="Calle" autocomplete="off">
-                        <input type="text" name="logo" placeholder="Url de logo" autocomplete="off">
+                        <input type="number" name="numero" placeholder="Numero" autocomplete="off">
+                        <input type="text" name="ciudad" placeholder="Ciudad" autocomplete="off">
+                        <input type="text" name="telefono" placeholder="Telefono" autocomplete="off">
                         <div class="buttons align-end">
                             <button class="btn-emp" type="submit">ACEPTAR</button>
                         </div>
                     </div>
                     <div>
-                        <input type="text" name="telefono" placeholder="Telefono" autocomplete="off">
                         <input type="text" name="instagram" placeholder="Instagram" autocomplete="off">
                         <input type="text" name="whatsapp" placeholder="Whatsapp" autocomplete="off">
                         <input type="emial" name="email" placeholder="Email" autocomplete="off">
                         <input type="text" name="pwd_email" placeholder="contraseña de email" autocomplete="off">
                         <input type="text" name="comentario" placeholder="Comentario" autocomplete="off">
+                        <input type="text" name="logo" placeholder="Url de logo" autocomplete="off">
                         <div class="buttons">
                             <button class="btn-emp" type="reset">CANCELAR</button>
                         </div>
                     </div>
                 </form>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-6">
                 <div class="data-emp">
                     <img src="../assets/logo-bytebusters.png" alt="Logo de empresa" class="img-empresa">
                     <?php
