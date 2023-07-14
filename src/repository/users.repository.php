@@ -63,6 +63,7 @@ function findPathByAction(string $action): string
 function saveOneUser (array $newUser)
 {
     require realpath(dirname(__FILE__))."/../db/conexion.php";
+    require realpath(dirname(__FILE__))."/../utils/messages/msg.php";
     try {
         $statement = $con->prepare("INSERT INTO USUARIOS (nombre,apellido,ci,email,pass) VALUES (:nombre, :apellido, :ci, :email, :pass)");
         $res = $statement->execute([
@@ -79,7 +80,7 @@ function saveOneUser (array $newUser)
                 $statement->execute(array(':ci' => $newUser['cedula'], ':rolId' => $rolId)); 
             }
         }else{
-            die("ERROR: Usuario no agregado, intente nuevamente");
+            die("ERROR: ".$error_messages['!user_add']);
         }
     } catch (Exception $e) {
         die("ERROR SQL in saveOneUser(): ".$e->getMessage());

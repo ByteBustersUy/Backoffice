@@ -90,7 +90,7 @@ if (!$isVendedor) {
             </div>
             <div class="col-lg-3">
                 <form class="form-abm" action="../src/modules/products/abm-productos.php" method="post">
-                    <input type="text" name="nombre" placeholder="Nombre" rpequired autocomplete="off">
+                    <input type="text" name="nombre" placeholder="Nombre" required autocomplete="off">
                     <input type="text" name="imagen" placeholder="URL Imagen" required autocomplete="off">
                     <select name="categoria" id="categoria" required>
                         <option selected hidden value="">Categoría</option>

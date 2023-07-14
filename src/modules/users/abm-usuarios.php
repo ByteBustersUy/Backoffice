@@ -1,12 +1,12 @@
 <?php
 require realpath(dirname(__FILE__)) . "/../../utils/validators/roles/isAdmin.php";
+require realpath(dirname(__FILE__)) . "/../../utils/validators/hasData.php";
+require realpath(dirname(__FILE__)) . "/../../utils/messages/msg.php";
 
 if (!$isAdmin) {
     header("Location:../../../pages/login.php");
     exit;
 }
-
-require realpath(dirname(__FILE__)) . "/../../utils/validators/hasData.php";
 
 if ($_POST) {
     try {
@@ -15,8 +15,8 @@ if ($_POST) {
         $cedula = $_POST['cedula'];
         $email = $_POST['email'];
         $pass = hashPass($_POST['contrasenia']);
-
         $rolesId = [];
+
         if (isset($_POST['check-admin'])) {
             array_push($rolesId, $_POST['check-admin']);
         }
@@ -24,7 +24,7 @@ if ($_POST) {
             array_push($rolesId, $_POST['check-vendedor']);
         }
     } catch (Exception $e) {
-        throw new ErrorException("Error al procesar datos de formulario. >>" . $e->getMessage());
+        throw new ErrorException($e->getMessage());
     }
 
     if (
@@ -35,7 +35,7 @@ if ($_POST) {
         !hasData($pass) ||
         !hasData($rolesId)
     ) {
-        die("alguna propiedad del formulario no tiene data. ");
+        die("ERROR: ".$error_messages['!form_data']);
     }
 
     $newUser = [
@@ -50,7 +50,7 @@ if ($_POST) {
     require "../../repository/users.repository.php";
     $userExist = findOneUser($newUser['cedula']);
     if ($userExist) {
-        die("ERROR: El usuario que intentas agregar ya existe");
+        die("ERROR: ".$error_messages['exist_user'].". ('".$userExist['ci']."')");
     }
     saveOneUser($newUser);
     header("Location:../../../pages/abm-usuarios.php");

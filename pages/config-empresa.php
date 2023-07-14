@@ -60,7 +60,7 @@ if (!$isAdmin) {
             </div>
             <div class="col-lg-6">
                 <div class="data-emp">
-                    <img src="../assets/logo-bytebusters.png" alt="Logo de empresa" class="img-empresa">
+                    <img src="../assets/logo-empresa.png" alt="Logo de empresa" class="img-empresa">
                     <?php
                     require "../src/modules/settings/config.php";
                     echo getLabelsEmpresaHTML();
