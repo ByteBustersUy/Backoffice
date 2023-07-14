@@ -20,6 +20,7 @@ $pass = htmlspecialchars($pass);
 $reg = login($userCi, $pass);
 $roles = findRoles($reg['ci']);
 
+
 $hashedPass = $reg['pass'];
 
 if (passVerify($pass, $hashedPass)) {
@@ -31,7 +32,7 @@ if (passVerify($pass, $hashedPass)) {
     if (!hasData($_SESSION['userRolesName'])) {
         //error. usuario no tiene rol asignado
     }
-}else{
+} else {
     session_destroy();
 }
 
@@ -68,4 +69,3 @@ function passVerify(string $pass, string $hashedPass): bool
 {
     return password_verify($pass, $hashedPass);
 }
-

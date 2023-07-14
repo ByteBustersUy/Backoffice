@@ -19,5 +19,3 @@ $error_messages = [
 $success_messages = [
    //TODO:
 ];
-
-?>

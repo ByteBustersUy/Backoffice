@@ -81,8 +81,8 @@ if (!$isVendedor) {
                         </thead>
                         <tbody>
                             <?php
-                                require "../src/modules/products/abm-productos.php";
-                                echo getProductsTableData();
+                            require "../src/modules/products/abm-productos.php";
+                            echo getProductsTableData();
                             ?>
                         </tbody>
                     </table>

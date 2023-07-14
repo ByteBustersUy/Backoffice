@@ -1,13 +1,14 @@
 <?php
 require "../src/modules/auth/desloguear.php";
-try{
+try {
     require "../src/db/conexion.php";
-}catch (Exception $e){
+} catch (Exception $e) {
     die("Error: " . $e->getMessage());
 }
 ?>
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -30,7 +31,7 @@ try{
             <input type="password" name="pass" placeholder="Contraseña" required autocomplete="off">
         </label>
         <a href="">Olvidaste tu contraseña?</a>
-        <input class="btn-submit" type="submit" value="Iniciar sesión" >
+        <input class="btn-submit" type="submit" value="Iniciar sesión">
     </form>
     <?php
     require "./components/footer.php";

@@ -63,7 +63,7 @@ function getLabelsEmpresaHTML(): string
 function getDataEmpresa(): array
 {
     require realpath(dirname(__FILE__)) . '/../../utils/messages/msg.php';
-    
+
     $dataEmpresa = findAllDataEmpresa();
     return $dataEmpresa ? $dataEmpresa : die("Error: " . $error_messages['!data_empresa']);
 }

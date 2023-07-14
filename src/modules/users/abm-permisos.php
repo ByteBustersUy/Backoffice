@@ -4,5 +4,3 @@ if (!$isAdmin || !$_POST) {
     header("Location:../../../pages/login.php");
     exit;
 }
-
-?>
