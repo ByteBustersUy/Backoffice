@@ -62,7 +62,3 @@ function getOptionsCategoriesHTML(): string {
     }
     return $options;
 }
-
-
-
-?>

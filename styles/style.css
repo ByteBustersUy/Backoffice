@@ -13,7 +13,7 @@
     --secondary-background-color: var(--color-2);
     --background-color-light: var(--color-3);
     --footer-background-color: var(--color-4);
-    
+
     /* ---- BUTTONS ---- */
     --pressed-button: var(--color-2);
 
@@ -33,11 +33,11 @@
 
 }
 
-button:hover{
+button:hover {
     filter: brightness(85%);
 }
 
-button:active{
+button:active {
     filter: brightness(60%);
     box-shadow: inset 1px 1px var(--color-1) !important;
 }
@@ -56,7 +56,7 @@ h1 {
     text-align: center;
     padding-top: 3rem;
     padding-bottom: 3rem;
-    filter: drop-shadow(.2rem .2rem .5rem var(--light-text-color));
+    filter: drop-shadow(1px 1px .4rem var(--light-text-color));
 }
 
 html {
@@ -128,7 +128,7 @@ thead tr {
     font-size: 1.1rem;
 }
 
-td{
+td {
     border-bottom: 1px solid var(--secondary-border-color)
 }
 
@@ -408,7 +408,7 @@ td{
     margin-top: .5rem;
 }
 
-.chkbox-labels{
+.chkbox-labels {
     display: flex;
     margin: auto;
     margin-top: 1rem;
@@ -416,11 +416,11 @@ td{
     color: var(--light-text-color);
 }
 
-.form-abm .chkbox-roles{
+.form-abm .chkbox-roles {
     appearance: none;
     margin-top: 0 !important;
     height: 1.5rem;
-    width: 1.5rem ;
+    width: 1.5rem;
     min-width: 5rem;
 }
 
@@ -437,7 +437,7 @@ td{
     margin-top: 2rem;
 }
 
-.form-abm .chkbox-div{
+.form-abm .chkbox-div {
     width: 9rem;
 }
 
@@ -493,14 +493,14 @@ td{
     max-width: 32rem;
 }
 
-.data-emp img{
+.data-emp img {
     margin: 1rem auto;
     border: .5rem ridge var(--secondary-border-color);
     box-shadow: inset .1rem .1rem var(--color-5);
     filter: drop-shadow(.1rem .1rem .1rem var(--color-5));
 }
 
-.data-label{
+.data-label {
     margin-bottom: 2px;
     color: var(--light-text-color);
     border-bottom: 1px solid var(--secondary-border-color);
@@ -553,7 +553,7 @@ td{
 
 .separator {
     margin-bottom: 15rem;
-    visibility: hidden ;
+    visibility: hidden;
 }
 
 .disabled {
@@ -600,14 +600,14 @@ footer img {
     min-height: 60vh
 }
 
-.sticky-top{
+.sticky-top {
     top: -6px;
 }
 
 
 
 
-/* --------- DESKTOP ------------------------------------  <<<<<<<<<<<<<<<<<<<  ---------*/
+/* --------- DESKTOP -------- */
 @media only screen and (min-width: 992px) {
 
     body {
@@ -647,90 +647,90 @@ footer img {
     }
 
 
-/* --------- MENU --------- */
+    /* --------- MENU --------- */
 
-.menu-cards {
-    margin: 7rem auto;
-    height: 20rem;
-}
+    .menu-cards {
+        margin: 7rem auto;
+        height: 20rem;
+    }
 
-.menu-cards i {
-    margin: 5rem auto;
-    margin-bottom: 4rem;
-    color: var(--primary-text-color);
-    scale: 500%;
-}
+    .menu-cards i {
+        margin: 5rem auto;
+        margin-bottom: 4rem;
+        color: var(--primary-text-color);
+        scale: 500%;
+    }
 
-.menu-cards h4 {
-    font-size: 1.6rem;
-    padding: 0;
-}
+    .menu-cards h4 {
+        font-size: 1.6rem;
+        padding: 0;
+    }
 
-.menu-cards p {
-    font-size: .9rem;
-    padding: 0 2rem;
-    margin-top: 1rem;
-}
+    .menu-cards p {
+        font-size: .9rem;
+        padding: 0 2rem;
+        margin-top: 1rem;
+    }
 
-.separator {
-    margin: 0;
-}
+    .separator {
+        margin: 0;
+    }
 
-footer {
-    position: fixed;
-}
+    footer {
+        position: fixed;
+    }
 
-footer img {
-    margin: .5rem;
-    scale: 120%;
-}
+    footer img {
+        margin: .5rem;
+        scale: 120%;
+    }
 
-footer .copyright {
-    font-size: .8rem;
-}
+    footer .copyright {
+        font-size: .8rem;
+    }
 
-/* --------- ABM USUARIOS --------- */
+    /* --------- ABM USUARIOS --------- */
 
-.btn-abm {
-    margin: 2rem;
-}
+    .btn-abm {
+        margin: 2rem;
+    }
 
-.items {
-    margin: 2rem auto;
-    text-align: center;
-}
+    .items {
+        margin: 2rem auto;
+        text-align: center;
+    }
 
-.btn-abm i {
-    scale: 300%;
-    color: var(--color-4)
-}
+    .btn-abm i {
+        scale: 300%;
+        color: var(--color-4)
+    }
 
-.form-abm input {
-    width: 13rem;
-}
-
-
-.form-abm select {
-    width: 13rem;
-}
+    .form-abm input {
+        width: 13rem;
+    }
 
 
+    .form-abm select {
+        width: 13rem;
+    }
 
-/* --------- EMPRESA ---------  {*/
-.img-empresa{
-    margin-top: 0;
-    width: 14rem;
-    height: 10rem;
-}
 
-/* --------- ERRORS --------- */
-.body-error {
-    background-color: var(--primary-background-color);
-}
 
-.body-error img {
-    margin: auto;
-}
+    /* --------- EMPRESA ---------  {*/
+    .img-empresa {
+        margin-top: 0;
+        width: 14rem;
+        height: 10rem;
+    }
+
+    /* --------- ERRORS --------- */
+    .body-error {
+        background-color: var(--primary-background-color);
+    }
+
+    .body-error img {
+        margin: auto;
+    }
 
 }
 

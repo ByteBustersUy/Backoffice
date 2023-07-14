@@ -133,7 +133,7 @@ function saveOneProduct(array $newProduct): bool
                 die($e->getMessage());
             }
         } else {
-            die("ERROR: ".$error_messages['!product_add']);
+            die("ERROR: " . $error_messages['!product_add']);
         }
     } catch (Exception $e) {
         die("ERROR SQL in saveOneProduct(): " . $e->getMessage());

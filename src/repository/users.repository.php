@@ -2,32 +2,32 @@
 
 function findOneUser(string $ci): array
 {
-    require realpath(dirname(__FILE__))."/../db/conexion.php";
+    require realpath(dirname(__FILE__)) . "/../db/conexion.php";
     try {
         $statement = $con->prepare("SELECT * FROM USUARIOS WHERE ci = :ci");
         $statement->execute(array(':ci' => $ci));
         $reg = $statement->fetch(PDO::FETCH_ASSOC);
         return $reg ? $reg : [];
     } catch (Exception $e) {
-        die("ERROR SQL in findOneUser(): ".$e->getMessage());
+        die("ERROR SQL in findOneUser(): " . $e->getMessage());
     }
 }
 
 function findAllUsers(): array
 {
-    require realpath(dirname(__FILE__))."/../db/conexion.php";
+    require realpath(dirname(__FILE__)) . "/../db/conexion.php";
     try {
         $res = $con->query("SELECT * FROM USUARIOS ORDER BY nombre ASC");
         $reg = $res->fetchAll(PDO::FETCH_ASSOC);
-        return $reg? $reg : [];
+        return $reg ? $reg : [];
     } catch (Exception $e) {
-        die("ERROR SQL in findAllUsers(): ".$e->getMessage());
+        die("ERROR SQL in findAllUsers(): " . $e->getMessage());
     }
 }
 
 function findRoles(string $ci): array
 {
-    require realpath(dirname(__FILE__))."/../db/conexion.php";
+    require realpath(dirname(__FILE__)) . "/../db/conexion.php";
     try {
         $statement = $con->prepare("SELECT nombreRol
                             FROM USUARIOS_has_ROLES ur
@@ -43,46 +43,46 @@ function findRoles(string $ci): array
         }
         return $rolNamesList;
     } catch (Exception $e) {
-        die("ERROR SQL in findRoles(): ".$e->getMessage());
+        die("ERROR SQL in findRoles(): " . $e->getMessage());
     }
 }
 
 function findPathByAction(string $action): string
 {
-    require realpath(dirname(__FILE__))."/../db/conexion.php";
+    require realpath(dirname(__FILE__)) . "/../db/conexion.php";
     try {
         $statement = $con->prepare("SELECT * FROM RUTAS WHERE accion = :accion");
         $statement->execute(array(':accion' => $action));
         $reg = $statement->fetch(PDO::FETCH_ASSOC);
         return $reg['ruta'] ? $reg['ruta'] : '';
     } catch (Exception $e) {
-        die("ERROR SQL in findPathByAction(): ".$e->getMessage());
+        die("ERROR SQL in findPathByAction(): " . $e->getMessage());
     }
 }
 
-function saveOneUser (array $newUser)
+function saveOneUser(array $newUser)
 {
-    require realpath(dirname(__FILE__))."/../db/conexion.php";
-    require realpath(dirname(__FILE__))."/../utils/messages/msg.php";
+    require realpath(dirname(__FILE__)) . "/../db/conexion.php";
+    require realpath(dirname(__FILE__)) . "/../utils/messages/msg.php";
     try {
         $statement = $con->prepare("INSERT INTO USUARIOS (nombre,apellido,ci,email,pass) VALUES (:nombre, :apellido, :ci, :email, :pass)");
         $res = $statement->execute([
-            ':nombre' => $newUser['nombre'], 
-            ':apellido' => $newUser['apellido'], 
-            ':ci' => $newUser['cedula'], 
-            ':email' => $newUser['email'], 
+            ':nombre' => $newUser['nombre'],
+            ':apellido' => $newUser['apellido'],
+            ':ci' => $newUser['cedula'],
+            ':email' => $newUser['email'],
             ':pass' => $newUser['pass']
         ]);
-        
-        if($res == 1){
+
+        if ($res == 1) {
             $statement = $con->prepare("INSERT INTO USUARIOS_has_ROLES (USUARIOS_ci,ROLES_id) VALUES (:ci, :rolId)");
-            foreach ($newUser['rolesId'] as $rolId){
-                $statement->execute(array(':ci' => $newUser['cedula'], ':rolId' => $rolId)); 
+            foreach ($newUser['rolesId'] as $rolId) {
+                $statement->execute(array(':ci' => $newUser['cedula'], ':rolId' => $rolId));
             }
-        }else{
-            die("ERROR: ".$error_messages['!user_add']);
+        } else {
+            die("ERROR: " . $error_messages['!user_add']);
         }
     } catch (Exception $e) {
-        die("ERROR SQL in saveOneUser(): ".$e->getMessage());
+        die("ERROR SQL in saveOneUser(): " . $e->getMessage());
     }
 }

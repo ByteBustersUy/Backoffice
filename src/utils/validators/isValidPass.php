@@ -12,5 +12,3 @@ function isValidPass(string $var): bool
         preg_match($upperCase, $var) &&
         preg_match($number, $var) ? true : false;
 }
-
-?>

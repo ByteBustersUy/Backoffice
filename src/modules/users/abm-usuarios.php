@@ -1,6 +1,7 @@
 <?php
 require realpath(dirname(__FILE__)) . "/../../utils/validators/roles/isAdmin.php";
 require realpath(dirname(__FILE__)) . "/../../utils/validators/hasData.php";
+require realpath(dirname(__FILE__)) . "/../../utils/validators/isValidPass.php";
 require realpath(dirname(__FILE__)) . "/../../utils/messages/msg.php";
 
 if (!$isAdmin) {
@@ -14,7 +15,7 @@ if ($_POST) {
         $apellido = $_POST['apellido'];
         $cedula = $_POST['cedula'];
         $email = $_POST['email'];
-        $pass = hashPass($_POST['contrasenia']);
+        $pass = $_POST['contrasenia'];
         $rolesId = [];
 
         if (isset($_POST['check-admin'])) {
@@ -27,15 +28,14 @@ if ($_POST) {
         throw new ErrorException($e->getMessage());
     }
 
-    if (
-        !hasData($nombre) ||
-        !hasData($apellido) ||
-        !hasData($cedula) ||
-        !hasData($email) ||
-        !hasData($pass) ||
-        !hasData($rolesId)
-    ) {
-        die("ERROR: ".$error_messages['!form_data']);
+    if (!elementsHasData([$nombre, $apellido, $cedula, $email, $pass, $rolesId])) {
+        die("ERROR: " . $error_messages['!form_data']);
+    }
+
+    if (isValidPass($pass)) {
+        $pass = hashPass($pass);
+    } else {
+        die("ERROR: " . $error_messages['!valid_pass']);
     }
 
     $newUser = [
@@ -50,7 +50,7 @@ if ($_POST) {
     require "../../repository/users.repository.php";
     $userExist = findOneUser($newUser['cedula']);
     if ($userExist) {
-        die("ERROR: ".$error_messages['exist_user'].". ('".$userExist['ci']."')");
+        die("ERROR: " . $error_messages['exist_user'] . ". ('" . $userExist['ci'] . "')");
     }
     saveOneUser($newUser);
     header("Location:../../../pages/abm-usuarios.php");
