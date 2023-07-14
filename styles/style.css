@@ -39,7 +39,7 @@ button:hover {
 
 button:active {
     filter: brightness(60%);
-    box-shadow: inset 1px 1px var(--color-1) !important;
+    box-shadow: inset 1px 1px var(--color-1);
 }
 
 input:focus {
@@ -209,7 +209,7 @@ td {
 
 .form-login .btn-submit {
     text-indent: 0;
-    text-align: center !important;
+    text-align: center;
     width: 10rem;
     margin: 3rem auto 2rem;
     cursor: pointer;
@@ -388,7 +388,7 @@ td {
     min-width: 15rem;
     height: 2.5rem;
     margin: auto;
-    margin-top: .5rem !important;
+    margin-top: .5rem;
 }
 
 .form-abm textarea {
