@@ -20,10 +20,6 @@ $pass = htmlspecialchars($pass);
 $reg = login($userCi, $pass);
 $roles = findRoles($reg['ci']);
 
-if (!hasData($reg['pass'])) {
-    //error. no existe contraseña en base de datos
-}
-
 $hashedPass = $reg['pass'];
 
 if (passVerify($pass, $hashedPass)) {

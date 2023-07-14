@@ -55,16 +55,15 @@ function getLabelsEmpresaHTML(): string
     $dataEmpresa = getDataEmpresa();
     $labelsEmpresa = '';
     foreach ($dataEmpresa as $data) {
-        $labelsEmpresa .= '<label class="data-label">'.strtoupper(array_keys($dataEmpresa,$data)[0]).': ----> ' . $data . '</label>';
+        $labelsEmpresa .= '<label class="data-label">' . strtoupper(array_keys($dataEmpresa, $data)[0]) . ': ----> ' . $data . '</label>';
     }
     return $labelsEmpresa;
 }
 
 function getDataEmpresa(): array
 {
+    require realpath(dirname(__FILE__)) . '/../../utils/messages/msg.php';
+    
     $dataEmpresa = findAllDataEmpresa();
-    if (empty($dataEmpresa)) {
-        die('Error al cargar datos de empresa');
-    }
-    return $dataEmpresa;
+    return $dataEmpresa ? $dataEmpresa : die("Error: " . $error_messages['!data_empresa']);
 }

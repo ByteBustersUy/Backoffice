@@ -14,6 +14,7 @@ function findAllDataEmpresa(): array
 function saveDataEmpresa(array $dataToUpdate): bool
 {
     require realpath(dirname(__FILE__))."/../db/conexion.php";
+    require realpath(dirname(__FILE__)) . '/../utils/messages/msg.php';
     try{
     $statement = $con->prepare(
         "UPDATE empresa 
@@ -30,7 +31,7 @@ function saveDataEmpresa(array $dataToUpdate): bool
         email = '$dataToUpdate[email]',
         pwd_email = '$dataToUpdate[pwd_email]'");
     $res = $statement->execute();
-    return $res;
+    return $res == 1? $res : die("Error: ".$error_messages['!data_save']);
     }catch(Exception $e){
         die("ERROR SQL in setDataEmpresa(): ".$e->getMessage());
     }

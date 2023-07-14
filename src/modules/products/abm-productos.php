@@ -1,20 +1,22 @@
 <?php
 require realpath(dirname(__FILE__))."/../../utils/validators/roles/isVendedor.php";
+require realpath(dirname(__FILE__))."/../../utils/messages/msg.php";
+
 if (!$isVendedor) {
     header("Location:../pages/login.php");
     exit;
 }
 
 if($_POST){
-    $nombre = $_POST['nombre'];
-    $descripcion = $_POST['descripcion'];
-    $idCategoria = $_POST['categoria'];
-    $imagen = $_POST['imagen'];
+    $nombre = strtolower($_POST['nombre']);
+    $descripcion = strtolower($_POST['descripcion']);
+    $idCategoria = strtolower($_POST['categoria']);
+    $imagen = strtolower($_POST['imagen']);
     
     require realpath(dirname(__FILE__))."/../../repository/products.repository.php";
     
     if(findOneProduct($nombre)){
-        die("El producto con nombre " . $nombre . " ya existe");
+        die("ERROR: " . $error_messages['exist_product'].". ('".$nombre ."')");
     }
 
     $newProduct = [
