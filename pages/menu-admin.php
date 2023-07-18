@@ -42,7 +42,7 @@ if (!$isAdmin) {
                     </a>
                 </div>
             </div>
-            <div class="col-lg-4 justify-center disabled">
+            <div class="col-lg-4 justify-center">
                 <div class="menu-cards">
                     <a href="../<?php echo findPathByAction($actions["gestionar-permisos"], $_SESSION['userRolesIds'])?>">
                         <div>

@@ -33,7 +33,7 @@ if (!$isVendedor) {
         <div class="row">
             <div class="col-lg-4 justify-center">
                 <div class="menu-cards">
-                    <a href="./abm-productos.php">
+                    <a href="../<?php echo findPathByAction($actions["gestionar-productos"], $_SESSION['userRolesIds'])?>">
                         <div>
                             <i class="fa-solid fa-basket-shopping"></i>
                             <h4>GESTIÓN DE PRODUCTOS</h4>
@@ -42,9 +42,9 @@ if (!$isVendedor) {
                     </a>
                 </div>
             </div>
-            <div class="col-lg-4 justify-center disabled">
+            <div class="col-lg-4 justify-center">
                 <div class="menu-cards">
-                    <a href="">
+                    <a href="../<?php echo findPathByAction($actions["gestionar-promociones"], $_SESSION['userRolesIds'])?>">
                         <div>
                             <i class="fa-solid fa-rectangle-ad"></i>
                             <h4>GESTIÓN DE PROMOCIONES</h4>
@@ -53,9 +53,9 @@ if (!$isVendedor) {
                     </a>
                 </div>
             </div>
-            <div class="col-lg-4 justify-center disabled">
+            <div class="col-lg-4 justify-center">
                 <div class="menu-cards">
-                    <a href="">
+                    <a href="../<?php echo findPathByAction($actions["descargar-documentos"], $_SESSION['userRolesIds'])?>">
                         <div>
                             <i class="fa-solid fa-file-arrow-down"></i>
                             <h4>DESCARGA DE DOCUMENTOS</h4>
