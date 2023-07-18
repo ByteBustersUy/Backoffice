@@ -33,7 +33,7 @@ if (!$isAdmin) {
         <div class="row">
             <div class="col-lg-4 justify-center">
                 <div class="menu-cards">
-                    <a href="./abm-usuarios.php">
+                    <a href="../<?php echo findPathByAction($actions["gestionar-usuarios"], $_SESSION['userRolesIds'])?>">
                         <div>
                             <i class="fa-solid fa-users"></i>
                             <h4>GESTIÓN DE USUARIOS</h4>
@@ -44,7 +44,7 @@ if (!$isAdmin) {
             </div>
             <div class="col-lg-4 justify-center disabled">
                 <div class="menu-cards">
-                    <a href="./abm-permisos.php">
+                    <a href="../<?php echo findPathByAction($actions["gestionar-permisos"], $_SESSION['userRolesIds'])?>">
                         <div>
                             <i class="fa-solid fa-shield"></i>
                             <h4>GESTIÓN DE PERMISOS</h4>
@@ -55,7 +55,7 @@ if (!$isAdmin) {
             </div>
             <div class="col-lg-4 justify-center">
                 <div class="menu-cards">
-                    <a href="./config-empresa.php">
+                    <a href="../<?php echo findPathByAction($actions["configurar-empresa"], $_SESSION['userRolesIds'])?>">
                         <div>
                             <i class="fa-solid fa-gears"></i>
                             <h4>AJUSTES DE EMPRESA</h4>

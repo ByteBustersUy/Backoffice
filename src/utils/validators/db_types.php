@@ -14,12 +14,3 @@ function varchar255(string $var): bool
         strlen($var) <= 255 ? true : false;
 }
 
-function date(string $var)
-{
-    //TODO:
-}
-
-function decimal(string $var)
-{
-    //TODO:
-}

@@ -12,9 +12,9 @@ if (!hasData($_SESSION['userRolesName'])) {
 }
 
 if ($isAdmin)
-    header("Location:./" . findPathByAction($actions['menu-admin']));
+    header("Location:./" . findPathByAction($actions['menu-admin'], $_SESSION['userRolesIds']));
 else if ($isVendedor)
-    header("Location:./" . findPathByAction($actions['menu-vendedor']));
+    header("Location:./" . findPathByAction($actions['menu-vendedor'], $_SESSION['userRolesIds']));
 else
     header("Location:./pages/login.php");
 

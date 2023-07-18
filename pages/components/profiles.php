@@ -5,7 +5,7 @@ session_status() === PHP_SESSION_ACTIVE ?: session_start();
 
 $profiles = "";
 foreach ($_SESSION['userRolesName'] as $rol) {
-    $profiles .= "<a class='link-profile' href=../" . findPathByAction($actions['menu-' . $rol]) . ">" . $rol . "</a>";
+    $profiles .= "<a class='link-profile' href=../" . findPathByAction($actions['menu-' . $rol], $_SESSION['userRolesIds']) . ">" . $rol . "</a>";
 }
 $profiles .= "<a class='link-profile' href=./login.php> Cerrar Sesión</a>";
 

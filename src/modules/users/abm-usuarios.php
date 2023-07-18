@@ -79,7 +79,7 @@ function getUsersTableDataHTML(): string
     foreach ($usersData as $user) {
         $rolesList = findRoles($user['ci']);
         $roles = '| ';
-        foreach ($rolesList as $rol) {
+        foreach ($rolesList[1] as $rol) {
             $roles .= ' ' . $rol . ' |';
         }
         $usersList .= '

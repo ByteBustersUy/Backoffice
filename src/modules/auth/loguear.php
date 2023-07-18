@@ -27,7 +27,8 @@ if (passVerify($pass, $hashedPass)) {
     session_status() === PHP_SESSION_ACTIVE ?: session_start();
     $_SESSION['userName'] = $reg['nombre'];
     $_SESSION['userCi'] = $reg['ci'];
-    $_SESSION['userRolesName'] = $roles;
+    $_SESSION['userRolesIds'] = $roles[0];
+    $_SESSION['userRolesName'] = $roles[1];
 
     if (!hasData($_SESSION['userRolesName'])) {
         //error. usuario no tiene rol asignado
