@@ -3,7 +3,9 @@ require realpath(dirname(__FILE__)) . "/../../utils/validators/roles/isAdmin.php
 require realpath(dirname(__FILE__)) . "/../../utils/validators/hasData.php";
 require realpath(dirname(__FILE__)) . "/../../utils/validators/isValidPass.php";
 require realpath(dirname(__FILE__)) . "/../../utils/validators/isValidEmail.php";
+require realpath(dirname(__FILE__)) . "/../../utils/validators/db_types.php";
 require realpath(dirname(__FILE__)) . "/../../utils/messages/msg.php";
+
 
 if (!$isAdmin) {
     header("Location:../../../pages/login.php");
@@ -41,6 +43,10 @@ if ($_POST) {
         $pass = hashPass($pass);
     } else {
         die("ERROR: " . $error_messages['!valid_pass']);
+    }
+
+    if(!varchar45($nombre) || !varchar45($apellido) || !varchar45($email)){
+        die("ERROR: ". $error_messages['!valid_length45']);
     }
 
     $newUser = [
