@@ -43,11 +43,11 @@ exit;
 function login(string $userCi, string $pass): array
 {
     require '../../utils/validators/isValidPass.php';
-    require '../../utils/validators/isValidUserName.php';
+    require '../../utils/validators/isValidUserCi.php';
     require '../../repository/users.repository.php';
     include '../../utils/messages/msg.php';
 
-    if (!isValidUserName($userCi)) {
+    if (!isValidUserCi($userCi)) {
         header("Location:../../../index.php");
         exit;
     }
