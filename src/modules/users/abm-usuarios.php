@@ -2,6 +2,7 @@
 require realpath(dirname(__FILE__)) . "/../../utils/validators/roles/isAdmin.php";
 require realpath(dirname(__FILE__)) . "/../../utils/validators/hasData.php";
 require realpath(dirname(__FILE__)) . "/../../utils/validators/isValidPass.php";
+require realpath(dirname(__FILE__)) . "/../../utils/validators/isValidEmail.php";
 require realpath(dirname(__FILE__)) . "/../../utils/messages/msg.php";
 
 if (!$isAdmin) {
@@ -30,6 +31,10 @@ if ($_POST) {
 
     if (!elementsHasData([$nombre, $apellido, $cedula, $email, $pass, $rolesId])) {
         die("ERROR: " . $error_messages['!form_data']);
+    }
+
+    if(!isValidEmail($email)){
+        die("ERROR: " . $error_messages['!valid_email']);
     }
 
     if (isValidPass($pass)) {
