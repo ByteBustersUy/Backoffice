@@ -59,7 +59,6 @@
                     ?>
                 </div>
             </div>
-            <hr class="separator">
             <?php
             require "./components/footer.php";
             echo $footer;

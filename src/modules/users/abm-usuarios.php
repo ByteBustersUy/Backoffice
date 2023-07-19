@@ -1,16 +1,10 @@
 <?php
-require realpath(dirname(__FILE__)) . "/../../utils/validators/roles/isAdmin.php";
 require realpath(dirname(__FILE__)) . "/../../utils/validators/hasData.php";
 require realpath(dirname(__FILE__)) . "/../../utils/validators/isValidPass.php";
 require realpath(dirname(__FILE__)) . "/../../utils/validators/isValidEmail.php";
 require realpath(dirname(__FILE__)) . "/../../utils/validators/db_types.php";
 require realpath(dirname(__FILE__)) . "/../../utils/messages/msg.php";
 
-
-if (!$isAdmin) {
-    header("Location:../../../pages/login.php");
-    exit;
-}
 
 if ($_POST) {
     try {
