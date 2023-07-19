@@ -1,10 +1,3 @@
-<?php
-require "../src/utils/validators/roles/isVendedor.php";
-if (!$isVendedor) {
-    header("Location:./login.php");
-    exit;
-}
-?>
 <!DOCTYPE html>
 <html lang="es">
 

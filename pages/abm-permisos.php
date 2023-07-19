@@ -1,12 +1,5 @@
-<?php
-require "../src/utils/validators/roles/isAdmin.php";
-if (!$isAdmin) {
-    header("Location:./login.php");
-    exit;
-}
-?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">

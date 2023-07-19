@@ -62,7 +62,8 @@ function findPathByAction(string $action, array $rolesId): string
                 $isValidRol = true;
             }
         }
-        return $reg['ruta'] && $isValidRol ? $reg['ruta'] : '';
+        
+        return $reg['ruta'] && $isValidRol ? $reg['ruta']: '';
     } catch (Exception $e) {
         die("ERROR SQL in findPathByAction(): " . $e->getMessage());
     }
