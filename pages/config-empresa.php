@@ -24,6 +24,15 @@
     </div>
     <div class="container frame">
         <div class="row">
+        <div class="col-lg-6">
+                <div class="data-emp">
+                    <img src="../assets/logo-empresa.png" alt="Logo de empresa" class="img-empresa">
+                    <?php
+                    require "../src/modules/settings/config.php";
+                    echo getLabelsEmpresaHTML();
+                    ?>
+                </div>
+            </div>
             <div class="col-lg-6 center">
                 <form class="form-emp" action="../src/modules/settings/config.php" method="post">
                     <div>
@@ -49,15 +58,6 @@
                         </div>
                     </div>
                 </form>
-            </div>
-            <div class="col-lg-6">
-                <div class="data-emp">
-                    <img src="../assets/logo-empresa.png" alt="Logo de empresa" class="img-empresa">
-                    <?php
-                    require "../src/modules/settings/config.php";
-                    echo getLabelsEmpresaHTML();
-                    ?>
-                </div>
             </div>
             <?php
             require "./components/footer.php";

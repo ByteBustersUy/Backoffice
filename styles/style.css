@@ -462,7 +462,7 @@ td {
     margin: auto;
     margin-top: .2rem;
     border: .1rem solid var(--secondary-border-color);
-    border-radius: 5rem;
+    border-radius: .5rem;
     padding: 5rem 1rem;
     background-color: var(--color-2);
 
@@ -495,7 +495,7 @@ td {
 
 .data-emp img {
     margin: 1rem auto;
-    border: .5rem ridge var(--secondary-border-color);
+    border: .3rem ridge var(--secondary-border-color);
     box-shadow: inset .1rem .1rem var(--color-5);
     filter: drop-shadow(.1rem .1rem .1rem var(--color-5));
 }
@@ -711,7 +711,7 @@ footer img {
     /* --------- EMPRESA ---------  {*/
     .img-empresa {
         margin-top: 0;
-        width: 14rem;
+        width: 12rem;
         height: 10rem;
     }
 
