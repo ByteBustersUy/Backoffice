@@ -250,6 +250,7 @@ td {
     border: 2px solid var(--color-4);
     background-color: var(--background-color-light);
     filter: drop-shadow(4px 4px 4px var(--color-5));
+    filter: brightness(85%);
 }
 
 .menu-cards a {
@@ -258,7 +259,8 @@ td {
 
 .menu-cards:hover {
     scale: 106%;
-    border: 5px solid var(--bytebusters-color);
+    border: 4px solid var(--bytebusters-color);
+    filter: brightness(100%);
     filter: drop-shadow(.1rem .1rem .5rem var(--bytebusters-color));
 }
 
