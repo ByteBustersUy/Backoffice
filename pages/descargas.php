@@ -19,7 +19,7 @@
             echo $profiles;
             ?>
         </div>
-        <h1>GESTIÓN DE DESCARGAS</h1>
+        <h1>DESCARGAS</h1>
     </div>
     <div class="container frame">
         <div class="row">

@@ -69,6 +69,23 @@ function findPathByAction(string $action, array $rolesId): string
     }
 }
 
+function findActionsByRolesId(array $rolesId): array{
+    require realpath(dirname(__FILE__)) . "/../db/conexion.php";
+    $actions = [];
+    foreach($rolesId as $rolId){
+        try {
+            $statement = $con->prepare("SELECT accion FROM RUTAS WHERE rolesId = :rolId");
+            $statement->execute(array(':rolId' => $rolId));
+            while($reg = $statement->fetch(PDO::FETCH_ASSOC)){
+                array_push($actions, $reg['accion']);
+            }
+        } catch (Exception $e) {
+            die("ERROR SQL in findActionsByRolesId(): " . $e->getMessage());
+        }
+    }
+    return $actions;
+}
+
 function saveOneUser(array $newUser)
 {
     require realpath(dirname(__FILE__)) . "/../db/conexion.php";

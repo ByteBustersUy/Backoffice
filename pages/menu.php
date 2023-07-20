@@ -24,72 +24,10 @@
     </div>
     <div class="container frame">
         <div class="row">
-            <div class="col-md-6 col-lg-3 col-xxl-2 justify-center">
-                <div class="menu-cards">
-                    <a href="../<?php echo findPathByAction($actions["gestionar-usuarios"], $_SESSION['userRolesIds'])?>">
-                        <div>
-                            <i class="fa-solid fa-users"></i>
-                            <h4>USUARIOS</h4>
-                            <p>Agregar, editar o eliminar usuarios</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3 col-xxl-2 justify-center">
-                <div class="menu-cards">
-                    <a href="../<?php echo findPathByAction($actions["gestionar-permisos"], $_SESSION['userRolesIds'])?>">
-                        <div>
-                            <i class="fa-solid fa-shield"></i>
-                            <h4>PERMISOS</h4>
-                            <p>Agregar, editar o eliminar permisos</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3 col-xxl-2 justify-center">
-                <div class="menu-cards">
-                    <a href="../<?php echo findPathByAction($actions["gestionar-productos"], $_SESSION['userRolesIds'])?>">
-                        <div>
-                            <i class="fa-solid fa-basket-shopping"></i>
-                            <h4>PRODUCTOS</h4>
-                            <p>Agregar, editar o eliminar productos</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3 col-xxl-2 justify-center">
-                <div class="menu-cards">
-                    <a href="../<?php echo findPathByAction($actions["gestionar-promociones"], $_SESSION['userRolesIds'])?>">
-                        <div>
-                            <i class="fa-solid fa-rectangle-ad"></i>
-                            <h4>PROMOCIONES</h4>
-                            <p>Agregar, editar o eliminar promociónes</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3 col-xxl-2 justify-center">
-                <div class="menu-cards">
-                    <a href="../<?php echo findPathByAction($actions["configurar-empresa"], $_SESSION['userRolesIds'])?>">
-                        <div>
-                            <i class="fa-solid fa-gears"></i>
-                            <h4>EMPRESA</h4>
-                            <p>Agregar o editar datos de la empresa </p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3 col-xxl-2 justify-center">
-                <div class="menu-cards">
-                    <a href="../<?php echo findPathByAction($actions["descargar-documentos"], $_SESSION['userRolesIds'])?>">
-                        <div>
-                            <i class="fa-solid fa-file-arrow-down"></i>
-                            <h4>DESCARGAS</h4>
-                            <p>Catálogo de productos e informe de ventas</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
+            <?php
+                require "../src/modules/auth/menu.php";
+                echo $cardsMenu;
+            ?>
         </div>
     </div>
     <?php
