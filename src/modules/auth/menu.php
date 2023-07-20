@@ -1,4 +1,10 @@
 <?php
+require realpath(dirname(__FILE__)) . "/../../utils/validators/hasData.php";
+
+if(!hasData($_SESSION['userRolesIds']) ){
+    header("Location:../../../pages/login.php");
+    exit;
+}
 
 
 $cardsList = [
