@@ -24,7 +24,33 @@
     </div>
     <div class="container frame">
         <div class="row">
-        <div class="col-lg-6">
+            <div class="col-xl-8 center">
+                <form class="form-emp" action="../src/modules/settings/config.php" method="post">
+                    <div>
+                        <label>Nombre:<input type="text" name="nombre" placeholder="ej: Digital Market" autocomplete="off"></label>
+                        <label>Rubro:<input type="text" name="rubro" placeholder="ej: Supermercado" autocomplete="off"></label>
+                        <label>Calle:<input type="text" name="calle" placeholder="ej: Giannasstassio" autocomplete="off"></label>
+                        <label>Número:<input type="number" name="numero" placeholder="ej: 102" autocomplete="off"></label>
+                    </div>
+                    <div>
+                        <label>Ciudad:<input type="text" name="ciudad" placeholder="ej: Solymar" autocomplete="off"></label>
+                        <label>Teléfono:<input type="text" name="telefono" placeholder="ej: 26961234" autocomplete="off"></label>
+                        <label>Instagram:<input type="text" name="instagram" placeholder="@digital.market" autocomplete="off"></label>
+                        <label>Whatsapp:<input type="text" name="whatsapp" placeholder="+59896123456" autocomplete="off"></label>
+                    </div>
+                    <div>
+                        <label>Email:<input type="emial" name="email" placeholder="ej: dmarket@gmail.com" autocomplete="off"></label>
+                        <label>Contraseña de email:<input type="text" name="pwd_email" placeholder="ej: 1234DIGITAL" autocomplete="off"></label>
+                        <label>Comentario de venta:<input type="text" name="comentario" placeholder="ej: precios en pesos Uruguayos" autocomplete="off"></label>
+                        <label>Url logo empresa:<input type="text" name="logo" placeholder="ej: drive.com/logo.png" autocomplete="off"></label>
+                    </div>
+                    <div class="buttons absolute bottom-10">
+                        <button class="btn-emp" type="submit">ACEPTAR</button>
+                        <button class="btn-emp" type="reset">CANCELAR</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-xl-4">
                 <div class="data-emp">
                     <img src="../assets/logo-empresa.png" alt="Logo de empresa" class="img-empresa">
                     <?php
@@ -33,36 +59,12 @@
                     ?>
                 </div>
             </div>
-            <div class="col-lg-6 center">
-                <form class="form-emp" action="../src/modules/settings/config.php" method="post">
-                    <div>
-                        <input type="text" name="nombre" placeholder="Nombre" autocomplete="off">
-                        <input type="text" name="rubro" placeholder="Rubro" autocomplete="off">
-                        <input type="text" name="calle" placeholder="Calle" autocomplete="off">
-                        <input type="number" name="numero" placeholder="Numero" autocomplete="off">
-                        <input type="text" name="ciudad" placeholder="Ciudad" autocomplete="off">
-                        <input type="text" name="telefono" placeholder="Telefono" autocomplete="off">
-                        <div class="buttons align-end">
-                            <button class="btn-emp" type="submit">ACEPTAR</button>
-                        </div>
-                    </div>
-                    <div>
-                        <input type="text" name="instagram" placeholder="Instagram" autocomplete="off">
-                        <input type="text" name="whatsapp" placeholder="Whatsapp" autocomplete="off">
-                        <input type="emial" name="email" placeholder="Email" autocomplete="off">
-                        <input type="text" name="pwd_email" placeholder="contraseña de email" autocomplete="off">
-                        <input type="text" name="comentario" placeholder="Comentario" autocomplete="off">
-                        <input type="text" name="logo" placeholder="Url de logo" autocomplete="off">
-                        <div class="buttons">
-                            <button class="btn-emp" type="reset">CANCELAR</button>
-                        </div>
-                    </div>
-                </form>
+            <div>
+                <?php
+                require "./components/footer.php";
+                echo $footer;
+                ?>
             </div>
-            <?php
-            require "./components/footer.php";
-            echo $footer;
-            ?>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>
 

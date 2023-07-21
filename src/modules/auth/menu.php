@@ -63,7 +63,7 @@ $cardsMenu = '';
 foreach($cardsList as $cardData){
     if(in_array($cardData['action'], $validActions)){
     $cardsMenu .= "
-                <div class='col-md-4 col-xxl-".$cols." justify-center'>
+                <div class='col-md-4 col-xxl-".$cols." center'>
                     <div class='menu-cards'>
                         <a href='../".findPathByAction($cardData['action'], $_SESSION['userRolesIds'])."'>
                             <div>
