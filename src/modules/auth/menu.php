@@ -1,11 +1,10 @@
 <?php
 require realpath(dirname(__FILE__)) . "/../../utils/validators/hasData.php";
 
-if(!hasData($_SESSION['userRolesIds']) ){
+if (!hasData($_SESSION['userRolesIds'])) {
     header("Location:../../../pages/login.php");
     exit;
 }
-
 
 $cardsList = [
     "usuarios" => [
@@ -48,33 +47,31 @@ $cardsList = [
 
 $validActions = findActionsByRolesId($_SESSION['userRolesIds']);
 $numberOfCards = 0;
-foreach($cardsList as $cardData){
-    if(in_array($cardData['action'], $validActions)){
+foreach ($cardsList as $cardData) {
+    if (in_array($cardData['action'], $validActions)) {
         $numberOfCards++;
     }
 }
 
-$cols = 12/$numberOfCards;
-if(gettype($cols) !== 'int'){
-    $cols = floor(12/$numberOfCards);
+$cols = 12 / $numberOfCards;
+if (gettype($cols) !== 'int') {
+    $cols = floor(12 / $numberOfCards);
 }
 
 $cardsMenu = '';
-foreach($cardsList as $cardData){
-    if(in_array($cardData['action'], $validActions)){
-    $cardsMenu .= "
-                <div class='col-md-4 col-xxl-".$cols." center'>
+foreach ($cardsList as $cardData) {
+    if (in_array($cardData['action'], $validActions)) {
+        $cardsMenu .= "
+                <div class='col-md-4 col-xxl-" . $cols . " center'>
                     <div class='menu-cards'>
-                        <a href='../".findPathByAction($cardData['action'], $_SESSION['userRolesIds'])."'>
-                            <div>
-                            ".$cardData['i']
-                            .$cardData['h4']
-                            .$cardData['p']
-                            ."
-                            </div>
+                        <a href='../" . findPathByAction($cardData['action'], $_SESSION['userRolesIds']) . "'>
+                            <div>"
+                                . $cardData['i']
+                                . $cardData['h4']
+                                . $cardData['p'] .
+                            "</div>
                         </a>
                     </div>
-                </div>
-                ";
+                </div>";
     }
 }

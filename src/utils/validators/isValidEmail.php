@@ -6,7 +6,7 @@ function isValidEmail(string $var): bool
         'vera.com.uy',
         'gmail.com',
         'hotmail.com',
-        'bytebusters.com'
+        'bytebusters.com',
     ];
     foreach ($validEmails as $email){
         $regex = "/^[a-z0-9\._-]+@(?:".$email.")$/";
