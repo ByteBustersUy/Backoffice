@@ -65,9 +65,9 @@ CREATE TABLE IF NOT EXISTS `bytebusters_db`.`RUTAS` (
   `ruta` VARCHAR(255) NOT NULL,
   `accion` VARCHAR(45) NOT NULL,
   `rolesId` INT(11) NOT NULL,
-  PRIMARY KEY(`accion`,`rolesId`),
-  FOREIGN KEY(`rolesId`)
-    REFERENCES `bytebusters_db`.`ROLES`(`id`)
+   PRIMARY KEY(`accion`,`rolesId`),
+   FOREIGN KEY(`rolesId`)
+   REFERENCES `bytebusters_db`.`ROLES`(`id`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
@@ -98,9 +98,9 @@ CREATE TABLE IF NOT EXISTS `bytebusters_db`.`USUARIOS_has_ROLES` (
   `ROLES_id` int(11) NOT NULL,
   PRIMARY KEY(`USUARIOS_ci`,`ROLES_id`),
   FOREIGN KEY(`USUARIOS_ci`)
-    REFERENCES `bytebusters_db`.`USUARIOS`(`ci`),
+  	REFERENCES `bytebusters_db`.`USUARIOS`(`ci`),
   FOREIGN KEY(`ROLES_id`)
-    REFERENCES `bytebusters_db`.`ROLES`(`id`)
+   	REFERENCES `bytebusters_db`.`ROLES`(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
@@ -114,7 +114,7 @@ CREATE TABLE IF NOT EXISTS `bytebusters_db`.`PRODUCTOS`(
   `nombre` varchar(255) NOT NULL,
   `descripcion` varchar(255) NOT NULL,
   `imagen` varchar(255) NOT NULL,
-  PRIMARY KEY(`id`)
+ PRIMARY KEY(`id`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
@@ -138,11 +138,11 @@ CREATE TABLE IF NOT EXISTS `bytebusters_db`.`CATEGORIAS`(
 CREATE TABLE IF NOT EXISTS `bytebusters_db`.`PRODUCTOS_has_CATEGORIAS` (
   `PRODUCTOS_id` int(11) NOT NULL,
   `CATEGORIAS_id` int(11)NOT NULL,
-  PRIMARY KEY(`PRODUCTOS_id`,`CATEGORIAS_id`),
+   PRIMARY KEY(`PRODUCTOS_id`,`CATEGORIAS_id`),
   FOREIGN KEY(`PRODUCTOS_id`)
-    REFERENCES `bytebusters_db`.`PRODUCTOS`(`id`),
+  	REFERENCES `bytebusters_db`.`PRODUCTOS`(`id`),
   FOREIGN KEY(`CATEGORIAS_id`)
-    REFERENCES `bytebusters_db`.`CATEGORIAS`(`id`)
+   	REFERENCES `bytebusters_db`.`CATEGORIAS`(`id`)
 	
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -157,7 +157,7 @@ CREATE TABLE IF NOT EXISTS `bytebusters_db`.`PROMOCIONES`(
   `precioPromo` DECIMAL(8,2) NOT NULL,
   `fechaInicio` DATE NOT NULL,
   `fechaFin` DATE NOT NULL,
-  PRIMARY KEY(`id`)
+ PRIMARY KEY(`id`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*
@@ -168,11 +168,11 @@ CREATE TABLE IF NOT EXISTS `bytebusters_db`.`PROMOCIONES`(
 CREATE TABLE IF NOT EXISTS `bytebusters_db`.`PRODUCTOS_has_PROMOCIONES` (
   `PRODUCTOS_id` int(11) NOT NULL,
   `PROMOCIONES_id` int(11)NOT NULL,
-  PRIMARY KEY(`PRODUCTOS_id`,`PROMOCIONES_id`),
+   PRIMARY KEY(`PRODUCTOS_id`,`PROMOCIONES_id`),
   FOREIGN KEY(`PRODUCTOS_id`)
-    REFERENCES `bytebusters_db`.`PRODUCTOS`(`id`),
+  	REFERENCES `bytebusters_db`.`PRODUCTOS`(`id`),
   FOREIGN KEY(`PROMOCIONES_id`)
-    REFERENCES `bytebusters_db`.`PROMOCIONES`(`id`)
+   	REFERENCES `bytebusters_db`.`PROMOCIONES`(`id`)
 	
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -269,6 +269,19 @@ INSERT INTO `bytebusters_db`.`USUARIOS_has_ROLES` (`USUARIOS_ci`, `ROLES_id`) VA
 INSERT INTO `bytebusters_db`.`RUTAS` (`ruta`, `accion`, `rolesId`) VALUES ('pages/menu-admin.php', 'ir_menu_admin', '1');
 
 INSERT INTO `bytebusters_db`.`RUTAS` (`ruta`, `accion`, `rolesId`) VALUES ('pages/menu-vendedor.php', 'ir_menu_vendedor', '2');
+
+INSERT INTO `bytebusters_db`.`RUTAS` (`ruta`, `accion`, `rolesId`) VALUES ('pages/config-empresa.php', 'config_empresa', '1');
+
+INSERT INTO `bytebusters_db`.`RUTAS` (`ruta`, `accion`, `rolesId`) VALUES ('pages/descargas.php', 'descarga_documentos', '2');
+
+INSERT INTO `bytebusters_db`.`RUTAS` (`ruta`, `accion`, `rolesId`) VALUES ('pages/abm-permisos.php', 'gestion_permisos', '1');
+
+INSERT INTO `bytebusters_db`.`RUTAS` (`ruta`, `accion`, `rolesId`) VALUES ('pages/abm-productos.php', 'gestion_productos', '2');
+
+INSERT INTO `bytebusters_db`.`RUTAS` (`ruta`, `accion`, `rolesId`) VALUES ('pages/abm-promociones.php', 'gestion_promociones', '2');
+
+INSERT INTO `bytebusters_db`.`RUTAS` (`ruta`, `accion`, `rolesId`) VALUES ('pages/abm-usuarios.php', 'gestion_usuarios', '1');
+
 
 
 /* 

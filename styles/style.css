@@ -42,6 +42,10 @@ button:active {
     box-shadow: inset 1px 1px var(--color-1);
 }
 
+input{
+    height: 2.3rem;
+}
+
 input:focus {
     outline: none;
 }
@@ -182,7 +186,6 @@ td {
     font-size: 1.2rem;
     text-indent: .5rem;
     width: 20rem;
-    height: 2.5rem;
     margin: .5rem 0;
     border: 1px solid;
     border-radius: 5px;
@@ -339,7 +342,6 @@ td {
 
 .table-options input {
     width: 14rem;
-    height: 2rem;
 }
 
 .table-options button {
@@ -388,7 +390,6 @@ td {
 .form-abm input {
     display: flex;
     min-width: 15rem;
-    height: 2.5rem;
     margin: auto;
     margin-top: .5rem;
 }
@@ -472,7 +473,6 @@ td {
     justify-content: center;
     margin: auto 1rem;
     min-width: 15rem;
-    height: 2.4rem;
     margin-top: .1rem;
 }
 
