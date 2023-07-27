@@ -567,6 +567,7 @@ td {
 
 /* ---------  FOOTER --------- */
 footer {
+    position: fixed;
     left: 0;
     bottom: -1px;
     width: 100vw;
@@ -673,10 +674,6 @@ footer img {
         font-size: .8rem;
         padding: 0 2rem;
         margin-top: 5rem;
-    }
-
-    footer {
-        position: fixed;
     }
 
     footer img {
