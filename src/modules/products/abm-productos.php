@@ -1,11 +1,5 @@
 <?php
-require realpath(dirname(__FILE__))."/../../utils/validators/roles/isVendedor.php";
 require realpath(dirname(__FILE__))."/../../utils/messages/msg.php";
-
-if (!$isVendedor) {
-    header("Location:../pages/login.php");
-    exit;
-}
 
 if($_POST){
     $nombre = strtolower($_POST['nombre']);

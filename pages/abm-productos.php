@@ -1,12 +1,5 @@
-<?php
-require "../src/utils/validators/roles/isVendedor.php";
-if (!$isVendedor) {
-    header("Location:./login.php");
-    exit;
-}
-?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -108,7 +101,6 @@ if (!$isVendedor) {
             </div>
         </div>
     </div>
-    <hr class="separator">
     <?php
     require "./components/footer.php";
     echo $footer;

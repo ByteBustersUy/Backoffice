@@ -1,11 +1,3 @@
-<?php
-require "../src/utils/validators/roles/isAdmin.php";
-if (!$isAdmin) {
-    header("Location:./login.php");
-    exit;
-}
-?>
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -110,7 +102,6 @@ if (!$isAdmin) {
             </div>
         </div>
     </div>
-    <hr class="separator">
     <?php
     require "./components/footer.php";
     echo $footer;

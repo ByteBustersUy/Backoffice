@@ -1,12 +1,6 @@
 <?php
-require  realpath(dirname(__FILE__)) . "/../../utils/validators/roles/isAdmin.php";
 require realpath(dirname(__FILE__)) . '/../../repository/config.repository.php';
 require realpath(dirname(__FILE__)) . '/../../utils/validators/hasData.php';
-
-if (!$isAdmin) {
-    header("Location:../../../pages/login.php");
-    exit;
-}
 
 if ($_POST) {
     $nombre = $_POST['nombre'];
