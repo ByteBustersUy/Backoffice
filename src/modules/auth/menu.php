@@ -53,6 +53,10 @@ foreach ($cardsList as $cardData) {
     }
 }
 
+if($numberOfCards === 0){
+    $numberOfCards = 1;
+}
+
 $cols = 12 / $numberOfCards;
 if (gettype($cols) !== 'int') {
     $cols = floor(12 / $numberOfCards);
