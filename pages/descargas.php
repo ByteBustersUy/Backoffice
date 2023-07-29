@@ -13,10 +13,10 @@
 
 <body>
     <div>
-        <div class="link-profiles-div">
+        <div class="link-options-div">
             <?php
-            require "./components/profiles.php";
-            echo $profiles;
+            require "./components/options.php";
+            echo $options;
             ?>
         </div>
         <h1>DESCARGAS</h1>

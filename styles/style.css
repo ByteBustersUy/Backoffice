@@ -136,19 +136,25 @@ td {
     border-bottom: 1px solid var(--secondary-border-color)
 }
 
-.link-profile {
+.link-options {
     position: relative;
+    display: inline-block;
     font-size: 1rem;
-    width: 5rem;
-    margin: .5rem 1rem;
-    justify-content: right;
-    color: var(--color-3);
-    background-color: var(--secondary-background-color);
+    margin: 1rem 2rem;
+    padding: .2rem 1rem;
+    color: var(--primary-text-color);
+    border-radius: 1rem;
+    background-color: var(--background-color-light);
+    border: 1.2px solid var(--bytebusters-color);
 }
 
-.link-profiles-div {
+.link-options-div {
     position: absolute;
     right: 0;
+    height: auto;
+    background-color: var(--color-1);
+    border-bottom-left-radius: 1rem;
+    filter: drop-shadow(-.2rem .2rem 4px var(--color-5));
 }
 
 .form-login {
