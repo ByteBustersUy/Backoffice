@@ -42,7 +42,7 @@ $cardsList = [
         'i' => '<i class="fa-solid fa-file-arrow-down"></i>',
         'h4' => '<h4>DESCARGAS</h4>',
         'p' => '<p>Catálogo de productos e informe de ventas</p>'
-    ]
+    ],
 ];
 
 $validActions = findActionsByRolesId($_SESSION['userRolesIds']);
@@ -59,7 +59,11 @@ if($numberOfCards === 0){
 
 $cols = 12 / $numberOfCards;
 if (gettype($cols) !== 'int') {
-    $cols = floor(12 / $numberOfCards);
+    $cols = floor($cols);
+}
+
+if($cols < 2){
+    $cols = 2;
 }
 
 $cardsMenu = '';
