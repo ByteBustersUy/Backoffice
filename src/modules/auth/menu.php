@@ -1,10 +1,7 @@
 <?php
-require realpath(dirname(__FILE__)) . "/../../utils/validators/hasData.php";
-
-if (!hasData($_SESSION['userRolesIds'])) {
-    header("Location:../../../pages/login.php");
-    exit;
-}
+require realpath(dirname(__FILE__)) . "/../../utils/actions.php";
+require realpath(dirname(__FILE__)) . "/../../repository/users.repository.php";
+session_status() === PHP_SESSION_ACTIVE ?: session_start();
 
 $cardsList = [
     "usuarios" => [

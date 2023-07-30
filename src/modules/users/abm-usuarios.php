@@ -4,6 +4,7 @@ require realpath(dirname(__FILE__)) . "/../../utils/validators/isValidPass.php";
 require realpath(dirname(__FILE__)) . "/../../utils/validators/isValidEmail.php";
 require realpath(dirname(__FILE__)) . "/../../utils/validators/db_types.php";
 require realpath(dirname(__FILE__)) . "/../../utils/messages/msg.php";
+require realpath(dirname(__FILE__)) . "/../../repository/users.repository.php";
 
 
 if ($_POST) {
