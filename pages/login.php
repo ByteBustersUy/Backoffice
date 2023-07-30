@@ -33,10 +33,12 @@ try {
         <a href="">Olvidaste tu contraseña?</a>
         <input class="btn-submit" type="submit" value="Iniciar sesión">
     </form>
-    <?php
-    require "./components/footer.php";
-    echo $footer;
-    ?>
+    <footer>
+        <?php
+        require "./components/footer.php";
+        echo $footer;
+        ?>
+    </footer>
 </body>
 
 </html>
