@@ -1,6 +1,4 @@
 <?php
-
-
 function findOneProduct(string $nombre): array
 {
     require realpath(dirname(__FILE__)) . "/../db/conexion.php";
@@ -34,7 +32,7 @@ function findAllCategories(): array
         $reg = $res->fetchAll(PDO::FETCH_ASSOC);
         return $reg ? $reg : [];
     } catch (Exception $e) {
-        die("ERROR SQL in findAllProducts(): " . $e->getMessage());
+        die("ERROR SQL in findAllCategories(): " . $e->getMessage());
     }
 }
 
@@ -83,7 +81,7 @@ function findProductCategoryByProductId(string $productId): string
 
         return '';
     } catch (Exception $e) {
-        die("ERROR SQL in findCategoryIdByName(): " . $e->getMessage());
+        die("ERROR SQL in findProductCategoryByProductId(): " . $e->getMessage());
     }
 }
 function findProductPromotionStatus(string $productId): bool
@@ -97,14 +95,16 @@ function findProductPromotionStatus(string $productId): bool
 
         return $reg ? true : false;
     } catch (Exception $e) {
-        die("ERROR SQL in findCategoryIdByName(): " . $e->getMessage());
+        die("ERROR SQL in findProductPromotionStatus(): " . $e->getMessage());
     }
 }
 
 function saveOneProduct(array $newProduct): bool
 {
     require realpath(dirname(__FILE__)) . "/../db/conexion.php";
+    include realpath(dirname(__FILE__)) . "/../utils/messages/msg.php";
     try {
+        $lastProductId = findLastProductId();
         $statement = $con->prepare("INSERT INTO PRODUCTOS (nombre,descripcion,imagen) VALUES (:nombre, :descripcion, :imagen)");
         $res = $statement->execute([
             ':nombre' => $newProduct['nombre'],
@@ -113,23 +113,27 @@ function saveOneProduct(array $newProduct): bool
         ]);
 
         if ($res == 1) {
-            $productId = findLastProductId();
+            $newProductId = findLastProductId();
             try {
                 $statement = $con->prepare("INSERT INTO PRODUCTOS_has_CATEGORIAS (PRODUCTOS_id,CATEGORIAS_id) VALUES (:prodId, :catId)");
                 $statement->execute([
-                    ':prodId' => $productId,
+                    ':prodId' => $newProductId,
                     ':catId' => $newProduct['idCategoria']
                 ]);
                 return true;
             } catch (Exception $e) {
-                $statement = $con->prepare("DELETE FROM PRODUCTOS WHERE id = :id");
-                $statement->execute([
-                    ':id' => $productId
-                ]);
-                die("ERROR: No se pudo asignar categoría, por lo que se eliminó el producto agregado");
+
+                if ($newProductId > $lastProductId) {
+
+                    $statement = $con->prepare("DELETE FROM PRODUCTOS WHERE id = :id");
+                    $statement->execute([
+                        ':id' => $newProductId
+                    ]);
+                }
+                die($e->getMessage());
             }
         } else {
-            die("ERROR: Producto no agregado");
+            die("ERROR: " . $error_messages['!product_add']);
         }
     } catch (Exception $e) {
         die("ERROR SQL in saveOneProduct(): " . $e->getMessage());

@@ -8,9 +8,8 @@ function isValidPass(string $var): bool
 
     return 
         strlen($var) >= 8 &&
+        strlen($var) <= 255 &&
         preg_match($lowerCase, $var) &&
         preg_match($upperCase, $var) &&
         preg_match($number, $var) ? true : false;
 }
-
-?>

@@ -1,11 +1,3 @@
-<?php
-require "../src/utils/validators/roles/isAdmin.php";
-if (!$isAdmin) {
-    header("Location:./login.php");
-    exit;
-}
-?>
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -22,10 +14,10 @@ if (!$isAdmin) {
 
 <body>
     <div>
-        <div class="link-profiles-div">
+        <div class="link-options-div">
             <?php
-            require "./components/profiles.php";
-            echo $profiles;
+            require "./components/options.php";
+            echo $options;
             ?>
         </div>
         <h1>GESTIÓN DE USUARIOS</h1>
@@ -92,19 +84,16 @@ if (!$isAdmin) {
                     <input type="text" name="cedula" placeholder="Cédula de identidad" required autocomplete="off">
                     <input type="text" name="email" placeholder="Email" required autocomplete="off">
                     <input type="text" name="contrasenia" placeholder="Contraseña" required autocomplete="off">
-                    <select name="roles" id="roles" required>
-                        <option selected hidden value="">Seleccione un rol</option>
-                        <option value="1">admin</option>
-                        <option value="2">vendedor</option>
-                    </select>
-                    <!-- <div>
-                        <label>Admin
-                        <input type="checkbox" name="check-admin" id="check-admin" value="1" required>
-                        </label>
-                        <label>Vendedor
-                        <input type="checkbox" name="check-vendedor" id="check-vendedor" value="2" required>
-                        </label>
-                    </div> -->
+                    <div class="d-flex center">
+                        <div class="chkbox-div">
+                            <label class="chkbox-labels" for="check-admin">Administrador</label>
+                            <input class="chkbox-roles" type="checkbox" name="check-admin" id="check-admin" value="1">
+                        </div>
+                        <div class="chkbox-div">
+                            <label class="chkbox-labels" for="check-vendedor">Vendedor</label>
+                            <input class="chkbox-roles" type="checkbox" name="check-vendedor" id="check-vendedor" value="2">
+                        </div>
+                    </div>
                     <div class="buttons">
                         <button type="submit">ACEPTAR</button>
                         <button type="reset">CANCELAR</button>
@@ -113,11 +102,12 @@ if (!$isAdmin) {
             </div>
         </div>
     </div>
-    <hr class="separator">
-    <?php
-    require "./components/footer.php";
-    echo $footer;
-    ?>
+    <footer>
+        <?php
+        require "./components/footer.php";
+        echo $footer;
+        ?>
+    </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>
 
