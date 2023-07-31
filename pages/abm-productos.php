@@ -1,12 +1,5 @@
-<?php
-require "../src/utils/validators/roles/isVendedor.php";
-if (!$isVendedor) {
-    header("Location:./login.php");
-    exit;
-}
-?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -21,10 +14,10 @@ if (!$isVendedor) {
 
 <body>
     <div>
-        <div class="link-profiles-div">
+        <div class="link-options-div">
             <?php
-            require "./components/profiles.php";
-            echo $profiles;
+            require "./components/options.php";
+            echo $options;
             ?>
         </div>
         <h1>GESTIÓN DE PRODUCTOS</h1>
@@ -81,8 +74,8 @@ if (!$isVendedor) {
                         </thead>
                         <tbody>
                             <?php
-                                require "../src/modules/products/abm-productos.php";
-                                echo getProductsTableData();
+                            require "../src/modules/products/abm-productos.php";
+                            echo getProductsTableData();
                             ?>
                         </tbody>
                     </table>
@@ -90,7 +83,7 @@ if (!$isVendedor) {
             </div>
             <div class="col-lg-3">
                 <form class="form-abm" action="../src/modules/products/abm-productos.php" method="post">
-                    <input type="text" name="nombre" placeholder="Nombre" rpequired autocomplete="off">
+                    <input type="text" name="nombre" placeholder="Nombre" required autocomplete="off">
                     <input type="text" name="imagen" placeholder="URL Imagen" required autocomplete="off">
                     <select name="categoria" id="categoria" required>
                         <option selected hidden value="">Categoría</option>
@@ -108,11 +101,12 @@ if (!$isVendedor) {
             </div>
         </div>
     </div>
-    <hr class="separator">
-    <?php
-    require "./components/footer.php";
-    echo $footer;
-    ?>
+    <footer>
+        <?php
+        require "./components/footer.php";
+        echo $footer;
+        ?>
+    </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 
 

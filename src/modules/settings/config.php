@@ -1,12 +1,6 @@
 <?php
-require  realpath(dirname(__FILE__)) . "/../../utils/validators/roles/isAdmin.php";
 require realpath(dirname(__FILE__)) . '/../../repository/config.repository.php';
 require realpath(dirname(__FILE__)) . '/../../utils/validators/hasData.php';
-
-if (!$isAdmin) {
-    header("Location:../../../pages/login.php");
-    exit;
-}
 
 if ($_POST) {
     $nombre = $_POST['nombre'];
@@ -54,17 +48,21 @@ function getLabelsEmpresaHTML(): string
 {
     $dataEmpresa = getDataEmpresa();
     $labelsEmpresa = '';
-    foreach ($dataEmpresa as $data) {
-        $labelsEmpresa .= '<label class="data-label">'.strtoupper(array_keys($dataEmpresa,$data)[0]).': ----> ' . $data . '</label>';
+    $processedKeys = [];
+    foreach ($dataEmpresa as $key => $data) {
+        if (in_array($key, $processedKeys)) {
+            continue; 
+        }
+        $labelsEmpresa .= '<label class="data-label">' . strtoupper($key) . ': ----> ' . $data . '</label>';
+        array_push($processedKeys,$key);
     }
     return $labelsEmpresa;
 }
 
 function getDataEmpresa(): array
 {
+    require realpath(dirname(__FILE__)) . '/../../utils/messages/msg.php';
+
     $dataEmpresa = findAllDataEmpresa();
-    if (empty($dataEmpresa)) {
-        die('Error al cargar datos de empresa');
-    }
-    return $dataEmpresa;
+    return $dataEmpresa ? $dataEmpresa : die("Error: " . $error_messages['!data_empresa']);
 }

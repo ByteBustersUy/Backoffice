@@ -1,11 +1,3 @@
-<?php
-require "../src/utils/validators/roles/isAdmin.php";
-if (!$isAdmin) {
-    header("Location:./login.php");
-    exit;
-}
-?>
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -22,10 +14,10 @@ if (!$isAdmin) {
 
 <body>
     <div>
-        <div class="link-profiles-div">
+        <div class="link-options-div">
             <?php
-            require "./components/profiles.php";
-            echo $profiles;
+            require "./components/options.php";
+            echo $options;
             ?>
         </div>
         <h1>GESTIÓN DE USUARIOS</h1>
@@ -110,11 +102,12 @@ if (!$isAdmin) {
             </div>
         </div>
     </div>
-    <hr class="separator">
-    <?php
-    require "./components/footer.php";
-    echo $footer;
-    ?>
+    <footer>
+        <?php
+        require "./components/footer.php";
+        echo $footer;
+        ?>
+    </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>
 

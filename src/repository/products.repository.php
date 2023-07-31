@@ -1,6 +1,4 @@
 <?php
-
-
 function findOneProduct(string $nombre): array
 {
     require realpath(dirname(__FILE__)) . "/../db/conexion.php";
@@ -34,7 +32,7 @@ function findAllCategories(): array
         $reg = $res->fetchAll(PDO::FETCH_ASSOC);
         return $reg ? $reg : [];
     } catch (Exception $e) {
-        die("ERROR SQL in findAllProducts(): " . $e->getMessage());
+        die("ERROR SQL in findAllCategories(): " . $e->getMessage());
     }
 }
 
@@ -83,7 +81,7 @@ function findProductCategoryByProductId(string $productId): string
 
         return '';
     } catch (Exception $e) {
-        die("ERROR SQL in findCategoryIdByName(): " . $e->getMessage());
+        die("ERROR SQL in findProductCategoryByProductId(): " . $e->getMessage());
     }
 }
 function findProductPromotionStatus(string $productId): bool
@@ -97,13 +95,14 @@ function findProductPromotionStatus(string $productId): bool
 
         return $reg ? true : false;
     } catch (Exception $e) {
-        die("ERROR SQL in findCategoryIdByName(): " . $e->getMessage());
+        die("ERROR SQL in findProductPromotionStatus(): " . $e->getMessage());
     }
 }
 
 function saveOneProduct(array $newProduct): bool
 {
     require realpath(dirname(__FILE__)) . "/../db/conexion.php";
+    include realpath(dirname(__FILE__)) . "/../utils/messages/msg.php";
     try {
         $lastProductId = findLastProductId();
         $statement = $con->prepare("INSERT INTO PRODUCTOS (nombre,descripcion,imagen) VALUES (:nombre, :descripcion, :imagen)");
@@ -131,10 +130,10 @@ function saveOneProduct(array $newProduct): bool
                         ':id' => $newProductId
                     ]);
                 }
-                die("ERROR: No se pudo asignar categoría, por lo que se eliminó el producto agregado");
+                die($e->getMessage());
             }
         } else {
-            die("ERROR: Producto no agregado");
+            die("ERROR: " . $error_messages['!product_add']);
         }
     } catch (Exception $e) {
         die("ERROR SQL in saveOneProduct(): " . $e->getMessage());

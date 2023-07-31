@@ -1,12 +1,11 @@
 <?php
-require realpath(dirname(__FILE__)) . "/../../utils/validators/roles/isAdmin.php";
-
-if (!$isAdmin) {
-    header("Location:../../../pages/login.php");
-    exit;
-}
-
 require realpath(dirname(__FILE__)) . "/../../utils/validators/hasData.php";
+require realpath(dirname(__FILE__)) . "/../../utils/validators/isValidPass.php";
+require realpath(dirname(__FILE__)) . "/../../utils/validators/isValidEmail.php";
+require realpath(dirname(__FILE__)) . "/../../utils/validators/db_types.php";
+require realpath(dirname(__FILE__)) . "/../../utils/messages/msg.php";
+require realpath(dirname(__FILE__)) . "/../../repository/users.repository.php";
+
 
 if ($_POST) {
     try {
@@ -14,9 +13,9 @@ if ($_POST) {
         $apellido = $_POST['apellido'];
         $cedula = $_POST['cedula'];
         $email = $_POST['email'];
-        $pass = hashPass($_POST['contrasenia']);
-
+        $pass = $_POST['contrasenia'];
         $rolesId = [];
+
         if (isset($_POST['check-admin'])) {
             array_push($rolesId, $_POST['check-admin']);
         }
@@ -24,18 +23,25 @@ if ($_POST) {
             array_push($rolesId, $_POST['check-vendedor']);
         }
     } catch (Exception $e) {
-        throw new ErrorException("Error al procesar datos de formulario. >>" . $e->getMessage());
+        throw new ErrorException($e->getMessage());
     }
 
-    if (
-        !hasData($nombre) ||
-        !hasData($apellido) ||
-        !hasData($cedula) ||
-        !hasData($email) ||
-        !hasData($pass) ||
-        !hasData($rolesId)
-    ) {
-        die("alguna propiedad del formulario no tiene data. ");
+    if (!elementsHasData([$nombre, $apellido, $cedula, $email, $pass, $rolesId])) {
+        die("ERROR: " . $error_messages['!form_data']);
+    }
+
+    if(!isValidEmail($email)){
+        die("ERROR: " . $error_messages['!valid_email']);
+    }
+
+    if (isValidPass($pass)) {
+        $pass = hashPass($pass);
+    } else {
+        die("ERROR: " . $error_messages['!valid_pass']);
+    }
+
+    if(!varchar45($nombre) || !varchar45($apellido) || !varchar45($email)){
+        die("ERROR: ". $error_messages['!valid_length45']);
     }
 
     $newUser = [
@@ -50,7 +56,7 @@ if ($_POST) {
     require "../../repository/users.repository.php";
     $userExist = findOneUser($newUser['cedula']);
     if ($userExist) {
-        die("ERROR: El usuario que intentas agregar ya existe");
+        die("ERROR: " . $error_messages['exist_user'] . ". ('" . $userExist['ci'] . "')");
     }
     saveOneUser($newUser);
     header("Location:../../../pages/abm-usuarios.php");
@@ -68,7 +74,7 @@ function getUsersTableDataHTML(): string
     foreach ($usersData as $user) {
         $rolesList = findRoles($user['ci']);
         $roles = '| ';
-        foreach ($rolesList as $rol) {
+        foreach ($rolesList[1] as $rol) {
             $roles .= ' ' . $rol . ' |';
         }
         $usersList .= '
