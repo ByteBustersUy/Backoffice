@@ -65,11 +65,11 @@
                     <table class="table table-dark table-hover">
                         <thead class="sticky-top">
                             <tr>
-                                <th class="first-in-table" scope="col">Nombre del producto</th>
-                                <th scope="col">Categoría</th>
-                                <th scope="col">Imágen</th>
-                                <th scope="col">Promo</th>
-                                <th scope="col">Detalle</th>
+                                <th class="user-select-none first-in-table" scope="col">Nombre del producto</th>
+                                <th class="user-select-none" scope="col">Categoría</th>
+                                <th class="user-select-none" scope="col">Imágen</th>
+                                <th class="user-select-none" scope="col">Promo</th>
+                                <th class="user-select-none" scope="col">Detalle</th>
                             </tr>
                         </thead>
                         <tbody>

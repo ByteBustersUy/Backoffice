@@ -42,7 +42,7 @@ button:active {
     box-shadow: inset 1px 1px var(--color-1);
 }
 
-input{
+input {
     height: 2.3rem;
 }
 
@@ -107,33 +107,22 @@ th {
 
 td {
     text-align: center;
-    padding: 0;
+    padding: .5rem;
     border: 1px solid var(--secondary-border-color);
     background-color: var(--primary-background-color) !important;
+    border-bottom: 1px solid var(--secondary-border-color);
 }
 
 a {
     text-decoration: none;
 }
 
-td a {
-    display: block;
-    width: 100%;
-    height: 100%;
-    padding: 0.5rem;
-    color: var(--color-3);
-}
-
 .table>:not(caption)>*>* {
-    padding: 0;
+    padding: .5rem;
 }
 
 thead tr {
     font-size: 1.1rem;
-}
-
-td {
-    border-bottom: 1px solid var(--secondary-border-color)
 }
 
 .link-options {
@@ -482,7 +471,7 @@ td {
     margin-top: .1rem;
 }
 
-.form-emp label{
+.form-emp label {
     margin-top: 2rem;
     font-size: 1.2rem;
     font-weight: 600;
@@ -552,11 +541,11 @@ td {
     justify-content: center;
 }
 
-.absolute{
+.absolute {
     position: absolute;
 }
 
-.bottom-10{
+.bottom-10 {
     bottom: 10rem;
 }
 

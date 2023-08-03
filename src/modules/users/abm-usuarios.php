@@ -30,7 +30,7 @@ if ($_POST) {
         die("ERROR: " . $error_messages['!form_data']);
     }
 
-    if(!isValidEmail($email)){
+    if (!isValidEmail($email)) {
         die("ERROR: " . $error_messages['!valid_email']);
     }
 
@@ -40,8 +40,8 @@ if ($_POST) {
         die("ERROR: " . $error_messages['!valid_pass']);
     }
 
-    if(!varchar45($nombre) || !varchar45($apellido) || !varchar45($email)){
-        die("ERROR: ". $error_messages['!valid_length45']);
+    if (!varchar45($nombre) || !varchar45($apellido) || !varchar45($email)) {
+        die("ERROR: " . $error_messages['!valid_length45']);
     }
 
     $newUser = [
@@ -78,12 +78,12 @@ function getUsersTableDataHTML(): string
             $roles .= ' ' . $rol . ' |';
         }
         $usersList .= '
-                            <tr>
-                                <td class="first-in-table"><p class="user-select-none">' . $user['nombre'] . ' ' . $user['apellido'] . '</p></td>
-                                <td><p>' . $user['ci'] . '</p></td>
-                                <td><p class="user-select-none">' . $user['email'] . '</p></td>
-                                <td><p class="user-select-none">' . $roles . '</p></td>
-                            </tr>';
+                        <tr class="user-select-none align-middle">
+                            <td class="first-in-table">' . $user['nombre'] . ' ' . $user['apellido'] . '</td>
+                            <td>' . $user['ci'] . '</td>
+                            <td>' . $user['email'] . '</td>
+                            <td>' . $roles . '</td>
+                        </tr>';
     }
     return $usersList;
 }

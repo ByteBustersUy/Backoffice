@@ -63,9 +63,9 @@
                         <thead class="sticky-top">
                             <tr>
                                 <th class="user-select-none first-in-table" scope="col">Nombre completo</th>
-                                <th class ="user-select-none" scope="col">Cédula</th>
-                                <th class ="user-select-none" scope="col">Email</th>
-                                <th class ="user-select-none" scope="col">Roles</th>
+                                <th class="user-select-none" scope="col">Cédula</th>
+                                <th class="user-select-none" scope="col">Email</th>
+                                <th class="user-select-none" scope="col">Roles</th>
                             </tr>
                         </thead>
                         <tbody>
