@@ -40,7 +40,7 @@ function getProductsTableData(): string
                                 <td>' . $category . '</td>
                                 <td>' . $product['imagen'] . '</td>
                                 <td>' . $isPromo . '</td>
-                                <td class="align-middle"><button class="btn-eye"><i class="fa-solid fa-eye"></i></button></td>
+                                <td><button class="btn-eye"><i class="fa-solid fa-eye"></i></button></td>
                             </tr>';
     }
     return $productsList;

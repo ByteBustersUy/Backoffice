@@ -43,7 +43,7 @@
                     </a>
                 </div>
             </div>
-            <div class="col-lg-7">
+            <div class="col-lg-9">
                 <div class="table-options">
                     <input type="search" name="search" placeholder="Nombre" autocomplete="off">
                     <button type="button">Buscar</button>
@@ -77,7 +77,7 @@
                     </table>
                 </div>
             </div>
-            <div class="col-lg-3">
+            <!-- <div class="col-lg-3">
                 <form class="form-abm" action="../src/modules/users/abm-usuarios.php" method="post">
                     <input type="text" name="nombre" placeholder="Nombre" required autocomplete="off">
                     <input type="text" name="apellido" placeholder="Apellido" required autocomplete="off">
@@ -99,7 +99,7 @@
                         <button type="reset">CANCELAR</button>
                     </div>
                 </form>
-            </div>
+            </div> -->
         </div>
     </div>
     <footer>
