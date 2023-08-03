@@ -78,11 +78,11 @@ function getUsersTableDataHTML(): string
             $roles .= ' ' . $rol . ' |';
         }
         $usersList .= '
-                            <tr">
-                                <td class="first-in-table"><a href="?ci=' . $user['ci'] . '">' . $user['nombre'] . ' ' . $user['apellido'] . '</a></td>
-                                <td><a href="?ci=' . $user['ci'] . '">' . $user['ci'] . '</a></td>
-                                <td><a href="?ci=' . $user['ci'] . '">' . $user['email'] . '</a></td>
-                                <td><a href="?ci=' . $user['ci'] . '">' . $roles . '</a></td>
+                            <tr>
+                                <td class="first-in-table"><p>' . $user['nombre'] . ' ' . $user['apellido'] . '</p></td>
+                                <td><p>' . $user['ci'] . '</p></td>
+                                <td><p>' . $user['email'] . '</p></td>
+                                <td><p>' . $roles . '</p></td>
                             </tr>';
     }
     return $usersList;
