@@ -62,10 +62,10 @@
                     <table class="table table-dark table-hover">
                         <thead class="sticky-top">
                             <tr>
-                                <th class="first-in-table" scope="col">Nombre completo</th>
-                                <th scope="col">Cédula</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Roles</th>
+                                <th class="user-select-none first-in-table" scope="col">Nombre completo</th>
+                                <th class ="user-select-none" scope="col">Cédula</th>
+                                <th class ="user-select-none" scope="col">Email</th>
+                                <th class ="user-select-none" scope="col">Roles</th>
                             </tr>
                         </thead>
                         <tbody>
