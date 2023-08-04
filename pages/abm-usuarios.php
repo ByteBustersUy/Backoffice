@@ -26,7 +26,7 @@
         <div class="row">
             <div class="col-lg-2 ">
                 <div class="items">
-                    <a href="">
+                    <a id="btnAddUser" data-bs-toggle="modal" data-bs-target="#moddalUsers">
                         <div class="btn-abm">
                             <i class="fa-solid fa-square-plus"></i>
                         </div>
@@ -77,29 +77,40 @@
                     </table>
                 </div>
             </div>
-            <!-- <div class="col-lg-3">
-                <form class="form-abm" action="../src/modules/users/abm-usuarios.php" method="post">
-                    <input type="text" name="nombre" placeholder="Nombre" required autocomplete="off">
-                    <input type="text" name="apellido" placeholder="Apellido" required autocomplete="off">
-                    <input type="text" name="cedula" placeholder="Cédula de identidad" required autocomplete="off">
-                    <input type="text" name="email" placeholder="Email" required autocomplete="off">
-                    <input type="text" name="contrasenia" placeholder="Contraseña" required autocomplete="off">
-                    <div class="d-flex center">
-                        <div class="chkbox-div">
-                            <label class="chkbox-labels" for="check-admin">Administrador</label>
-                            <input class="chkbox-roles" type="checkbox" name="check-admin" id="check-admin" value="1">
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="moddalUsers" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title fs-5" id="exampleModalLabel">Agregar Usuario</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form class="form-abm" action="../src/modules/users/abm-usuarios.php" method="post">
+                        <input type="text" name="nombre" placeholder="Nombre" required autocomplete="off">
+                        <input type="text" name="apellido" placeholder="Apellido" required autocomplete="off">
+                        <input type="text" name="cedula" placeholder="Cédula de identidad" required autocomplete="off">
+                        <input type="text" name="email" placeholder="Email" required autocomplete="off">
+                        <input type="text" name="contrasenia" placeholder="Contraseña" required autocomplete="off">
+                        <div class="d-flex center">
+                            <div class="chkbox-div">
+                                <label class="chkbox-labels" for="check-admin">Administrador</label>
+                                <input class="chkbox-roles" type="checkbox" name="check-admin" id="check-admin" value="1">
+                            </div>
+                            <div class="chkbox-div">
+                                <label class="chkbox-labels" for="check-vendedor">Vendedor</label>
+                                <input class="chkbox-roles" type="checkbox" name="check-vendedor" id="check-vendedor" value="2">
+                            </div>
                         </div>
-                        <div class="chkbox-div">
-                            <label class="chkbox-labels" for="check-vendedor">Vendedor</label>
-                            <input class="chkbox-roles" type="checkbox" name="check-vendedor" id="check-vendedor" value="2">
+                        <div class="buttons">
+                            <button type="reset">CANCELAR</button>
+                            <button type="submit">ACEPTAR</button>
                         </div>
-                    </div>
-                    <div class="buttons">
-                        <button type="submit">ACEPTAR</button>
-                        <button type="reset">CANCELAR</button>
-                    </div>
-                </form>
-            </div> -->
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
     <footer>

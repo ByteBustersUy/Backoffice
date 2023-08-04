@@ -379,8 +379,17 @@ thead tr {
     margin: auto;
 }
 
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    color: var(--bs-modal-color);
+    border: 1.2px solid var(--bytebusters-color);
+    background-color: var(--color-1);
+}
+
 .form-abm {
-    margin-top: 5rem;
+    margin-top: 2rem;
 }
 
 .form-abm input {
@@ -431,9 +440,9 @@ thead tr {
 
 .form-abm .buttons {
     display: flex;
-    justify-content: center;
-    margin: 2rem 1rem;
-    margin-top: 2rem;
+    margin-top: 3rem;
+    justify-content: space-between;
+    /* margin: 2rem 1rem; */
 }
 
 .form-abm .chkbox-div {
@@ -600,6 +609,21 @@ footer img {
 
 .sticky-top {
     top: -6px;
+}
+
+.modal-title{
+    color: var(--light-text-color);
+}
+
+.modal-dialog{
+    margin-top: 8rem;
+}
+
+.btn-close{
+    transform: scale(110%);
+    border-radius: 1rem;
+    background-color: var(--light-text-color);
+    margin: 0 !important;
 }
 
 

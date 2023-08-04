@@ -53,7 +53,6 @@ if ($_POST) {
         "rolesId" => $rolesId
     ];
 
-    require "../../repository/users.repository.php";
     $userExist = findOneUser($newUser['cedula']);
     if ($userExist) {
         die("ERROR: " . $error_messages['exist_user'] . ". ('" . $userExist['ci'] . "')");
