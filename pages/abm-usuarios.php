@@ -31,12 +31,12 @@
                             <i class="fa-solid fa-square-plus"></i>
                         </div>
                     </a>
-                    <a href="">
+                    <a id="btnEditUser" class="disabled">
                         <div class="btn-abm">
                             <i class="fa-solid fa-pen"></i>
                         </div>
                     </a>
-                    <a href="">
+                    <a id="btnDeleteUser" class="disabled">
                         <div class="btn-abm">
                             <i class="fa-solid fa-trash"></i>
                         </div>
@@ -76,6 +76,8 @@
                         </tbody>
                     </table>
                 </div>
+            </div>
+            <div class="col-lg-1">
             </div>
         </div>
     </div>
@@ -120,6 +122,7 @@
         ?>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <script src="../js/abm-usuarios.js"></script>
 </body>
 
 </html>

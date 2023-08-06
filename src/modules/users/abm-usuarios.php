@@ -3,11 +3,49 @@ require realpath(dirname(__FILE__)) . "/../../utils/validators/hasData.php";
 require realpath(dirname(__FILE__)) . "/../../utils/validators/isValidPass.php";
 require realpath(dirname(__FILE__)) . "/../../utils/validators/isValidEmail.php";
 require realpath(dirname(__FILE__)) . "/../../utils/validators/db_types.php";
-require realpath(dirname(__FILE__)) . "/../../utils/messages/msg.php";
 require realpath(dirname(__FILE__)) . "/../../repository/users.repository.php";
 
 
-if ($_POST) {
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    if (isset($_POST["deleteUserCi"])) {
+        deleteUser($_POST["deleteUserCi"]);
+    } else if (isset($_POST["editUserCi"])) {
+        editUser($_POST["editUserCi"]);
+    } else {
+        addUser();
+    }
+}
+
+function hashPass(string $pass): string
+{
+    return password_hash($pass, PASSWORD_DEFAULT);
+}
+
+function getUsersTableDataHTML(): string
+{
+    $usersData = findAllUsers();
+    $usersList = '';
+    foreach ($usersData as $user) {
+        $rolesList = findRoles($user['ci']);
+        $roles = '| ';
+        foreach ($rolesList[1] as $rol) {
+            $roles .= ' ' . $rol . ' |';
+        }
+        $usersList .= '
+                        <tr id="' . $user['ci'] . '" class="user-select-none align-middle" onclick="selectUserRow(' . $user['ci'] . ')">
+                            <td class="first-in-table">' . $user['nombre'] . ' ' . $user['apellido'] . '</td>
+                            <td>' . $user['ci'] . '</td>
+                            <td>' . $user['email'] . '</td>
+                            <td>' . $roles . '</td>
+                        </tr>';
+    }
+    return $usersList;
+}
+
+function addUser()
+{
+    require realpath(dirname(__FILE__)) . "/../../utils/messages/msg.php";
+
     try {
         $nombre = $_POST['nombre'];
         $apellido = $_POST['apellido'];
@@ -61,28 +99,6 @@ if ($_POST) {
     header("Location:../../../pages/abm-usuarios.php");
 }
 
-function hashPass(string $pass): string
+function editUser(string $userCi)
 {
-    return password_hash($pass, PASSWORD_DEFAULT);
-}
-
-function getUsersTableDataHTML(): string
-{
-    $usersData = findAllUsers();
-    $usersList = '';
-    foreach ($usersData as $user) {
-        $rolesList = findRoles($user['ci']);
-        $roles = '| ';
-        foreach ($rolesList[1] as $rol) {
-            $roles .= ' ' . $rol . ' |';
-        }
-        $usersList .= '
-                        <tr class="user-select-none align-middle">
-                            <td class="first-in-table">' . $user['nombre'] . ' ' . $user['apellido'] . '</td>
-                            <td>' . $user['ci'] . '</td>
-                            <td>' . $user['email'] . '</td>
-                            <td>' . $roles . '</td>
-                        </tr>';
-    }
-    return $usersList;
 }

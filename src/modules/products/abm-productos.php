@@ -1,7 +1,7 @@
 <?php
 require realpath(dirname(__FILE__)) . "/../../utils/messages/msg.php";
 
-if ($_POST) {
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $nombre = strtolower($_POST['nombre']);
     $descripcion = strtolower($_POST['descripcion']);
     $idCategoria = strtolower($_POST['categoria']);

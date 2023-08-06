@@ -57,26 +57,27 @@ function findPathByAction(string $action, array $rolesId): string
         $statement->execute(array(':accion' => $action));
         $reg = $statement->fetch(PDO::FETCH_ASSOC);
         $isValidRol = false;
-        foreach ($rolesId as $rolId){
-            if($rolId == $reg['rolesId']){
+        foreach ($rolesId as $rolId) {
+            if ($rolId == $reg['rolesId']) {
                 $isValidRol = true;
             }
         }
-        
-        return $reg['ruta'] && $isValidRol ? $reg['ruta']: '';
+
+        return $reg['ruta'] && $isValidRol ? $reg['ruta'] : '';
     } catch (Exception $e) {
         die("ERROR SQL in findPathByAction(): " . $e->getMessage());
     }
 }
 
-function findActionsByRolesId(array $rolesId): array{
+function findActionsByRolesId(array $rolesId): array
+{
     require realpath(dirname(__FILE__)) . "/../db/conexion.php";
     $actions = [];
-    foreach($rolesId as $rolId){
+    foreach ($rolesId as $rolId) {
         try {
             $statement = $con->prepare("SELECT accion FROM RUTAS WHERE rolesId = :rolId");
             $statement->execute(array(':rolId' => $rolId));
-            while($reg = $statement->fetch(PDO::FETCH_ASSOC)){
+            while ($reg = $statement->fetch(PDO::FETCH_ASSOC)) {
                 array_push($actions, $reg['accion']);
             }
         } catch (Exception $e) {
@@ -107,6 +108,25 @@ function saveOneUser(array $newUser)
             }
         } else {
             die("ERROR: " . $error_messages['!user_add']);
+        }
+    } catch (Exception $e) {
+        die("ERROR SQL in saveOneUser(): " . $e->getMessage());
+    }
+}
+
+function deleteUser(string $userCi)
+{
+    require realpath(dirname(__FILE__)) . "/../db/conexion.php";
+    require realpath(dirname(__FILE__)) . "/../utils/messages/msg.php";
+    try {
+        $statement = $con->prepare("DELETE FROM USUARIOS_has_ROLES WHERE USUARIOS_ci = :ci");
+        $res = $statement->execute([':ci' => $userCi]);    
+
+        if ($res == 1) {
+            $statement = $con->prepare("DELETE FROM USUARIOS WHERE ci = :ci");
+            $statement->execute([':ci' => $userCi]);
+        } else {
+            die("ERROR: " . $error_messages['!user_delete']);
         }
     } catch (Exception $e) {
         die("ERROR SQL in saveOneUser(): " . $e->getMessage());
