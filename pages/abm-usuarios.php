@@ -6,10 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/normalize.css">
+    <link rel="icon" type="image/x-icon" href="../favicon.ico" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="../styles/style.css">
-    <title>Gestor de usuarios</title>
+    <title>Ecommerce Manager</title>
 </head>
 
 <body>
@@ -91,8 +92,8 @@
                 </div>
                 <div class="modal-body">
                     <form id="formAbmUser" class="form-abm" action="" method="post">
-                        <input type="text" name="nombre" placeholder="Nombre" required autocomplete="off">
-                        <input type="text" name="apellido" placeholder="Apellido" required autocomplete="off">
+                        <input type="text" name="nombre" placeholder="Primer nombre" required autocomplete="off">
+                        <input type="text" name="apellido" placeholder="Apellidos" required autocomplete="off">
                         <input type="text" name="cedula" placeholder="Cédula de identidad" required autocomplete="off">
                         <input type="text" name="email" placeholder="Email" required autocomplete="off">
                         <input type="text" name="contrasenia" placeholder="Contraseña" required autocomplete="off">
@@ -107,7 +108,7 @@
                             </div>
                         </div>
                         <div class="buttons">
-                            <button type="reset">CANCELAR</button>
+                            <button id="btnCancelModal" type="button" data-bs-dismiss="modal" aria-label="Close">CANCELAR</button>
                             <button type="submit">ACEPTAR</button>
                         </div>
                     </form>

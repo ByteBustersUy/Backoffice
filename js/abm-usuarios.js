@@ -3,6 +3,8 @@ const btnAddUser = document.getElementById("btnAddUser");
 const btnEditUser = document.getElementById("btnEditUser");
 const btnDeleteUser = document.getElementById("btnDeleteUser");
 const formAbm = document.getElementById("formAbmUser");
+let selectedRow;
+
 
 //Agregar usuario
 btnAddUser.addEventListener("click", () => {
@@ -11,7 +13,10 @@ btnAddUser.addEventListener("click", () => {
 		"Agregar usuario";
 	formAbm.attributes.item(2).value =
 		"../src/modules/users/abm-usuarios.php?action=add";
+
+		// nombre si tiene espacio, tomar solo el primer nombre
 });
+
 
 //Editar usuario
 btnEditUser.addEventListener("click", () => {
@@ -20,34 +25,71 @@ btnEditUser.addEventListener("click", () => {
 		const userCi = document.getElementsByClassName("selected")[0].id;
 
 		modalUsers.getElementsByClassName("modal-title")[0].innerHTML =
-			"Editar usuario";
+			"Editar usuario ";
+
+		const inputsForm = {
+			nombre: modalUsers.getElementsByTagName("input")[0],
+			apellido: modalUsers.getElementsByTagName("input")[1],
+			cedula: modalUsers.getElementsByTagName("input")[2],
+			email: modalUsers.getElementsByTagName("input")[3],
+			constrasenia: modalUsers.getElementsByTagName("input")[4]
+		}
+
+		let nombreCompleto = selectedRow.getElementsByTagName("td")[0].innerHTML.split(" ");
+		let apellidos = '';
+		for(let i = 1; i< nombreCompleto.length; i++){
+			apellidos += nombreCompleto[i] + " ";
+		}
+		
+		const selectedUserData = {
+			nombre: selectedRow.getElementsByTagName("td")[0].innerHTML.split(" ")[0],
+			apellido: apellidos,
+			cedula: selectedRow.getElementsByTagName("td")[1].innerHTML,
+			email: selectedRow.getElementsByTagName("td")[2].innerHTML,
+		}
+
+		inputsForm.nombre.value = selectedUserData.nombre;
+		inputsForm.apellido.value = selectedUserData.apellido;
+		inputsForm.cedula.value = selectedUserData.cedula;
+		inputsForm.cedula.disabled = true;
+		inputsForm.cedula.style.filter = "brightness(50%)";
+		inputsForm.email.value = selectedUserData.email;
+		inputsForm.constrasenia.disabled = true;
+		inputsForm.constrasenia.style.filter = "brightness(50%)";
+
+	
 		formAbm.attributes.item(
 			2
 		).value = `../src/modules/users/abm-usuarios.php?action=edit&ci=${userCi}`;
 	}
 });
 
+
+//Modal
 const modalUsers = document.getElementById("moddalUsers");
 modalUsers.addEventListener("click", (event) => {
 	if (
 		event.target.id === modalUsers.id ||
-		event.target.id === "btnCloseModal"
+		event.target.id === "btnCloseModal" ||
+		event.target.id === "btnCancelModal"
 	) {
-		btnAddUser.classList.remove("enabled-button");
-		btnEditUser.classList.remove("enabled-button");
-		if (btnEditUser.attributes.getNamedItem("data-bs-target")) {
-			btnEditUser.attributes.removeNamedItem("data-bs-target");
-		}
-		if (btnEditUser.attributes.getNamedItem("data-bs-toggle")) {
-			btnEditUser.attributes.removeNamedItem("data-bs-toggle");
-		}
-		btnEditUser.setAttribute("class", "disabled");
-		btnDeleteUser.setAttribute("class", "disabled");
-		document
-			.getElementsByClassName("selected")[0]
-			?.classList.remove("selected");
+		// btnAddUser.classList.remove("enabled-button");
+		// btnEditUser.classList.remove("enabled-button");
+		// if (btnEditUser.attributes.getNamedItem("data-bs-target")) {
+		// 	btnEditUser.attributes.removeNamedItem("data-bs-target");
+		// }
+		// if (btnEditUser.attributes.getNamedItem("data-bs-toggle")) {
+		// 	btnEditUser.attributes.removeNamedItem("data-bs-toggle");
+		// }
+		// btnEditUser.setAttribute("class", "disabled");
+		// btnDeleteUser.setAttribute("class", "disabled");
+		// document
+		// 	.getElementsByClassName("selected")[0]
+		// 	?.classList.remove("selected");
+		location.reload(true);
 	}
 });
+
 
 // Eliminar usuario
 btnDeleteUser.addEventListener("click", () => {
@@ -72,9 +114,12 @@ btnDeleteUser.addEventListener("click", () => {
 						if (!response.ok) {
 							throw new Error("Error en la solicitud: " + response.status);
 						}
-						alert("Usuario eliminado con éxito!");
-						location.reload(true);
-						return response.text();
+						selectedRow.setAttribute("style", "border-top: 1.2px solid red;border-bottom: 1.2px solid red;")
+						setTimeout(() => {
+							alert("Usuario eliminado con éxito!");
+							location.reload(true);
+							return response.text();
+						},1200)
 					})
 					.catch((error) => {
 						console.error("Error: " + error);
@@ -93,13 +138,14 @@ btnDeleteUser.addEventListener("click", () => {
 	}
 });
 
+
 function selectUserRow(userCi) {
 	const btnDeleteUser = document.getElementById("btnDeleteUser");
 	document.querySelectorAll(".selected").forEach((el) => {
 		el.classList.remove("selected");
 	});
 
-	const selectedRow = document.getElementById(userCi);
+	selectedRow = document.getElementById(userCi);
 	selectedRow.setAttribute("class", "selected");
 
 	btnDeleteUser.classList.remove("disabled");
