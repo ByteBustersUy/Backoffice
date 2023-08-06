@@ -31,7 +31,7 @@
                             <i class="fa-solid fa-square-plus"></i>
                         </div>
                     </a>
-                    <a id="btnEditUser" class="disabled" data-bs-toggle="modal" >
+                    <a id="btnEditUser" class="disabled" >
                         <div class="btn-abm">
                             <i class="fa-solid fa-pen"></i>
                         </div>

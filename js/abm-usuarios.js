@@ -29,15 +29,23 @@ btnEditUser.addEventListener("click", () => {
 
 const modalUsers = document.getElementById("moddalUsers");
 modalUsers.addEventListener("click", (event) => {
-	if(event.target.id === modalUsers.id || event.target.id === "btnCloseModal"){
+	if (
+		event.target.id === modalUsers.id ||
+		event.target.id === "btnCloseModal"
+	) {
 		btnAddUser.classList.remove("enabled-button");
 		btnEditUser.classList.remove("enabled-button");
-		if(btnEditUser.attributes.getNamedItem("data-bs-target")){
+		if (btnEditUser.attributes.getNamedItem("data-bs-target")) {
 			btnEditUser.attributes.removeNamedItem("data-bs-target");
+		}
+		if (btnEditUser.attributes.getNamedItem("data-bs-toggle")) {
+			btnEditUser.attributes.removeNamedItem("data-bs-toggle");
 		}
 		btnEditUser.setAttribute("class", "disabled");
 		btnDeleteUser.setAttribute("class", "disabled");
-		document.getElementsByClassName("selected")[0]?.classList.remove("selected");
+		document
+			.getElementsByClassName("selected")[0]
+			?.classList.remove("selected");
 	}
 });
 
@@ -96,5 +104,6 @@ function selectUserRow(userCi) {
 
 	btnDeleteUser.classList.remove("disabled");
 	btnEditUser.classList.remove("disabled");
+	btnEditUser.setAttribute("data-bs-toggle", "modal");
 	btnEditUser.setAttribute("data-bs-target", "#moddalUsers");
 }
