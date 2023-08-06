@@ -26,12 +26,9 @@ btnDeleteUser.addEventListener("click", () => {
 			const response = prompt(
 				`Se eliminará al usuario con cédula ${userCi} \n\nIngrese la cédula para confirmar`
 			);
-			btnDeleteUser.classList.replace("enabled-button", "disabled");
-
 			if (response == userCi) {
 				const data = new URLSearchParams();
 				data.append("deleteUserCi", userCi);
-				document.getElementById("btnEditUser").setAttribute("class", "disabled");
 				fetch("../src/modules/users/abm-usuarios.php", {
 					method: "POST",
 					headers: {
@@ -56,6 +53,8 @@ btnDeleteUser.addEventListener("click", () => {
 			document.getElementsByClassName("selected").forEach((row) => {
 				row.classList.remove("selected");
 			});
+			btnDeleteUser.classList.replace("enabled-button", "disabled");
+			document.getElementById("btnEditUser").setAttribute("class", "disabled");
 		}, 100);
 	}
 });
