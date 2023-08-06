@@ -31,7 +31,7 @@
                             <i class="fa-solid fa-square-plus"></i>
                         </div>
                     </a>
-                    <a id="btnEditUser" class="disabled">
+                    <a id="btnEditUser" class="disabled" data-bs-toggle="modal" data-bs-target="#moddalUsers">
                         <div class="btn-abm">
                             <i class="fa-solid fa-pen"></i>
                         </div>
@@ -86,11 +86,11 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h2 class="modal-title fs-5" id="exampleModalLabel">Agregar Usuario</h2>
+                    <h2 class="modal-title fs-5" id="exampleModalLabel"></h2>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form class="form-abm" action="../src/modules/users/abm-usuarios.php" method="post">
+                    <form id="formAbmUser" class="form-abm" action="" method="post">
                         <input type="text" name="nombre" placeholder="Nombre" required autocomplete="off">
                         <input type="text" name="apellido" placeholder="Apellido" required autocomplete="off">
                         <input type="text" name="cedula" placeholder="Cédula de identidad" required autocomplete="off">

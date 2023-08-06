@@ -7,10 +7,14 @@ require realpath(dirname(__FILE__)) . "/../../repository/users.repository.php";
 
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    if (isset($_POST["deleteUserCi"])) {
-        deleteUser($_POST["deleteUserCi"]);
-    } else if (isset($_POST["editUserCi"])) {
-        editUser($_POST["editUserCi"]);
+    session_status() === PHP_SESSION_ACTIVE ?: session_start();
+
+    if ($_GET['action'] == "delete" && isset($_POST["deleteUserCi"])) {
+        if($_POST["deleteUserCi"] != $_SESSION['userCi']){
+            deleteUser($_POST["deleteUserCi"]);
+        }
+    } else if (isset($_GET['action']) && isset($_GET['ci']) && $_GET['action'] == "edit") {
+        editUser($_GET['ci']);
     } else {
         addUser();
     }
@@ -101,4 +105,5 @@ function addUser()
 
 function editUser(string $userCi)
 {
+    die("editar usuario ".$userCi);
 }
