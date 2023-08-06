@@ -13,26 +13,33 @@ btnAddUser.addEventListener("click", () => {
 		"../src/modules/users/abm-usuarios.php?action=add";
 });
 
-
 //Editar usuario
 btnEditUser.addEventListener("click", () => {
 	if (!btnEditUser.classList.contains("disabled")) {
 		btnEditUser.setAttribute("class", "enabled-button");
 		const userCi = document.getElementsByClassName("selected")[0].id;
 
-		modalUsers.getElementsByClassName("modal-title")[0].innerHTML = "Editar usuario";
-		formAbm.attributes.item(2).value = `../src/modules/users/abm-usuarios.php?action=edit&ci=${userCi}`;
+		modalUsers.getElementsByClassName("modal-title")[0].innerHTML =
+			"Editar usuario";
+		formAbm.attributes.item(
+			2
+		).value = `../src/modules/users/abm-usuarios.php?action=edit&ci=${userCi}`;
 	}
 });
 
 const modalUsers = document.getElementById("moddalUsers");
-modalUsers.onclick = () => {
-	btnAddUser.classList.remove("enabled-button");
-	btnEditUser.classList.remove("enabled-button");
-	btnEditUser.setAttribute("class", "disabled");
-	btnDeleteUser.setAttribute("class", "disabled");
-	document.getElementsByClassName("selected")[0]?.classList.remove("selected");
-};
+modalUsers.addEventListener("click", (event) => {
+	if(event.target.id === modalUsers.id || event.target.id === "btnCloseModal"){
+		btnAddUser.classList.remove("enabled-button");
+		btnEditUser.classList.remove("enabled-button");
+		if(btnEditUser.attributes.getNamedItem("data-bs-target")){
+			btnEditUser.attributes.removeNamedItem("data-bs-target");
+		}
+		btnEditUser.setAttribute("class", "disabled");
+		btnDeleteUser.setAttribute("class", "disabled");
+		document.getElementsByClassName("selected")[0]?.classList.remove("selected");
+	}
+});
 
 // Eliminar usuario
 btnDeleteUser.addEventListener("click", () => {
@@ -57,12 +64,17 @@ btnDeleteUser.addEventListener("click", () => {
 						if (!response.ok) {
 							throw new Error("Error en la solicitud: " + response.status);
 						}
+						alert("Usuario eliminado con éxito!");
 						location.reload(true);
 						return response.text();
 					})
 					.catch((error) => {
 						console.error("Error: " + error);
 					});
+			} else {
+				setTimeout(() => {
+					alert("Error: La cédula ingresada no es correcta");
+				}, 100);
 			}
 			document
 				.getElementsByClassName("selected")[0]
@@ -84,4 +96,5 @@ function selectUserRow(userCi) {
 
 	btnDeleteUser.classList.remove("disabled");
 	btnEditUser.classList.remove("disabled");
+	btnEditUser.setAttribute("data-bs-target", "#moddalUsers");
 }

@@ -20,15 +20,15 @@ try {
 </head>
 
 <body>
-    <form class="form-login" action="../src/modules/auth/loguear.php" method="post">
+    <form class="form-login" action="../src/modules/auth/loguear.php" method="post" autocomplete="off">
         <img class="img-login" src="../assets/login-image.png" alt="Logo de persona para login">
         <label>
             <i class="fa-solid fa-user"></i>
-            <input type="text" name="ci" placeholder="Cédula de Identidad" required autocomplete="off">
+            <input type="text" name="ci" placeholder="Cédula de Identidad" required>
         </label>
         <label>
             <i class="fa-solid fa-key"></i>
-            <input type="password" name="pass" placeholder="Contraseña" required autocomplete="off">
+            <input type="password" name="pass" placeholder="Contraseña" required>
         </label>
         <a href="">Olvidaste tu contraseña?</a>
         <input class="btn-submit" type="submit" value="Iniciar sesión">

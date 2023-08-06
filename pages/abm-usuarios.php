@@ -31,7 +31,7 @@
                             <i class="fa-solid fa-square-plus"></i>
                         </div>
                     </a>
-                    <a id="btnEditUser" class="disabled" data-bs-toggle="modal" data-bs-target="#moddalUsers">
+                    <a id="btnEditUser" class="disabled" data-bs-toggle="modal" >
                         <div class="btn-abm">
                             <i class="fa-solid fa-pen"></i>
                         </div>
@@ -84,10 +84,10 @@
     <!-- Modal -->
     <div class="modal fade" id="moddalUsers" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <div class="modal-content">
+            <div id="modalContent" class="modal-content">
                 <div class="modal-header">
                     <h2 class="modal-title fs-5" id="exampleModalLabel"></h2>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button id="btnCloseModal" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form id="formAbmUser" class="form-abm" action="" method="post">
