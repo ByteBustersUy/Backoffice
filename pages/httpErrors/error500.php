@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -12,4 +12,4 @@
     <img class="img-error" src="" alt="ERROR500" title="ERROR500">
 </body>
 
-</html>
+</html> -->

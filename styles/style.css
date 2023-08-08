@@ -42,7 +42,7 @@ button:active {
     box-shadow: inset 1px 1px var(--color-1);
 }
 
-input{
+input {
     height: 2.3rem;
 }
 
@@ -53,18 +53,18 @@ input:focus {
 h1 {
     display: inline-flex;
     color: var(--light-text-color);
-    margin: 1rem;
+    margin: 2rem 1rem 0 1rem;
     font-size: 3rem;
     font-family: var(--font-family-h1);
     font-weight: bolder;
     text-align: center;
     padding-top: 3rem;
-    padding-bottom: 3rem;
     filter: drop-shadow(1px 1px .2rem var(--light-text-color));
 }
 
 html {
     position: relative;
+    min-height: 100vh;
 }
 
 body {
@@ -103,49 +103,56 @@ th {
     padding: 1rem 0 !important;
     border: 1px solid var(--secondary-border-color);
     background-color: var(--primary-background-color) !important;
+    filter: contrast(80%);
 }
 
 td {
     text-align: center;
-    padding: 0;
+    padding: .5rem;
     border: 1px solid var(--secondary-border-color);
     background-color: var(--primary-background-color) !important;
+    border-bottom: 1px solid var(--secondary-border-color);
+    filter: contrast(105%);
 }
 
 a {
     text-decoration: none;
 }
 
-td a {
-    display: block;
-    width: 100%;
-    height: 100%;
-    padding: 0.5rem;
-    color: var(--color-3);
+.frame {
+    margin: 3rem auto 2rem auto;
 }
 
 .table>:not(caption)>*>* {
-    padding: 0;
+    padding: .5rem;
 }
 
 thead tr {
     font-size: 1.1rem;
 }
 
-td {
-    border-bottom: 1px solid var(--secondary-border-color)
-}
-
 .link-options {
     position: relative;
     display: inline-block;
-    font-size: 1rem;
     margin: 1rem 2rem;
-    padding: .2rem 1rem;
     color: var(--primary-text-color);
-    border-radius: 1rem;
+    border-radius: .3rem;
     background-color: var(--background-color-light);
     border: 1.2px solid var(--bytebusters-color);
+    box-shadow: inset -1px -2px .2rem ;
+    filter: drop-shadow(1px 1px .1rem var(--bytebusters-color));
+    font-weight: 600;
+    font-size: 1.2rem;
+    padding: .3rem 1.2rem;
+}
+
+.link-options:hover{
+    filter: brightness(110%) drop-shadow(1px 1px .5rem var(--bytebusters-color));
+}
+
+.link-options:active{
+    box-shadow: inset 0 0 .15rem ;
+    filter: brightness(50%);
 }
 
 .link-options-div {
@@ -174,7 +181,7 @@ td {
     margin: 1rem auto 2rem;
     border-radius: 2rem;
     background-color: var(--background-color-light);
-    filter: drop-shadow(.5rem .4rem .5rem black);
+    filter: drop-shadow(.5rem .4rem .5rem var(--color-4));
     animation: rotate 2s 1;
 }
 
@@ -220,10 +227,26 @@ td {
     text-indent: 0;
     text-align: center;
     width: 10rem;
+    height: 2.5rem;
     margin: 3rem auto 2rem;
     cursor: pointer;
     color: var(--text-button-color);
     background-color: var(--bytebusters-color);
+    border-radius: .3rem;
+    border: 1.2px solid var(--bytebusters-color);
+    box-shadow: inset -1px -2px .1rem ;
+    filter: drop-shadow(1px 1px .1rem var(--bytebusters-color));
+    font-size: 1.2rem;
+    padding: auto 1rem;
+}
+
+.btn-submit:hover{
+    filter: brightness(110%) drop-shadow(1px 1px .5rem var(--bytebusters-color));
+}
+
+.btn-submit:active{
+    box-shadow: inset 0 0 .15rem ;
+    filter: brightness(50%);
 }
 
 .profile {
@@ -233,7 +256,7 @@ td {
     top: 1rem;
     width: 8rem;
     height: 3rem;
-    border: 1px solid #1fb300;
+    border: 1px solid var(--bytebusters-color);
     border-radius: 5rem;
     text-align: center;
     color: var(--color-3);
@@ -254,7 +277,8 @@ td {
     min-width: 13rem;
     max-width: 15rem;
     text-align: center;
-    margin: 2rem auto;
+    margin: 0rem auto;
+    margin-bottom: 1rem;
     border-radius: .7rem;
     border: 2px solid var(--color-4);
     background-color: var(--background-color-light);
@@ -298,18 +322,18 @@ td {
 /* --------- ABM USUARIOS --------- */
 
 .table-frame {
-    height: 26.54rem;
+    height: 31.8rem;
     margin: auto;
-    border-left: 1px solid var(--color-5);
-    border-right: 1px solid var(--color-5);
+    margin-bottom: 10rem;
     overflow-x: none;
     overflow-y: scroll;
+    border: 2px ridge var(--color-3);
     background-color: var(--primary-background-color);
 }
 
 .table-options {
     display: flex;
-    margin: 2rem 0 1rem 0;
+    margin: 4rem 0 1rem 0;
 }
 
 .table-options select {
@@ -323,11 +347,12 @@ td {
 }
 
 .btn-eye {
-    width: 2rem;
-    height: 2rem;
+    width: 1.5rem;
+    height: auto;
     text-align: center;
-    border-radius: 10rem;
+    border-radius: 1rem;
     border: 0;
+    padding: 2px;
     background-color: var(--transparent-color);
 }
 
@@ -364,7 +389,7 @@ td {
     display: inline-flex;
     width: 6rem;
     height: 6rem;
-    margin: 1rem .5rem;
+    margin: 0 2rem;
     align-items: center;
     justify-content: center;
     border-radius: .7rem;
@@ -372,10 +397,8 @@ td {
     background-color: var(--background-color-light);
 }
 
-.items a:focus .btn-abm {
-    scale: 106%;
-    border: 5px solid var(--bytebusters-color);
-    filter: drop-shadow(.1rem .1rem .3rem var(--bytebusters-color));
+.enabled-button {
+    filter: drop-shadow(.1rem .1rem 2rem var(--bytebusters-color));
 }
 
 .btn-abm i {
@@ -386,11 +409,20 @@ td {
 
 .items {
     text-align: center;
-    margin: auto;
+    margin-top: 3rem;
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    color: var(--bs-modal-color);
+    border: 1.2px solid var(--bytebusters-color);
+    background-color: var(--color-1);
 }
 
 .form-abm {
-    margin-top: 5rem;
+    margin-top: 2rem;
 }
 
 .form-abm input {
@@ -441,9 +473,8 @@ td {
 
 .form-abm .buttons {
     display: flex;
-    justify-content: center;
-    margin: 2rem 1rem;
-    margin-top: 2rem;
+    margin-top: 3rem;
+    justify-content: space-between;
 }
 
 .form-abm .chkbox-div {
@@ -482,7 +513,7 @@ td {
     margin-top: .1rem;
 }
 
-.form-emp label{
+.form-emp label {
     margin-top: 2rem;
     font-size: 1.2rem;
     font-weight: 600;
@@ -552,11 +583,11 @@ td {
     justify-content: center;
 }
 
-.absolute{
+.absolute {
     position: absolute;
 }
 
-.bottom-10{
+.bottom-10 {
     bottom: 10rem;
 }
 
@@ -569,11 +600,24 @@ td {
     z-index: -10;
 }
 
+.selected {
+    filter: contrast(200%);
+    border-top: 1.2px solid var(--bytebusters-color);
+    border-bottom: 1.2px solid var(--bytebusters-color);
+}
+
+/* cambia color del autocompletado en inputs */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+}
+
 
 
 /* ---------  FOOTER --------- */
 footer {
-    position: fixed;
+    position: absolute;
     left: 0;
     bottom: -1px;
     width: 100vw;
@@ -612,11 +656,30 @@ footer img {
     top: -6px;
 }
 
+.modal-title {
+    color: var(--light-text-color);
+}
+
+.modal-dialog {
+    margin-top: 8rem;
+}
+
+.btn-close {
+    transform: scale(110%);
+    border-radius: 1rem;
+    background-color: var(--light-text-color);
+    margin: 0 !important;
+}
+
 
 
 
 /* --------- DESKTOP -------- */
 @media only screen and (min-width: 992px) {
+
+    html {
+        min-height: 100vh;
+    }
 
     body {
         min-height: 80vh;
@@ -624,14 +687,14 @@ footer img {
 
     h1 {
         text-align: start;
-        padding: 1rem;
+        padding: 0;
     }
 
     .frame {
         min-width: 95vw;
         min-height: 60vh;
-        margin: 5rem auto 10rem auto;
-        border: 1px solid var(--color-5);
+        margin: 2rem auto 8rem auto;
+        border: 0 solid var(--color-5);
     }
 
     .btn-back {
@@ -658,7 +721,7 @@ footer img {
     /* --------- MENU --------- */
 
     .menu-cards {
-        margin: 5rem auto;
+        margin: 8rem auto 0 auto;
         height: 22rem;
         min-width: 13rem;
         width: 14rem;
@@ -694,12 +757,13 @@ footer img {
     /* --------- ABM USUARIOS --------- */
 
     .btn-abm {
-        margin: 2rem;
+        margin: 4rem 2rem 0 2rem;
+        scale: 110%;
     }
 
     .items {
-        margin: 2rem auto;
         text-align: center;
+        margin-top: 5rem;
     }
 
     .btn-abm i {
@@ -714,6 +778,10 @@ footer img {
 
     .form-abm select {
         width: 13rem;
+    }
+
+    .table-frame {
+        margin: auto;
     }
 
 

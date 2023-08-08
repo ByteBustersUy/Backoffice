@@ -3,11 +3,53 @@ require realpath(dirname(__FILE__)) . "/../../utils/validators/hasData.php";
 require realpath(dirname(__FILE__)) . "/../../utils/validators/isValidPass.php";
 require realpath(dirname(__FILE__)) . "/../../utils/validators/isValidEmail.php";
 require realpath(dirname(__FILE__)) . "/../../utils/validators/db_types.php";
-require realpath(dirname(__FILE__)) . "/../../utils/messages/msg.php";
 require realpath(dirname(__FILE__)) . "/../../repository/users.repository.php";
 
 
-if ($_POST) {
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    session_status() === PHP_SESSION_ACTIVE ?: session_start();
+
+    if ($_GET['action'] == "delete" && isset($_POST["deleteUserCi"])) {
+        if($_POST["deleteUserCi"] != $_SESSION['userCi']){
+            deleteUser($_POST["deleteUserCi"]);
+        }
+    } else if (isset($_GET['action']) && isset($_GET['ci']) && $_GET['action'] == "edit") {
+        editUser($_GET['ci']);
+    } else {
+        addUser();
+    }
+}
+
+function hashPass(string $pass): string
+{
+    return password_hash($pass, PASSWORD_DEFAULT);
+}
+
+function getUsersTableDataHTML(): string
+{
+    $usersData = findAllUsers();
+    $usersList = '';
+    foreach ($usersData as $user) {
+        $rolesList = findRoles($user['ci']);
+        $roles = '| ';
+        foreach ($rolesList[1] as $rol) {
+            $roles .= ' ' . $rol . ' |';
+        }
+        $usersList .= '
+                        <tr id="' . $user['ci'] . '" class="user-select-none align-middle" onclick="selectUserRow(' . $user['ci'] . ')">
+                            <td class="first-in-table">' . $user['nombre'] . ' ' . $user['apellido'] . '</td>
+                            <td>' . $user['ci'] . '</td>
+                            <td>' . $user['email'] . '</td>
+                            <td>' . $roles . '</td>
+                        </tr>';
+    }
+    return $usersList;
+}
+
+function addUser()
+{
+    require realpath(dirname(__FILE__)) . "/../../utils/messages/msg.php";
+
     try {
         $nombre = $_POST['nombre'];
         $apellido = $_POST['apellido'];
@@ -30,7 +72,7 @@ if ($_POST) {
         die("ERROR: " . $error_messages['!form_data']);
     }
 
-    if(!isValidEmail($email)){
+    if (!isValidEmail($email)) {
         die("ERROR: " . $error_messages['!valid_email']);
     }
 
@@ -40,8 +82,8 @@ if ($_POST) {
         die("ERROR: " . $error_messages['!valid_pass']);
     }
 
-    if(!varchar45($nombre) || !varchar45($apellido) || !varchar45($email)){
-        die("ERROR: ". $error_messages['!valid_length45']);
+    if (!varchar45($nombre) || !varchar45($apellido) || !varchar45($email)) {
+        die("ERROR: " . $error_messages['!valid_length45']);
     }
 
     $newUser = [
@@ -53,7 +95,6 @@ if ($_POST) {
         "rolesId" => $rolesId
     ];
 
-    require "../../repository/users.repository.php";
     $userExist = findOneUser($newUser['cedula']);
     if ($userExist) {
         die("ERROR: " . $error_messages['exist_user'] . ". ('" . $userExist['ci'] . "')");
@@ -62,28 +103,7 @@ if ($_POST) {
     header("Location:../../../pages/abm-usuarios.php");
 }
 
-function hashPass(string $pass): string
+function editUser(string $userCi)
 {
-    return password_hash($pass, PASSWORD_DEFAULT);
-}
-
-function getUsersTableDataHTML(): string
-{
-    $usersData = findAllUsers();
-    $usersList = '';
-    foreach ($usersData as $user) {
-        $rolesList = findRoles($user['ci']);
-        $roles = '| ';
-        foreach ($rolesList[1] as $rol) {
-            $roles .= ' ' . $rol . ' |';
-        }
-        $usersList .= '
-                            <tr">
-                                <td class="first-in-table"><a href="?ci=' . $user['ci'] . '">' . $user['nombre'] . ' ' . $user['apellido'] . '</a></td>
-                                <td><a href="?ci=' . $user['ci'] . '">' . $user['ci'] . '</a></td>
-                                <td><a href="?ci=' . $user['ci'] . '">' . $user['email'] . '</a></td>
-                                <td><a href="?ci=' . $user['ci'] . '">' . $roles . '</a></td>
-                            </tr>';
-    }
-    return $usersList;
+    die("editar usuario ".$userCi);
 }

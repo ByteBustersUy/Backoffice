@@ -13,6 +13,7 @@ $error_messages = [
    "!form_data" => 'Alguna casilla del formulario no fue completada',
    "!data_empresa" => 'No hay datos de empresa',
    "!user_add" => 'Usuario no agregado',
+   "!user_delete" => 'Usuario no eliminado',
    "!product_add" => 'Producto no agregado',
    "!data_save" => 'No se puedo guardar correctamente'
 

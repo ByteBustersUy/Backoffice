@@ -2,7 +2,7 @@
 require realpath(dirname(__FILE__)) . '/../../repository/config.repository.php';
 require realpath(dirname(__FILE__)) . '/../../utils/validators/hasData.php';
 
-if ($_POST) {
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $nombre = $_POST['nombre'];
     $rubro = $_POST['rubro'];
     $ciudad = $_POST['ciudad'];
