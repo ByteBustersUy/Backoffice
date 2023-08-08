@@ -134,13 +134,25 @@ thead tr {
 .link-options {
     position: relative;
     display: inline-block;
-    font-size: 1rem;
     margin: 1rem 2rem;
-    padding: .2rem 1rem;
     color: var(--primary-text-color);
-    border-radius: 1rem;
+    border-radius: .3rem;
     background-color: var(--background-color-light);
     border: 1.2px solid var(--bytebusters-color);
+    box-shadow: inset -1px -2px .2rem ;
+    filter: drop-shadow(1px 1px .1rem var(--bytebusters-color));
+    font-weight: 600;
+    font-size: 1.2rem;
+    padding: .3rem 1.2rem;
+}
+
+.link-options:hover{
+    filter: brightness(110%) drop-shadow(1px 1px .5rem var(--bytebusters-color));
+}
+
+.link-options:active{
+    box-shadow: inset 0 0 .15rem ;
+    filter: brightness(50%);
 }
 
 .link-options-div {
@@ -215,10 +227,26 @@ thead tr {
     text-indent: 0;
     text-align: center;
     width: 10rem;
+    height: 2.5rem;
     margin: 3rem auto 2rem;
     cursor: pointer;
     color: var(--text-button-color);
     background-color: var(--bytebusters-color);
+    border-radius: .3rem;
+    border: 1.2px solid var(--bytebusters-color);
+    box-shadow: inset -1px -2px .1rem ;
+    filter: drop-shadow(1px 1px .1rem var(--bytebusters-color));
+    font-size: 1.2rem;
+    padding: auto 1rem;
+}
+
+.btn-submit:hover{
+    filter: brightness(110%) drop-shadow(1px 1px .5rem var(--bytebusters-color));
+}
+
+.btn-submit:active{
+    box-shadow: inset 0 0 .15rem ;
+    filter: brightness(50%);
 }
 
 .profile {
