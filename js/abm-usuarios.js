@@ -33,6 +33,8 @@ btnEditUser.addEventListener("click", () => {
 			cedula: modalUsers.getElementsByTagName("input")[2],
 			email: modalUsers.getElementsByTagName("input")[3],
 			constrasenia: modalUsers.getElementsByTagName("input")[4],
+			admin: modalUsers.getElementsByTagName("input")[5],
+			vendedor: modalUsers.getElementsByTagName("input")[6],
 		};
 
 		let nombreCompleto = selectedRow
@@ -48,7 +50,20 @@ btnEditUser.addEventListener("click", () => {
 			apellido: apellidos,
 			cedula: selectedRow.getElementsByTagName("td")[1].innerHTML,
 			email: selectedRow.getElementsByTagName("td")[2].innerHTML,
+			admin: "",
+			vendedor: "",
 		};
+		const parsedRoles = selectedRow
+			.getElementsByTagName("td")[3]
+			.innerHTML.split(" ");
+		parsedRoles.forEach((rol) => {
+			if (rol == "admin") {
+				selectedUserData.admin = "admin";
+			}
+			if (rol == "vendedor") {
+				selectedUserData.vendedor = "vendedor";
+			}
+		});
 
 		//refill inputs with selected user data
 		inputsForm.nombre.value = selectedUserData.nombre;
@@ -59,49 +74,55 @@ btnEditUser.addEventListener("click", () => {
 		inputsForm.email.value = selectedUserData.email;
 		inputsForm.constrasenia.disabled = true;
 		inputsForm.constrasenia.style.filter = "brightness(50%)";
+		if (selectedUserData.admin) {
+			inputsForm.admin.setAttribute("checked", "true");
+		}
+		if (selectedUserData.vendedor) {
+			inputsForm.vendedor.setAttribute("checked", "true");
+		}
 
 		const newData = {
-			nombre: "",
-			apellido: "",
-			emial: "",
-			roles: "",
+			nombre: selectedUserData.nombre,
+			apellido: selectedUserData.apellido,
+			email: selectedUserData.email,
+			admin: selectedUserData.admin,
+			vendedor: selectedUserData.vendedor,
 		};
 
 		modalUsers.addEventListener("change", () => {
-
 			//nombre
 			if (inputsForm.nombre.value.length > 0) {
 				if (selectedUserData.nombre !== inputsForm.nombre.value) {
 					newData.nombre = inputsForm.nombre.value.split(" ")[0];
-					console.log("nombre: ", newData.nombre);
 				}
-			} else {
-				newData.nombre = selectedUserData.nombre;
-				console.log("nombre: ", newData.nombre);
 			}
 
 			//apellido
-			if(inputsForm.apellido.value.length > 0 ){
+			if (inputsForm.apellido.value.length > 0) {
 				if (selectedUserData.apellido !== inputsForm.apellido.value) {
 					newData.apellido = inputsForm.apellido.value;
-					console.log("apellido: ", newData.apellido);
 				}
-			}else{
-				newData.apellido = selectedUserData.apellido;
-				console.log("apellido: ", newData.apellido);
 			}
 
 			//email
-			if(inputsForm.email.value.length > 0){
+			if (inputsForm.email.value.length > 0) {
 				if (selectedUserData.email !== inputsForm.email.value) {
-					newData.emial = inputsForm.email.value;
-					console.log("email: ",newData.emial);
+					newData.email = inputsForm.email.value;
 				}
-			}else{
-				newData.emial = selectedUserData.email;
-				console.log("email: ",newData.emial);
 			}
 
+			//roles
+			if (inputsForm.admin.checked) {
+				newData.admin = true;
+			} else {
+				newData.admin = false;
+			}
+
+			if (inputsForm.vendedor.checked) {
+				newData.vendedor = true;
+			} else {
+				newData.vendedor = false;
+			}
 
 			formAbm.attributes.item(
 				2

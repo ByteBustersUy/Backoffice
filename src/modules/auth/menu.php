@@ -42,41 +42,50 @@ $cardsList = [
     ],
 ];
 
-$validActions = findActionsByRolesId($_SESSION['userRolesIds']);
-$numberOfCards = 0;
-foreach ($cardsList as $cardData) {
-    if (in_array($cardData['action'], $validActions)) {
-        $numberOfCards++;
-    }
-}
-
-if($numberOfCards === 0){
-    $numberOfCards = 1;
-}
-
-$cols = 12 / $numberOfCards;
-if (gettype($cols) !== 'int') {
-    $cols = floor($cols);
-}
-
-if($cols < 2){
-    $cols = 2;
-}
-
 $cardsMenu = '';
+$validActions = findActionsByRolesId($_SESSION['userRolesIds']);
+
 foreach ($cardsList as $cardData) {
     if (in_array($cardData['action'], $validActions)) {
         $cardsMenu .= "
-                <div class='col-md-4 col-xxl-" . $cols . " center'>
-                    <div class='menu-cards'>
-                        <a href='../" . findPathByAction($cardData['action'], $_SESSION['userRolesIds']) . "'>
-                            <div>"
-                                . $cardData['i']
-                                . $cardData['h4']
-                                . $cardData['p'] .
-                            "</div>
-                        </a>
-                    </div>
-                </div>";
+        <div class='col-md-4 col-xxl-" . getColumnsForDynamicResponsive($cardsList, $validActions) . " center'>
+        <div class='menu-cards'>
+        <a href='../" . findPathByAction($cardData['action'], $_SESSION['userRolesIds']) . "'>
+        <div>"
+            . $cardData['i']
+            . $cardData['h4']
+            . $cardData['p'] .
+            "</div>
+        </a>
+        </div>
+        </div>";
     }
+}
+
+
+function getColumnsForDynamicResponsive(array $cardsList, array $validActions): int
+{
+    require realpath(dirname(__FILE__)) . "/../../utils/actions.php";
+
+    $numberOfCards = 0;
+    foreach ($cardsList as $cardData) {
+        if (in_array($cardData['action'], $validActions)) {
+            $numberOfCards++;
+        }
+    }
+
+    if ($numberOfCards === 0) {
+        $numberOfCards = 1;
+    }
+
+    $cols = 12 / $numberOfCards;
+    if (gettype($cols) !== 'int') {
+        $cols = floor($cols);
+    }
+
+    if ($cols < 2) {
+        $cols = 2;
+    }
+
+    return $cols;
 }
