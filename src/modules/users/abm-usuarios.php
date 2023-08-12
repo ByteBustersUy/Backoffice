@@ -36,11 +36,11 @@ function getUsersTableDataHTML(): string
             $roles .= ' ' . $rol . ' |';
         }
         $usersList .= '
-                        <tr id="' . $user['ci'] . '" class="user-select-none align-middle" onclick="selectUserRow(' . $user['ci'] . ')">
-                            <td class="first-in-table">' . $user['nombre'] . ' ' . $user['apellido'] . '</td>
+                        <tr id="' . $user['ci'] . '" class="align-middle" onclick="selectUserRow(' . $user['ci'] . ')">
+                            <td class="user-select-none first-in-table">' . $user['nombre'] . ' ' . $user['apellido'] . '</td>
                             <td>' . $user['ci'] . '</td>
-                            <td>' . $user['email'] . '</td>
-                            <td>' . $roles . '</td>
+                            <td class="user-select-none">' . $user['email'] . '</td>
+                            <td class="user-select-none">' . $roles . '</td>
                         </tr>';
     }
     return $usersList;

@@ -318,6 +318,26 @@ thead tr {
     padding: 0 2rem;
 }
 
+/*---------ABM PERMISSIONS-----*/
+
+.table-permissions{
+    margin-top: 7.3rem !important;
+}
+
+thead tr .nombre{
+    width: 15rem;
+}
+
+thead tr .ruta{
+    width: 20rem;
+}
+
+thead tr .roles{
+    width: 7rem;
+}
+
+/* 15 20 10 10 */
+
 
 /* --------- ABM USUARIOS --------- */
 
