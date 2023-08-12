@@ -48,7 +48,7 @@ $validActions = findActionsByRolesId($_SESSION['userRolesIds']);
 foreach ($cardsList as $cardData) {
     if (in_array($cardData['action'], $validActions)) {
         $cardsMenu .= "
-        <div class='col-md-4 col-xxl-" . getColumnsForDynamicResponsive($cardsList,$validActions) . " center'>
+        <div class='col-md-4 col-xxl-" . getColumnsForDynamicResponsive($cardsList, $validActions) . " center'>
         <div class='menu-cards'>
         <a href='../" . findPathByAction($cardData['action'], $_SESSION['userRolesIds']) . "'>
         <div>"
@@ -66,7 +66,7 @@ foreach ($cardsList as $cardData) {
 function getColumnsForDynamicResponsive(array $cardsList, array $validActions): int
 {
     require realpath(dirname(__FILE__)) . "/../../utils/actions.php";
-    
+
     $numberOfCards = 0;
     foreach ($cardsList as $cardData) {
         if (in_array($cardData['action'], $validActions)) {

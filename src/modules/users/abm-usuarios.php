@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     session_status() === PHP_SESSION_ACTIVE ?: session_start();
 
     if ($_GET['action'] == "delete" && isset($_POST["deleteUserCi"])) {
-        if($_POST["deleteUserCi"] != $_SESSION['userCi']){
+        if ($_POST["deleteUserCi"] != $_SESSION['userCi']) {
             deleteUser($_POST["deleteUserCi"]);
         }
     } else if (isset($_GET['action']) && isset($_GET['ci']) && $_GET['action'] == "edit") {
@@ -51,11 +51,11 @@ function addUser()
     require realpath(dirname(__FILE__)) . "/../../utils/messages/msg.php";
 
     try {
-        $nombre = $_POST['nombre'];
-        $apellido = $_POST['apellido'];
-        $cedula = $_POST['cedula'];
-        $email = $_POST['email'];
-        $pass = $_POST['contrasenia'];
+        $nombre = htmlspecialchars($_POST['nombre']);
+        $apellido = htmlspecialchars($_POST['apellido']);
+        $cedula = htmlspecialchars($_POST['cedula']);
+        $email = htmlspecialchars($_POST['email']);
+        $pass = htmlspecialchars($_POST['contrasenia']);
         $rolesId = [];
 
         if (isset($_POST['check-admin'])) {
@@ -105,5 +105,5 @@ function addUser()
 
 function editUser(string $userCi)
 {
-    die("editar usuario ".$userCi);
+    die("editar usuario " . $userCi);
 }

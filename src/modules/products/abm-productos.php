@@ -2,10 +2,10 @@
 require realpath(dirname(__FILE__)) . "/../../utils/messages/msg.php";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $nombre = strtolower($_POST['nombre']);
-    $descripcion = strtolower($_POST['descripcion']);
-    $idCategoria = strtolower($_POST['categoria']);
-    $imagen = strtolower($_POST['imagen']);
+    $nombre = strtolower(htmlspecialchars($_POST['nombre']));
+    $descripcion = strtolower(htmlspecialchars($_POST['descripcion']));
+    $idCategoria = strtolower(htmlspecialchars($_POST['categoria']));
+    $imagen = strtolower(htmlspecialchars($_POST['imagen']));
 
     require realpath(dirname(__FILE__)) . "/../../repository/products.repository.php";
 

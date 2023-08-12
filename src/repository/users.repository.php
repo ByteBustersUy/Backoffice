@@ -80,11 +80,12 @@ function findActionsByRolesId(array $rolesId): array
     $actions = [];
     foreach ($rolesId as $rolId) {
         try {
-            $statement = $con->prepare("SELECT p.accion 
+            $statement = $con->prepare(
+                "SELECT p.accion 
                                         FROM PERMISOS p
                                         JOIN ROLES_has_PERMISOS rp
                                         WHERE rp.ROLES_id = :rolId"
-                                        );
+            );
             $statement->execute(array(':rolId' => $rolId));
             while ($reg = $statement->fetch(PDO::FETCH_ASSOC)) {
                 array_push($actions, $reg['accion']);
@@ -129,7 +130,7 @@ function deleteUser(string $userCi)
     require realpath(dirname(__FILE__)) . "/../utils/messages/msg.php";
     try {
         $statement = $con->prepare("DELETE FROM USUARIOS_has_ROLES WHERE USUARIOS_ci = :ci");
-        $res = $statement->execute([':ci' => $userCi]);    
+        $res = $statement->execute([':ci' => $userCi]);
 
         if ($res == 1) {
             $statement = $con->prepare("DELETE FROM USUARIOS WHERE ci = :ci");
