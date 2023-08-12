@@ -1,3 +1,5 @@
+DROP DATABASE  bytebusters_db;
+
 /* 
 ----------------------
 ---  BASE DE DATOS ---
@@ -8,38 +10,7 @@
 
 CREATE DATABASE IF NOT EXISTS bytebusters_db;
 
-DROP TABLE IF EXISTS `bytebusters_db`.`USUARIOS_has_ROLES`;
-DROP TABLE IF EXISTS `bytebusters_db`.`PRODUCTOS_has_CATEGORIAS`;
-DROP TABLE IF EXISTS `bytebusters_db`.`PRODUCTOS_has_PROMOCIONES`;
-DROP TABLE IF EXISTS `bytebusters_db`.`EMPRESA`;
-DROP TABLE IF EXISTS `bytebusters_db`.`RUTAS`;
-DROP TABLE IF EXISTS `bytebusters_db`.`ROLES`;
-DROP TABLE IF EXISTS `bytebusters_db`.`USUARIOS`;
-DROP TABLE IF EXISTS `bytebusters_db`.`PROMOCIONES`;
-DROP TABLE IF EXISTS `bytebusters_db`.`PRODUCTOS`;
-DROP TABLE IF EXISTS `bytebusters_db`.`CATEGORIAS`;
 
-/*
-----------------------
--- TABLA DE EMPRESA --
-----------------------
-*/
-
-CREATE TABLE IF NOT EXISTS `bytebusters_db`.`EMPRESA`(
-  `logo` varchar(255) NOT NULL,
-  `rubro` varchar(45) NOT NULL,
-  `nombre` varchar(45) NOT NULL,
-  `calle` varchar(45) NOT NULL,
-  `numero` int(11) NOT NULL,
-  `ciudad` varchar(45) NOT NULL,
-  `telefono` varchar(45) NOT NULL,
-  `instagram` varchar(255) NOT NULL,
-  `whatsapp` varchar(255) NOT NULL,
-  `email` varchar(45) NOT NULL,
-  `pwd_email` varchar(255) NOT NULL,
-  `comentarios` varchar(255) NOT NULL,
-  PRIMARY KEY(`nombre`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 /*
@@ -56,21 +27,31 @@ CREATE TABLE IF NOT EXISTS `bytebusters_db`.`ROLES` (
 
 
 /*
-----------------------
----- TABLA  RUTAS ----
-----------------------
+-------------------------
+---- TABLA  PERMISOS ----
+-------------------------
 */
 
-CREATE TABLE IF NOT EXISTS `bytebusters_db`.`RUTAS` (
-  `ruta` VARCHAR(255) NOT NULL,
-  `accion` VARCHAR(45) NOT NULL,
-  `rolesId` INT(11) NOT NULL,
-   PRIMARY KEY(`accion`,`rolesId`),
-   FOREIGN KEY(`rolesId`)
-   REFERENCES `bytebusters_db`.`ROLES`(`id`)
+CREATE TABLE IF NOT EXISTS `bytebusters_db`.`PERMISOS` (
+  `ruta` varchar(255) NOT NULL,
+  `accion` varchar(45) NOT NULL,
+   PRIMARY KEY(`accion`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-
+/*
+------------------------------
+-- TABLA ROLES has PERMISOS --
+------------------------------
+*/
+CREATE TABLE IF NOT EXISTS `bytebusters_db`.`ROLES_has_PERMISOS`( 
+ `PERMISOS_accion` varchar(255) NOT NULL,
+ `ROLES_id` int(11) NOT NULL,
+ PRIMARY KEY (`ROLES_id`,`PERMISOS_accion`),
+ FOREIGN KEY(`ROLES_id`)
+ REFERENCES `bytebusters_db`.`ROLES`(`id`),
+ FOREIGN KEY(`PERMISOS_accion`)
+ REFERENCES `bytebusters_db`.`PERMISOS`(`accion`) 
+ )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*
 ----------------------
 --- TABLA USUARIOS ---
@@ -84,6 +65,33 @@ CREATE TABLE IF NOT EXISTS `bytebusters_db`.`USUARIOS` (
   `email` varchar(45) NOT NULL,
   `apellido` varchar(45) NOT NULL,
   PRIMARY KEY(`ci`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+/*
+----------------------
+-- TABLA DE EMPRESA --
+----------------------
+*/
+CREATE TABLE IF NOT EXISTS `bytebusters_db`.`EMPRESA`(
+  `logo` varchar(255) NOT NULL,
+  `rubro` varchar(45) NOT NULL,
+  `nombre` varchar(45) NOT NULL,
+  `calle` varchar(45) NOT NULL,
+  `numero` int(11) NOT NULL,
+  `ciudad` varchar(45) NOT NULL,
+  `telefono` varchar(45) NOT NULL,
+  `instagram` varchar(255) NOT NULL,
+  `whatsapp` varchar(255) NOT NULL,
+  `email` varchar(45) NOT NULL,
+  `pwd_email` varchar(255) NOT NULL,
+  `comentarios` varchar(255) NOT NULL,
+  `USUARIO_ci` varchar(8) NOT NULL,
+  `fecha` TIMESTAMP ON UPDATE CURRENT_TIMESTAMP NOT NULL,  
+  PRIMARY KEY(`nombre`),
+  FOREIGN KEY(`USUARIO_ci`)
+ REFERENCES `bytebusters_db`.`USUARIOS`(`ci`) 
+  
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
@@ -114,7 +122,12 @@ CREATE TABLE IF NOT EXISTS `bytebusters_db`.`PRODUCTOS`(
   `nombre` varchar(255) NOT NULL,
   `descripcion` varchar(255) NOT NULL,
   `imagen` varchar(255) NOT NULL,
- PRIMARY KEY(`id`)
+  `precio` int(255) NOT NULL,
+  `USUARIO_ci` varchar(8) NOT NULL,
+  `fecha` TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL, 
+  PRIMARY KEY(`id`),
+  FOREIGN KEY(`USUARIO_ci`)
+  REFERENCES `bytebusters_db`.`USUARIOS`(`ci`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
@@ -154,10 +167,11 @@ CREATE TABLE IF NOT EXISTS `bytebusters_db`.`PRODUCTOS_has_CATEGORIAS` (
 */
 CREATE TABLE IF NOT EXISTS `bytebusters_db`.`PROMOCIONES`(
   `id` int (11) NOT NULL AUTO_INCREMENT,
-  `precioPromo` DECIMAL(8,2) NOT NULL,
-  `fechaInicio` DATE NOT NULL,
-  `fechaFin` DATE NOT NULL,
- PRIMARY KEY(`id`)
+  `nombre` varchar(255) NOT NULL,
+  `precioPromo` int (255) NOT NULL,
+  `fechaInicio` date NOT NULL,
+  `fechaFin` date NOT NULL,
+ PRIMARY KEY(`id`,`nombre`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*
@@ -172,9 +186,12 @@ CREATE TABLE IF NOT EXISTS `bytebusters_db`.`PRODUCTOS_has_PROMOCIONES` (
   FOREIGN KEY(`PRODUCTOS_id`)
   	REFERENCES `bytebusters_db`.`PRODUCTOS`(`id`),
   FOREIGN KEY(`PROMOCIONES_id`)
-   	REFERENCES `bytebusters_db`.`PROMOCIONES`(`id`)
-	
+   	REFERENCES `bytebusters_db`.`PROMOCIONES`(`id`)	
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+
+-- ---------------------------------------------------------------
 
 
 /*
@@ -263,34 +280,44 @@ INSERT INTO `bytebusters_db`.`USUARIOS_has_ROLES` (`USUARIOS_ci`, `ROLES_id`) VA
 
 /*
 -----------------------------
---INSERT DE LA TABLA RUTAS --
+--INSERT DE LA TABLA PERMISOS --
 -----------------------------
 */
-INSERT INTO `bytebusters_db`.`RUTAS` (`ruta`, `accion`, `rolesId`) VALUES ('pages/menu-admin.php', 'ir_menu_admin', '1');
+INSERT INTO `bytebusters_db`.`PERMISOS` (`ruta`, `accion`) VALUES ('pages/menu-admin.php', 'ir_menu_admin');
 
-INSERT INTO `bytebusters_db`.`RUTAS` (`ruta`, `accion`, `rolesId`) VALUES ('pages/menu-vendedor.php', 'ir_menu_vendedor', '2');
+INSERT INTO `bytebusters_db`.`PERMISOS` (`ruta`, `accion`) VALUES ('pages/menu-vendedor.php', 'ir_menu_vendedor');
 
-INSERT INTO `bytebusters_db`.`RUTAS` (`ruta`, `accion`, `rolesId`) VALUES ('pages/config-empresa.php', 'config_empresa', '1');
+INSERT INTO `bytebusters_db`.`PERMISOS` (`ruta`, `accion`) VALUES ('pages/config-empresa.php', 'config_empresa');
 
-INSERT INTO `bytebusters_db`.`RUTAS` (`ruta`, `accion`, `rolesId`) VALUES ('pages/descargas.php', 'descarga_documentos', '2');
+INSERT INTO `bytebusters_db`.`PERMISOS` (`ruta`, `accion`) VALUES ('pages/descargas.php', 'descargas_documentos');
 
-INSERT INTO `bytebusters_db`.`RUTAS` (`ruta`, `accion`, `rolesId`) VALUES ('pages/abm-permisos.php', 'gestion_permisos', '1');
+INSERT INTO `bytebusters_db`.`PERMISOS` (`ruta`, `accion`) VALUES ('pages/abm-permisos.php', 'gestion_permisos');
 
-INSERT INTO `bytebusters_db`.`RUTAS` (`ruta`, `accion`, `rolesId`) VALUES ('pages/abm-productos.php', 'gestion_productos', '2');
+INSERT INTO `bytebusters_db`.`PERMISOS` (`ruta`, `accion`) VALUES ('pages/abm-productos.php', 'gestion_productos');
 
-INSERT INTO `bytebusters_db`.`RUTAS` (`ruta`, `accion`, `rolesId`) VALUES ('pages/abm-promociones.php', 'gestion_promociones', '2');
+INSERT INTO `bytebusters_db`.`PERMISOS` (`ruta`, `accion`) VALUES ('pages/abm-promociones.php', 'gestion_promociones');
 
-INSERT INTO `bytebusters_db`.`RUTAS` (`ruta`, `accion`, `rolesId`) VALUES ('pages/abm-usuarios.php', 'gestion_usuarios', '1');
-
-
-
+INSERT INTO `bytebusters_db`.`PERMISOS` (`ruta`, `accion`) VALUES ('pages/abm-usuarios.php', 'gestion_usuarios');
+/*
+--------------------------------------------
+-- INSERT RELACIONANDO ROLES CON PERMISOS --
+--------------------------------------------
+*/
+INSERT INTO `bytebusters_db`.`ROLES_has_PERMISOS`(`PERMISOS_accion`,`ROLES_id`) VALUES('ir_menu_admin', '1');
+INSERT INTO `bytebusters_db`.`ROLES_has_PERMISOS`(`PERMISOS_accion`,`ROLES_id`) VALUES('ir_menu_vendedor', '2');
+INSERT INTO `bytebusters_db`.`ROLES_has_PERMISOS`(`PERMISOS_accion`,`ROLES_id`) VALUES('config_empresa', '1');
+INSERT INTO `bytebusters_db`.`ROLES_has_PERMISOS`(`PERMISOS_accion`,`ROLES_id`) VALUES('descargas_documentos', '2');
+INSERT INTO `bytebusters_db`.`ROLES_has_PERMISOS`(`PERMISOS_accion`,`ROLES_id`) VALUES('gestion_permisos', '1');
+INSERT INTO `bytebusters_db`.`ROLES_has_PERMISOS`(`PERMISOS_accion`,`ROLES_id`) VALUES('gestion_productos', '2');
+INSERT INTO `bytebusters_db`.`ROLES_has_PERMISOS`(`PERMISOS_accion`,`ROLES_id`) VALUES('gestion_promociones', '2');
+INSERT INTO `bytebusters_db`.`ROLES_has_PERMISOS`(`PERMISOS_accion`,`ROLES_id`) VALUES('gestion_usuarios', '1');
 /* 
 -------------------------------
 --INSERT DE LA TABLA EMPRESA --
 -------------------------------
 */
-INSERT INTO `bytebusters_db`.`empresa`(`logo`, `rubro`, `nombre`, `calle`, `numero`, `ciudad`, `telefono`, `instagram`, `whatsapp` , `email`, `pwd_email`, `comentarios`) 
-VALUES ('Default' ,'Default' , 'Default' , 'Default' , '1' ,'Default', 'Default', 'Default', 'Default' , 'Default' , 'Default' , 'Default');
+INSERT INTO `bytebusters_db`.`empresa`(`logo`, `rubro`, `nombre`, `calle`, `numero`, `ciudad`, `telefono`, `instagram`, `whatsapp` , `email`, `pwd_email`, `comentarios`,`USUARIO_ci`) 
+VALUES ('Default' ,'Default' , 'Default' , 'Default' , '1' ,'Default', 'Default', 'Default', 'Default' , 'Default' , 'Default' , 'Default','55271656');
 
 
 /*
@@ -314,25 +341,25 @@ INSERT INTO `bytebusters_db`.`CATEGORIAS` (`id`, `nombre`) VALUES ('4', 'Textil'
 --INSERT DE LA TABLA PRODUCTOS --
 ---------------------------------
 */
-INSERT INTO `bytebusters_db`.`PRODUCTOS` (`id`, `nombre`, `descripcion`, `imagen`) VALUES ('1', 'Pack 3 Rollos de Cocina NOVA Clásico', 'Rollos de papel doble hoja con alta absorción 
-que permite retener mayor cantidad de líquido y aseguran un rendimiento más económico en todas las necesidades del hogar.', 'novaclassic.jpg');
+INSERT INTO `bytebusters_db`.`PRODUCTOS` (`id`, `nombre`, `descripcion`, `imagen`,`USUARIO_ci`) VALUES ('1', 'Pack 3 Rollos de Cocina NOVA Clásico', 'Rollos de papel doble hoja con alta absorción 
+que permite retener mayor cantidad de líquido y aseguran un rendimiento más económico en todas las necesidades del hogar.', 'novaclassic.jpg','55271656');
 
-INSERT INTO `bytebusters_db`.`PRODUCTOS` (`id`, `nombre`, `descripcion`, `imagen`) VALUES ('2', 'Tijera MAPED Sensoft 13 cm mango de goma', 'Los Mejores útiles para escolares 
-encontralos en la web', 'tijera.jpeg');
+INSERT INTO `bytebusters_db`.`PRODUCTOS` (`id`, `nombre`, `descripcion`, `imagen`,`USUARIO_ci`) VALUES ('2', 'Tijera MAPED Sensoft 13 cm mango de goma', 'Los Mejores útiles para escolares 
+encontralos en la web', 'tijera.jpeg','55271656');
 
-INSERT INTO `bytebusters_db`.`PRODUCTOS` (`id`, `nombre`, `descripcion`, `imagen`) VALUES ('3','Lubricante WD-40 flexi tapa 220g','Lubricante WD-40 flexi tapa 220g, producto 
-de excelente calidad.', 'dw-40.jpeg');
+INSERT INTO `bytebusters_db`.`PRODUCTOS` (`id`, `nombre`, `descripcion`, `imagen`,`USUARIO_ci`) VALUES ('3','Lubricante WD-40 flexi tapa 220g','Lubricante WD-40 flexi tapa 220g, producto 
+de excelente calidad.', 'dw-40.jpeg','55271656');
 
-INSERT INTO `bytebusters_db`.`PRODUCTOS` (`id`, `nombre`, `descripcion`, `imagen`) VALUES ('4','Toalla de Baño Azul Frape Bud 135 x 70 cm','Toalla de exelente calidad y textura', 'toalla.jpg');
+INSERT INTO `bytebusters_db`.`PRODUCTOS` (`id`, `nombre`, `descripcion`, `imagen`,`USUARIO_ci`) VALUES ('4','Toalla de Baño Azul Frape Bud 135 x 70 cm','Toalla de exelente calidad y textura', 'toalla.jpg','55271656');
 
-INSERT INTO `bytebusters_db`.`PRODUCTOS` (`id`, `nombre`, `descripcion`, `imagen`) VALUES ('5', 'Agua JANE 1L', 'El baño y la cocina son áreas altamente contaminadas de toda la casa, pero con 
-agua Jane estan limpios en un segundo', 'aguajane.jpg');
+INSERT INTO `bytebusters_db`.`PRODUCTOS` (`id`, `nombre`, `descripcion`, `imagen`,`USUARIO_ci`) VALUES ('5', 'Agua JANE 1L', 'El baño y la cocina son áreas altamente contaminadas de toda la casa, pero con 
+agua Jane estan limpios en un segundo', 'aguajane.jpg','55271656');
 
-INSERT INTO `bytebusters_db`.`PRODUCTOS` (`id`, `nombre`, `descripcion`, `imagen`) VALUES ('6','Repasador Ajedrez Cuadros' ,'Varios colores, 100% algodón, Medidas: 41 x 66 cm','repasador.jpg');
+INSERT INTO `bytebusters_db`.`PRODUCTOS` (`id`, `nombre`, `descripcion`, `imagen`,`USUARIO_ci`) VALUES ('6','Repasador Ajedrez Cuadros' ,'Varios colores, 100% algodón, Medidas: 41 x 66 cm','repasador.jpg','55271656');
 
-INSERT INTO `bytebusters_db`.`PRODUCTOS` (`id`, `nombre`, `descripcion`, `imagen`) VALUES ('7','Destornillador BRICOTECH','Destornillador BRICOTECH Mod. HL-S36-26 . 3.6 V','destornillador.jpg');
+INSERT INTO `bytebusters_db`.`PRODUCTOS` (`id`, `nombre`, `descripcion`, `imagen`,`USUARIO_ci`) VALUES ('7','Destornillador BRICOTECH','Destornillador BRICOTECH Mod. HL-S36-26 . 3.6 V','destornillador.jpg','55271656');
 
-INSERT INTO `bytebusters_db`.`PRODUCTOS` (`id`, `nombre`, `descripcion`, `imagen`) VALUES ('8','Papel natural A4 250h','Papel natural A4 250h 75 g 100% caña de azúcar.','hojasA4.jpg');
+INSERT INTO `bytebusters_db`.`PRODUCTOS` (`id`, `nombre`, `descripcion`, `imagen`,`USUARIO_ci`) VALUES ('8','Papel natural A4 250h','Papel natural A4 250h 75 g 100% caña de azúcar.','hojasA4.jpg','55271656');
 
 
 
@@ -366,7 +393,7 @@ INSERT INTO `bytebusters_db`.`PRODUCTOS_has_CATEGORIAS` (`PRODUCTOS_id`, `CATEGO
 --INSERT DE LA TABLA PROMOCIONES--
 ----------------------------------
 */
-INSERT INTO `bytebusters_db`.`PROMOCIONES` (`id`,`precioPromo`,`fechaInicio`,`fechaFin`) VALUES ('1', 990,'7/7/23','14/7/23');
+INSERT INTO `bytebusters_db`.`PROMOCIONES` (`id`,`nombre`,`precioPromo`,`fechaInicio`,`fechaFin`) VALUES ('1','dia del niño','9,90','7/7/23','14/9/23');
 /*
 ------------------------------------------------
 --INSER RELACIONANDO PRODUCTOS CON PROMOCIONES--
