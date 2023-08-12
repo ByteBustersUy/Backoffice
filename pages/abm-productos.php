@@ -6,10 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/normalize.css">
+    <link rel="icon" type="image/x-icon" href="../favicon.ico" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="../styles/style.css">
-    <title>GESTIÓN DE PRODUCTOS</title>
+    <title>Ecommerce Manager</title>
 </head>
 
 <body>
@@ -43,7 +44,7 @@
                     </a>
                 </div>
             </div>
-            <div class="col-lg-7">
+            <div class="col-lg-9">
                 <div class="table-options">
                     <input type="search" name="search" placeholder="Nombre" autocomplete="off">
                     <button type="button">Buscar</button>
@@ -65,11 +66,11 @@
                     <table class="table table-dark table-hover">
                         <thead class="sticky-top">
                             <tr>
-                                <th class="first-in-table" scope="col">Nombre del producto</th>
-                                <th scope="col">Categoría</th>
-                                <th scope="col">Imágen</th>
-                                <th scope="col">Promo</th>
-                                <th scope="col">Detalle</th>
+                                <th class="user-select-none first-in-table" scope="col">Nombre del producto</th>
+                                <th class="user-select-none" scope="col">Categoría</th>
+                                <th class="user-select-none" scope="col">Imágen</th>
+                                <th class="user-select-none" scope="col">Promo</th>
+                                <th class="user-select-none" scope="col">Detalle</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -81,13 +82,13 @@
                     </table>
                 </div>
             </div>
-            <div class="col-lg-3">
+            <!-- <div class="col-lg-3">
                 <form class="form-abm" action="../src/modules/products/abm-productos.php" method="post">
                     <input type="text" name="nombre" placeholder="Nombre" required autocomplete="off">
                     <input type="text" name="imagen" placeholder="URL Imagen" required autocomplete="off">
                     <select name="categoria" id="categoria" required>
                         <option selected hidden value="">Categoría</option>
-                        <?php
+                        <php?   // <-- TODO: corregir simbolo "?"
                         $options = getOptionsCategoriesHTML();
                         echo $options;
                         ?>
@@ -98,7 +99,7 @@
                         <button type="reset">CANCELAR</button>
                     </div>
                 </form>
-            </div>
+            </div> -->
         </div>
     </div>
     <footer>
