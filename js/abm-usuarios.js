@@ -52,10 +52,10 @@ btnEditUser.addEventListener("click", () => {
 		}
 
 		const selectedUserData = {
-			nombre: selectedRow.getElementsByTagName("td")[0].innerHTML.split(" ")[0],
-			apellido: apellidos,
-			cedula: selectedRow.getElementsByTagName("td")[1].innerHTML,
-			email: selectedRow.getElementsByTagName("td")[2].innerHTML,
+			nombre: selectedRow.getElementsByTagName("td")[0].innerHTML.split(" ")[0].trim(),
+			apellido: apellidos.trim(),
+			cedula: selectedRow.getElementsByTagName("td")[1].innerHTML.trim(),
+			email: selectedRow.getElementsByTagName("td")[2].innerHTML.trim(),
 			admin: "",
 			vendedor: "",
 		};

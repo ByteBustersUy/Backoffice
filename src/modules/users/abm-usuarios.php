@@ -132,16 +132,23 @@ function editUser(string $userCi)
             array_push($rolesId, htmlspecialchars($_POST['check-vendedor']));
         }
 
-        if (!elementsHasData([$nombre, $apellido, $email, $rolesId])) {
-            die("ERROR: " . $error_messages['!form_data']);
-        }
-
         if (!varchar45($nombre) || !varchar45($apellido) || !varchar45($email)) {
             die("ERROR: " . $error_messages['!valid_length45']);
         }
 
         if(count($rolesId) == 0) {
             throw new Error("ERROR: " . $error_messages['!rolesSelected']);
+        }
+        $data = [$nombre, $apellido, $email, $rolesId];
+
+        foreach ($data as $element) {
+            if(preg_match('/(^\s+$)|(^\s+)|(\s+$)/', $element)){
+                die("ERROR: " . $error_messages['!valid_chars']);
+            }
+        }
+
+        if (!elementsHasData($data)) {
+            die("ERROR: " . $error_messages['!form_data']);
         }
 
     } catch (Exception $e) {
