@@ -1,9 +1,15 @@
-//Botones
+//Elementos
 const btnAddUser = document.getElementById("btnAddUser");
 const btnEditUser = document.getElementById("btnEditUser");
 const btnDeleteUser = document.getElementById("btnDeleteUser");
 const formAbm = document.getElementById("formAbmUser");
 let selectedRow;
+
+//validaciones
+const v = {
+	isSame: (a, b) => a === b,
+	isEmpty: (a) => a.length === 0,
+};
 
 //Agregar usuario
 btnAddUser.addEventListener("click", () => {
@@ -65,7 +71,7 @@ btnEditUser.addEventListener("click", () => {
 			}
 		});
 
-		//refill inputs with selected user data
+		//rellenar formulario con la data seleccionada
 		inputsForm.nombre.value = selectedUserData.nombre;
 		inputsForm.apellido.value = selectedUserData.apellido;
 		inputsForm.cedula.value = selectedUserData.cedula;
@@ -74,60 +80,15 @@ btnEditUser.addEventListener("click", () => {
 		inputsForm.email.value = selectedUserData.email;
 		inputsForm.constrasenia.disabled = true;
 		inputsForm.constrasenia.style.filter = "brightness(50%)";
-		if (selectedUserData.admin) {
+
+		if (!v.isEmpty(selectedUserData.admin)) {
 			inputsForm.admin.setAttribute("checked", "true");
 		}
-		if (selectedUserData.vendedor) {
+		if (!v.isEmpty(selectedUserData.vendedor)) {
 			inputsForm.vendedor.setAttribute("checked", "true");
 		}
 
-		const newData = {
-			nombre: selectedUserData.nombre,
-			apellido: selectedUserData.apellido,
-			email: selectedUserData.email,
-			admin: selectedUserData.admin,
-			vendedor: selectedUserData.vendedor,
-		};
-
-		modalUsers.addEventListener("change", () => {
-			//nombre
-			if (inputsForm.nombre.value.length > 0) {
-				if (selectedUserData.nombre !== inputsForm.nombre.value) {
-					newData.nombre = inputsForm.nombre.value.split(" ")[0];
-				}
-			}
-
-			//apellido
-			if (inputsForm.apellido.value.length > 0) {
-				if (selectedUserData.apellido !== inputsForm.apellido.value) {
-					newData.apellido = inputsForm.apellido.value;
-				}
-			}
-
-			//email
-			if (inputsForm.email.value.length > 0) {
-				if (selectedUserData.email !== inputsForm.email.value) {
-					newData.email = inputsForm.email.value;
-				}
-			}
-
-			//roles
-			if (inputsForm.admin.checked) {
-				newData.admin = true;
-			} else {
-				newData.admin = false;
-			}
-
-			if (inputsForm.vendedor.checked) {
-				newData.vendedor = true;
-			} else {
-				newData.vendedor = false;
-			}
-
-			formAbm.attributes.item(
-				2
-			).value = `../src/modules/users/abm-usuarios.php?action=edit&ci=${userCi}`;
-		});
+		formAbm.attributes.item(2).value = `../src/modules/users/abm-usuarios.php?action=edit&ci=${inputsForm.cedula.value}`;
 	}
 });
 
@@ -189,25 +150,11 @@ modalUsers.addEventListener("click", (event) => {
 		event.target.id === "btnCloseModal" ||
 		event.target.id === "btnCancelModal"
 	) {
-		// btnAddUser.classList.remove("enabled-button");
-		// btnEditUser.classList.remove("enabled-button");
-		// if (btnEditUser.attributes.getNamedItem("data-bs-target")) {
-		// 	btnEditUser.attributes.removeNamedItem("data-bs-target");
-		// }
-		// if (btnEditUser.attributes.getNamedItem("data-bs-toggle")) {
-		// 	btnEditUser.attributes.removeNamedItem("data-bs-toggle");
-		// }
-		// btnEditUser.setAttribute("class", "disabled");
-		// btnDeleteUser.setAttribute("class", "disabled");
-		// document
-		// 	.getElementsByClassName("selected")[0]
-		// 	?.classList.remove("selected");
 		location.reload(true);
 	}
 });
 
 function selectUserRow(userCi) {
-	const btnDeleteUser = document.getElementById("btnDeleteUser");
 	document.querySelectorAll(".selected").forEach((el) => {
 		el.classList.remove("selected");
 	});

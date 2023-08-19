@@ -124,6 +124,37 @@ function saveOneUser(array $newUser)
     }
 }
 
+function updateOneUser(array $newUser)
+{
+    require realpath(dirname(__FILE__)) . "/../db/conexion.php";
+    require realpath(dirname(__FILE__)) . "/../utils/messages/msg.php";
+    try {
+        $statement = $con->prepare("UPDATE USUARIOS
+                                    SET nombre = :nombre,
+                                    apellido = :apellido,
+                                    email = :email
+                                    WHERE ci = :ci");
+        $res = $statement->execute([
+            ':nombre' => $newUser['nombre'],
+            ':apellido' => $newUser['apellido'],
+            ':email' => $newUser['email'],
+            ':ci' => $newUser['cedula'],
+        ]);
+
+        if($res == 1 && $newUser['cedula'] !== $_SESSION['userCi']){
+            $statement = $con->prepare("DELETE FROM USUARIOS_has_ROLES WHERE USUARIOS_ci = :ci");
+            $res = $statement->execute([':ci' => $newUser['cedula']]);
+    
+            $statement = $con->prepare("INSERT INTO USUARIOS_has_ROLES (USUARIOS_ci,ROLES_id) VALUES (:ci, :rolId)");
+            foreach ($newUser['rolesId'] as $rolId) {
+                $statement->execute(array(':ci' => $newUser['cedula'], ':rolId' => $rolId));
+            }
+        }
+    } catch (Exception $e) {
+        die("ERROR SQL in saveOneUser(): " . $e->getMessage());
+    }
+}
+
 function deleteUser(string $userCi)
 {
     require realpath(dirname(__FILE__)) . "/../db/conexion.php";

@@ -7,7 +7,7 @@ function hasData($var): bool
 function elementsHasData(array $var): bool
 {
     foreach ($var as $element){
-        if(!isset($element) || empty($element) || !$element){
+        if(!isset($element) || empty($element) || preg_match('/(^\s+$)|(^\s+)|(\s+$)/', $element)){
             return false;
         }
     }

@@ -3,6 +3,7 @@
 $error_messages = [
    "exist_user" => 'El usuario ya existe',
    "!exist_user" => 'El usuario no existe',
+   "!rolesSelected" => 'El usuario debe tener al menos un rol',
    "exist_product" => 'El producto ya existe',
    "!exist_product" => 'El producto no existe',
    "!has_data" => 'Todos los campos son requeridos',
