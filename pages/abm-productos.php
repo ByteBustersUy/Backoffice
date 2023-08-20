@@ -27,17 +27,17 @@
         <div class="row">
             <div class="col-lg-2 ">
                 <div class="items">
-                    <a href="">
+                    <a id="btnAddProduct" data-bs-toggle="modal" data-bs-target="#moddalProducts">
                         <div class="btn-abm">
                             <i class="fa-solid fa-square-plus"></i>
                         </div>
                     </a>
-                    <a href="">
+                    <a id="btnEditProduct" class="disabled">
                         <div class="btn-abm">
                             <i class="fa-solid fa-pen"></i>
                         </div>
                     </a>
-                    <a href="">
+                    <a id="btnDeleteProduct" class="disabled">
                         <div class="btn-abm">
                             <i class="fa-solid fa-trash"></i>
                         </div>
@@ -59,7 +59,6 @@
                         <option selected hidden value="">Filtrar</option>
                         <option value="promocionado">Promocionado</option>
                         <option value="noPromocionado">No Promocionado</option>
-                        <!-- filtrar por categorias  -->
                     </select>
                 </div>
                 <div class="table-frame">
@@ -82,24 +81,35 @@
                     </table>
                 </div>
             </div>
-            <!-- <div class="col-lg-3">
-                <form class="form-abm" action="../src/modules/products/abm-productos.php" method="post">
-                    <input type="text" name="nombre" placeholder="Nombre" required autocomplete="off">
-                    <input type="text" name="imagen" placeholder="URL Imagen" required autocomplete="off">
-                    <select name="categoria" id="categoria" required>
-                        <option selected hidden value="">Categoría</option>
-                        <php?   // <-- TODO: corregir simbolo "?"
-                        $options = getOptionsCategoriesHTML();
-                        echo $options;
-                        ?>
-                    </select>
-                    <textarea name="descripcion" id="descripcion" placeholder="Descripción" required autocomplete="off"></textarea>
-                    <div class="buttons">
-                        <button type="submit">ACEPTAR</button>
-                        <button type="reset">CANCELAR</button>
+            <!-- Modal -->
+            <div class="modal fade" id="moddalProducts" tabindex="-1" aria-labelledby="ProductsModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div id="modalContent" class="modal-content">
+                        <div class="modal-header">
+                            <h2 class="modal-title fs-5" id="ProductsModalLabel"></h2>
+                            <button id="btnCloseModal" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="formAbmProduct" class="form-abm" action="" method="post">
+                                <input type="text" name="nombre" placeholder="Nombre" required autocomplete="off">
+                                <input type="text" name="imagen" placeholder="URL Imagen" required autocomplete="off">
+                                <select name="categoria" id="categoria" required>
+                                    <option selected hidden value="">Categoría</option>
+                                    <?php
+                                    $options = getOptionsCategoriesHTML();
+                                    echo $options;
+                                    ?>
+                                </select>
+                                <textarea name="descripcion" id="descripcion" placeholder="Descripción" required autocomplete="off"></textarea>
+                                <div class="buttons">
+                                    <button id="btnCancelModal" type="button" data-bs-dismiss="modal" aria-label="Close">CANCELAR</button>
+                                    <button type="submit">ACEPTAR</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                </form>
-            </div> -->
+                </div>
+            </div>
         </div>
     </div>
     <footer>
@@ -109,7 +119,7 @@
         ?>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-
+    <script src="../js/abm-productos.js"></script>
 
 
 </body>

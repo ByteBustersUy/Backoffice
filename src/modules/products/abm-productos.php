@@ -2,26 +2,29 @@
 require realpath(dirname(__FILE__)) . "/../../utils/messages/msg.php";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $nombre = strtolower(htmlspecialchars($_POST['nombre']));
-    $descripcion = strtolower(htmlspecialchars($_POST['descripcion']));
-    $idCategoria = strtolower(htmlspecialchars($_POST['categoria']));
-    $imagen = strtolower(htmlspecialchars($_POST['imagen']));
+    session_status() === PHP_SESSION_ACTIVE ?: session_start();
 
-    require realpath(dirname(__FILE__)) . "/../../repository/products.repository.php";
-
-    if (findOneProduct($nombre)) {
-        die("ERROR: " . $error_messages['exist_product'] . ". ('" . $nombre . "')");
+    if ($_GET['action'] == "delete" && isset($_POST["deleteProductId"])) {
+        if ($_POST["deleteUserCi"] != $_SESSION['productId']) {
+            deleteProduct($_POST["deleteProductid"]);
+        }
+    } else if (isset($_GET['action']) && isset($_GET['id']) && $_GET['action'] == "edit") {
+        editProduct($_GET['id']);
+    } else {
+        addProduct();
     }
+}
 
-    $newProduct = [
-        'nombre' => $nombre,
-        'descripcion' => $descripcion,
-        'idCategoria' => $idCategoria,
-        'imagen' => $imagen
-    ];
+function addProduct() {
 
-    saveOneProduct($newProduct);
-    header("Location:../../../pages/abm-productos.php");
+}
+
+function editProduct(string $productId) {
+    
+}
+
+function deleteProduct(string $productId) {
+    
 }
 
 
@@ -35,7 +38,7 @@ function getProductsTableData(): string
         $isPromo = findProductPromotionStatus($product['id']);
         $isPromo == 1 ? $isPromo = "Si" : $isPromo = "No";
         $productsList .= '
-                            <tr class="user-select-none align-middle">
+                            <tr id="' . $product['id'] . '" class="user-select-none align-middle" onclick="selectProductRow(' . $product['id'] . ')">
                                 <td class="first-in-table">' . $product['nombre'] . '</td>
                                 <td>' . $category . '</td>
                                 <td>' . $product['imagen'] . '</td>
