@@ -159,6 +159,7 @@ function deleteUser(string $userCi)
 {
     require realpath(dirname(__FILE__)) . "/../db/conexion.php";
     require realpath(dirname(__FILE__)) . "/../utils/messages/msg.php";
+
     try {
         $statement = $con->prepare("DELETE FROM USUARIOS_has_ROLES WHERE USUARIOS_ci = :ci");
         $res = $statement->execute([':ci' => $userCi]);

@@ -1,30 +1,72 @@
 <?php
-require realpath(dirname(__FILE__)) . "/../../utils/messages/msg.php";
+require realpath(dirname(__FILE__)) . "/../../utils/validators/hasData.php";
+require realpath(dirname(__FILE__)) . "/../../utils/validators/db_types.php";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    session_status() === PHP_SESSION_ACTIVE ?: session_start();
-
-    if ($_GET['action'] == "delete" && isset($_POST["deleteProductId"])) {
-        if ($_POST["deleteUserCi"] != $_SESSION['productId']) {
-            deleteProduct($_POST["deleteProductid"]);
+    if (isset($_GET['action'])) {
+        if ($_GET['action'] == "add") {
+            addProduct();
+        } else if ($_GET['action'] == "edit" && isset($_POST['editProductId'])) {
+            editProduct($_GET['id']);
+        } else if ($_GET['action'] == "delete" && isset($_POST["deleteProductId"])) {
+            deleteProduct($_POST["deleteProductId"]);
+        } else {
+            die("Invalid action requested");
         }
-    } else if (isset($_GET['action']) && isset($_GET['id']) && $_GET['action'] == "edit") {
-        editProduct($_GET['id']);
-    } else {
-        addProduct();
     }
+} else {
 }
 
-function addProduct() {
+function addProduct()
+{
+    require realpath(dirname(__FILE__)) . "/../../utils/messages/msg.php";
+    require realpath(dirname(__FILE__)) . "/../../repository/products.repository.php";
 
+    try {
+        $nombre = htmlspecialchars($_POST['nombre']);
+        $imagen = htmlspecialchars($_POST['imagen']);
+        $descripcion = htmlspecialchars($_POST['descripcion']);
+        $categoria = htmlspecialchars($_POST['categoria']);
+        $precio = 500; //TODO: agregar input formulario
+    } catch (Exception $e) {
+        throw new ErrorException($e->getMessage());
+    }
+
+    if (!elementsHasData([$nombre, $imagen, $descripcion, $categoria])) {
+        die("ERROR: " . $error_messages['!form_data']);
+    }
+
+    if (!varchar45($nombre)) {
+        die("ERROR: " . $error_messages['!valid_length45']);
+    }
+
+    if (!varchar255($descripcion)) {
+        die("ERROR: " . $error_messages['!valid_length255']);
+    }
+
+    $newProduct = [
+        "nombre" => $nombre,
+        "imagen" => $imagen,
+        "idCategoria" => $categoria,
+        "descripcion" => $descripcion,
+        "precio" => $precio,
+    ];
+    $ProductExist = findOneProduct($newProduct['nombre']);
+    if ($ProductExist) {
+        die("ERROR: " . $error_messages['exist_product'] . ". ('" . $ProductExist['nombre'] . "')");
+    }
+    saveOneProduct($newProduct);
+    header("Location:../../../pages/abm-productos.php");
 }
 
-function editProduct(string $productId) {
-    
+function editProduct(string $productId)
+{
+    die("conchaaa");
 }
 
-function deleteProduct(string $productId) {
-    
+function deleteProduct(string $productId)
+{
+    die("conchaaa");
 }
 
 

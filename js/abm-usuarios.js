@@ -29,7 +29,7 @@ btnEditUser.addEventListener("click", () => {
 	if (!btnEditUser.classList.contains("disabled")) {
 		btnEditUser.setAttribute("class", "enabled-button");
 		const userCi = document.getElementsByClassName("selected")[0].id;
-
+		
 		modalUsers.getElementsByClassName("modal-title")[0].innerHTML =
 			"Editar usuario ";
 
@@ -43,6 +43,7 @@ btnEditUser.addEventListener("click", () => {
 			vendedor: modalUsers.getElementsByTagName("input")[6],
 		};
 
+		//transformo todo lo de nombre en 1 sola palabra, y  si hay mas, pasan a ser parte de apellido.
 		let nombreCompleto = selectedRow
 			.getElementsByTagName("td")[0]
 			.innerHTML.split(" ");
@@ -93,18 +94,17 @@ btnEditUser.addEventListener("click", () => {
 });
 
 // Eliminar usuario
-btnDeleteUser.addEventListener("click", () => {
+btnDeleteUser.addEventListener("click",async () => {
 	if (!btnDeleteUser.classList.contains("disabled")) {
 		btnDeleteUser.setAttribute("class", "enabled-button");
 		const userCi = document.getElementsByClassName("selected")[0].id;
-		setTimeout(() => {
 			const response = prompt(
 				`Se eliminará al usuario con cédula ${userCi} \n\nIngrese la cédula para confirmar`
 			);
 			if (response == userCi) {
 				const data = new URLSearchParams();
 				data.append("deleteUserCi", userCi);
-				fetch("../src/modules/users/abm-usuarios.php?action=delete", {
+				await fetch("../src/modules/users/abm-usuarios.php?action=delete", {
 					method: "POST",
 					headers: {
 						"Content-type": "application/x-www-form-urlencoded",
@@ -129,16 +129,13 @@ btnDeleteUser.addEventListener("click", () => {
 						console.error("Error: " + error);
 					});
 			} else {
-				setTimeout(() => {
-					alert("Error: La cédula ingresada no es correcta");
-				}, 100);
+				alert("Error: La cédula ingresada no es correcta");
 			}
 			document
 				.getElementsByClassName("selected")[0]
 				?.classList.remove("selected");
 			btnDeleteUser.classList.replace("enabled-button", "disabled");
 			document.getElementById("btnEditUser").setAttribute("class", "disabled");
-		}, 100);
 	}
 });
 

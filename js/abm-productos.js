@@ -25,7 +25,7 @@ btnAddProduct.addEventListener("click", () => {
 	});
 });
 
-//Editar usuario
+//Editar Producto
 btnEditProduct.addEventListener("click", () => {
 	if (!btnEditProduct.classList.contains("disabled")) {
 		btnEditProduct.setAttribute("class", "enabled-button");
@@ -95,18 +95,17 @@ btnEditProduct.addEventListener("click", () => {
 });
 
 // Eliminar producto
-btnDeleteProduct.addEventListener("click", () => {
+btnDeleteProduct.addEventListener("click", async () => {
 	if (!btnDeleteProduct.classList.contains("disabled")) {
 		btnDeleteProduct.setAttribute("class", "enabled-button");
 		const productId = document.getElementsByClassName("selected")[0].id;
-		setTimeout(() => {
 			const response = prompt(
 				`Se eliminará el producto con id ${productId} \n\nIngrese el id para confirmar`
 			);
 			if (response == productId) {
 				const data = new URLSearchParams();
 				data.append("deleteProductId", productId);
-				fetch("../src/modules/products/abm-productos.php?action=delete", {
+				await fetch("../src/modules/products/abm-productos.php?action=delete", {
 					method: "POST",
 					headers: {
 						"Content-type": "application/x-www-form-urlencoded",
@@ -131,9 +130,7 @@ btnDeleteProduct.addEventListener("click", () => {
 						console.error("Error: " + error);
 					});
 			} else {
-				setTimeout(() => {
-					alert("Error: El id ingresado no es correcto");
-				}, 100);
+				alert("Error: El id ingresado no es correcto");
 			}
 			document
 				.getElementsByClassName("selected")[0]
@@ -142,7 +139,6 @@ btnDeleteProduct.addEventListener("click", () => {
 			document
 				.getElementById("btnEditProduct")
 				.setAttribute("class", "disabled");
-		}, 100);
 	}
 });
 

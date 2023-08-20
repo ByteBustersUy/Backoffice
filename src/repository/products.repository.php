@@ -103,13 +103,17 @@ function saveOneProduct(array $newProduct): bool
 {
     require realpath(dirname(__FILE__)) . "/../db/conexion.php";
     include realpath(dirname(__FILE__)) . "/../utils/messages/msg.php";
+    session_status() === PHP_SESSION_ACTIVE ?: session_start();
+    
     try {
         $lastProductId = findLastProductId();
-        $statement = $con->prepare("INSERT INTO PRODUCTOS (nombre,descripcion,imagen) VALUES (:nombre, :descripcion, :imagen)");
+        $statement = $con->prepare("INSERT INTO PRODUCTOS (nombre,descripcion,imagen,precio,USUARIO_ci) VALUES (:nombre, :descripcion, :imagen, :precio, :USUARIO_ci)");
         $res = $statement->execute([
             ':nombre' => $newProduct['nombre'],
             ':descripcion' => $newProduct['descripcion'],
             ':imagen' => $newProduct['imagen'],
+            ':precio' => $newProduct['precio'],
+            ':USUARIO_ci' => $_SESSION['userCi'],
         ]);
 
         if ($res == 1) {
