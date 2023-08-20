@@ -163,7 +163,7 @@ function deleteUser(string $userCi)
     try {
         $statement = $con->prepare("DELETE FROM USUARIOS_has_ROLES WHERE USUARIOS_ci = :ci");
         $res = $statement->execute([':ci' => $userCi]);
-
+        
         if ($res == 1) {
             $statement = $con->prepare("DELETE FROM USUARIOS WHERE ci = :ci");
             $statement->execute([':ci' => $userCi]);

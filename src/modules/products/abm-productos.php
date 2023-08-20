@@ -2,19 +2,24 @@
 require realpath(dirname(__FILE__)) . "/../../utils/validators/hasData.php";
 require realpath(dirname(__FILE__)) . "/../../utils/validators/db_types.php";
 
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    session_status() === PHP_SESSION_ACTIVE ?: session_start();
+
     if (isset($_GET['action'])) {
         if ($_GET['action'] == "add") {
             addProduct();
-        } else if ($_GET['action'] == "edit" && isset($_POST['editProductId'])) {
+
+        } else if ($_GET['action'] == "edit" && isset($_GET['id'])) {
             editProduct($_GET['id']);
+
         } else if ($_GET['action'] == "delete" && isset($_POST["deleteProductId"])) {
             deleteProduct($_POST["deleteProductId"]);
+
         } else {
             die("Invalid action requested");
         }
     }
-} else {
 }
 
 function addProduct()
@@ -60,11 +65,6 @@ function addProduct()
 }
 
 function editProduct(string $productId)
-{
-    die("conchaaa");
-}
-
-function deleteProduct(string $productId)
 {
     die("conchaaa");
 }

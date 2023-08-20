@@ -90,7 +90,7 @@ btnEditProduct.addEventListener("click", () => {
 
 		formAbm.attributes.item(
 			2
-		).value = `../src/modules/products/abm-productos.php?action=edit`;
+		).value = `../src/modules/products/abm-productos.php?action=edit&id=${productId}`;
 	}
 });
 
