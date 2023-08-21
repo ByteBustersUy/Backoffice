@@ -95,17 +95,20 @@ btnEditProduct.addEventListener("click", () => {
 });
 
 // Eliminar producto
-btnDeleteProduct.addEventListener("click", async () => {
+btnDeleteProduct.addEventListener("click", () => {
 	if (!btnDeleteProduct.classList.contains("disabled")) {
 		btnDeleteProduct.setAttribute("class", "enabled-button");
-		const productId = document.getElementsByClassName("selected")[0].id;
+		const productRow = document.getElementsByClassName("selected")[0];
+		const productId = productRow.id;
+		const category = productRow.getElementsByTagName("td")[1].innerHTML;
+		const promoId = ''; //TODO: obtener id de promo
 			const response = prompt(
 				`Se eliminará el producto con id ${productId} \n\nIngrese el id para confirmar`
 			);
 			if (response == productId) {
 				const data = new URLSearchParams();
-				data.append("deleteProductId", productId);
-				await fetch("../src/modules/products/abm-productos.php?action=delete", {
+				data.append("productId", productId);
+				fetch("../src/modules/products/abm-productos.php?action=delete", {
 					method: "POST",
 					headers: {
 						"Content-type": "application/x-www-form-urlencoded",

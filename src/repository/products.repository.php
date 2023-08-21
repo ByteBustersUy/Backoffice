@@ -104,11 +104,12 @@ function saveOneProduct(array $newProduct): bool
     require realpath(dirname(__FILE__)) . "/../db/conexion.php";
     include realpath(dirname(__FILE__)) . "/../utils/messages/msg.php";
     session_status() === PHP_SESSION_ACTIVE ?: session_start();
-    
+
     try {
-        $lastProductId = findLastProductId();
+        $con->beginTransaction();
+
         $statement = $con->prepare("INSERT INTO PRODUCTOS (nombre,descripcion,imagen,precio,USUARIO_ci) VALUES (:nombre, :descripcion, :imagen, :precio, :USUARIO_ci)");
-        $res = $statement->execute([
+        $statement->execute([
             ':nombre' => $newProduct['nombre'],
             ':descripcion' => $newProduct['descripcion'],
             ':imagen' => $newProduct['imagen'],
@@ -116,30 +117,48 @@ function saveOneProduct(array $newProduct): bool
             ':USUARIO_ci' => $_SESSION['userCi'],
         ]);
 
-        if ($res == 1) {
-            $newProductId = findLastProductId();
-            try {
-                $statement = $con->prepare("INSERT INTO PRODUCTOS_has_CATEGORIAS (PRODUCTOS_id,CATEGORIAS_id) VALUES (:prodId, :catId)");
-                $statement->execute([
-                    ':prodId' => $newProductId,
-                    ':catId' => $newProduct['idCategoria']
-                ]);
-                return true;
-            } catch (Exception $e) {
+        $newProductId = intval(findLastProductId())+1;
+        $statement = $con->prepare("INSERT INTO PRODUCTOS_has_CATEGORIAS (PRODUCTOS_id,CATEGORIAS_id) VALUES (:prodId, :catId)");
+        $statement->execute([
+            ':prodId' => $newProductId,
+            ':catId' => $newProduct['idCategoria']
+        ]);
 
-                if ($newProductId > $lastProductId) {
-
-                    $statement = $con->prepare("DELETE FROM PRODUCTOS WHERE id = :id");
-                    $statement->execute([
-                        ':id' => $newProductId
-                    ]);
-                }
-                die($e->getMessage());
-            }
-        } else {
-            die("ERROR: " . $error_messages['!product_add']);
-        }
+        $con->commit();
+        return true;
     } catch (Exception $e) {
+        $con->rollback();
         die("ERROR SQL in saveOneProduct(): " . $e->getMessage());
+    }
+}
+
+function deleteProduct(string $productId, bool $isPromo = false)
+{
+    require realpath(dirname(__FILE__)) . "/../db/conexion.php";
+    include realpath(dirname(__FILE__)) . "/../utils/messages/msg.php";
+
+    try {
+        $con->beginTransaction();
+
+        if($isPromo){
+            $statement = $con->prepare("DELETE FROM PRODUCTOS_has_PROMOCIONES WHERE PRODUCTOS_id = :id");
+            $statement->execute([
+                ':id' => $productId
+            ]);
+        }
+
+        $statement = $con->prepare("DELETE FROM PRODUCTOS_has_CATEGORIAS WHERE PRODUCTOS_id = :id");
+        $statement->execute([
+            ':id' => $productId
+        ]);
+
+        $statement = $con->prepare("DELETE FROM PRODUCTOS WHERE id = :id");
+        $statement->execute([':id' => $productId]);
+
+        $con->commit();
+    } catch (Exception $e) {
+
+        $con->rollback();
+        die("ERROR SQL in Delete Product(): " . $e->getMessage());
     }
 }

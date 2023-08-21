@@ -94,7 +94,7 @@ btnEditUser.addEventListener("click", () => {
 });
 
 // Eliminar usuario
-btnDeleteUser.addEventListener("click",async () => {
+btnDeleteUser.addEventListener("click",() => {
 	if (!btnDeleteUser.classList.contains("disabled")) {
 		btnDeleteUser.setAttribute("class", "enabled-button");
 		const userCi = document.getElementsByClassName("selected")[0].id;
@@ -104,7 +104,7 @@ btnDeleteUser.addEventListener("click",async () => {
 			if (response == userCi) {
 				const data = new URLSearchParams();
 				data.append("deleteUserCi", userCi);
-				await fetch("../src/modules/users/abm-usuarios.php?action=delete", {
+				fetch("../src/modules/users/abm-usuarios.php?action=delete", {
 					method: "POST",
 					headers: {
 						"Content-type": "application/x-www-form-urlencoded",

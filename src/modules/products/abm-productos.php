@@ -7,14 +7,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     session_status() === PHP_SESSION_ACTIVE ?: session_start();
 
     if (isset($_GET['action'])) {
+
         if ($_GET['action'] == "add") {
             addProduct();
 
         } else if ($_GET['action'] == "edit" && isset($_GET['id'])) {
             editProduct($_GET['id']);
 
-        } else if ($_GET['action'] == "delete" && isset($_POST["deleteProductId"])) {
-            deleteProduct($_POST["deleteProductId"]);
+        } else if ($_GET['action'] == "delete" && isset($_POST["productId"])) {
+            $isPromo = false; //TODO: check if product is promoted
+            deleteProduct($_POST["productId"], $isPromo);
 
         } else {
             die("Invalid action requested");
@@ -66,7 +68,7 @@ function addProduct()
 
 function editProduct(string $productId)
 {
-    die("conchaaa");
+    die("eaaa");
 }
 
 
@@ -82,7 +84,7 @@ function getProductsTableData(): string
         $productsList .= '
                             <tr id="' . $product['id'] . '" class="user-select-none align-middle" onclick="selectProductRow(' . $product['id'] . ')">
                                 <td class="first-in-table">' . $product['nombre'] . '</td>
-                                <td>' . $category . '</td>
+                                <td id="' . $category . '">' . $category . '</td>
                                 <td>' . $product['imagen'] . '</td>
                                 <td>' . $isPromo . '</td>
                                 <td><button class="btn-eye"><i class="fa-solid fa-eye"></i></button></td>
