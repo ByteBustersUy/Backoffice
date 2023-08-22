@@ -138,7 +138,6 @@ thead tr {
     color: var(--primary-text-color);
     border-radius: .3rem;
     background-color: var(--background-color-light);
-    border: 1.2px solid var(--bytebusters-color);
     box-shadow: inset -1px -2px .2rem ;
     filter: drop-shadow(1px 1px .1rem var(--bytebusters-color));
     font-weight: 600;

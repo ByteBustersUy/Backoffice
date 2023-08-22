@@ -141,7 +141,7 @@ btnDeleteUser.addEventListener("click",() => {
 						console.error("Error: " + error);
 					});
 			} else {
-				alert("Error: La cédula ingresada no es correcta");
+				//alert("Error: La cédula ingresada no es correcta");
 			}
 			document
 				.getElementsByClassName("selected")[0]
