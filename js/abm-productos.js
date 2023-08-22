@@ -121,7 +121,7 @@ btnDeleteProduct.addEventListener("click", () => {
 						}
 						selectedRow.setAttribute(
 							"style",
-							"border-top: 1.2px solid red;border-bottom: 1.2px solid red;"
+							"border-top: 1.5px solid red;border-bottom: 1.5px solid red;"
 						);
 						setTimeout(() => {
 							alert("Producto eliminado con éxito!");
