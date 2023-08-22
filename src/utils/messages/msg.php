@@ -10,6 +10,7 @@ $error_messages = [
    "!valid_user" => 'El usuario no es válido',
    "!valid_email" => 'El email no es válido',
    "!valid_length45" => 'algunos campos del formulario no deben superar los 45 caracteres',
+   "!valid_length255" => 'algunos campos del formulario no deben superar los 255 caracteres',
    "!valid_pass" => 'La contraseña no es válida. (se espera al menos 1 letra minúscula, 1 letra mayúscula, 1 número y 8 caracteres en total)',
    "!valid_chars" => 'Caracteres no válidos',
    "!form_data" => 'Alguna casilla del formulario no fue completada',

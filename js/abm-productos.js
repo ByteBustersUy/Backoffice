@@ -25,7 +25,7 @@ btnAddProduct.addEventListener("click", () => {
 	});
 });
 
-//Editar usuario
+//Editar Producto
 btnEditProduct.addEventListener("click", () => {
 	if (!btnEditProduct.classList.contains("disabled")) {
 		btnEditProduct.setAttribute("class", "enabled-button");
@@ -90,7 +90,7 @@ btnEditProduct.addEventListener("click", () => {
 
 		formAbm.attributes.item(
 			2
-		).value = `../src/modules/products/abm-productos.php?action=edit`;
+		).value = `../src/modules/products/abm-productos.php?action=edit&id=${productId}`;
 	}
 });
 
@@ -98,14 +98,16 @@ btnEditProduct.addEventListener("click", () => {
 btnDeleteProduct.addEventListener("click", () => {
 	if (!btnDeleteProduct.classList.contains("disabled")) {
 		btnDeleteProduct.setAttribute("class", "enabled-button");
-		const productId = document.getElementsByClassName("selected")[0].id;
-		setTimeout(() => {
+		const productRow = document.getElementsByClassName("selected")[0];
+		const productId = productRow.id;
+		const category = productRow.getElementsByTagName("td")[1].innerHTML;
+		const promoId = ''; //TODO: obtener id de promo
 			const response = prompt(
 				`Se eliminará el producto con id ${productId} \n\nIngrese el id para confirmar`
 			);
 			if (response == productId) {
 				const data = new URLSearchParams();
-				data.append("deleteProductId", productId);
+				data.append("productId", productId);
 				fetch("../src/modules/products/abm-productos.php?action=delete", {
 					method: "POST",
 					headers: {
@@ -119,7 +121,7 @@ btnDeleteProduct.addEventListener("click", () => {
 						}
 						selectedRow.setAttribute(
 							"style",
-							"border-top: 1.2px solid red;border-bottom: 1.2px solid red;"
+							"border-top: 1.5px solid red;border-bottom: 1.5px solid red;"
 						);
 						setTimeout(() => {
 							alert("Producto eliminado con éxito!");
@@ -131,9 +133,7 @@ btnDeleteProduct.addEventListener("click", () => {
 						console.error("Error: " + error);
 					});
 			} else {
-				setTimeout(() => {
-					alert("Error: El id ingresado no es correcto");
-				}, 100);
+				alert("Error: El id ingresado no es correcto");
 			}
 			document
 				.getElementsByClassName("selected")[0]
@@ -142,7 +142,6 @@ btnDeleteProduct.addEventListener("click", () => {
 			document
 				.getElementById("btnEditProduct")
 				.setAttribute("class", "disabled");
-		}, 100);
 	}
 });
 

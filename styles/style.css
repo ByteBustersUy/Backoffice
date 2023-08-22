@@ -342,7 +342,7 @@ thead tr .roles{
 /* --------- ABM USUARIOS --------- */
 
 .table-frame {
-    height: 31.8rem;
+    height: 29.5rem;
     margin: auto;
     margin-bottom: 10rem;
     overflow-x: none;
@@ -353,7 +353,7 @@ thead tr .roles{
 
 .table-options {
     display: flex;
-    margin: 4rem 0 1rem 0;
+    margin: 2rem 0 1rem 0;
 }
 
 .table-options select {
@@ -622,8 +622,8 @@ thead tr .roles{
 
 .selected {
     filter: contrast(200%);
-    border-top: 1.2px solid var(--bytebusters-color);
-    border-bottom: 1.2px solid var(--bytebusters-color);
+    border-top: 1.5px solid var(--bytebusters-color);
+    border-bottom: 1.5px solid var(--bytebusters-color);
 }
 
 /* cambia color del autocompletado en inputs */
@@ -780,11 +780,11 @@ footer img {
         margin: 4rem 2rem 0 2rem;
         scale: 110%;
     }
-
+/* 
     .items {
         text-align: center;
         margin-top: 5rem;
-    }
+    } */
 
     .btn-abm i {
         scale: 300%;

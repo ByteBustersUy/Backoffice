@@ -29,7 +29,7 @@ btnEditUser.addEventListener("click", () => {
 	if (!btnEditUser.classList.contains("disabled")) {
 		btnEditUser.setAttribute("class", "enabled-button");
 		const userCi = document.getElementsByClassName("selected")[0].id;
-
+		
 		modalUsers.getElementsByClassName("modal-title")[0].innerHTML =
 			"Editar usuario ";
 
@@ -43,6 +43,7 @@ btnEditUser.addEventListener("click", () => {
 			vendedor: modalUsers.getElementsByTagName("input")[6],
 		};
 
+		//transformo todo lo de nombre en 1 sola palabra, y  si hay mas, pasan a ser parte de apellido.
 		let nombreCompleto = selectedRow
 			.getElementsByTagName("td")[0]
 			.innerHTML.split(" ");
@@ -93,11 +94,10 @@ btnEditUser.addEventListener("click", () => {
 });
 
 // Eliminar usuario
-btnDeleteUser.addEventListener("click", () => {
+btnDeleteUser.addEventListener("click",() => {
 	if (!btnDeleteUser.classList.contains("disabled")) {
 		btnDeleteUser.setAttribute("class", "enabled-button");
 		const userCi = document.getElementsByClassName("selected")[0].id;
-		setTimeout(() => {
 			const response = prompt(
 				`Se eliminará al usuario con cédula ${userCi} \n\nIngrese la cédula para confirmar`
 			);
@@ -117,7 +117,7 @@ btnDeleteUser.addEventListener("click", () => {
 						}
 						selectedRow.setAttribute(
 							"style",
-							"border-top: 1.2px solid red;border-bottom: 1.2px solid red;"
+							"border-top: 1.5px solid red;border-bottom: 1.5px solid red;"
 						);
 						setTimeout(() => {
 							alert("Usuario eliminado con éxito!");
@@ -129,16 +129,13 @@ btnDeleteUser.addEventListener("click", () => {
 						console.error("Error: " + error);
 					});
 			} else {
-				setTimeout(() => {
-					alert("Error: La cédula ingresada no es correcta");
-				}, 100);
+				alert("Error: La cédula ingresada no es correcta");
 			}
 			document
 				.getElementsByClassName("selected")[0]
 				?.classList.remove("selected");
 			btnDeleteUser.classList.replace("enabled-button", "disabled");
 			document.getElementById("btnEditUser").setAttribute("class", "disabled");
-		}, 100);
 	}
 });
 
