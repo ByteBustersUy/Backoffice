@@ -357,7 +357,6 @@ thead tr .roles{
 }
 
 .table-options select {
-    height: 2rem;
     margin-left: 1rem;
     text-align: center;
 }
@@ -397,7 +396,6 @@ thead tr .roles{
 
 .table-options button {
     width: 5rem;
-    height: 2rem;
     margin-left: 1rem;
     margin-right: auto;
     border-radius: .3rem;
@@ -616,7 +614,7 @@ thead tr .roles{
 }
 
 .disabled {
-    filter: brightness(30%);
+    filter: brightness(50%);
     z-index: -10;
 }
 

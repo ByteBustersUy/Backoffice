@@ -2,18 +2,23 @@
 const btnAddUser = document.getElementById("btnAddUser");
 const btnEditUser = document.getElementById("btnEditUser");
 const btnDeleteUser = document.getElementById("btnDeleteUser");
+const btnSubmitModal = document.getElementById("btnSubmitModal");
 const formAbm = document.getElementById("formAbmUser");
 let selectedRow;
 
-//validaciones
+//validators
 const v = {
 	isSame: (a, b) => a === b,
+	isEqual: (a, b) => a == b,
 	isEmpty: (a) => a.length === 0,
 };
 
 //Agregar usuario
 btnAddUser.addEventListener("click", () => {
 	btnAddUser.setAttribute("class", "enabled-button");
+	btnSubmitModal.disabled = true;
+	btnSubmitModal.setAttribute("style", "filter:brightness(30%);");
+
 	modalUsers.getElementsByClassName("modal-title")[0].innerHTML =
 		"Agregar usuario";
 	formAbm.attributes.item(2).value =
@@ -82,11 +87,18 @@ btnEditUser.addEventListener("click", () => {
 		inputsForm.constrasenia.disabled = true;
 		inputsForm.constrasenia.style.filter = "brightness(50%)";
 
-		if (!v.isEmpty(selectedUserData.admin)) {
+		const { isEmpty } = v;
+
+		if (!isEmpty(selectedUserData.admin)) {
 			inputsForm.admin.setAttribute("checked", "true");
 		}
-		if (!v.isEmpty(selectedUserData.vendedor)) {
+		if (!isEmpty(selectedUserData.vendedor)) {
 			inputsForm.vendedor.setAttribute("checked", "true");
+		}
+
+		if(isEmpty(selectedUserData.admin) && isEmpty(selectedUserData.vendedor)){
+			btnSubmitModal.disabled = true;
+			btnSubmitModal.setAttribute("style", "filter:brightness(30%);");
 		}
 
 		formAbm.attributes.item(2).value = `../src/modules/users/abm-usuarios.php?action=edit&ci=${inputsForm.cedula.value}`;
@@ -150,6 +162,23 @@ modalUsers.addEventListener("click", (event) => {
 		location.reload(true);
 	}
 });
+
+modalUsers.addEventListener("change", () => {
+	const chkboxAdmin = modalUsers.getElementsByTagName("input")[5];
+	const chkboxVendedor = modalUsers.getElementsByTagName("input")[6];
+	const btnSubmitModal = document.getElementById("btnSubmitModal");
+
+	if(!chkboxAdmin.checked && !chkboxVendedor.checked){
+		btnSubmitModal.disabled = true;
+		btnSubmitModal.setAttribute("style", "filter:brightness(30%);");
+	}else{
+		btnSubmitModal.disabled = false;
+		btnSubmitModal.setAttribute("style", "filter:brightness(100%);");
+	}	
+	
+});
+
+
 
 function selectUserRow(userCi) {
 	document.querySelectorAll(".selected").forEach((el) => {
