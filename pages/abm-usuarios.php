@@ -109,7 +109,7 @@
                         </div>
                         <div class="buttons">
                             <button id="btnCancelModal" type="button" data-bs-dismiss="modal" aria-label="Close">CANCELAR</button>
-                            <button type="submit">ACEPTAR</button>
+                            <button id="btnSubmitModal" type="submit">ACEPTAR</button>
                         </div>
                     </form>
                 </div>

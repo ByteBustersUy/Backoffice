@@ -138,7 +138,6 @@ thead tr {
     color: var(--primary-text-color);
     border-radius: .3rem;
     background-color: var(--background-color-light);
-    border: 1.2px solid var(--bytebusters-color);
     box-shadow: inset -1px -2px .2rem ;
     filter: drop-shadow(1px 1px .1rem var(--bytebusters-color));
     font-weight: 600;
@@ -321,7 +320,7 @@ thead tr {
 /*---------ABM PERMISSIONS-----*/
 
 .table-permissions{
-    margin-top: 7.3rem !important;
+    margin-top: 5.3rem !important;
 }
 
 thead tr .nombre{
@@ -342,7 +341,7 @@ thead tr .roles{
 /* --------- ABM USUARIOS --------- */
 
 .table-frame {
-    height: 31.8rem;
+    height: 29.5rem;
     margin: auto;
     margin-bottom: 10rem;
     overflow-x: none;
@@ -353,11 +352,10 @@ thead tr .roles{
 
 .table-options {
     display: flex;
-    margin: 4rem 0 1rem 0;
+    margin: 2rem 0 1rem 0;
 }
 
 .table-options select {
-    height: 2rem;
     margin-left: 1rem;
     text-align: center;
 }
@@ -397,7 +395,6 @@ thead tr .roles{
 
 .table-options button {
     width: 5rem;
-    height: 2rem;
     margin-left: 1rem;
     margin-right: auto;
     border-radius: .3rem;
@@ -624,14 +621,14 @@ thead tr .roles{
 }
 
 .disabled {
-    filter: brightness(30%);
+    filter: brightness(50%);
     z-index: -10;
 }
 
 .selected {
     filter: contrast(200%);
-    border-top: 1.2px solid var(--bytebusters-color);
-    border-bottom: 1.2px solid var(--bytebusters-color);
+    border-top: 1.5px solid var(--bytebusters-color);
+    border-bottom: 1.5px solid var(--bytebusters-color);
 }
 
 /* cambia color del autocompletado en inputs */
@@ -788,11 +785,11 @@ footer img {
         margin: 4rem 2rem 0 2rem;
         scale: 110%;
     }
-
+/* 
     .items {
         text-align: center;
         margin-top: 5rem;
-    }
+    } */
 
     .btn-abm i {
         scale: 300%;

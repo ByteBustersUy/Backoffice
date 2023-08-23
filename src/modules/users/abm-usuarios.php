@@ -89,7 +89,7 @@ function addUser()
         die("ERROR: " . $error_messages['!valid_pass']);
     }
 
-    if (!varchar45($nombre.$apellido) || !varchar45($email)) {
+    if (!varchar45($nombre . $apellido) || !varchar45($email)) {
         die("ERROR: " . $error_messages['!valid_length45']);
     }
 
@@ -116,7 +116,7 @@ function editUser(string $userCi)
     require realpath(dirname(__FILE__)) . "/../../utils/messages/msg.php";
 
     try {
-        if(isset($_POST['cedula']) || isset($_POST['contrasenia'])){
+        if (isset($_POST['cedula']) || isset($_POST['contrasenia'])) {
             die("ERROR: Invalid request");
         }
 
@@ -136,13 +136,13 @@ function editUser(string $userCi)
             die("ERROR: " . $error_messages['!valid_length45']);
         }
 
-        if(count($rolesId) == 0) {
+        if (count($rolesId) == 0) {
             throw new Error("ERROR: " . $error_messages['!rolesSelected']);
         }
         $data = [$nombre, $apellido, $email, $rolesId];
 
         foreach ($data as $element) {
-            if(preg_match('/(^\s+$)|(^\s+)|(\s+$)/', $element)){
+            if (preg_match('/(^\s+$)|(^\s+)|(\s+$)/', $element)) {
                 die("ERROR: " . $error_messages['!valid_chars']);
             }
         }
@@ -150,7 +150,6 @@ function editUser(string $userCi)
         if (!elementsHasData($data)) {
             die("ERROR: " . $error_messages['!form_data']);
         }
-
     } catch (Exception $e) {
         throw new ErrorException($e->getMessage());
     }
@@ -176,6 +175,3 @@ function editUser(string $userCi)
     updateOneUser($newUser);
     header("Location:../../../pages/abm-usuarios.php");
 }
-
-
-
