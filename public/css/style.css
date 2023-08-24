@@ -8,10 +8,11 @@
   --color-4: #d4d4d5;
   --color-5: #ffffff;
   --color-6: #0000ff;
+  --color-background: #fdfbfb;
 }
   
 body{
-  background-color: var(--color-4)
+  background-color: var(--color-background)
 }
 #logo {
   margin-left: 5%;
@@ -33,22 +34,47 @@ nav{
 .menu {
   background-color: var(--ecomerce-color);
   margin: auto;
-  height: 2rem;
+  height: 3rem;
   
 }
 .menu ul {
   display: flex;
   justify-content: right;
   text-decoration: none;
-  align-items: center;
-  position: relative;
-  margin-right: 5rem;
   margin-bottom: 0;
+ 
+}
+.menu li{
+  margin-top: .8rem;
 }
 ul a {
   margin: 1rem;
   text-decoration: none;
   color: azure;
+  
+}
+/* burguer*/
+#hamburg{
+  width: 2rem;
+  height: .2rem;
+}
+.navbar-toggler{
+  position: absolute;
+  display: flex; 
+  width: 12rem;
+  height: 2.7rem;
+  margin-left: 3rem;
+  margin-bottom: 2.5rem;
+}
+span{
+  margin-top: .3rem;
+  font-size: 1.5;
+}
+#categorias{
+  font-size: 1rem;
+  margin-top: .7rem;
+  margin-left: 1rem;
+  color: var(--color-5);
 }
 .menu li {
   list-style: none;
@@ -66,9 +92,13 @@ ul a {
 }
 /*alt="" width="30" height="24" id="logo"*/
 
+
 #tarjetas{
   justify-content: center;
   margin-bottom: 5rem;
+}
+.card{
+  box-shadow: 10px 10px 15px var(--color-3);
 }
 
 .col{
