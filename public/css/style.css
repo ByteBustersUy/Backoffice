@@ -67,12 +67,12 @@ ul a {
   margin-bottom: 2.5rem;
 }
 span{
-  margin-top: .3rem;
+  margin-top: .2rem;
   font-size: 1.5;
 }
 #categorias{
   font-size: 1rem;
-  margin-top: .7rem;
+  margin-top: .6rem;
   margin-left: 1rem;
   color: var(--color-5);
 }
@@ -95,6 +95,7 @@ span{
 
 #tarjetas{
   justify-content: center;
+  margin: auto;
   margin-bottom: 5rem;
 }
 .card{
@@ -155,6 +156,7 @@ span{
 }
 .datos-emp p{
   margin-left: 2rem;
+
 }
 
 
