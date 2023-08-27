@@ -8,7 +8,7 @@
   --color-4: #d4d4d5;
   --color-5: #ffffff;
   --color-6: #0000ff;
-  --color-background: #fdfbfb;
+  --color-background: #9b9595;
 }
   
 body{
@@ -90,7 +90,7 @@ span{
 #carouselExampleIndicators{
    margin-top: 0;
 }
-/*alt="" width="30" height="24" id="logo"*/
+
 
 
 #tarjetas{
@@ -157,6 +157,122 @@ span{
 .datos-emp p{
   margin-left: 2rem;
 
+}
+/*carrito*/
+.main{
+  display: flex;
+  height: auto;
+  background-color: rgb(255, 255, 255);
+}
+.container{
+  width: 80%;
+padding-left: 1rem;
+}
+.region-producto{
+  display: inline;
+  padding: 1rem;
+  
+}
+.div-producto{
+  border-color: brown;
+  border-width: 3px;
+  border-style: solid;
+  height: 8rem;
+  margin-top: 1rem;
+  display:inline-flex;
+  padding: 0;
+}
+.region-compra{
+padding: 3rem;
+justify-content: center;
+align-content: center;
+display: flex;
+flex-wrap: wrap;
+}
+#div-comprar{
+  border-color:  brown;
+  border-width: 3px;
+  border-style: solid;
+  border-radius: 25%;
+  width: 12% ;
+  height: 30%;
+  position: fixed;
+  text-align: center;
+  display:flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.img-producto{
+  border-color:  brown;
+  border-width: 1px;
+  border-style: dotted;
+  width: 7rem;
+  height: 7rem;
+  margin: 0.5rem;
+}
+.input-num{
+  width: 3rem;
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+}
+input[type="button"]{
+  width: 2rem;
+}
+.btn-eliminar{
+  position:absolute;
+  border-radius: 50%;
+  right:0.5rem;
+  height: 2.5rem;
+  width: 2.5rem;
+  border-style: solid;
+  
+}
+.btn-eliminar:hover{
+  background-color: red;
+}
+.cantidad{
+  height: 4rem;
+  width:100%;
+  display: inline-flex;
+  
+  align-items: center;
+  
+
+}
+.div-nombre-produc{
+  display: flex;
+  text-align:start;
+  height: 3.5rem;
+  width: auto;
+  margin-bottom: 0.2rem;
+
+}
+.div-dato-produc{
+  position: relative;
+  width: 100%;
+  height: 8rems;
+}
+.btns-cantidad{
+  width: auto;
+  display: inline;
+  position: absolute;
+  left: 5%;
+}
+.precio-produc{
+  position: absolute;
+  right: 40%;
+  width: 6rem;
+}
+.nombre-produc{ 
+  position: absolute;
+  left: 5%;
+  top: 20%;
+}
+.btn-comprar{
+  border-style: solid;
 }
 
 
