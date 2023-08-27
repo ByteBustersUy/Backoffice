@@ -2,19 +2,19 @@
 require realpath(dirname(__FILE__)) . '/../../repository/config.repository.php';
 require realpath(dirname(__FILE__)) . '/../../utils/validators/hasData.php';
 
-if ($_POST) {
-    $nombre = $_POST['nombre'];
-    $rubro = $_POST['rubro'];
-    $ciudad = $_POST['ciudad'];
-    $numero = $_POST['numero'];
-    $calle = $_POST['calle'];
-    $telefono = $_POST['telefono'];
-    $whatsapp = $_POST['whatsapp'];
-    $instagram = $_POST['instagram'];
-    $comentario = $_POST['comentario'];
-    $logo = $_POST['logo'];
-    $email = $_POST['email'];
-    $pwd_email = $_POST['pwd_email'];
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $nombre = htmlspecialchars($_POST['nombre']);
+    $rubro = htmlspecialchars($_POST['rubro']);
+    $ciudad = htmlspecialchars($_POST['ciudad']);
+    $numero = htmlspecialchars($_POST['numero']);
+    $calle = htmlspecialchars($_POST['calle']);
+    $telefono = htmlspecialchars($_POST['telefono']);
+    $whatsapp = htmlspecialchars($_POST['whatsapp']);
+    $instagram = htmlspecialchars($_POST['instagram']);
+    $comentario = htmlspecialchars($_POST['comentario']);
+    $logo = htmlspecialchars($_POST['logo']);
+    $email = htmlspecialchars($_POST['email']);
+    $pwd_email = htmlspecialchars($_POST['pwd_email']);
 
     //TODO: hacer validaciones del formulario
 

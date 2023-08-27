@@ -2,6 +2,7 @@
 
 function isValidEmail(string $var): bool
 {
+
     $validEmails = [
         'vera.com.uy',
         'gmail.com',
