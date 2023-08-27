@@ -109,7 +109,7 @@ span{
 /* Estilos footer */
 
 .footer {
-  background-color: #f8f8f8;
+  background-color: var(--color-3);
   padding: 20px;
   text-align: center;
 }
@@ -145,10 +145,12 @@ span{
 
 .footer .container{
   
-  margin-right: 0;
+  
+  width: auto;
+  
 }
 .datos-emp{
-  background-color: aqua;
+  
   height: 100px;
   max-width: 200px;
   margin-top: 5rem;

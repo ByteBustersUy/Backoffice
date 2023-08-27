@@ -1,3 +1,4 @@
+
 function loadNav() {
     let navHTML = `
     <nav class="navbar navbar-light bg-light">
@@ -26,7 +27,7 @@ function loadNav() {
           <span class="navbar-toggler-icon"></span>
           <p id="categorias">CATEGORIAS</p>
         </button>
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
           <div class="offcanvas-header">
             <h5 class="offcanvas-title" id="offcanvasNavbarLabel">CATEGORIAS</h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -76,12 +77,12 @@ function loadNav() {
     <footer class="footer">
       <div class="container">
         <div class="datos-emp">
-           <p>Cuidad: Pepelepu 123</p>
-           <p>Coso pere 12346</p>
+           <p>Nosotros</p>
+           <p> Coso pere 12346</p>
         </div>
         <div class="footer-icons">
           <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
-          <a href="https://www.whatsapp.com/"><i class="bi bi-whatsapp"></i></a>
+          <a href="https://www.whatsapp.com/" target="_blank"><i class="bi bi-whatsapp"></i></a>
           <a href="#"><i class="bi bi-messenger"></i></a>
         </div>
         <p id="copy">&copy; 2023 Bytebusters. Todos los derechos reservados.</p>
