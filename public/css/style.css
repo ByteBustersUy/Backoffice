@@ -1,6 +1,6 @@
-:root{
+:root {
   /* COLORS*/
-  --ecomerce-color: #d90429;
+  --ecommerce-color: #d90429;
   --color-1: #e45062;
   --color-2: #424242;
   --color-3: #a6a6a6;
@@ -10,102 +10,190 @@
   --color-6: #0000ff;
   --color-background: #fdfbfb;
 }
-  
-body{
-  background-color: var(--color-background)
+
+body {
+  background-color: var(--color-background);
 }
-#logo {
-  margin-left: 5%;
+
+.logo {
+  display: none;
 }
-#separator{
+
+.search{
+  width: 15rem;
+  margin: auto;
+}
+
+#btnNavSearch{
+  display: none;
+}
+
+h2 {
   text-align: center;
-  margin-top: 3rem;
-  margin-bottom: 3rem;
+  margin: 1rem 0;
 }
 
-.d-flex {
-  margin-top: 0.2rem;
-
-  width: 50%;
+h5{
+  font-size: 1rem;
 }
-nav{
+
+nav {
   height: 5rem;
 }
+
 .menu {
-  background-color: var(--ecomerce-color);
+  /* background-color: var(--ecommerce-color);
   margin: auto;
-  height: 3rem;
-  
+  height: 3rem; */
+  display: none;
+
 }
+
 .menu ul {
   display: flex;
   justify-content: right;
   text-decoration: none;
   margin-bottom: 0;
- 
 }
-.menu li{
+
+.menu li {
   margin-top: .8rem;
 }
+
 ul a {
   margin: 1rem;
   text-decoration: none;
-  color: azure;
-  
+  color: var(--color-5);
 }
-/* burguer*/
-#hamburg{
+
+/* Menu hamburguesa*/
+#btnCategories {
   width: 2rem;
   height: .2rem;
 }
-.navbar-toggler{
+
+#btnNavOption{
+  margin: auto;
+}
+
+.navbar-toggler {
   position: absolute;
-  display: flex; 
+  display: flex;
   width: 12rem;
   height: 2.7rem;
   margin-left: 3rem;
   margin-bottom: 2.5rem;
 }
-span{
+
+span {
   margin-top: .2rem;
   font-size: 1.5;
 }
-#categorias{
-  font-size: 1rem;
-  margin-top: .6rem;
-  margin-left: 1rem;
-  color: var(--color-5);
-}
+
+
 .menu li {
   list-style: none;
   text-decoration: none;
 }
+
 .carrito {
-  width: 30px;
-  height: 30px;
-  margin-right: 8rem;
-  
+  width: 2rem;
+  height: 2rem;
+  margin: auto;
 }
 
-#carouselExampleIndicators{
-   margin-top: 0;
+
+
+/* carrousel */
+
+#carouselExampleIndicators {
+  margin-top: 0;
 }
-/*alt="" width="30" height="24" id="logo"*/
+
+.carousel-inner img {
+  height: 10rem;
+}
 
 
-#tarjetas{
+
+/* cards */
+#tarjetas {
   justify-content: center;
   margin: auto;
-  margin-bottom: 5rem;
+  width: 90vw;
 }
-.card{
+
+.card {
   box-shadow: 10px 10px 15px var(--color-3);
 }
 
-.col{
-  width: 300px;
-  height: 400px;
+.card img{
+  border-bottom: 1px solid var(--color-2);
+  height: 10rem;
 }
+.card-body{
+  padding: .4rem;
+}
+
+.btn-agregar{
+  height: 2rem;
+  background-color: var(--ecommerce-color);
+  text-align: center;
+  align-items: center;
+}
+
+.card a{
+  margin: .5rem;
+  font-size: .8rem;
+  color: var(--color-5);
+}
+
+/* banner */
+
+.banner{
+  width: 100%;
+  margin: 2rem 0;
+}
+
+/* LISTADO */
+
+
+.list-body{
+  height: 8rem;
+  width: 100%;
+  margin-top: .5rem;
+  border-bottom: 1px solid var(--color-2);
+}
+
+.img-list{
+  margin: .5rem;
+  width: 8rem;
+  border: 1px solid var(--color-2);
+  border-radius: .2rem;
+}
+
+.list-content{
+  margin-left: 1rem;
+  height: inherit;
+}
+
+.list-group a{
+  color: var(--color-5);
+  margin: auto;
+  font-size: .8rem;
+}
+
+.list-group h5 {
+  font-size: 1.1rem;
+  height: 2.4rem;
+  overflow: hidden;
+  margin-top: .5rem;
+}
+
+
+
+
+
 /* Estilos footer */
 
 .footer {
@@ -122,45 +210,47 @@ span{
 }
 
 .footer-icons {
-  margin-top: 30px;
-  margin-left: 90%;
-
+  position: absolute;
+  right: 1rem;
 }
 
 .footer-icons a {
   color: #333;
   margin-right: 10px;
-  
 }
 
 .footer-icons i {
   font-size: 20px;
-
-  
-}
-#copy{
-  text-align: right;
-  margin-top: 2rem;
 }
 
-.footer .container{
-  
-  
-  width: auto;
-  
+#copy {
+  text-align: center;
+  margin: auto;
 }
-.datos-emp{
-  
-  height: 100px;
-  max-width: 200px;
-  margin-top: 5rem;
+
+.datos-emp {
   text-align: left;
-}
-.datos-emp p{
-  margin-left: 2rem;
-
+  width: 60%;
 }
 
+.datos-emp p {
+  margin: 0 0 0 2rem;
+}
+
+/* TABLET */
+
+@media only screen and (min-width: 768px) {
+
+}
 
 
-
+/* DESKTOP */
+@media only screen and (min-width: 992px) {
+/* 
+#categorias {
+  font-size: 1rem;
+  margin-top: .6rem;
+  margin-left: 1rem;
+  color: var(--color-5);
+} */
+}

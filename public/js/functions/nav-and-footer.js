@@ -1,29 +1,33 @@
-
 function loadNav() {
-    let navHTML = `
+	let navHTML = `
     <nav class="navbar navbar-light bg-light">
-      <a href="/index.html" id="logo"><img class="logo" src="./assets/logoecomerse1.png" alt="" width="100" height="40"/></a>
+    <div class="d-flex"></div>
+      <a href="/index.html" id="logo"><img class="logo" src="./assets/logoecomerse1.png" alt=""/></a>
+      <button id="btnNavOption" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
       <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Buscar en Digitalmarket" aria-label="Search"/>
-        <button class="btn btn-outline-success" type="submit">Buscar</button>
+        <input class="form-control search" type="search" placeholder="Buscar en Digitalmarket" aria-label="Search"/>
+        <button id="btnNavSearch" class="btn btn-outline-secondary" type="submit">Buscar</button>
       </form>
       <a href="./pages/carrito.html" class="carrito">
         <img class="carrito" src="./assets/Carts_Icons.png" alt="" />
       </a>
+      </div>
     </nav>
+
+
     <div class="menu">
-    
-    
       <ul>
         <li><a href="./index.html">Inicio</a></li>
         <li><a href="#">Acerca de</a></li>
         <li><a href="#">Servicios</a></li>
         <li><a href="#">Contacto</a></li>
       </ul>
-      <nav class="navbar" id="hamburg">
+      <nav class="navbar" id="burgerCategories">
       <div class="container-fluid">
         
-        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+        <button id="btnCategories" class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
           <p id="categorias">CATEGORIAS</p>
         </button>
@@ -64,40 +68,38 @@ function loadNav() {
     </nav>
     </div>
     `;
-  
-    document.body.insertAdjacentHTML('afterbegin', navHTML);
-  }
-  
-  window.onload = loadNav;
 
-/*Footer*/ 
+	document.body.insertAdjacentHTML("afterbegin", navHTML);
+}
 
-  function loadFooter() {
-    let footerHTML = `
+window.onload = loadNav;
+
+/*Footer*/
+
+function loadFooter() {
+	let footerHTML = `
     <footer class="footer">
-      <div class="container">
+      <div>
         <div class="datos-emp">
            <p>Nosotros</p>
            <p> Coso pere 12346</p>
         </div>
-        <div class="footer-icons">
+        <div class="footer-icons mb-2">
           <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
           <a href="https://www.whatsapp.com/" target="_blank"><i class="bi bi-whatsapp"></i></a>
           <a href="#"><i class="bi bi-messenger"></i></a>
         </div>
+        <div class="mt-5">
         <p id="copy">&copy; 2023 Bytebusters. Todos los derechos reservados.</p>
+        </div>
       </div>
     </footer>
     `;
 
-    document.body.insertAdjacentHTML('beforeend', footerHTML);
+	document.body.insertAdjacentHTML("beforeend", footerHTML);
 }
 
-window.onload = function() {
-    loadNav();
-    loadFooter();
+window.onload = function () {
+	loadNav();
+	loadFooter();
 };
-
-
-
-  

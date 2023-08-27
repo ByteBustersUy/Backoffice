@@ -1,184 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="./css/normalize.css">
 
-   
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <script
-      src="https://kit.fontawesome.com/549e05a7da.js"
-      crossorigin="anonymous"
-    ></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="./css/style.css" />
-    <title>Digitalmarket</title>
-    <script src="./js/functions/nav-and-footer.js"></script>
-    <link rel="icon" href="./assets/logoecomerse-Recuperadofav.ico" type="">
-  </head>
-  <body>
-    
-   
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="./css/normalize.css">
 
-    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <script src="https://kit.fontawesome.com/549e05a7da.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="./css/style.css" />
+  <script src="./js/functions/nav-and-footer.js"></script>
+  <title>Digitalmarket</title>
+  <link rel="icon" href="./assets/logoecomerse-Recuperadofav.ico" type="">
+</head>
+
+<body>
+
+
+
+  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+        aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+        aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+        aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="./assets/Screenshot_493.png" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="./assets/Screenshot_494.png" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="./assets/Screenshot_495.png" class="d-block w-100" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+      data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+      data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
   </div>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="./assets/Screenshot_493.png" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="./assets/Screenshot_494.png" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="./assets/Screenshot_495.png" class="d-block w-100" alt="...">
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
-<p id="separator">Prmociones</p>
-
-<div class="row row-cols-1 row-cols-md-3 g-4" id="tarjetas">
-  
-  <div class="col">
-    <div class="card h-100">
-      <img src="./assets/productos/Arroz-para-sushi.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Lorem ipsum dolor sit amet </p>
-      </div>
-      <div class="card-footer">
-        <small class="text-muted">sdsdsds</small>
+  <!--PRODUCTOS PROMOCIONADOS -->
+  <h2> Promociones</h2>
+  <div class="row row-cols-2 row-cols-md-4 row-cols-lg-6 g-4" id="tarjetas">
+    <div>
+      <div class="card h-100">
+        <img src="./assets/productos/Arroz-para-sushi.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h4>$500</h4>
+          <h5>Card title</h5>
+        </div>
+        <a href="#" class="btn btn-agregar">Agregar al carrito</a>
       </div>
     </div>
-  </div>
-  <div class="col">
-    <div class="card h-100">
-      <img src="./assets/productos/fideos-instantaneos-nissin-romen-lamen-85grs-carne.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">arroz</p>
-      </div>
-      <div class="card-footer">
-        <small class="text-muted">Last updated 3 mins ago</small>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card h-100">
-      <img src="./assets/productos/images (1).jpeg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">lead-in to adt than the f.</p>
-      </div>
-     
-      <div class="card-footer">
-        <small class="text-muted">Last updated 3 mins ago</small>
-
-         
+    <div>
+      <div class="card h-100">
+        <img src="./assets/productos/fideos-instantaneos-nissin-romen-lamen-85grs-carne.jpg" class="card-img-top"
+          alt="...">
+        <div class="card-body">
+          <h4>$500</h4>
+          <h5>Card title</h5>
+        </div>
+        <a href="#" class="btn btn-agregar">Agregar al carrito</a>
       </div>
     </div>
-  </div>
-  <div class="col">
-    <div class="card h-100">
-      <img src="./assets/productos/fideos-spaghetti-knorr-20x500g.avif" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">arroz</p>
-      </div>
-      <div class="card-footer">
-        <small class="text-muted">Last updated 3 mins ago</small>
+    <div>
+      <div class="card h-100">
+        <img src="./assets/productos/images_(1).jpeg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h4>$500</h4>
+          <h5>Card title</h5>
+        </div>
+        <a href="#" class="btn btn-agregar">Agregar al carrito</a>
       </div>
     </div>
-  </div>
-</div>
-
-
-
-<div class="row row-cols-1 row-cols-md-3 g-4" id="tarjetas">
-  
-  <div class="col">
-    <div class="card h-100">
-      <img src="./assets/productos/Arroz-para-sushi.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Lorem ipsum dolor sit amet </p>
+    <div>
+      <div class="card h-100">
+        <img src="./assets/productos/images_(1).jpeg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h4>$500</h4>
+          <h5>Card title</h5>
+        </div>
+        <a href="#" class="btn btn-agregar">Agregar al carrito</a>
       </div>
-      <div class="card-footer">
-        <small class="text-muted">sdsdsds</small>
+    </div>
+    <div>
+      <div class="card h-100">
+        <img src="./assets/productos/images_(1).jpeg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h4>$500</h4>
+          <h5>Card title</h5>
+        </div>
+        <a href="#" class="btn btn-agregar">Agregar al carrito</a>
+      </div>
+    </div>
+    <div>
+      <div class="card h-100">
+        <img src="./assets/productos/fideos-spaghetti-knorr-20x500g.avif" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h4>$500</h4>
+          <h5>Card title</h5>
+        </div>
+        <a href="#" class="btn btn-agregar">Agregar al carrito</a>
       </div>
     </div>
   </div>
-  <div class="col">
-    <div class="card h-100">
-      <img src="./assets/productos/fideos-instantaneos-nissin-romen-lamen-85grs-carne.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">arroz</p>
-      </div>
-      <div class="card-footer">
-        <small class="text-muted">Last updated 3 mins ago</small>
-      </div>
-    </div>
+  <!-- BANNER -->
+  <img class="banner" src="./assets/Screenshot_493.png" alt="">
+  <h2>Otros productos</h2>
+  <!-- PRODUCTOS NO PROMOCIONADOS -->
+  <div class="list-group">
+        <div class="d-flex list-body">
+          <img class="img-list" src="./assets/productos/Arroz-para-sushi.jpg" class="card-img-top" alt="...">
+          <div class="d-block list-content">
+            <h5>Card title</h5>
+            <h4>$500</h4>
+            <a href="#" class="btn btn-agregar">Agregar al carrito</a>
+          </div>
+        </div>
+        <div class="d-flex list-body">
+          <img class="img-list" src="./assets/productos/Arroz-para-sushi.jpg" class="card-img-top" alt="...">
+          <div class="d-block list-content">
+            <h5>Card title</h5>
+            <h4>$500</h4>
+            <a href="#" class="btn btn-agregar">Agregar al carrito</a>
+          </div>
+        </div>
+        <div class="d-flex list-body">
+          <img class="img-list" src="./assets/productos/Arroz-para-sushi.jpg" class="card-img-top" alt="...">
+          <div class="d-block list-content">
+            <h5>Card title</h5>
+            <h4>$500</h4>
+            <a href="#" class="btn btn-agregar">Agregar al carrito</a>
+          </div>
+        </div>
   </div>
-  <div class="col">
-    <div class="card h-100">
-      <img src="./assets/productos/images (1).jpeg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">lead-in to adt than the f.</p>
-      </div>
-     
-      <div class="card-footer">
-        <small class="text-muted">Last updated 3 mins ago</small>
-
-         
-      </div>
-    </div>
+  <div class="mt-5 mb-5"></div>
   </div>
-  <div class="col">
-    <div class="card h-100">
-      <img src="./assets/productos/fideos-spaghetti-knorr-20x500g.avif" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">arroz</p>
-      </div>
-      <div class="card-footer">
-        <small class="text-muted">Last updated 3 mins ago</small>
-      </div>
-    </div>
-  </div>
-</div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous"></script>
+</body>
 
 
-
-
-
-
-
-
-<p id="separator">Mas promociones</p>
-
-<div class="banner">
-</div>
-
-   
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-  </body>
-
-    
-  
-  </body>
 </html>
