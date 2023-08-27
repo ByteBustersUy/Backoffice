@@ -11,7 +11,23 @@ const v = {
 	isSame: (a, b) => a === b,
 	isEqual: (a, b) => a == b,
 	isEmpty: (a) => a.length === 0,
+	startWithUpperCase: (str) => (new RegExp("^[A-Z]+").test(str) ? true : false),
 };
+
+formAbm.addEventListener("change", () => {
+	const nombre = document.getElementById("nombre").value;
+	document.getElementById("errorMessageModal").innerHTML = "";
+	if(!v.isEmpty(nombre)){
+		if (!v.startWithUpperCase(nombre)) {
+			document.getElementById("errorMessageModal").innerHTML =
+				"El nombre debe comenzar con mayúscula";
+			return;
+		}else{
+			formAbm.attributes.item(2).value =
+			"../src/modules/users/abm-usuarios.php?action=add";
+		}
+	}
+});
 
 //Agregar usuario
 btnAddUser.addEventListener("click", () => {
@@ -21,12 +37,7 @@ btnAddUser.addEventListener("click", () => {
 
 	modalUsers.getElementsByClassName("modal-title")[0].innerHTML =
 		"Agregar usuario";
-	formAbm.attributes.item(2).value =
-		"../src/modules/users/abm-usuarios.php?action=add";
 
-	modalUsers.addEventListener("submit", () => {
-		// nombre si tiene espacio, tomar solo el primer nombre
-	});
 });
 
 //Editar usuario
@@ -34,7 +45,7 @@ btnEditUser.addEventListener("click", () => {
 	if (!btnEditUser.classList.contains("disabled")) {
 		btnEditUser.setAttribute("class", "enabled-button");
 		const userCi = document.getElementsByClassName("selected")[0].id;
-		
+
 		modalUsers.getElementsByClassName("modal-title")[0].innerHTML =
 			"Editar usuario ";
 
@@ -58,7 +69,10 @@ btnEditUser.addEventListener("click", () => {
 		}
 
 		const selectedUserData = {
-			nombre: selectedRow.getElementsByTagName("td")[0].innerHTML.split(" ")[0].trim(),
+			nombre: selectedRow
+				.getElementsByTagName("td")[0]
+				.innerHTML.split(" ")[0]
+				.trim(),
 			apellido: apellidos.trim(),
 			cedula: selectedRow.getElementsByTagName("td")[1].innerHTML.trim(),
 			email: selectedRow.getElementsByTagName("td")[2].innerHTML.trim(),
@@ -96,63 +110,65 @@ btnEditUser.addEventListener("click", () => {
 			inputsForm.vendedor.setAttribute("checked", "true");
 		}
 
-		if(isEmpty(selectedUserData.admin) && isEmpty(selectedUserData.vendedor)){
+		if (isEmpty(selectedUserData.admin) && isEmpty(selectedUserData.vendedor)) {
 			btnSubmitModal.disabled = true;
 			btnSubmitModal.setAttribute("style", "filter:brightness(30%);");
 		}
 
-		formAbm.attributes.item(2).value = `../src/modules/users/abm-usuarios.php?action=edit&ci=${inputsForm.cedula.value}`;
+		formAbm.attributes.item(
+			2
+		).value = `../src/modules/users/abm-usuarios.php?action=edit&ci=${inputsForm.cedula.value}`;
 	}
 });
 
 // Eliminar usuario
-btnDeleteUser.addEventListener("click",() => {
+btnDeleteUser.addEventListener("click", () => {
 	if (!btnDeleteUser.classList.contains("disabled")) {
 		btnDeleteUser.setAttribute("class", "enabled-button");
 		const userCi = document.getElementsByClassName("selected")[0].id;
-			const response = prompt(
-				`Se eliminará al usuario con cédula ${userCi} \n\nIngrese la cédula para confirmar`
-			);
-			if (response == userCi) {
-				const data = new URLSearchParams();
-				data.append("deleteUserCi", userCi);
-				fetch("../src/modules/users/abm-usuarios.php?action=delete", {
-					method: "POST",
-					headers: {
-						"Content-type": "application/x-www-form-urlencoded",
-					},
-					body: data,
+		const response = prompt(
+			`Se eliminará al usuario con cédula ${userCi} \n\nIngrese la cédula para confirmar`
+		);
+		if (response == userCi) {
+			const data = new URLSearchParams();
+			data.append("deleteUserCi", userCi);
+			fetch("../src/modules/users/abm-usuarios.php?action=delete", {
+				method: "POST",
+				headers: {
+					"Content-type": "application/x-www-form-urlencoded",
+				},
+				body: data,
+			})
+				.then(async (response) => {
+					if (!response.ok) {
+						throw new Error("Error en la solicitud: " + response.status);
+					}
+					selectedRow.setAttribute(
+						"style",
+						"border-top: 1.5px solid red;border-bottom: 1.5px solid #e01818;"
+					);
+					setTimeout(() => {
+						alert("Usuario eliminado con éxito!");
+						location.reload(true);
+					}, 1200);
 				})
-					.then((response) => {
-						if (!response.ok) {
-							throw new Error("Error en la solicitud: " + response.status);
-						}
-						selectedRow.setAttribute(
-							"style",
-							"border-top: 1.5px solid red;border-bottom: 1.5px solid red;"
-						);
-						setTimeout(() => {
-							alert("Usuario eliminado con éxito!");
-							location.reload(true);
-							return response.text();
-						}, 1200);
-					})
-					.catch((error) => {
-						console.error("Error: " + error);
-					});
-			} else {
-				//alert("Error: La cédula ingresada no es correcta");
-			}
-			document
-				.getElementsByClassName("selected")[0]
-				?.classList.remove("selected");
-			btnDeleteUser.classList.replace("enabled-button", "disabled");
-			document.getElementById("btnEditUser").setAttribute("class", "disabled");
+				.catch((error) => {
+					console.error("Error: " + error);
+				});
+		} else {
+			//alert("Error: La cédula ingresada no es correcta");
+		}
+		document
+			.getElementsByClassName("selected")[0]
+			?.classList.remove("selected");
+		btnDeleteUser.classList.replace("enabled-button", "disabled");
+		document.getElementById("btnEditUser").setAttribute("class", "disabled");
 	}
 });
 
 //Modal
 const modalUsers = document.getElementById("moddalUsers");
+
 modalUsers.addEventListener("click", (event) => {
 	if (
 		event.target.id === modalUsers.id ||
@@ -168,17 +184,14 @@ modalUsers.addEventListener("change", () => {
 	const chkboxVendedor = modalUsers.getElementsByTagName("input")[6];
 	const btnSubmitModal = document.getElementById("btnSubmitModal");
 
-	if(!chkboxAdmin.checked && !chkboxVendedor.checked){
+	if (!chkboxAdmin.checked && !chkboxVendedor.checked) {
 		btnSubmitModal.disabled = true;
 		btnSubmitModal.setAttribute("style", "filter:brightness(30%);");
-	}else{
+	} else {
 		btnSubmitModal.disabled = false;
 		btnSubmitModal.setAttribute("style", "filter:brightness(100%);");
-	}	
-	
+	}
 });
-
-
 
 function selectUserRow(userCi) {
 	document.querySelectorAll(".selected").forEach((el) => {
