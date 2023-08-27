@@ -1,0 +1,164 @@
+:root{
+  /* COLORS*/
+  --ecomerce-color: #d90429;
+  --color-1: #e45062;
+  --color-2: #424242;
+  --color-3: #a6a6a6;
+  --color-3: #b7b7b7;
+  --color-4: #d4d4d5;
+  --color-5: #ffffff;
+  --color-6: #0000ff;
+  --color-background: #fdfbfb;
+}
+  
+body{
+  background-color: var(--color-background)
+}
+#logo {
+  margin-left: 5%;
+}
+#separator{
+  text-align: center;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+.d-flex {
+  margin-top: 0.2rem;
+
+  width: 50%;
+}
+nav{
+  height: 5rem;
+}
+.menu {
+  background-color: var(--ecomerce-color);
+  margin: auto;
+  height: 3rem;
+  
+}
+.menu ul {
+  display: flex;
+  justify-content: right;
+  text-decoration: none;
+  margin-bottom: 0;
+ 
+}
+.menu li{
+  margin-top: .8rem;
+}
+ul a {
+  margin: 1rem;
+  text-decoration: none;
+  color: azure;
+  
+}
+/* burguer*/
+#hamburg{
+  width: 2rem;
+  height: .2rem;
+}
+.navbar-toggler{
+  position: absolute;
+  display: flex; 
+  width: 12rem;
+  height: 2.7rem;
+  margin-left: 3rem;
+  margin-bottom: 2.5rem;
+}
+span{
+  margin-top: .2rem;
+  font-size: 1.5;
+}
+#categorias{
+  font-size: 1rem;
+  margin-top: .6rem;
+  margin-left: 1rem;
+  color: var(--color-5);
+}
+.menu li {
+  list-style: none;
+  text-decoration: none;
+}
+.carrito {
+  width: 30px;
+  height: 30px;
+  margin-right: 8rem;
+  
+}
+
+#carouselExampleIndicators{
+   margin-top: 0;
+}
+/*alt="" width="30" height="24" id="logo"*/
+
+
+#tarjetas{
+  justify-content: center;
+  margin: auto;
+  margin-bottom: 5rem;
+}
+.card{
+  box-shadow: 10px 10px 15px var(--color-3);
+}
+
+.col{
+  width: 300px;
+  height: 400px;
+}
+/* Estilos footer */
+
+.footer {
+  background-color: #f8f8f8;
+  padding: 20px;
+  text-align: center;
+}
+
+.footer-logo img {
+  display: block;
+  width: 50px;
+  height: 50px;
+  margin: 0 auto;
+}
+
+.footer-icons {
+  margin-top: 30px;
+  margin-left: 90%;
+
+}
+
+.footer-icons a {
+  color: #333;
+  margin-right: 10px;
+  
+}
+
+.footer-icons i {
+  font-size: 20px;
+
+  
+}
+#copy{
+  text-align: right;
+  margin-top: 2rem;
+}
+
+.footer .container{
+  
+  margin-right: 0;
+}
+.datos-emp{
+  background-color: aqua;
+  height: 100px;
+  max-width: 200px;
+  margin-top: 5rem;
+  text-align: left;
+}
+.datos-emp p{
+  margin-left: 2rem;
+
+}
+
+
+
+
