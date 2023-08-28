@@ -273,17 +273,43 @@ span {
     display: flex;
   }
 
+  .menu li a:hover{
+    color: var(--color-1);
+  }
+
   #categorias {
     font-size: 1rem;
     margin-top: .6rem;
     margin-left: 1rem;
     color: var(--color-5);
   } 
+
+  .carousel-inner img {
+  height: 15rem;
+  }
+
 }
 
 
 /* DESKTOP */
 @media only screen and (min-width: 992px) {
 
+  #btn-carrito{
+    display: absolute;
+    right: 1rem;
+  }
+
+   .search{
+    width: 40rem;
+  }
+
+  .carousel-inner img {
+  height: 20rem;
+  }
+
+  .banner{
+  height: 13rem;
+  margin: 5rem 0;
+}
 
 }
