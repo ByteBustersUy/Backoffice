@@ -20,8 +20,9 @@ body {
 }
 
 .search{
-  width: 15rem;
+  width: 14rem;
   margin: auto;
+  border: 1px solid var(--color-3);
 }
 
 #btnNavSearch{
@@ -39,14 +40,14 @@ h5{
 
 nav {
   height: 5rem;
+  width: 100vw;
 }
 
 .menu {
-  /* background-color: var(--ecommerce-color);
-  margin: auto;
-  height: 3rem; */
   display: none;
-
+  padding: .5rem;
+  align-items: center;
+  justify-content: end;
 }
 
 .menu ul {
@@ -54,10 +55,6 @@ nav {
   justify-content: right;
   text-decoration: none;
   margin-bottom: 0;
-}
-
-.menu li {
-  margin-top: .8rem;
 }
 
 ul a {
@@ -68,12 +65,17 @@ ul a {
 
 /* Menu hamburguesa*/
 #btnCategories {
-  width: 2rem;
-  height: .2rem;
+  display: none;
+}
+
+#burgerCategories{
+  display: none;
 }
 
 #btnNavOption{
-  margin: auto;
+  margin: 0 1rem;
+  border: 1px solid var(--color-3);
+  border-radius: .4rem;
 }
 
 .navbar-toggler {
@@ -82,7 +84,6 @@ ul a {
   width: 12rem;
   height: 2.7rem;
   margin-left: 3rem;
-  margin-bottom: 2.5rem;
 }
 
 span {
@@ -96,10 +97,14 @@ span {
   text-decoration: none;
 }
 
-.carrito {
+#btn-carrito {
+  display: flex;
+  align-items: center;
+}
+
+#btn-carrito img {
   width: 2rem;
-  height: 2rem;
-  margin: auto;
+  margin: 0 1rem;
 }
 
 
@@ -142,6 +147,11 @@ span {
   align-items: center;
 }
 
+.btn-agregar:hover{
+  background-color: var(--color-1);
+  color: var(--color-5);
+}
+
 .card a{
   margin: .5rem;
   font-size: .8rem;
@@ -159,7 +169,7 @@ span {
 
 
 .list-body{
-  height: 8rem;
+  height: 8.2rem;
   width: 100%;
   margin-top: .5rem;
   border-bottom: 1px solid var(--color-2);
@@ -185,7 +195,7 @@ span {
 
 .list-group h5 {
   font-size: 1.1rem;
-  height: 2.4rem;
+  height: 2.6rem;
   overflow: hidden;
   margin-top: .5rem;
 }
@@ -198,25 +208,13 @@ span {
 
 .footer {
   background-color: var(--color-3);
-  padding: 20px;
+  padding: 1rem;
   text-align: center;
 }
 
-.footer-logo img {
-  display: block;
-  width: 50px;
-  height: 50px;
-  margin: 0 auto;
-}
-
-.footer-icons {
-  position: absolute;
-  right: 1rem;
-}
-
 .footer-icons a {
-  color: #333;
-  margin-right: 10px;
+  color: var(--color-2);
+  margin-right: 1rem;
 }
 
 .footer-icons i {
@@ -226,31 +224,66 @@ span {
 #copy {
   text-align: center;
   margin: auto;
+  font-size: .6rem;
 }
 
 .datos-emp {
   text-align: left;
-  width: 60%;
-}
-
-.datos-emp p {
-  margin: 0 0 0 2rem;
+  margin-bottom: 2rem;
 }
 
 /* TABLET */
 
 @media only screen and (min-width: 768px) {
 
+  .logo {
+    width: 10rem;
+    margin-right: 2rem;
+    display: block;
+  }
+
+  #btnNavSearch{
+    display: block;
+    margin: auto 1rem;
+    
+  }
+
+  #burgerCategories{
+    display: inline;
+  }
+
+  #btnCategories {
+    display: flex;
+    margin-top: 3px;
+  }
+
+  #btnNavOption{
+    display: none;
+  }
+
+  .search{
+    width: 20rem;
+  }
+
+  .menu {
+    background-color: var(--ecommerce-color);
+    margin: auto;
+    height: 3rem;
+    width: 100%;
+    display: flex;
+  }
+
+  #categorias {
+    font-size: 1rem;
+    margin-top: .6rem;
+    margin-left: 1rem;
+    color: var(--color-5);
+  } 
 }
 
 
 /* DESKTOP */
 @media only screen and (min-width: 992px) {
-/* 
-#categorias {
-  font-size: 1rem;
-  margin-top: .6rem;
-  margin-left: 1rem;
-  color: var(--color-5);
-} */
+
+
 }
