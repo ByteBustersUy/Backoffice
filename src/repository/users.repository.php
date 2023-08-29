@@ -141,10 +141,10 @@ function updateOneUser(array $newUser)
             ':ci' => $newUser['cedula'],
         ]);
 
-        if($res == 1 && $newUser['cedula'] !== $_SESSION['userCi']){
+        if ($res == 1 && $newUser['cedula'] !== $_SESSION['userCi']) {
             $statement = $con->prepare("DELETE FROM USUARIOS_has_ROLES WHERE USUARIOS_ci = :ci");
             $res = $statement->execute([':ci' => $newUser['cedula']]);
-    
+
             $statement = $con->prepare("INSERT INTO USUARIOS_has_ROLES (USUARIOS_ci,ROLES_id) VALUES (:ci, :rolId)");
             foreach ($newUser['rolesId'] as $rolId) {
                 $statement->execute(array(':ci' => $newUser['cedula'], ':rolId' => $rolId));
@@ -159,17 +159,17 @@ function deleteUser(string $userCi)
 {
     require realpath(dirname(__FILE__)) . "/../db/conexion.php";
     require realpath(dirname(__FILE__)) . "/../utils/messages/msg.php";
-    try {
-        $statement = $con->prepare("DELETE FROM USUARIOS_has_ROLES WHERE USUARIOS_ci = :ci");
-        $res = $statement->execute([':ci' => $userCi]);
 
-        if ($res == 1) {
-            $statement = $con->prepare("DELETE FROM USUARIOS WHERE ci = :ci");
-            $statement->execute([':ci' => $userCi]);
-        } else {
-            die("ERROR: " . $error_messages['!user_delete']);
-        }
+    try {
+        $con->beginTransaction();
+        $statement = $con->prepare("DELETE FROM USUARIOS_has_ROLES WHERE USUARIOS_ci = :ci");
+        $statement->execute([':ci' => $userCi]);
+
+        $statement2 = $con->prepare("DELETE FROM USUARIOS WHERE ci = :ci");
+        $statement2->execute([':ci' => $userCi]);
+        $con->commit();
     } catch (Exception $e) {
+        $con->rollBack();
         die("ERROR SQL in saveOneUser(): " . $e->getMessage());
     }
 }

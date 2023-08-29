@@ -6,6 +6,7 @@
     --color-3: #cecece;
     --color-4: #000000;
     --color-5: #b8b8b878;
+    --error-color: #e01818;
     --transparent-color: #00000000;
 
     /* ---- BACKGROUNDS ---- */
@@ -42,9 +43,19 @@ button:active {
     box-shadow: inset 1px 1px var(--color-1);
 }
 
-input {
-    height: 2.3rem;
+#btnUploadImage{
+    display: none;
 }
+
+#errorMessageModal{
+    color: var(--error-color);
+    font-size: .8rem;
+    font-family: var(--primary-font-family);
+    display: flex;
+    justify-content: center;
+    padding-top: .5rem;
+}
+
 
 input:focus {
     outline: none;
@@ -59,7 +70,6 @@ h1 {
     font-weight: bolder;
     text-align: center;
     padding-top: 3rem;
-    filter: drop-shadow(1px 1px .2rem var(--light-text-color));
 }
 
 html {
@@ -72,6 +82,7 @@ body {
 }
 
 input {
+    height: 2.3rem;
     outline: none;
     text-indent: .5rem;
     border-radius: .3rem;
@@ -138,7 +149,6 @@ thead tr {
     color: var(--primary-text-color);
     border-radius: .3rem;
     background-color: var(--background-color-light);
-    border: 1.2px solid var(--bytebusters-color);
     box-shadow: inset -1px -2px .2rem ;
     filter: drop-shadow(1px 1px .1rem var(--bytebusters-color));
     font-weight: 600;
@@ -321,7 +331,7 @@ thead tr {
 /*---------ABM PERMISSIONS-----*/
 
 .table-permissions{
-    margin-top: 7.3rem !important;
+    margin-top: 5.3rem !important;
 }
 
 thead tr .nombre{
@@ -342,7 +352,7 @@ thead tr .roles{
 /* --------- ABM USUARIOS --------- */
 
 .table-frame {
-    height: 31.8rem;
+    height: 29.5rem;
     margin: auto;
     margin-bottom: 10rem;
     overflow-x: none;
@@ -353,11 +363,10 @@ thead tr .roles{
 
 .table-options {
     display: flex;
-    margin: 4rem 0 1rem 0;
+    margin: 2rem 0 1rem 0;
 }
 
 .table-options select {
-    height: 2rem;
     margin-left: 1rem;
     text-align: center;
 }
@@ -397,7 +406,6 @@ thead tr .roles{
 
 .table-options button {
     width: 5rem;
-    height: 2rem;
     margin-left: 1rem;
     margin-right: auto;
     border-radius: .3rem;
@@ -433,8 +441,8 @@ thead tr .roles{
 }
 
 .modal-content {
-    display: flex;
-    flex-direction: column;
+    /* display: flex; */
+    /* flex-direction: column; */
     width: 100%;
     color: var(--bs-modal-color);
     border: 1.2px solid var(--bytebusters-color);
@@ -452,6 +460,21 @@ thead tr .roles{
     margin-top: .5rem;
 }
 
+.form-abm #uploadLabel {
+    outline: none;
+    width: 15rem;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2.3rem;
+    margin-top: 0.5rem;
+    border-radius: .3rem;
+    border: 4px double var(--color-1);
+    background-color: var(--background-color-light);
+}
+
+
 .form-abm textarea {
     display: flex;
     min-width: 15rem;
@@ -467,6 +490,9 @@ thead tr .roles{
     height: 2.5rem;
     margin: auto;
     margin-top: .5rem;
+    appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
 }
 
 .chkbox-labels {
@@ -624,14 +650,14 @@ thead tr .roles{
 }
 
 .disabled {
-    filter: brightness(30%);
+    filter: brightness(50%);
     z-index: -10;
 }
 
 .selected {
     filter: contrast(200%);
-    border-top: 1.2px solid var(--bytebusters-color);
-    border-bottom: 1.2px solid var(--bytebusters-color);
+    border-top: 1.5px solid var(--bytebusters-color);
+    border-bottom: 1.5px solid var(--bytebusters-color);
 }
 
 /* cambia color del autocompletado en inputs */
@@ -788,11 +814,11 @@ footer img {
         margin: 4rem 2rem 0 2rem;
         scale: 110%;
     }
-
+/* 
     .items {
         text-align: center;
         margin-top: 5rem;
-    }
+    } */
 
     .btn-abm i {
         scale: 300%;
