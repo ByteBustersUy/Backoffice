@@ -1,0 +1,315 @@
+:root {
+  /* COLORS*/
+  --ecommerce-color: #d90429;
+  --color-1: #e45062;
+  --color-2: #424242;
+  --color-3: #a6a6a6;
+  --color-3: #b7b7b7;
+  --color-4: #d4d4d5;
+  --color-5: #ffffff;
+  --color-6: #0000ff;
+  --color-background: #fdfbfb;
+}
+
+body {
+  background-color: var(--color-background);
+}
+
+.logo {
+  display: none;
+}
+
+.search{
+  width: 14rem;
+  margin: auto;
+  border: 1px solid var(--color-3);
+}
+
+#btnNavSearch{
+  display: none;
+}
+
+h2 {
+  text-align: center;
+  margin: 1rem 0;
+}
+
+h5{
+  font-size: 1rem;
+}
+
+nav {
+  height: 5rem;
+  width: 100vw;
+}
+
+.menu {
+  display: none;
+  padding: .5rem;
+  align-items: center;
+  justify-content: end;
+}
+
+.menu ul {
+  display: flex;
+  justify-content: right;
+  text-decoration: none;
+  margin-bottom: 0;
+}
+
+ul a {
+  margin: 1rem;
+  text-decoration: none;
+  color: var(--color-5);
+}
+
+/* Menu hamburguesa*/
+#btnCategories {
+  display: none;
+}
+
+#burgerCategories{
+  display: none;
+}
+
+#btnNavOption{
+  margin: 0 1rem;
+  border: 1px solid var(--color-3);
+  border-radius: .4rem;
+}
+
+.navbar-toggler {
+  position: absolute;
+  display: flex;
+  width: 12rem;
+  height: 2.7rem;
+  margin-left: 3rem;
+}
+
+span {
+  margin-top: .2rem;
+  font-size: 1.5;
+}
+
+
+.menu li {
+  list-style: none;
+  text-decoration: none;
+}
+
+#btn-carrito {
+  display: flex;
+  align-items: center;
+}
+
+#btn-carrito img {
+  width: 2rem;
+  margin: 0 1rem;
+}
+
+
+
+/* carrousel */
+
+#carouselExampleIndicators {
+  margin-top: 0;
+}
+
+.carousel-inner img {
+  height: 10rem;
+}
+
+
+
+/* cards */
+#tarjetas {
+  justify-content: center;
+  margin: auto;
+  width: 90vw;
+}
+
+.card {
+  box-shadow: 10px 10px 15px var(--color-3);
+}
+
+.card img{
+  border-bottom: 1px solid var(--color-2);
+  height: 10rem;
+}
+.card-body{
+  padding: .4rem;
+}
+
+.btn-agregar{
+  height: 2rem;
+  background-color: var(--ecommerce-color);
+  text-align: center;
+  align-items: center;
+}
+
+.btn-agregar:hover{
+  background-color: var(--color-1);
+  color: var(--color-5);
+}
+
+.card a{
+  margin: .5rem;
+  font-size: .8rem;
+  color: var(--color-5);
+}
+
+/* banner */
+
+.banner{
+  width: 100%;
+  margin: 2rem 0;
+}
+
+/* LISTADO */
+
+
+.list-body{
+  height: 8.2rem;
+  width: 100%;
+  margin-top: .5rem;
+  border-bottom: 1px solid var(--color-2);
+}
+
+.img-list{
+  margin: .5rem;
+  width: 8rem;
+  border: 1px solid var(--color-2);
+  border-radius: .2rem;
+}
+
+.list-content{
+  margin-left: 1rem;
+  height: inherit;
+}
+
+.list-group a{
+  color: var(--color-5);
+  margin: auto;
+  font-size: .8rem;
+}
+
+.list-group h5 {
+  font-size: 1.1rem;
+  height: 2.6rem;
+  overflow: hidden;
+  margin-top: .5rem;
+}
+
+
+
+
+
+/* Estilos footer */
+
+.footer {
+  background-color: var(--color-3);
+  padding: 1rem;
+  text-align: center;
+}
+
+.footer-icons a {
+  color: var(--color-2);
+  margin-right: 1rem;
+}
+
+.footer-icons i {
+  font-size: 20px;
+}
+
+#copy {
+  text-align: center;
+  margin: auto;
+  font-size: .6rem;
+}
+
+.datos-emp {
+  text-align: left;
+  margin-bottom: 2rem;
+}
+
+/* TABLET */
+
+@media only screen and (min-width: 768px) {
+
+  .logo {
+    width: 10rem;
+    margin-right: 2rem;
+    display: block;
+  }
+
+  #btnNavSearch{
+    display: block;
+    margin: auto 1rem;
+    
+  }
+
+  #burgerCategories{
+    display: inline;
+  }
+
+  #btnCategories {
+    display: flex;
+    margin-top: 3px;
+  }
+
+  #btnNavOption{
+    display: none;
+  }
+
+  .search{
+    width: 20rem;
+  }
+
+  .menu {
+    background-color: var(--ecommerce-color);
+    margin: auto;
+    height: 3rem;
+    width: 100%;
+    display: flex;
+  }
+
+  .menu li a:hover{
+    color: var(--color-1);
+  }
+
+  #categorias {
+    font-size: 1rem;
+    margin-top: .6rem;
+    margin-left: 1rem;
+    color: var(--color-5);
+  } 
+
+  .carousel-inner img {
+  height: 15rem;
+  }
+
+}
+
+
+/* DESKTOP */
+@media only screen and (min-width: 992px) {
+
+  #btn-carrito{
+    display: absolute;
+    right: 1rem;
+  }
+
+   .search{
+    width: 40rem;
+  }
+
+  .carousel-inner img {
+  height: 20rem;
+  }
+
+  .banner{
+  height: 13rem;
+  margin: 5rem 0;
+}
+
+}

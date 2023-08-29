@@ -578,6 +578,14 @@ thead tr .roles{
     margin-top: 1rem;
     width: 25rem;
 }
+.data-label{
+    display: flex;
+    margin-bottom: 2px;
+    border-bottom: 1px solid white;
+    font-family: h1;
+    color: white;
+}
+
 
 .data-emp img {
     width: inherit;
