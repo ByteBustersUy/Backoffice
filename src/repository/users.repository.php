@@ -4,8 +4,8 @@ function findOneUser(string $ci): array
 {
     require realpath(dirname(__FILE__)) . "/../db/conexion.php";
     try {
-        $statement = $con->prepare("SELECT * FROM USUARIOS WHERE ci = :ci");
-        $statement->execute(array(':ci' => $ci));
+        $statement = $con->prepare("SELECT * FROM USUARIOS WHERE ci = :ci AND activo = :isActive");
+        $statement->execute(array(':ci' => $ci, ":isActive" => 1));
         $reg = $statement->fetch(PDO::FETCH_ASSOC);
         return $reg ? $reg : [];
     } catch (Exception $e) {
@@ -17,8 +17,9 @@ function findAllUsers(): array
 {
     require realpath(dirname(__FILE__)) . "/../db/conexion.php";
     try {
-        $res = $con->query("SELECT * FROM USUARIOS ORDER BY nombre ASC");
-        $reg = $res->fetchAll(PDO::FETCH_ASSOC);
+        $statement = $con->prepare("SELECT * FROM USUARIOS WHERE activo = :isActive ORDER BY nombre ASC" );
+        $statement->execute(array(":isActive" => 1));
+        $reg = $statement->fetchAll(PDO::FETCH_ASSOC);
         return $reg ? $reg : [];
     } catch (Exception $e) {
         die("ERROR SQL in findAllUsers(): " . $e->getMessage());
@@ -81,7 +82,7 @@ function findActionsByRolesId(array $rolesId): array
     foreach ($rolesId as $rolId) {
         try {
             $statement = $con->prepare(
-                "SELECT p.accion 
+                                        "SELECT p.accion 
                                         FROM PERMISOS p
                                         JOIN ROLES_has_PERMISOS rp
                                         WHERE rp.ROLES_id = :rolId"
@@ -133,12 +134,14 @@ function updateOneUser(array $newUser)
                                     SET nombre = :nombre,
                                     apellido = :apellido,
                                     email = :email
-                                    WHERE ci = :ci");
+                                    WHERE ci = :ci
+                                    AND activo = :isActive");
         $res = $statement->execute([
             ':nombre' => $newUser['nombre'],
             ':apellido' => $newUser['apellido'],
             ':email' => $newUser['email'],
             ':ci' => $newUser['cedula'],
+            ':isActive' => 1,
         ]);
 
         if ($res == 1 && $newUser['cedula'] !== $_SESSION['userCi']) {
@@ -161,13 +164,10 @@ function deleteUser(string $userCi)
     require realpath(dirname(__FILE__)) . "/../utils/messages/msg.php";
 
     try {
-        $con->beginTransaction();
-        $statement = $con->prepare("DELETE FROM USUARIOS_has_ROLES WHERE USUARIOS_ci = :ci");
-        $statement->execute([':ci' => $userCi]);
-
-        $statement2 = $con->prepare("DELETE FROM USUARIOS WHERE ci = :ci");
-        $statement2->execute([':ci' => $userCi]);
-        $con->commit();
+        $statement = $con->prepare("UPDATE USUARIOS
+                                    SET activo = :isActive,
+                                    WHERE ci = :ci");
+        $res = $statement->execute([":ci" => $userCi, ':isActive' => 1]);
     } catch (Exception $e) {
         $con->rollBack();
         die("ERROR SQL in saveOneUser(): " . $e->getMessage());

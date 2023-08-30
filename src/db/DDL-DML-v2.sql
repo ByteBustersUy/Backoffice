@@ -1,4 +1,4 @@
-DROP DATABASE IF EXISTS bytebusters_db;
+-- DROP DATABASE IF EXISTS bytebusters_db;
 DROP DATABASE IF EXISTS bytebusters2_db;
 
 /* 
@@ -72,7 +72,7 @@ CREATE TABLE IF NOT EXISTS `bytebusters2_db`.`USUARIOS` (
   `nombre` varchar(45) NOT NULL,
   `email` varchar(45) NOT NULL,
   `apellido` varchar(45) NOT NULL,
-  `activo` boolean NOT NULL,
+  `activo` boolean NOT NULL DEFAULT TRUE,
   PRIMARY KEY(`ci`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -134,7 +134,7 @@ CREATE TABLE IF NOT EXISTS `bytebusters2_db`.`PRODUCTOS`(
   `precio` decimal NOT NULL,
   `usuario_ci` varchar(8),
   `fecha` TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL, 
-  `activo` boolean NOT NULL,
+  `activo` boolean NOT NULL DEFAULT TRUE,
   PRIMARY KEY(`id`),
   FOREIGN KEY(`usuario_ci`)
   REFERENCES `bytebusters2_db`.`USUARIOS`(`ci`)
@@ -181,7 +181,7 @@ CREATE TABLE IF NOT EXISTS `bytebusters2_db`.`PROMOCIONES`(
   `descuento` decimal NOT NULL,
   `fechaInicio` date NOT NULL,
   `fechaFin` date NOT NULL,
-  `activo` boolean NOT NULL,
+  `activo` boolean NOT NULL DEFAULT TRUE,
  PRIMARY KEY(`id`,`nombre`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -211,40 +211,40 @@ CREATE TABLE IF NOT EXISTS `bytebusters2_db`.`PRODUCTOS_has_PROMOCIONES` (
 --------------------------------
 */
 INSERT INTO `bytebusters2_db`.`USUARIOS` (`ci`, `pass`, `nombre`, `email`, `apellido`,`activo`) VALUES
-('55271656', '$2y$10$PCw18RCrV/ldpRTKpSVoXONKrAa/0YRLAceaGZxXKn/wW..UgiCg6', 'Angel', 'angellanzi.sl@gmail.com', 'Lanzi','true');
+('55271656', '$2y$10$PCw18RCrV/ldpRTKpSVoXONKrAa/0YRLAceaGZxXKn/wW..UgiCg6', 'Angel', 'angellanzi.sl@gmail.com', 'Lanzi',1);
 
 INSERT INTO `bytebusters2_db`.`USUARIOS` (`ci`, `pass`, `nombre`, `email`, `apellido`,`activo`) VALUES
-('46140143', '$2y$10$PCw18RCrV/ldpRTKpSVoXONKrAa/0YRLAceaGZxXKn/wW..UgiCg6', 'Federico', 'fdefortuny@gmail.com', 'de Fortuny','true');
+('46140143', '$2y$10$PCw18RCrV/ldpRTKpSVoXONKrAa/0YRLAceaGZxXKn/wW..UgiCg6', 'Federico', 'fdefortuny@gmail.com', 'de Fortuny',1);
 
 INSERT INTO `bytebusters2_db`.`USUARIOS` (`ci`, `pass`, `nombre`, `email`, `apellido`,`activo`) VALUES
-('49273133', '$2y$10$PCw18RCrV/ldpRTKpSVoXONKrAa/0YRLAceaGZxXKn/wW..UgiCg6', 'Lucia', 'luciavinaf@gmail.com', 'Viña','true');
+('49273133', '$2y$10$PCw18RCrV/ldpRTKpSVoXONKrAa/0YRLAceaGZxXKn/wW..UgiCg6', 'Lucia', 'luciavinaf@gmail.com', 'Viña',1);
 
 INSERT INTO `bytebusters2_db`.`USUARIOS` (`ci`, `pass`, `nombre`, `email`, `apellido`,`activo`) VALUES
-('51281100', '$2y$10$PCw18RCrV/ldpRTKpSVoXONKrAa/0YRLAceaGZxXKn/wW..UgiCg6', 'Anibal', 'anibalezequiel14@gmail.com', 'Almeida','true');
+('51281100', '$2y$10$PCw18RCrV/ldpRTKpSVoXONKrAa/0YRLAceaGZxXKn/wW..UgiCg6', 'Anibal', 'anibalezequiel14@gmail.com', 'Almeida',1);
 
 INSERT INTO `bytebusters2_db`.`USUARIOS` (`ci`, `pass`, `nombre`, `email`, `apellido`,`activo`) VALUES
-('49158527', '$2y$10$PCw18RCrV/ldpRTKpSVoXONKrAa/0YRLAceaGZxXKn/wW..UgiCg6', 'Damian', 'damiandespan@gmail.com', 'Despan','true');
+('49158527', '$2y$10$PCw18RCrV/ldpRTKpSVoXONKrAa/0YRLAceaGZxXKn/wW..UgiCg6', 'Damian', 'damiandespan@gmail.com', 'Despan',1);
 
 INSERT INTO `bytebusters2_db`.`USUARIOS` (`ci`, `pass`, `nombre`, `email`, `apellido`,`activo`) VALUES
-('9168507', '$2y$10$PCw18RCrV/ldpRTKpSVoXONKrAa/0YRLAceaGZxXKn/wW..UgiCg6', 'Manolo', 'manopere@gmail.com', 'Perez','true');
+('9168507', '$2y$10$PCw18RCrV/ldpRTKpSVoXONKrAa/0YRLAceaGZxXKn/wW..UgiCg6', 'Manolo', 'manopere@gmail.com', 'Perez',1);
 
 INSERT INTO `bytebusters2_db`.`USUARIOS` (`ci`, `pass`, `nombre`, `email`, `apellido`,`activo`) VALUES
-('16850794', '$2y$10$PCw18RCrV/ldpRTKpSVoXONKrAa/0YRLAceaGZxXKn/wW..UgiCg6', 'Pepe', 'pepegome@gmail.com', 'Gomez','true');
+('16850794', '$2y$10$PCw18RCrV/ldpRTKpSVoXONKrAa/0YRLAceaGZxXKn/wW..UgiCg6', 'Pepe', 'pepegome@gmail.com', 'Gomez',1);
 
 INSERT INTO `bytebusters2_db`.`USUARIOS` (`ci`, `pass`, `nombre`, `email`, `apellido`,`activo`) VALUES
-('91827364', '$2y$10$PCw18RCrV/ldpRTKpSVoXONKrAa/0YRLAceaGZxXKn/wW..UgiCg6', 'Marcelo', 'torresmarce@gmail.com', 'Torres','true');
+('91827364', '$2y$10$PCw18RCrV/ldpRTKpSVoXONKrAa/0YRLAceaGZxXKn/wW..UgiCg6', 'Marcelo', 'torresmarce@gmail.com', 'Torres',1);
 
 INSERT INTO `bytebusters2_db`.`USUARIOS` (`ci`, `pass`, `nombre`, `email`, `apellido`,`activo`) VALUES
-('56478921', '$2y$10$PCw18RCrV/ldpRTKpSVoXONKrAa/0YRLAceaGZxXKn/wW..UgiCg6', 'Cristina', 'borrazascristi@gmail.com', 'Borrazas','true');
+('56478921', '$2y$10$PCw18RCrV/ldpRTKpSVoXONKrAa/0YRLAceaGZxXKn/wW..UgiCg6', 'Cristina', 'borrazascristi@gmail.com', 'Borrazas',1);
 
 INSERT INTO `bytebusters2_db`.`USUARIOS` (`ci`, `pass`, `nombre`, `email`, `apellido`,`activo`) VALUES
-('49862357', '$2y$10$PCw18RCrV/ldpRTKpSVoXONKrAa/0YRLAceaGZxXKn/wW..UgiCg6', 'Lorena', 'olivieralorena@gmail.com', 'Oliviera','true');
+('49862357', '$2y$10$PCw18RCrV/ldpRTKpSVoXONKrAa/0YRLAceaGZxXKn/wW..UgiCg6', 'Lorena', 'olivieralorena@gmail.com', 'Oliviera',1);
 
 INSERT INTO `bytebusters2_db`.`USUARIOS` (`ci`, `pass`, `nombre`, `email`, `apellido`,`activo`) VALUES
-('9513674', '$2y$10$PCw18RCrV/ldpRTKpSVoXONKrAa/0YRLAceaGZxXKn/wW..UgiCg6', 'Carolina', 'caropollito123@gmail.com', 'Pollo','true');
+('9513674', '$2y$10$PCw18RCrV/ldpRTKpSVoXONKrAa/0YRLAceaGZxXKn/wW..UgiCg6', 'Carolina', 'caropollito123@gmail.com', 'Pollo',1);
 
 INSERT INTO `bytebusters2_db`.`USUARIOS` (`ci`, `pass`, `nombre`, `email`, `apellido`,`activo`) VALUES
-('28463971', '$2y$10$PCw18RCrV/ldpRTKpSVoXONKrAa/0YRLAceaGZxXKn/wW..UgiCg6', 'Pablo', 'pclavo@gmail.com', 'Clavo','true');
+('28463971', '$2y$10$PCw18RCrV/ldpRTKpSVoXONKrAa/0YRLAceaGZxXKn/wW..UgiCg6', 'Pablo', 'pclavo@gmail.com', 'Clavo',1);
 
 
 /*
@@ -353,38 +353,38 @@ INSERT INTO `bytebusters2_db`.`CATEGORIAS` (`id`, `nombre`) VALUES ('7', 'Tecnol
 ---------------------------------
 */
 INSERT INTO `bytebusters2_db`.`PRODUCTOS` (`id`, `nombre`, `descripcion`, `imagen`,`precio`,`usuario_ci`,`activo`) VALUES ('1', 'Pack 3 Rollos de Cocina NOVA Clásico', 'Rollos de papel doble hoja con alta absorción 
-que permite retener mayor cantidad de líquido y aseguran un rendimiento más económico en todas las necesidades del hogar.', '1.jpg','1200','55271656','true');
+que permite retener mayor cantidad de líquido y aseguran un rendimiento más económico en todas las necesidades del hogar.', '1.jpg','1200','55271656',1);
 
 INSERT INTO `bytebusters2_db`.`PRODUCTOS` (`id`, `nombre`, `descripcion`, `imagen`,`usuario_ci`,`activo`) VALUES ('2', 'Tijera MAPED Sensoft 13 cm mango de goma', 'Los Mejores útiles para escolares 
-encontralos en la web', '2.jpg','55271656','true');
+encontralos en la web', '2.jpg','55271656',1);
 
 INSERT INTO `bytebusters2_db`.`PRODUCTOS` (`id`, `nombre`, `descripcion`, `imagen`,`usuario_ci`,`activo`) VALUES ('3','Lubricante WD-40 flexi tapa 220g','Lubricante WD-40 flexi tapa 220g, producto 
-de excelente calidad.', '3.jpg','55271656','true');
+de excelente calidad.', '3.jpg','55271656',1);
 
-INSERT INTO `bytebusters2_db`.`PRODUCTOS` (`id`, `nombre`, `descripcion`, `imagen`,`usuario_ci`,`activo`) VALUES ('4','Toalla de Baño Azul Frape Bud 135 x 70 cm','Toalla de exelente calidad y textura', '4.jpg','55271656','true');
+INSERT INTO `bytebusters2_db`.`PRODUCTOS` (`id`, `nombre`, `descripcion`, `imagen`,`usuario_ci`,`activo`) VALUES ('4','Toalla de Baño Azul Frape Bud 135 x 70 cm','Toalla de exelente calidad y textura', '4.jpg','55271656',1);
 
 INSERT INTO `bytebusters2_db`.`PRODUCTOS` (`id`, `nombre`, `descripcion`, `imagen`,`usuario_ci`,`activo`) VALUES ('5', 'Agua JANE 1L', 'El baño y la cocina son áreas altamente contaminadas de toda la casa, pero con 
-agua Jane estan limpios en un segundo', '5.jpg','55271656','true');
+agua Jane estan limpios en un segundo', '5.jpg','55271656',1);
 
-INSERT INTO `bytebusters2_db`.`PRODUCTOS` (`id`, `nombre`, `descripcion`, `imagen`,`usuario_ci`,`activo`) VALUES ('6','Repasador Ajedrez Cuadros' ,'Varios colores, 100% algodón, Medidas: 41 x 66 cm','6.jpg','55271656','true');
+INSERT INTO `bytebusters2_db`.`PRODUCTOS` (`id`, `nombre`, `descripcion`, `imagen`,`usuario_ci`,`activo`) VALUES ('6','Repasador Ajedrez Cuadros' ,'Varios colores, 100% algodón, Medidas: 41 x 66 cm','6.jpg','55271656',1);
 
-INSERT INTO `bytebusters2_db`.`PRODUCTOS` (`id`, `nombre`, `descripcion`, `imagen`,`usuario_ci`,`activo`) VALUES ('7','Destornillador BRICOTECH','Destornillador BRICOTECH Mod. HL-S36-26 . 3.6 V','7.jpg','55271656','true');
+INSERT INTO `bytebusters2_db`.`PRODUCTOS` (`id`, `nombre`, `descripcion`, `imagen`,`usuario_ci`,`activo`) VALUES ('7','Destornillador BRICOTECH','Destornillador BRICOTECH Mod. HL-S36-26 . 3.6 V','7.jpg','55271656',1);
 
-INSERT INTO `bytebusters2_db`.`PRODUCTOS` (`id`, `nombre`, `descripcion`, `imagen`,`usuario_ci`,`activo`) VALUES ('8','Papel natural A4 250h','Papel natural A4 250h 75 g 100% caña de azúcar.','8.jpg','55271656','true');
+INSERT INTO `bytebusters2_db`.`PRODUCTOS` (`id`, `nombre`, `descripcion`, `imagen`,`usuario_ci`,`activo`) VALUES ('8','Papel natural A4 250h','Papel natural A4 250h 75 g 100% caña de azúcar.','8.jpg','55271656',1);
 
-INSERT INTO `bytebusters2_db`.`PRODUCTOS` (`id`, `nombre`, `descripcion`, `imagen`,`usuario_ci`,`activo`) VALUES ('9','Bolsa De Residuos Jardín Y Edificios Herradura 85 X 105 10 U','Bolsa De Residuos Jardín Y Edificios Herradura 85 X 105 10 U','9.jpg','55271656','true');
+INSERT INTO `bytebusters2_db`.`PRODUCTOS` (`id`, `nombre`, `descripcion`, `imagen`,`usuario_ci`,`activo`) VALUES ('9','Bolsa De Residuos Jardín Y Edificios Herradura 85 X 105 10 U','Bolsa De Residuos Jardín Y Edificios Herradura 85 X 105 10 U','9.jpg','55271656',1);
 
-INSERT INTO `bytebusters2_db`.`PRODUCTOS` (`id`, `nombre`, `descripcion`, `imagen`,`usuario_ci`,`activo`) VALUES ('10','Pincel 2in Hometech','Pincel 2in Hometech','10.jpg','55271656','true');
+INSERT INTO `bytebusters2_db`.`PRODUCTOS` (`id`, `nombre`, `descripcion`, `imagen`,`usuario_ci`,`activo`) VALUES ('10','Pincel 2in Hometech','Pincel 2in Hometech','10.jpg','55271656',1);
 
-INSERT INTO `bytebusters2_db`.`PRODUCTOS` (`id`, `nombre`, `descripcion`, `imagen`,`usuario_ci`,`activo`) VALUES ('11','Jabón de Tocador DOVE Original en Barra 90 G Pack x8','Jabón de Tocador DOVE Original en Barra 90 G Pack x8','11.jpg','55271656','true');
+INSERT INTO `bytebusters2_db`.`PRODUCTOS` (`id`, `nombre`, `descripcion`, `imagen`,`usuario_ci`,`activo`) VALUES ('11','Jabón de Tocador DOVE Original en Barra 90 G Pack x8','Jabón de Tocador DOVE Original en Barra 90 G Pack x8','11.jpg','55271656',1);
 
 INSERT INTO `bytebusters2_db`.`PRODUCTOS` (`id`, `nombre`, `descripcion`, `imagen`,`usuario_ci`,`activo`) VALUES ('12','
-Cinta adhesiva TEORIA + 24mm x 50 m','Cinta adhesiva TEORIA + 24mm x 50 m','12.jpg','55271656','true');
+Cinta adhesiva TEORIA + 24mm x 50 m','Cinta adhesiva TEORIA + 24mm x 50 m','12.jpg','55271656',1);
 
-INSERT INTO `bytebusters2_db`.`PRODUCTOS` (`id`, `nombre`, `descripcion`, `imagen`,`usuario_ci`,`activo`) VALUES ('13','Paño microfibra LIDER','Paño microfibra LIDER','13.jpg','55271656','true');
-INSERT INTO `bytebusters2_db`.`PRODUCTOS` (`id`, `nombre`, `descripcion`, `imagen`,`usuario_ci`,`activo`) VALUES ('14','Pinza BRICOTECH pico loro 10','Pinza BRICOTECH pico loro 10','14.jpg','55271656','true');
-INSERT INTO `bytebusters2_db`.`PRODUCTOS` (`id`, `nombre`, `descripcion`, `imagen`,`usuario_ci`,`activo`) VALUES ('15','Cartucho HP Mod. 3YM78AL (667) tricolor P/2375/2775','Obtené el mejor rendimiento de tu impresora utilizando insumos originales. Los cartuchos originales HP ofrecen un excelente rendimiento y la mejor calidad de impresión','15.jpg','55271656','true');
-INSERT INTO `bytebusters2_db`.`PRODUCTOS` (`id`, `nombre`, `descripcion`, `imagen`,`usuario_ci`,`activo`) VALUES ('16','Pelota WILSON Castaway','Si lo que buscas es diversión, está pelota es la ideal para vos. Podrás compartir junto a tus amigos de momentos inolvidables, diviértete a lo grande y a toda hora!','16.jpg','55271656','true');
+INSERT INTO `bytebusters2_db`.`PRODUCTOS` (`id`, `nombre`, `descripcion`, `imagen`,`usuario_ci`,`activo`) VALUES ('13','Paño microfibra LIDER','Paño microfibra LIDER','13.jpg','55271656',1);
+INSERT INTO `bytebusters2_db`.`PRODUCTOS` (`id`, `nombre`, `descripcion`, `imagen`,`usuario_ci`,`activo`) VALUES ('14','Pinza BRICOTECH pico loro 10','Pinza BRICOTECH pico loro 10','14.jpg','55271656',1);
+INSERT INTO `bytebusters2_db`.`PRODUCTOS` (`id`, `nombre`, `descripcion`, `imagen`,`usuario_ci`,`activo`) VALUES ('15','Cartucho HP Mod. 3YM78AL (667) tricolor P/2375/2775','Obtené el mejor rendimiento de tu impresora utilizando insumos originales. Los cartuchos originales HP ofrecen un excelente rendimiento y la mejor calidad de impresión','15.jpg','55271656',1);
+INSERT INTO `bytebusters2_db`.`PRODUCTOS` (`id`, `nombre`, `descripcion`, `imagen`,`usuario_ci`,`activo`) VALUES ('16','Pelota WILSON Castaway','Si lo que buscas es diversión, está pelota es la ideal para vos. Podrás compartir junto a tus amigos de momentos inolvidables, diviértete a lo grande y a toda hora!','16.jpg','55271656',1);
 
 
 
@@ -425,7 +425,7 @@ INSERT INTO `bytebusters2_db`.`PRODUCTOS_has_CATEGORIAS` (`PRODUCTOS_id`, `CATEG
 --INSERT DE LA TABLA PROMOCIONES--
 ----------------------------------
 */
-INSERT INTO `bytebusters2_db`.`PROMOCIONES` (`id`,`nombre`,`descuento`,`fechaInicio`,`fechaFin`,`activo`) VALUES ('1','dia del niño','9,90','7/7/23','14/9/23','true');
+INSERT INTO `bytebusters2_db`.`PROMOCIONES` (`id`,`nombre`,`descuento`,`fechaInicio`,`fechaFin`,`activo`) VALUES ('1','dia del niño','9,90','7/7/23','14/9/23',1);
 /*
 ------------------------------------------------
 --INSER RELACIONANDO PRODUCTOS CON PROMOCIONES--
