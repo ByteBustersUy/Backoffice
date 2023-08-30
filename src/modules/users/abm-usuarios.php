@@ -12,15 +12,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (isset($_GET['action'])) {
         if ($_GET['action'] == "add") {
             addUser();
-
         } else if ($_GET['action'] == "edit" && isset($_GET['ci'])) {
             editUser($_GET['ci']);
-
         } else if ($_GET['action'] == "delete" && isset($_POST["deleteUserCi"])) {
             if ($_POST["deleteUserCi"] != $_SESSION['userCi']) {
                 deleteUser($_POST["deleteUserCi"]);
             }
-
         } else {
             die("Invalid action requested");
         }
@@ -77,7 +74,7 @@ function addUser()
 
     if (!elementsHasData([$nombre, $apellido, $cedula, $email, $pass, $rolesId])) {
         die("ERROR: " . $error_messages['!form_data']);
-    }
+    } //TODO: check
 
     if (!isValidEmail($email)) {
         die("ERROR: " . $error_messages['!valid_email']);
@@ -114,7 +111,6 @@ function addUser()
 function editUser(string $userCi)
 {
     require realpath(dirname(__FILE__)) . "/../../utils/messages/msg.php";
-
     try {
         if (isset($_POST['cedula']) || isset($_POST['contrasenia'])) {
             die("ERROR: Invalid request");
@@ -139,10 +135,11 @@ function editUser(string $userCi)
         if (count($rolesId) == 0) {
             throw new Error("ERROR: " . $error_messages['!rolesSelected']);
         }
+
         $data = [$nombre, $apellido, $email, $rolesId];
 
         foreach ($data as $element) {
-            if (preg_match('/(^\s+$)|(^\s+)|(\s+$)/', $element)) {
+            if (is_string($element) && preg_match('/(^\s+$)|(^\s+)|(\s+$)/', $element)) {
                 die("ERROR: " . $error_messages['!valid_chars']);
             }
         }
@@ -150,28 +147,29 @@ function editUser(string $userCi)
         if (!elementsHasData($data)) {
             die("ERROR: " . $error_messages['!form_data']);
         }
+
+        if (!elementsHasData([$nombre, $apellido, $email, $rolesId])) {
+            die("ERROR: " . $error_messages['!form_data']);
+        }
+
+        $userExist = findOneUser(htmlspecialchars($userCi));
+        if (!$userExist) {
+            die("ERROR: " . $error_messages['!exist_user'] . ". ('" . $userExist['ci'] . "')");
+        }
+
+        $newUser = [
+            "nombre" => $nombre,
+            "apellido" => $apellido,
+            "email" => $email,
+            "cedula" => $userExist['ci'],
+            "rolesId" => $rolesId
+        ];
+
+        
+        updateOneUser($newUser);
+        header("Location:../../../pages/abm-usuarios.php");
+
     } catch (Exception $e) {
         throw new ErrorException($e->getMessage());
     }
-
-    if (!elementsHasData([$nombre, $apellido, $email, $rolesId])) {
-        die("ERROR: " . $error_messages['!form_data']);
-    }
-
-    $userExist = findOneUser(htmlspecialchars($userCi));
-    if (!$userExist) {
-        die("ERROR: " . $error_messages['!exist_user'] . ". ('" . $userExist['ci'] . "')");
-    }
-
-    $newUser = [
-        "nombre" => $nombre,
-        "apellido" => $apellido,
-        "email" => $email,
-        "cedula" => $userExist['ci'],
-        "rolesId" => $rolesId
-    ];
-
-
-    updateOneUser($newUser);
-    header("Location:../../../pages/abm-usuarios.php");
 }

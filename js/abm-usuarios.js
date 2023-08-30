@@ -22,9 +22,6 @@ formAbm.addEventListener("change", () => {
 			document.getElementById("errorMessageModal").innerHTML =
 				"El nombre debe comenzar con mayúscula";
 			return;
-		}else{
-			formAbm.attributes.item(2).value =
-			"../src/modules/users/abm-usuarios.php?action=add";
 		}
 	}
 });
@@ -117,7 +114,7 @@ btnEditUser.addEventListener("click", () => {
 
 		formAbm.attributes.item(
 			2
-		).value = `../src/modules/users/abm-usuarios.php?action=edit&ci=${inputsForm.cedula.value}`;
+		).value = `../src/modules/users/abm-usuarios.php?action=edit&ci=${userCi}`;
 	}
 });
 

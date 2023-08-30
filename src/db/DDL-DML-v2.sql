@@ -72,7 +72,7 @@ CREATE TABLE IF NOT EXISTS `bytebusters2_db`.`USUARIOS` (
   `nombre` varchar(45) NOT NULL,
   `email` varchar(45) NOT NULL,
   `apellido` varchar(45) NOT NULL,
-  `activo` boolean NOT NULL DEFAULT TRUE,
+  `activo` boolean NOT NULL DEFAULT 1,
   PRIMARY KEY(`ci`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -134,7 +134,7 @@ CREATE TABLE IF NOT EXISTS `bytebusters2_db`.`PRODUCTOS`(
   `precio` decimal NOT NULL,
   `usuario_ci` varchar(8),
   `fecha` TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL, 
-  `activo` boolean NOT NULL DEFAULT TRUE,
+  `activo` boolean NOT NULL DEFAULT 1,
   PRIMARY KEY(`id`),
   FOREIGN KEY(`usuario_ci`)
   REFERENCES `bytebusters2_db`.`USUARIOS`(`ci`)
@@ -181,7 +181,7 @@ CREATE TABLE IF NOT EXISTS `bytebusters2_db`.`PROMOCIONES`(
   `descuento` decimal NOT NULL,
   `fechaInicio` date NOT NULL,
   `fechaFin` date NOT NULL,
-  `activo` boolean NOT NULL DEFAULT TRUE,
+  `activo` boolean NOT NULL DEFAULT 1,
  PRIMARY KEY(`id`,`nombre`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 

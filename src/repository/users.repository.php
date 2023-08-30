@@ -45,7 +45,8 @@ function findRoles(string $ci): array
                 array_push($rolNamesList, $reg['nombreRol']);
             }
         }
-        return [$rolesIdsList, $rolNamesList];
+
+        return [ $rolesIdsList, $rolNamesList ];
     } catch (Exception $e) {
         die("ERROR SQL in findRoles(): " . $e->getMessage());
     }
@@ -166,8 +167,8 @@ function deleteUser(string $userCi)
     try {
         $statement = $con->prepare("UPDATE USUARIOS
                                     SET activo = :isActive,
-                                    WHERE ci = :ci");
-        $res = $statement->execute([":ci" => $userCi, ':isActive' => 1]);
+                                    WHERE ci = :ci AND activo = 1");
+        $res = $statement->execute([":ci" => $userCi, ':isActive' => 0]);
     } catch (Exception $e) {
         $con->rollBack();
         die("ERROR SQL in saveOneUser(): " . $e->getMessage());
