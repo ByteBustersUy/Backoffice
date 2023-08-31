@@ -83,10 +83,10 @@ function findActionsByRolesId(array $rolesId): array
     foreach ($rolesId as $rolId) {
         try {
             $statement = $con->prepare(
-                                        "SELECT p.accion 
-                                        FROM PERMISOS p
-                                        JOIN ROLES_has_PERMISOS rp
-                                        WHERE rp.ROLES_id = :rolId"
+                "SELECT p.accion 
+                FROM ROLES_has_PERMISOS rp
+                JOIN PERMISOS p ON rp.PERMISOS_accion = p.accion
+                WHERE rp.ROLES_id = :rolId"
             );
             $statement->execute(array(':rolId' => $rolId));
             while ($reg = $statement->fetch(PDO::FETCH_ASSOC)) {
