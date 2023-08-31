@@ -1,4 +1,4 @@
--- DROP DATABASE IF EXISTS bytebusters_db;
+DROP DATABASE IF EXISTS bytebusters_db;
 DROP DATABASE IF EXISTS bytebusters2_db;
 
 /* 

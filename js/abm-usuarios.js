@@ -14,18 +14,6 @@ const v = {
 	startWithUpperCase: (str) => (new RegExp("^[A-Z]+").test(str) ? true : false),
 };
 
-formAbm.addEventListener("change", () => {
-	const nombre = document.getElementById("nombre").value;
-	document.getElementById("errorMessageModal").innerHTML = "";
-	if(!v.isEmpty(nombre)){
-		if (!v.startWithUpperCase(nombre)) {
-			document.getElementById("errorMessageModal").innerHTML =
-				"El nombre debe comenzar con mayúscula";
-			return;
-		}
-	}
-});
-
 //Agregar usuario
 btnAddUser.addEventListener("click", () => {
 	btnAddUser.setAttribute("class", "enabled-button");
@@ -34,7 +22,6 @@ btnAddUser.addEventListener("click", () => {
 
 	modalUsers.getElementsByClassName("modal-title")[0].innerHTML =
 		"Agregar usuario";
-
 });
 
 //Editar usuario
@@ -42,6 +29,9 @@ btnEditUser.addEventListener("click", () => {
 	if (!btnEditUser.classList.contains("disabled")) {
 		btnEditUser.setAttribute("class", "enabled-button");
 		const userCi = document.getElementsByClassName("selected")[0].id;
+		formAbm.attributes.item(
+			2
+		).value = `../src/modules/users/abm-usuarios.php?action=edit&ci=${userCi}`;
 
 		modalUsers.getElementsByClassName("modal-title")[0].innerHTML =
 			"Editar usuario ";
@@ -107,14 +97,10 @@ btnEditUser.addEventListener("click", () => {
 			inputsForm.vendedor.setAttribute("checked", "true");
 		}
 
-		if (isEmpty(selectedUserData.admin) && isEmpty(selectedUserData.vendedor)) {
-			btnSubmitModal.disabled = true;
-			btnSubmitModal.setAttribute("style", "filter:brightness(30%);");
-		}
-
-		formAbm.attributes.item(
-			2
-		).value = `../src/modules/users/abm-usuarios.php?action=edit&ci=${userCi}`;
+		// if (isEmpty(selectedUserData.admin) && isEmpty(selectedUserData.vendedor)) {
+		// 	btnSubmitModal.disabled = true;
+		// 	btnSubmitModal.setAttribute("style", "filter:brightness(30%);");
+		// }
 	}
 });
 
@@ -131,21 +117,19 @@ btnDeleteUser.addEventListener("click", () => {
 			data.append("deleteUserCi", userCi);
 			fetch("../src/modules/users/abm-usuarios.php?action=delete", {
 				method: "POST",
-				headers: {
-					"Content-type": "application/x-www-form-urlencoded",
-				},
+				// headers: {
+				// 	"Content-type": "application/text",
+				// },
 				body: data,
 			})
-				.then(async (response) => {
-					if (!response.ok) {
-						throw new Error("Error en la solicitud: " + response.status);
-					}
+				.then((response) => response.status)
+				.then((response) => {
 					selectedRow.setAttribute(
 						"style",
 						"border-top: 1.5px solid red;border-bottom: 1.5px solid #e01818;"
 					);
 					setTimeout(() => {
-						alert("Usuario eliminado con éxito!");
+						console.log(response);
 						location.reload(true);
 					}, 1200);
 				})
@@ -153,7 +137,6 @@ btnDeleteUser.addEventListener("click", () => {
 					console.error("Error: " + error);
 				});
 		} else {
-			//alert("Error: La cédula ingresada no es correcta");
 		}
 		document
 			.getElementsByClassName("selected")[0]
@@ -180,13 +163,32 @@ modalUsers.addEventListener("change", () => {
 	const chkboxAdmin = modalUsers.getElementsByTagName("input")[5];
 	const chkboxVendedor = modalUsers.getElementsByTagName("input")[6];
 	const btnSubmitModal = document.getElementById("btnSubmitModal");
+	const { isEmpty, startWithUpperCase } = v;
+	let validForm = false;
 
-	if (!chkboxAdmin.checked && !chkboxVendedor.checked) {
+	const nombre = document.getElementById("nombre");
+	document.getElementById("errorMessageModal").innerHTML = "";
+
+	if (!isEmpty(nombre.value)) {
+		if (!startWithUpperCase(nombre.value)) {
+			document.getElementById("errorMessageModal").innerHTML =
+				"El nombre debe comenzar con mayúscula";
+			validForm = false;
+		} else {
+			validForm = true;
+		}
+	}
+	if (validForm) {
+		if (!chkboxAdmin.checked && !chkboxVendedor.checked) {
+			btnSubmitModal.disabled = true;
+			btnSubmitModal.setAttribute("style", "filter:brightness(30%);");
+		} else {
+			btnSubmitModal.disabled = false;
+			btnSubmitModal.setAttribute("style", "filter:brightness(100%);");
+		}
+	} else {
 		btnSubmitModal.disabled = true;
 		btnSubmitModal.setAttribute("style", "filter:brightness(30%);");
-	} else {
-		btnSubmitModal.disabled = false;
-		btnSubmitModal.setAttribute("style", "filter:brightness(100%);");
 	}
 });
 

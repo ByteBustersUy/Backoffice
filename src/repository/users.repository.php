@@ -162,15 +162,14 @@ function updateOneUser(array $newUser)
 function deleteUser(string $userCi)
 {
     require realpath(dirname(__FILE__)) . "/../db/conexion.php";
-    require realpath(dirname(__FILE__)) . "/../utils/messages/msg.php";
-
+    
     try {
         $statement = $con->prepare("UPDATE USUARIOS
-                                    SET activo = :isActive,
-                                    WHERE ci = :ci AND activo = 1");
+                                    SET activo = 0
+                                    WHERE ci = :ci ");
         $res = $statement->execute([":ci" => $userCi, ':isActive' => 0]);
+        return $res;
     } catch (Exception $e) {
-        $con->rollBack();
         die("ERROR SQL in saveOneUser(): " . $e->getMessage());
     }
 }

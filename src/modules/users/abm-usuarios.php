@@ -14,9 +14,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             addUser();
         } else if ($_GET['action'] == "edit" && isset($_GET['ci'])) {
             editUser($_GET['ci']);
-        } else if ($_GET['action'] == "delete" && isset($_POST["deleteUserCi"])) {
+        } else if ($_GET['action'] == "delete") {
             if ($_POST["deleteUserCi"] != $_SESSION['userCi']) {
-                deleteUser($_POST["deleteUserCi"]);
+                return deleteUser($_POST["deleteUserCi"]);
             }
         } else {
             die("Invalid action requested");
