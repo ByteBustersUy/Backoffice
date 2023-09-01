@@ -6,12 +6,21 @@ const btnSubmitModal = document.getElementById("btnSubmitModal");
 const formAbm = document.getElementById("formAbmUser");
 let selectedRow;
 
-//validators
-const v = {
+const validEmails = [
+	"vera.com.uy",
+	"gmail.com",
+	"hotmail.com",
+	"bytebusters.com",
+];
+
+const validators = {
 	isSame: (a, b) => a === b,
 	isEqual: (a, b) => a == b,
 	isEmpty: (a) => a.length === 0,
-	startWithUpperCase: (str) => (new RegExp("^[A-Z]+").test(str) ? true : false),
+	startWithUpperCase: (str) => new RegExp("^[A-Z]+").test(str) ? true : false,
+	containWitheSpaces: (str) => new RegExp("\\s+").test(str) ? true : false,
+	isValidEmail: (str) => new RegExp(`^[a-z0-9\._-]+@(?:${validEmails.join("|")})$`).test(str) ? true : false,
+	isValidCi: (str) => new RegExp("^[1-9]{1}[0-9]{7}$").test(str) ? true : false,
 };
 
 //Agregar usuario
@@ -88,7 +97,7 @@ btnEditUser.addEventListener("click", () => {
 		inputsForm.constrasenia.disabled = true;
 		inputsForm.constrasenia.style.filter = "brightness(50%)";
 
-		const { isEmpty } = v;
+		const { isEmpty } = validators;
 
 		if (!isEmpty(selectedUserData.admin)) {
 			inputsForm.admin.setAttribute("checked", "true");
@@ -96,11 +105,6 @@ btnEditUser.addEventListener("click", () => {
 		if (!isEmpty(selectedUserData.vendedor)) {
 			inputsForm.vendedor.setAttribute("checked", "true");
 		}
-
-		// if (isEmpty(selectedUserData.admin) && isEmpty(selectedUserData.vendedor)) {
-		// 	btnSubmitModal.disabled = true;
-		// 	btnSubmitModal.setAttribute("style", "filter:brightness(30%);");
-		// }
 	}
 });
 
@@ -117,9 +121,9 @@ btnDeleteUser.addEventListener("click", () => {
 			data.append("deleteUserCi", userCi);
 			fetch("../src/modules/users/abm-usuarios.php?action=delete", {
 				method: "POST",
-				// headers: {
-				// 	"Content-type": "application/text",
-				// },
+				headers: {
+					"Content-type": "application/text",
+				},
 				body: data,
 			})
 				.then((response) => response.status)
@@ -159,29 +163,57 @@ modalUsers.addEventListener("click", (event) => {
 	}
 });
 
-modalUsers.addEventListener("change", () => {
+formAbm.addEventListener("change", () => {
 	const chkboxAdmin = modalUsers.getElementsByTagName("input")[5];
 	const chkboxVendedor = modalUsers.getElementsByTagName("input")[6];
 	const btnSubmitModal = document.getElementById("btnSubmitModal");
-	const { isEmpty, startWithUpperCase } = v;
-	let validForm = false;
-
+	const messageError = document.getElementById("errorMessageModal");
 	const nombre = document.getElementById("nombre");
-	document.getElementById("errorMessageModal").innerHTML = "";
+	const apellido = document.getElementById("apellido");
+	const cedula = document.getElementById("cedula");
+	const email = document.getElementById("email");
 
-	if (!isEmpty(nombre.value)) {
+	messageError.innerHTML = "";
+
+	const { isEmpty, startWithUpperCase, containWitheSpaces, isValidEmail, isValidCi } = validators;
+
+	if (
+		!isEmpty(nombre.value) &&
+		!isEmpty(apellido.value) &&
+		!isEmpty(email.value) &&
+		!isEmpty(cedula.value)
+	) {
+		validForm = true;
+
 		if (!startWithUpperCase(nombre.value)) {
-			document.getElementById("errorMessageModal").innerHTML =
-				"El nombre debe comenzar con mayúscula";
+			messageError.innerHTML = "El nombre debe comenzar con mayúscula";
 			validForm = false;
-		} else {
-			validForm = true;
 		}
+
+		if (containWitheSpaces(nombre.value)) {
+			messageError.innerHTML = "El nombre no puede contener espacios";
+			validForm = false;
+		}
+
+		if (!isValidEmail(email.value)) {
+			messageError.innerHTML = "El correo electrónico no es válido";
+			validForm = false;
+		}
+
+		if (!isValidCi(cedula.value)) {
+			messageError.innerHTML = "La cédula no es válida";
+			validForm = false;
+		}
+	} else {
+		validForm = false;
+		messageError.innerHTML = "Todos los campos son obligatorios";
 	}
+
 	if (validForm) {
 		if (!chkboxAdmin.checked && !chkboxVendedor.checked) {
 			btnSubmitModal.disabled = true;
 			btnSubmitModal.setAttribute("style", "filter:brightness(30%);");
+			messageError.innerHTML = "Seleccine al menos un rol";
 		} else {
 			btnSubmitModal.disabled = false;
 			btnSubmitModal.setAttribute("style", "filter:brightness(100%);");

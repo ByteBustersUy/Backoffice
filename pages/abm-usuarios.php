@@ -93,10 +93,10 @@
                 <div class="modal-body">
                     <form id="formAbmUser" class="form-abm" action="" method="post">
                         <input id="nombre" type="text" name="nombre" placeholder="Primer nombre" required autocomplete="off">
-                        <input type="text" name="apellido" placeholder="Apellidos" required autocomplete="off">
-                        <input type="text" name="cedula" placeholder="Cédula de identidad" required autocomplete="off">
-                        <input type="text" name="email" placeholder="Email" required autocomplete="off">
-                        <input type="text" name="contrasenia" placeholder="Contraseña" required autocomplete="off">
+                        <input id="apellido" type="text" name="apellido" placeholder="Apellidos" required autocomplete="off">
+                        <input id="cedula" type="text" name="cedula" placeholder="Cédula de identidad" required autocomplete="off">
+                        <input id="email" type="text" name="email" placeholder="Email" required autocomplete="off">
+                        <input id="contrasenia" type="text" name="contrasenia" placeholder="Contraseña" required autocomplete="off">
                         <div class="d-flex center">
                             <div class="chkbox-div">
                                 <label class="chkbox-labels" for="check-admin">Administrador</label>
