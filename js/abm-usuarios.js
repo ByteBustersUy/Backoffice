@@ -176,14 +176,14 @@ formAbm.addEventListener("change", () => {
 	messageError.innerHTML = "";
 
 	const { isEmpty, startWithUpperCase, containWitheSpaces, isValidEmail, isValidCi } = validators;
-
+	let validForm = true;
+	
 	if (
 		!isEmpty(nombre.value) &&
 		!isEmpty(apellido.value) &&
 		!isEmpty(email.value) &&
 		!isEmpty(cedula.value)
 	) {
-		validForm = true;
 
 		if (!startWithUpperCase(nombre.value)) {
 			messageError.innerHTML = "El nombre debe comenzar con mayúscula";
