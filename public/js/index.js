@@ -19,7 +19,6 @@ window.addEventListener("load", function () {
 		});
 });
 
-let val = "";
 setTimeout(() => {
 	const inputSearch = document.getElementById("navSearch");
 	//const btnNavSearch = document.getElementById("btnNavSearch");
@@ -28,13 +27,20 @@ setTimeout(() => {
 		fetch(`../api/search.php`, {
 			method: "POST",
 			headers: {
-                "Content-Type": "application/json",
+				"Content-Type": "application/json",
 			},
 			body: JSON.stringify({ value: inputSearch.value }),
 		})
 			.then((response) => response.json())
 			.then((data) => {
-                console.log(data)
-		    });
+				const sugerencias = [];
+				for (let i = 0; i < 5; i++) {
+					//console.log(data[i])
+					if (data[i]) {
+						sugerencias.push(data[i].nombre);
+					}
+				}
+				console.log(sugerencias);
+			});
 	});
 }, 100);
