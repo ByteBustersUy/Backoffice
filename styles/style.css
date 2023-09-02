@@ -441,8 +441,6 @@ thead tr .roles{
 }
 
 .modal-content {
-    /* display: flex; */
-    /* flex-direction: column; */
     width: 100%;
     color: var(--bs-modal-color);
     border: 1.2px solid var(--bytebusters-color);

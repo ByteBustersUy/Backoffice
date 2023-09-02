@@ -50,7 +50,7 @@ btnFinalizarCompra.addEventListener("click", function(){
    /* fetch("./src/utils/finalizar-compra.php", {
         method: "POST",
         headers: {
-             
+        
             "content-Type": "application/json"
         },
         body: JSON.stringify(datosCompra)

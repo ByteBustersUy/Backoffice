@@ -8,28 +8,14 @@ const btnUploadImage = document.getElementById("btnUploadImage");
 
 let selectedRow;
 
-//validaciónes
-const v = {
+const validators = {
 	isSame: (a, b) => a === b,
 	isEqual: (a, b) => a == b,
 	isEmpty: (a) => a.length === 0,
-	startWithUpperCase: (str) => (new RegExp("^[A-Z]+").test(str) ? true : false),
+	startWithUpperCase: (str) => new RegExp("^[A-Z]+").test(str) ? true : false,
+	containWitheSpaces: (str) => new RegExp("\\s+").test(str) ? true : false,
 };
 
-formAbm.addEventListener("change", () => {
-	const nombre = document.getElementById("nombre").value;
-	document.getElementById("errorMessageModal").innerHTML = "";
-	if (!v.isEmpty(nombre)) {
-		if (!v.startWithUpperCase(nombre)) {
-			document.getElementById("errorMessageModal").innerHTML =
-				"El nombre del producto debe comenzar con mayúscula";
-			return;
-		}
-	} else {
-		formAbm.attributes.item(2).value =
-			"../src/modules/products/abm-productos.php?action=add";
-	}
-});
 
 //Agregar Producto
 btnAddProduct.addEventListener("click", () => {
@@ -44,6 +30,9 @@ btnAddProduct.addEventListener("click", () => {
 		btnSubmitModal.disabled = false;
 		btnSubmitModal.setAttribute("style", "filter:brightness(100%);");
 	}
+	formAbm.attributes.item(
+		2
+	).value = `../src/modules/products/abm-productos.php?action=add`;
 });
 
 btnUploadImage.addEventListener("change", () => {
@@ -144,6 +133,52 @@ modalProducts.addEventListener("click", (event) => {
 		event.target.id === "btnCancelModal"
 	) {
 		location.reload(true);
+	}
+});
+
+formAbm.addEventListener("change", () => {
+	const btnSubmitModal = document.getElementById("btnSubmitModal");
+	const messageError = document.getElementById("errorMessageModal");
+	const nombre = document.getElementById("nombre");
+	const descripcion = document.getElementById("descripcion");
+	const categoria = document.getElementById("categoria");
+	const imagen = document.getElementById("btnUploadImage");
+
+	messageError.innerHTML = "";
+
+	const { isEmpty, startWithUpperCase } = validators;
+	let validForm = true;
+	
+	if (
+		!isEmpty(nombre.value)
+	) {
+
+		if (!startWithUpperCase(nombre.value)) {
+			messageError.innerHTML = "El nombre debe comenzar con mayúscula";
+			validForm = false;
+		}
+
+		if(isEmpty(descripcion.value)){
+			messageError.innerHTML = "El productoDebe tener una descripción";
+			validForm = false;
+		}
+
+		if(isEmpty(descripcion.value) || isEmpty(categoria.value) || isEmpty(imagen.value)){
+			messageError.innerHTML = "Todos los campos son obligatorios";
+			validForm = false;
+		}
+
+	} else {
+		validForm = false;
+		messageError.innerHTML = "Todos los campos son obligatorios";
+	}
+
+	if (validForm) {
+		btnSubmitModal.disabled = false;
+		btnSubmitModal.setAttribute("style", "filter:brightness(100%);");
+	} else {
+		btnSubmitModal.disabled = true;
+		btnSubmitModal.setAttribute("style", "filter:brightness(30%);");
 	}
 });
 

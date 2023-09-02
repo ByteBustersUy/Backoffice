@@ -162,3 +162,5 @@ function deleteProduct(string $productId, bool $isPromo = false)
         die("ERROR SQL in Delete Product(): " . $e->getMessage());
     }
 }
+
+

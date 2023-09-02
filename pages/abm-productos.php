@@ -101,11 +101,12 @@
                                 </select>
                                 <label id="uploadLabel" for="btnUploadImage">Seleccionar imagen</label>
                                 <input id="btnUploadImage" type="file" name="imagen" accept=".jpg, .jpeg, .png, .gif" required>
+                                <input id="precio" type="number" name="precio" placeholder="" required>
                                 <textarea name="descripcion" id="descripcion" placeholder="Descripción" required autocomplete="off"></textarea>
                                 <label id="errorMessageModal"></label>
                                 <div class="buttons">
                                     <button id="btnCancelModal" type="button" data-bs-dismiss="modal" aria-label="Close">CANCELAR</button>
-                                    <button id="btnSubmitModal" type="submit">ACEPTAR</button>
+                                    <button id="btnSubmitModal" type="submit" disabled>ACEPTAR</button>
                                 </div>
                             </form>
                         </div>

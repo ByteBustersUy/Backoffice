@@ -17,7 +17,7 @@ function loadNav() {
         </div>
       </div>
     <form class="d-flex">
-      <input class="form-control search" type="search" placeholder="Buscar en Digitalmarket" aria-label="Search"/>
+      <input id="navSearch" class="form-control search" type="search" placeholder="Buscar en Digitalmarket" aria-label="Search"/>
       <button id="btnNavSearch" class="btn btn-outline-secondary" type="submit">Buscar</button>
     </form>
     <a id="btn-carrito" href="./pages/carrito.html">

@@ -18,3 +18,23 @@ window.addEventListener("load", function () {
 			}
 		});
 });
+
+let val = "";
+setTimeout(() => {
+	const inputSearch = document.getElementById("navSearch");
+	//const btnNavSearch = document.getElementById("btnNavSearch");
+
+	inputSearch.addEventListener("keyup", () => {
+		fetch(`../api/search.php`, {
+			method: "POST",
+			headers: {
+                "Content-Type": "application/json",
+			},
+			body: JSON.stringify({ value: inputSearch.value }),
+		})
+			.then((response) => response.json())
+			.then((data) => {
+                console.log(data)
+		    });
+	});
+}, 100);
